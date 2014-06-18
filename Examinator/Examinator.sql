@@ -82,6 +82,17 @@ ExplnText varchar (500),
 ExplnBit bit)
 go
 
+--drop table tbScores
+create table tbScores
+(ScoreID int identity (1,1) primary key,
+ScoreUserID int foreign key references tbUsers (UserID),
+ScoreCategoryID int foreign key references tbCategory (CategoryID),
+ScoreTotalScore int,
+ScoreAverageTime decimal (5,2),
+ScoreTotalTime decimal (5,2),
+ScoreDateTaken date)
+go
+
 ------------------------------
 --POPULATING TABLES
 ------------------------------
@@ -97,9 +108,9 @@ values	('admin','admin','admin@examinator.com',2,1),	--1000
 go
 
 --Preference Table (Populate after values are known)
---placeholder
+--this is a place holder
 
---Catetory Table
+--Category Table
 insert into tbCategory
 (CatName,CatDesc,Catbit)
 values	('Animals','General Knowledge: Amimals',1),				--100
@@ -161,10 +172,24 @@ values	(10000,'A Cow is raised on dairy farms to produce milk and often makes Mo
 		(10011,'Mister Spock is a Vulcan, from the planet Vulcan.  The Vulcans are known for their logic, intelligence and ability to suppress emotion.',1),		--11
 		(10012,'The Lion is known as The King of Beasts, in the Panthera genus; may weigh up to 550 pounds and the males are recognizable by their highly distinctive manes.',1)		--12
 go
+
+--Scores Table
+insert into tbScores
+(ScoreUserID,ScoreCategoryID,ScoreTotalScore,ScoreAverageTime,ScoreTotalTime,ScoreDateTaken)
+values	(1001,104,75,1.0,1,'2014-05-01'),
+		(1002,100,80,.8,1,'2014-05-02'),
+		(1003,104,95,.5,1,'2014-05-02'),
+		(1001,104,42,.65,1,'2014-05-04')
+go
+
 	
 ----------------------------
 --STORED PROCEDURES
 ----------------------------
+
+--------------------------------------------------------------
+--Display, Verify, Add, Update and Delete from Table tbUsers
+--------------------------------------------------------------
 
 --drop procedure spGetUsers 
 --gets one (by UserID) or all clients
@@ -231,13 +256,76 @@ as
 	end
 go
 
+--drop procedure spChangeUserPW
+--procedure for users to change password
+create procedure spChangeUserPW
+(
+	@UserID int = null,
+	@UserName varchar (30) = null,
+	@UserPass varchar (30) = null,
+	@UserEmail varchar (30) = null,
+	@UserLvl int = null,
+	@UserBit bit = 1
+)
+as
+	begin
+		if exists (select * from tbUsers where UserID = @UserID)
+			begin
+				update tbUsers
+				set UserPass = @UserPass
+				where UserID = @UserID
+				select * from tbUsers where UserID = @UserID
+				and UserBit = 1
+			end
+	end
+go
+
+--drop procedure spDeleteUsers
+--procedure to delete users (set UserBit to 0)
+create procedure spDeleteUsers
+(
+	@UserID int = null,
+	@UserName varchar (30) = null,
+	@UserPass varchar (30) = null,
+	@UserEmail varchar (30) = null,
+	@UserLvl int = null,
+	@UserBit bit = 1
+)
+as
+	begin
+		if exists (select * from tbUsers where UserID = @UserID)
+			begin
+				update tbUsers
+				set UserBit = 0
+				where UserID = @UserID
+				select * from tbUsers where UserID = @UserID
+				and UserBit = 1
+			end
+	end
+go
+
 --------------------------------------------------------------
---Display, Verify, Add, Update and Delete from Table tbUser
+--Score Related Stored Procedures
 --------------------------------------------------------------
+
+--drop procedure spGetTop10
+create procedure spGetTop10
+as
+	begin
+		select top 10 u.UserName,c.CatName,ScoreTotalScore,ScoreDateTaken from tbScores
+		join tbUsers u on ScoreUserID = UserID
+		join tbCategory c on ScoreCategoryID = CategoryID
+		order by ScoreTotalScore desc,CatName asc
+	end
+go
 
 
 
 ------------------------
 --TEST QUERIES
 ------------------------
+
+select * from tbScores
+
+
 
