@@ -59,7 +59,19 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\default.css" />
     <Content Include="Home.aspx" />
+    <Content Include="images\blueice.jpg" />
+    <Content Include="images\catseye.jpg" />
+    <Content Include="images\eggy3.jpg" />
+    <Content Include="images\fire music.jpg" />
+    <Content Include="images\gold shawl 1.jpg" />
+    <Content Include="images\hackeysacks.jpg" />
+    <Content Include="images\miscbg.jpg" />
+    <Content Include="images\niraikkudam.jpg" />
+    <Content Include="images\onelight.jpg" />
+    <Content Include="images\question.jpg" />
+    <Content Include="images\tattoo.jpg" />
     <Content Include="PassordResetService.asmx" />
     <Content Include="Service References\PasswordSVC\Examinator.PasswordSVC.forgotPasswordResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>

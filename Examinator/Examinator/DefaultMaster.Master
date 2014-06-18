@@ -4,12 +4,17 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Examinator</title>
+    <link href="css/default.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
+        <div class="header">
+            <a href="Home.aspx"><h1>Examinator</h1></a>
+            <h3>Brought to you by Sad Panda, Inc.</h3>
+        </div>      
     <div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
