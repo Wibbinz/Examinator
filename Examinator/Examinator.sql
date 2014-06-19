@@ -321,11 +321,24 @@ go
 
 
 
+
 ------------------------
 --TEST QUERIES
 ------------------------
+--drop procedure spGetQuiz
+create procedure spGetQuiz
+(
+	@CategoryID int = null,
+	@Difficulty int = null
+)
+as
+	begin
+		select * from tbQuestions q
+		join tbCategory c on c.CategoryID = @CategoryID
+		join tbAnswers a on a.AnswerID = q.QuestionID
+		where QuestionCatID = @CategoryID
+	end
+go
 
-select * from tbScores
-
-
-
+spGetQuiz
+@CategoryID = 104
