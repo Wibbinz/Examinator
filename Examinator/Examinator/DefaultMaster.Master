@@ -10,7 +10,7 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server">    
         <div class="header">
             <div class="titlebox">
                 <a href="Home.aspx"><h1>Examinator</h1></a>
@@ -18,14 +18,16 @@
             </div>            
             <div class="loginbox">
                 Login: <asp:TextBox ID="tbLogin" runat="server"></asp:TextBox><br />
-                Password: <asp:TextBox ID="tbPassword" runat="server"></asp:TextBox>
+                Password: <asp:TextBox ID="tbPassword" runat="server"></asp:TextBox><br />
+                <asp:LinkButton ID="linkForgotPassword" runat="server">Forgot Password</asp:LinkButton>
+                <asp:Button ID="btnLogin" CssClass="button" runat="server" Text="Submit" />
             </div>
-        </div>      
-    <div>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </div>     
+        <div>    
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
-        </asp:ContentPlaceHolder>
-    </div>
+            </asp:ContentPlaceHolder>
+        </div>
     </form>
 </body>
 </html>
