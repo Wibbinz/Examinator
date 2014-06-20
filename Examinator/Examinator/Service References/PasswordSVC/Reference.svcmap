@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="357e9d34-3041-4444-a998-2ea25b1ecf0f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3190b05a-2056-4fc1-933f-9ebd624caf57" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:47227/PassordResetService.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:47227/PasswordResetService.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="PassordResetService.disco" MetadataType="Disco" ID="21ef2c64-cf78-4736-b2cd-983ef8071f7d" SourceId="1" SourceUrl="http://localhost:47227/PassordResetService.asmx?disco" />
-    <MetadataFile FileName="PassordResetService.wsdl" MetadataType="Wsdl" ID="3c72f97a-d8d5-4a1b-bc43-f08a4239205e" SourceId="1" SourceUrl="http://localhost:47227/PassordResetService.asmx?wsdl" />
+    <MetadataFile FileName="PasswordResetService.disco" MetadataType="Disco" ID="99c3ed9f-c94c-4d10-bec7-8261261055e1" SourceId="1" SourceUrl="http://localhost:47227/PasswordResetService.asmx?disco" />
+    <MetadataFile FileName="PasswordResetService.wsdl" MetadataType="Wsdl" ID="497ce17b-6bd2-4609-af04-5cebeab6aed9" SourceId="1" SourceUrl="http://localhost:47227/PasswordResetService.asmx?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

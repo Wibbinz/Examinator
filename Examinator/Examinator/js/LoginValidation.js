@@ -19,7 +19,7 @@ function forgotPW() {
     var randomLetters = Math.random().toString(36).slice(2, 6) + Math.random().toString(36).slice(2);
     $.ajax({
         type: "POST",
-        url: "/PasswordService.asmx/forgotPassword",
+        url: "/PasswordResetService.asmx/forgotPassword",
         contentType: "application/json",
         data: JSON.stringify({ "emailAddress": email, "newPassword": randomLetters }),
         success: function (data) {

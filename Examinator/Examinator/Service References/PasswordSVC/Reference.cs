@@ -8,19 +8,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Examinator.PasswordSVC {
+namespace Examinator.PasswordSvc {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PasswordSVC.PassordResetServiceSoap")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PasswordSvc.PassordResetServiceSoap")]
     public interface PassordResetServiceSoap {
         
         // CODEGEN: Generating message contract since element name emailAddress from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/forgotPassword", ReplyAction="*")]
-        Examinator.PasswordSVC.forgotPasswordResponse forgotPassword(Examinator.PasswordSVC.forgotPasswordRequest request);
+        Examinator.PasswordSvc.forgotPasswordResponse forgotPassword(Examinator.PasswordSvc.forgotPasswordRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/forgotPassword", ReplyAction="*")]
-        System.Threading.Tasks.Task<Examinator.PasswordSVC.forgotPasswordResponse> forgotPasswordAsync(Examinator.PasswordSVC.forgotPasswordRequest request);
+        System.Threading.Tasks.Task<Examinator.PasswordSvc.forgotPasswordResponse> forgotPasswordAsync(Examinator.PasswordSvc.forgotPasswordRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -30,12 +30,12 @@ namespace Examinator.PasswordSVC {
     public partial class forgotPasswordRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="forgotPassword", Namespace="http://tempuri.org/", Order=0)]
-        public Examinator.PasswordSVC.forgotPasswordRequestBody Body;
+        public Examinator.PasswordSvc.forgotPasswordRequestBody Body;
         
         public forgotPasswordRequest() {
         }
         
-        public forgotPasswordRequest(Examinator.PasswordSVC.forgotPasswordRequestBody Body) {
+        public forgotPasswordRequest(Examinator.PasswordSvc.forgotPasswordRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -68,12 +68,12 @@ namespace Examinator.PasswordSVC {
     public partial class forgotPasswordResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="forgotPasswordResponse", Namespace="http://tempuri.org/", Order=0)]
-        public Examinator.PasswordSVC.forgotPasswordResponseBody Body;
+        public Examinator.PasswordSvc.forgotPasswordResponseBody Body;
         
         public forgotPasswordResponse() {
         }
         
-        public forgotPasswordResponse(Examinator.PasswordSVC.forgotPasswordResponseBody Body) {
+        public forgotPasswordResponse(Examinator.PasswordSvc.forgotPasswordResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -96,12 +96,12 @@ namespace Examinator.PasswordSVC {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface PassordResetServiceSoapChannel : Examinator.PasswordSVC.PassordResetServiceSoap, System.ServiceModel.IClientChannel {
+    public interface PassordResetServiceSoapChannel : Examinator.PasswordSvc.PassordResetServiceSoap, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class PassordResetServiceSoapClient : System.ServiceModel.ClientBase<Examinator.PasswordSVC.PassordResetServiceSoap>, Examinator.PasswordSVC.PassordResetServiceSoap {
+    public partial class PassordResetServiceSoapClient : System.ServiceModel.ClientBase<Examinator.PasswordSvc.PassordResetServiceSoap>, Examinator.PasswordSvc.PassordResetServiceSoap {
         
         public PassordResetServiceSoapClient() {
         }
@@ -123,30 +123,30 @@ namespace Examinator.PasswordSVC {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Examinator.PasswordSVC.forgotPasswordResponse Examinator.PasswordSVC.PassordResetServiceSoap.forgotPassword(Examinator.PasswordSVC.forgotPasswordRequest request) {
+        Examinator.PasswordSvc.forgotPasswordResponse Examinator.PasswordSvc.PassordResetServiceSoap.forgotPassword(Examinator.PasswordSvc.forgotPasswordRequest request) {
             return base.Channel.forgotPassword(request);
         }
         
         public string forgotPassword(string emailAddress, string newPassword) {
-            Examinator.PasswordSVC.forgotPasswordRequest inValue = new Examinator.PasswordSVC.forgotPasswordRequest();
-            inValue.Body = new Examinator.PasswordSVC.forgotPasswordRequestBody();
+            Examinator.PasswordSvc.forgotPasswordRequest inValue = new Examinator.PasswordSvc.forgotPasswordRequest();
+            inValue.Body = new Examinator.PasswordSvc.forgotPasswordRequestBody();
             inValue.Body.emailAddress = emailAddress;
             inValue.Body.newPassword = newPassword;
-            Examinator.PasswordSVC.forgotPasswordResponse retVal = ((Examinator.PasswordSVC.PassordResetServiceSoap)(this)).forgotPassword(inValue);
+            Examinator.PasswordSvc.forgotPasswordResponse retVal = ((Examinator.PasswordSvc.PassordResetServiceSoap)(this)).forgotPassword(inValue);
             return retVal.Body.forgotPasswordResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Examinator.PasswordSVC.forgotPasswordResponse> Examinator.PasswordSVC.PassordResetServiceSoap.forgotPasswordAsync(Examinator.PasswordSVC.forgotPasswordRequest request) {
+        System.Threading.Tasks.Task<Examinator.PasswordSvc.forgotPasswordResponse> Examinator.PasswordSvc.PassordResetServiceSoap.forgotPasswordAsync(Examinator.PasswordSvc.forgotPasswordRequest request) {
             return base.Channel.forgotPasswordAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Examinator.PasswordSVC.forgotPasswordResponse> forgotPasswordAsync(string emailAddress, string newPassword) {
-            Examinator.PasswordSVC.forgotPasswordRequest inValue = new Examinator.PasswordSVC.forgotPasswordRequest();
-            inValue.Body = new Examinator.PasswordSVC.forgotPasswordRequestBody();
+        public System.Threading.Tasks.Task<Examinator.PasswordSvc.forgotPasswordResponse> forgotPasswordAsync(string emailAddress, string newPassword) {
+            Examinator.PasswordSvc.forgotPasswordRequest inValue = new Examinator.PasswordSvc.forgotPasswordRequest();
+            inValue.Body = new Examinator.PasswordSvc.forgotPasswordRequestBody();
             inValue.Body.emailAddress = emailAddress;
             inValue.Body.newPassword = newPassword;
-            return ((Examinator.PasswordSVC.PassordResetServiceSoap)(this)).forgotPasswordAsync(inValue);
+            return ((Examinator.PasswordSvc.PassordResetServiceSoap)(this)).forgotPasswordAsync(inValue);
         }
     }
 }

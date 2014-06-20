@@ -32,7 +32,7 @@
                     </asp:Panel>
                 </div>
                 <asp:Label ID="lblError" runat="server" Visible="false" Text="Label"></asp:Label>
-                <asp:Label ID="lblPasswordResult" runat="server" Visible="false" Text="Label"></asp:Label>             
+                <asp:Label ID="lblPasswordResult" runat="server" Text="test"></asp:Label>             
             </ContentTemplate>
         </asp:UpdatePanel>              
         <div>    
@@ -42,11 +42,4 @@
         </div>
     </form>
 </body>
-    <script>
-        $(document).ready(function () {
-            $('linkNewRegs').click(function () {
-
-            });
-        });
-    </script>
 </html>

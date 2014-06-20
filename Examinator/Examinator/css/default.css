@@ -93,6 +93,7 @@ a:active, a:focus {
 .loginbox{
     margin: 15px;
     height: 55px;
+    width: 400px;
     line-height:18px;
     float: right;
     text-align: right;    
@@ -159,7 +160,7 @@ a:active, a:focus {
     width:215px;
     height:132px;
     text-align:center;    
-    line-height:147px;
+    line-height:132px;
 }
 
 .menudiv :hover, :focus {
