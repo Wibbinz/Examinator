@@ -124,7 +124,7 @@ go
 insert into tbQuestions
 (QuestionCatID,QuestionUploader,QuestionTxt,QuestionImgPath,QuestionRecTime,QuestionUploadDateTime,QuestionBit)
 values	(100,1002,'What animal Moos and makes Milk?',NULL,60,'2014-01-01',1),			--10000
-		(100,1002,'What type of bear lives at the North Pole?',NULL,60,'2014-01-01',1),		--10001
+		(100,1002,'What type of Bear lives at the North Pole?',NULL,60,'2014-01-01',1),		--10001
 		(100,1000,'What family of animals do Lions belong to?',NULL,60,'2014-01-01',1),		--10002
 		(100,1000,'Snoopy from the cartoon Peanuts is what kind of dog?',NULL,60,'2014-01-01',1),	--10003
 		(100,1001,'What feline animal has spots?',NULL,60,'2014-02-02',1),				--10004
@@ -135,7 +135,36 @@ values	(100,1002,'What animal Moos and makes Milk?',NULL,60,'2014-01-01',1),			-
 		(104,1003,'What is the designation number for the USS Enterprise?',NULL,60,'2014-05-05',1),			--10009
 		(104,1004,'What vehicle do Starfleet personnel use when they cannot use the transporter?',NULL,60,'2014-03-06',1),		--10010
 		(104,1004,'What race is Mister Spock?',NULL,60,'2014-05-05',1),		--10011
-		(100,1001,'What animal is known as The King of Beasts?',NULL,60,'2014-05-05',1)		--10012
+		(100,1001,'What animal is known as The King of Beasts?',NULL,60,'2014-05-05',1),		--10012
+		(100,1002,'What food do Panda Bears eat?',NULL,60,'2014-06-01',1),	--10013
+		(100,1002,'What type of horse appears on Budweiser commercials?',NULL,60,'2014-06-01',1),	--10014
+		(100,1002,'What kind of animal do Shepherds tend to?',NULL,60,'2014-06-01',1),		--10015
+		(100,1002,'What noise to Pigs make?',NULL,60,'2014-06-01',1),		--10016
+		(100,1002,'What animal has long ears and hops?',NULL,60,'2014-06-01',1),		--10017
+		(100,1002,'What type of animal is the cartoon character, Garfield?',NULL,60,'2014-06-01',1),		--10018
+		(100,1002,'What animal has a long trunk?',NULL,60,'2014-06-01',1),		--10019
+		(100,1002,'What animal has a long neck?',NULL,60,'2014-06-01',1),		--10020
+		(100,1002,'What are animals that eat only plants called?',NULL,60,'2014-06-01',1),		--10021
+		(100,1002,'What reptile can live to be more than 150 years old?',NULL,60,'2014-06-01',1),		--10022
+		(100,1002,'What continent are Kangaroos native to?',NULL,60,'2014-06-01',1),		--10023
+		(100,1002,'What reptile is the largest in the world?',NULL,60,'2014-06-01',1),		--10024
+		(100,1002,'What are Dolphins classified as?',NULL,60,'2014-06-01',1),		--10025
+		(100,1002,'What is the largest mammal in the world?',NULL,60,'2014-06-01',1),		--10026
+		(100,1002,'What do Tadpoles grow up to become?',NULL,60,'2014-06-01',1),		--10027
+		(104,1001,'What is Doctor McCoy''s first name?',NULL,60,'2014-06-01',1),		--10028
+		(104,1001,'What crystals power the Enterprise''s warp drive?',NULL,60,'2014-06-01',1),		--10029
+		(104,1001,'What does "Kaplah" mean in Klingon?',NULL,60,'2014-06-01',1),		--10030
+		(104,1001,'What small, furry creatures like Humans but not Klingons?',NULL,60,'2014-06-01',1),		--10031
+		(104,1001,'What colour is Mister Sulu''s shirt?',NULL,60,'2014-06-01',1),		--10032
+		(104,1001,'In what city is Starfleet Headquarters located?',NULL,60,'2014-06-01',1),		--10033
+		(104,1001,'What is Spock''s father''s name?',NULL,60,'2014-06-01',1),		--10034
+		(104,1001,'What colour is a Vulcan''s blood?',NULL,60,'2014-06-01',1),		--10035
+		(104,1001,'Who was the captain of the Enterprise before James Kirk?',NULL,60,'2014-06-01',1),		--10036
+		(104,1000,'Who is the Communications Officer on the Enterprise?',NULL,60,'2014-06-01',1),		--10037
+		(104,1000,'What starship is manned completely by only Vulcans?',NULL,60,'2014-06-01',1),		--10038
+		(104,1000,'What is Doctor McCoy''s nickname?',NULL,60,'2014-06-01',1),		--10039
+		(104,1000,'What ship did Captain Kirk serve on prior to the Enterprise?',NULL,60,'2014-06-01',1),		--10040
+		(104,1000,'What Star Trek technology was invented by Zefram Cochrane?',NULL,60,'2014-06-01',1)		--10041
 go
 
 --Answers Table
@@ -153,7 +182,36 @@ values	(10000,'A Cow','A Horse','A Chicken','A Hippopotamus','An Elephant','A Gi
 		(10009,'NCC-1701','NCC-5405','UFP-1701','USS-5000','HPD-50','SOS-2001',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10009
 		(10010,'A Shuttlecraft','A Phase Array','A Dilithium Matrix','A Tricorder','A Homing Beacon','A Matter-AntiMatter Pod',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10010
 		(10011,'Vulcan','Klingon','Romulan','Ferrengi','Human','Shapeshifter',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10011
-		(10012,'Lion','Rhinocerous','Grizzly Bear','Elephant','Bengal Tiger','Killer Whale',NULL,NULL,NULL,NULL,NULL,NULL,1)		--10012
+		(10012,'Lion','Rhinocerous','Grizzly Bear','Elephant','Bengal Tiger','Killer Whale',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10012
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10013
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10014
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10015
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10016
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10017
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10018
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10019
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10020
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10021
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10022
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10023
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10024
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10025
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10026
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10027
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10028
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10029
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10030
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10031
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10032
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10033
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10034
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10035
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10036
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10037
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10038
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10039
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10040
+		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1)		--10041
 go
 
 --Explanations Table (for non-Exam Modes)
