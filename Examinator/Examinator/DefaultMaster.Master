@@ -8,8 +8,9 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js" charset="utf-8"></script>
     <link href="css/default.css" rel="stylesheet" />
     <script src="js/LoginValidation.js"></script>
+    <script src="js/BellsandWhistles.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder>
+    </asp:ContentPlaceHolder>   
 </head>
 <body>
     <form id="form1" runat="server">    
@@ -23,7 +24,12 @@
                     </div>
                     <asp:Panel ID="pnlLogin" runat="server">  
                         <div class="loginbox">
-                            <asp:LinkButton ID="linkNewRegs" runat="server">New User Registration</asp:LinkButton><br />
+                            <a href="#newRegs" runat="server">New User Registration</a><br />
+                            <div id="newRegs" class="modalWindow">
+                                <div>
+                                    <a href="#close" title="Close" class="close">X</a>
+                                </div>
+                            </div>                            
                             Login: <asp:TextBox ID="tbLogin" CssClass="loginTextBox" runat="server"></asp:TextBox><br />
                             Password: <asp:TextBox ID="tbPassword" CssClass="loginTextBox" runat="server"></asp:TextBox><br />
                             <asp:LinkButton ID="linkForgotPassword" runat="server"  OnClientClick="forgotPW();">Forgot Password</asp:LinkButton>
@@ -41,5 +47,5 @@
             </asp:ContentPlaceHolder>
         </div>
     </form>
-</body>   
+</body>  
 </html>

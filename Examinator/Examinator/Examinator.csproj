@@ -72,6 +72,7 @@
     <Content Include="images\onelight.jpg" />
     <Content Include="images\question.jpg" />
     <Content Include="images\tattoo.jpg" />
+    <Content Include="js\BellsandWhistles.js" />
     <Content Include="js\LoginValidation.js" />
     <Content Include="PasswordResetService.asmx" />
     <Content Include="Service References\PasswordSvc\Examinator.PasswordSvc.forgotPasswordResponse.datasource">
