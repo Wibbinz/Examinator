@@ -110,12 +110,27 @@ a:active, a:focus {
     text-shadow: none;
 }
 
+#lblPasswordResult{
+    margin-left:925px;
+    font-size: smaller;
+    text-shadow: 2px 2px 2px #15E626;
+    text-align: right;
+    line-height: 10px;
+}
+
+#lblError{
+    margin-left:925px;
+    font-size: smaller;
+    text-shadow: 2px 2px 2px #E61531;
+    text-align: right;
+    line-height: 10px;
+}
+
 /*Home Page Table*/
 
 .menucontainer{    
-    margin: 7px 7px 7px 7px;  
+    margin: 27px 7px 7px 7px;  
 }
-
 .column{
     margin-top: 4px;
     float:left;

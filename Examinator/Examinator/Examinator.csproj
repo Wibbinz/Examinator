@@ -72,6 +72,7 @@
     <Content Include="images\onelight.jpg" />
     <Content Include="images\question.jpg" />
     <Content Include="images\tattoo.jpg" />
+    <Content Include="js\LoginValidation.js" />
     <Content Include="PassordResetService.asmx" />
     <Content Include="Service References\PasswordSVC\Examinator.PasswordSVC.forgotPasswordResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -128,6 +129,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\PasswordSVC\" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
