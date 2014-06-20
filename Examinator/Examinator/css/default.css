@@ -92,7 +92,7 @@ a:active, a:focus {
 
 .loginbox{
     margin: 15px;
-    height: 55px;
+    height: 95px;
     width: 400px;
     line-height:18px;
     float: right;
@@ -101,6 +101,22 @@ a:active, a:focus {
     font-size:smaller;    
     text-shadow: 2px 2px 2px #0099CC;
     overflow:hidden auto;
+}
+
+.loginTextBox{
+    background-color:white;
+    border-color: yellow;
+    font-size: smaller;
+    width:150px;
+    height: 12px;
+}
+
+.loginTextBox:focus{
+    background-color:white;
+    border-color: yellow;
+    font-size: smaller;
+    width: 150px;
+    height: 12px;
 }
 
 .loginbox a{
@@ -112,7 +128,8 @@ a:active, a:focus {
 }
 
 #lblPasswordResult{
-    margin-left:925px;
+    margin-left:875px;
+    width: 200px;
     font-size: smaller;
     text-shadow: 2px 2px 2px #15E626;
     text-align: right;
@@ -120,12 +137,25 @@ a:active, a:focus {
 }
 
 #lblError{
-    margin-left:925px;
+    margin-left:875px;
+    width: 200px;
     font-size: smaller;
-    text-shadow: 2px 2px 2px #E61531;
+    text-shadow: 2px 2px 2px #F72862;
     text-align: right;
     line-height: 10px;
 }
+
+/*New Regs Popup*/
+#registration{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px; 
+    height: 400px;
+    margin-left: -200px;
+    margin-top: -200px; 
+}
+
 
 /*Home Page Table*/
 
@@ -163,13 +193,16 @@ a:active, a:focus {
     line-height:132px;
 }
 
-.menudiv :hover, :focus {
-	text-decoration: none;
-    width: 215px;
-    height: 132px;
+.menudiv:hover, .menudiv:focus {
+    margin: 0px 0px 0px 0px;
+    text-align:center;    
+    line-height:100px;
 	background-color: #050505;
     border: 1px solid #CCCC00;
     border-radius:6px 8px;
+    width: 215px;
+    height: 132px;
+    text-decoration: none;    
     box-shadow: rgba(15,40,50,1) 1px 1px 25px;
 }
 

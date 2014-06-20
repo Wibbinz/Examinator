@@ -12,8 +12,8 @@ namespace Examinator.PasswordSvc {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PasswordSvc.PassordResetServiceSoap")]
-    public interface PassordResetServiceSoap {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PasswordSvc.PasswordResetServiceSoap")]
+    public interface PasswordResetServiceSoap {
         
         // CODEGEN: Generating message contract since element name emailAddress from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/forgotPassword", ReplyAction="*")]
@@ -96,34 +96,34 @@ namespace Examinator.PasswordSvc {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface PassordResetServiceSoapChannel : Examinator.PasswordSvc.PassordResetServiceSoap, System.ServiceModel.IClientChannel {
+    public interface PasswordResetServiceSoapChannel : Examinator.PasswordSvc.PasswordResetServiceSoap, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class PassordResetServiceSoapClient : System.ServiceModel.ClientBase<Examinator.PasswordSvc.PassordResetServiceSoap>, Examinator.PasswordSvc.PassordResetServiceSoap {
+    public partial class PasswordResetServiceSoapClient : System.ServiceModel.ClientBase<Examinator.PasswordSvc.PasswordResetServiceSoap>, Examinator.PasswordSvc.PasswordResetServiceSoap {
         
-        public PassordResetServiceSoapClient() {
+        public PasswordResetServiceSoapClient() {
         }
         
-        public PassordResetServiceSoapClient(string endpointConfigurationName) : 
+        public PasswordResetServiceSoapClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public PassordResetServiceSoapClient(string endpointConfigurationName, string remoteAddress) : 
+        public PasswordResetServiceSoapClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public PassordResetServiceSoapClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public PasswordResetServiceSoapClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public PassordResetServiceSoapClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public PasswordResetServiceSoapClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Examinator.PasswordSvc.forgotPasswordResponse Examinator.PasswordSvc.PassordResetServiceSoap.forgotPassword(Examinator.PasswordSvc.forgotPasswordRequest request) {
+        Examinator.PasswordSvc.forgotPasswordResponse Examinator.PasswordSvc.PasswordResetServiceSoap.forgotPassword(Examinator.PasswordSvc.forgotPasswordRequest request) {
             return base.Channel.forgotPassword(request);
         }
         
@@ -132,12 +132,12 @@ namespace Examinator.PasswordSvc {
             inValue.Body = new Examinator.PasswordSvc.forgotPasswordRequestBody();
             inValue.Body.emailAddress = emailAddress;
             inValue.Body.newPassword = newPassword;
-            Examinator.PasswordSvc.forgotPasswordResponse retVal = ((Examinator.PasswordSvc.PassordResetServiceSoap)(this)).forgotPassword(inValue);
+            Examinator.PasswordSvc.forgotPasswordResponse retVal = ((Examinator.PasswordSvc.PasswordResetServiceSoap)(this)).forgotPassword(inValue);
             return retVal.Body.forgotPasswordResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Examinator.PasswordSvc.forgotPasswordResponse> Examinator.PasswordSvc.PassordResetServiceSoap.forgotPasswordAsync(Examinator.PasswordSvc.forgotPasswordRequest request) {
+        System.Threading.Tasks.Task<Examinator.PasswordSvc.forgotPasswordResponse> Examinator.PasswordSvc.PasswordResetServiceSoap.forgotPasswordAsync(Examinator.PasswordSvc.forgotPasswordRequest request) {
             return base.Channel.forgotPasswordAsync(request);
         }
         
@@ -146,7 +146,7 @@ namespace Examinator.PasswordSvc {
             inValue.Body = new Examinator.PasswordSvc.forgotPasswordRequestBody();
             inValue.Body.emailAddress = emailAddress;
             inValue.Body.newPassword = newPassword;
-            return ((Examinator.PasswordSvc.PassordResetServiceSoap)(this)).forgotPasswordAsync(inValue);
+            return ((Examinator.PasswordSvc.PasswordResetServiceSoap)(this)).forgotPasswordAsync(inValue);
         }
     }
 }

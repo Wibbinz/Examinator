@@ -15,7 +15,7 @@ namespace Examinator
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
-    // [System.Web.Script.Services.ScriptService]
+    [System.Web.Script.Services.ScriptService]
     public class PasswordResetService : System.Web.Services.WebService
     {
 
@@ -23,10 +23,10 @@ namespace Examinator
         public string forgotPassword(string emailAddress, string newPassword)
         {
             string result;
-            DAL.DAL dal = new DAL.DAL("Data Source = localhost; Initial Catalog=dbExaminator; Integrated Security = True");
+            DAL.DAL dal = new DAL.DAL("Data Source = localhost; Initial Catalog=dbExercise1231; Integrated Security = True");
             DataSet ds = new DataSet();
             dal.AddParam("@UserEmail", emailAddress);
-            dal.AddParam("@UserPass", newPassword);
+            dal.AddParam("@UserPW", newPassword);
             ds = dal.ExecuteProcedure("spForgotPW");
             if (ds.Tables[0].Rows[0]["Message"].ToString() == "Invalid Email")
             {
@@ -38,7 +38,6 @@ namespace Examinator
                 return result;
             }
         }
-
 
         private string sendEmail(string emailAddress, string newPassword)
         {

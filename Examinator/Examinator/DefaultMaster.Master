@@ -24,15 +24,15 @@
                     <asp:Panel ID="pnlLogin" runat="server">  
                         <div class="loginbox">
                             <asp:LinkButton ID="linkNewRegs" runat="server">New User Registration</asp:LinkButton><br />
-                            Login: <asp:TextBox ID="tbLogin" runat="server" Height="10px"></asp:TextBox><br />
-                            Password: <asp:TextBox ID="tbPassword" runat="server"  Height="10px"></asp:TextBox><br />
+                            Login: <asp:TextBox ID="tbLogin" CssClass="loginTextBox" runat="server"></asp:TextBox><br />
+                            Password: <asp:TextBox ID="tbPassword" CssClass="loginTextBox" runat="server"></asp:TextBox><br />
                             <asp:LinkButton ID="linkForgotPassword" runat="server"  OnClientClick="forgotPW();">Forgot Password</asp:LinkButton>
                             <asp:Button ID="btnLogin" CssClass="button" runat="server" Text="Submit" OnClientClick="return checkLogin();" OnClick="btnLogin_Click" />
-                        </div>
+                        </div>           
                     </asp:Panel>
+                    <asp:Label ID="lblError" runat="server" Visible="false" Text="Label"></asp:Label>
+                    <asp:Label ID="lblPasswordResult" runat="server" Text=""></asp:Label> 
                 </div>
-                <asp:Label ID="lblError" runat="server" Visible="false" Text="Label"></asp:Label>
-                <asp:Label ID="lblPasswordResult" runat="server" Text="test"></asp:Label>             
             </ContentTemplate>
         </asp:UpdatePanel>              
         <div>    
@@ -41,5 +41,5 @@
             </asp:ContentPlaceHolder>
         </div>
     </form>
-</body>
+</body>   
 </html>

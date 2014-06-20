@@ -1,1 +1,1 @@
-﻿<%@ WebService Language="C#" CodeBehind="PasswordResetService.asmx.cs" Class="Examinator.PassordResetService" %>
+﻿<%@ WebService Language="C#" CodeBehind="PasswordResetService.asmx.cs" Class="Examinator.PasswordResetService" %>

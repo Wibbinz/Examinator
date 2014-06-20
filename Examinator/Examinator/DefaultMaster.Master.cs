@@ -30,7 +30,7 @@ namespace Examinator
             }
             else
             {
-                pnlLogin.Visible = false;
+                //pnlLogin.Visible = false;
             }
         }
     }
