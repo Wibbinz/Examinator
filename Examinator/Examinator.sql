@@ -153,9 +153,9 @@ values	(100,1002,'What animal Moos and makes Milk?',NULL,60,'2014-01-01',1),			-
 		(100,1002,'What do Tadpoles grow up to become?',NULL,60,'2014-06-01',1),		--10027
 		(104,1001,'What is Doctor McCoy''s first name?',NULL,60,'2014-06-01',1),		--10028
 		(104,1001,'What crystals power the Enterprise''s warp drive?',NULL,60,'2014-06-01',1),		--10029
-		(104,1001,'What does the word "Kaplah!" mean in Klingon?',NULL,60,'2014-06-01',1),		--10030
+		(104,1001,'What does the word "Ka''Plah!" mean in Klingon?',NULL,60,'2014-06-01',1),		--10030
 		(104,1001,'What small, furry creatures like Humans but not Klingons?',NULL,60,'2014-06-01',1),		--10031
-		(104,1001,'What colour is Ensign Sulu''s shirt?',NULL,60,'2014-06-01',1),		--10032
+		(104,1001,'What colour is Lieutenant Sulu''s shirt?',NULL,60,'2014-06-01',1),		--10032
 		(104,1001,'In what city is Starfleet Headquarters located?',NULL,60,'2014-06-01',1),		--10033
 		(104,1001,'What is Spock''s father''s name?',NULL,60,'2014-06-01',1),		--10034
 		(104,1001,'What colour is a Vulcan''s blood?',NULL,60,'2014-06-01',1),		--10035
@@ -165,11 +165,11 @@ values	(100,1002,'What animal Moos and makes Milk?',NULL,60,'2014-01-01',1),			-
 		(104,1000,'What is Doctor McCoy''s nickname?',NULL,60,'2014-06-01',1),		--10039
 		(104,1000,'What ship did Captain Kirk serve on prior to the Enterprise?',NULL,60,'2014-06-01',1),		--10040
 		(104,1000,'What Star Trek technology was invented by Zefram Cochrane?',NULL,60,'2014-06-01',1),		--10041
-		(100,1002,'What animal can run the fastest, at speeds over 113 kilometers per hour?',NULL,60,'2014-06-01',1),		--10042
+		(100,1002,'What land animal can run the fastest, at speeds over 115 kilometers per hour?',NULL,60,'2014-06-01',1),		--10042
 		(100,1002,'What animals occasionally commit suicide by jumping into the sea?',NULL,60,'2014-06-01',1),		--10043
 		(100,1002,'What bird is the largest in the world?',NULL,60,'2014-06-01',1),		--10044
 		(100,1002,'Which bird is the only one that can fly backwards?',NULL,60,'2014-06-01',1),		--10045
-		(100,1002,'Who was the actor that played Lieutenant Sulu?',NULL,60,'2014-06-01',1),		--10046
+		(104,1002,'Who was the actor that played Lieutenant Sulu?',NULL,60,'2014-06-01',1),		--10046
 		(104,1001,'How many years was the original Star Trek series'' mission?',NULL,60,'2014-06-01',1),		--10047
 		(104,1001,'What was the total officer and crew complement of the USS Enterprise?',NULL,60,'2014-06-01',1),		--10048
 		(104,1001,'Who was the inventor of the duotronic computer system used on the Enterprise?',NULL,60,'2014-06-01',1),		--10049
@@ -262,29 +262,29 @@ values	(10000,'A Cow is raised on dairy farms to produce milk and often makes Mo
 		(10025,'Dolphins are classified as Mammals and not fish, because they need to breathe air and bear their young live.',1),		--25
 		(10026,'The largest mammal in the world today is the Blue Whale, reaching lengths of over 30 metres and 136 tonnes.',1),		--26
 		(10027,'Young Tadpoles (also called pollywogs) grow up to become Frogs.  In this larval stage, they breathe through gills and live in the water.',1),		--27
-		(10028,'',1),		--28
-		(10029,'',1),		--29
-		(10030,'',1),		--30
-		(10031,'',1),		--31
-		(10032,'',1),		--32
-		(10033,'',1),		--33
-		(10034,'',1),		--34
-		(10035,'',1),		--35
-		(10036,'',1),		--36
-		(10037,'',1),		--37
-		(10038,'',1),		--38
-		(10039,'',1),		--39
-		(10040,'',1),		--40
-		(10041,'',1),		--41
-		(10042,'',1),		--42
-		(10043,'',1),		--43
-		(10044,'',1),		--44
-		(10045,'',1),		--45
-		(10046,'',1),		--46
-		(10047,'',1),		--47
-		(10048,'',1),		--48
-		(10049,'',1),		--49
-		(10050,'',1)		--50
+		(10028,'Doctor McCoy''s first name is Leonard, and is played by DeForest Kelley.',1),		--28
+		(10029,'Dilithium crystals,which when combined with matter and anti-matter, power the warp drives.',1),		--29
+		(10030,'Ka''Plah means Success! but is often used as a salutation.  The correct spelling is Qapla.',1),		--30
+		(10031,'Those small, furry creatures were called Tribbles, they come from Iota Geminorum IV.',1),		--31
+		(10032,'Lieutenant Sulu''s shirt is Command Gold in the original Star Trek series.',1),		--32
+		(10033,'Starfleet Headquarters is located in San Francisco, California, USA, Earth.',1),		--33
+		(10034,'Spock''s father''s name is Sarek, his mother''s name is Amanda, both are from the planet Vulcan.',1),		--34
+		(10035,'A Vulcan''s blood is tinted Green as it is copper based instead of iron based, like it is for humans.',1),		--35
+		(10036,'The Captain of the USS Enterprise prior to James Kirk, was Christopher Pike, who was played by Jeffrey Hunter.',1),		--36
+		(10037,'The Communications Officer on the Enterprise was Lieutenant Uhura, who was played by Nichelle Nichols.',1),		--37
+		(10038,'The USS Intrepid was manned totally by Vulcans, it''s designation number was NCC-1631.',1),		--38
+		(10039,'Doctor McCoy is affectionately called "Bones" by Captain Kirk.  McCoy replaced Mark Piper as CMO on the Enterprise.',1),		--39
+		(10040,'A young Lieutenant James Kirk served aboard the USS Farragut under Captain Stephen Garrovick.',1),		--40
+		(10041,'Zefram Cochrane is known for inventing the Warp Drive, which allowed for faster-than-light speed travel.',1),		--41
+		(10042,'The fastest land animal on earth is the Cheetah, who has been clocked as fast as 120 kph.',1),		--42
+		(10043,'These suicidal animals are known as Lemmings.  Driven by strong biological urges when the population becomes too great, every four years or so.',1),		--43
+		(10044,'The largest bird in the world is the Ostrich, weighing up to 160 kilograms and can run up to 70 kph.',1),		--44
+		(10045,'The only bird that is capable of flying backwards is the Hummingbird. Their wings can flap up to 200 times per second, making a humming noise.',1),		--45
+		(10046,'The actor that portrayed Lieutenant Sulu was George Takei. He also appeared in six Star Trek movies playing Sulu.',1),		--46
+		(10047,'Space, the Final Frontier.  These are the voyages of the Starship Enterprise, it''s FIVE year mission...',1),		--47
+		(10048,'The total officer and crew complement of the USS Enterprise was 430, which was standard for a Constitution Class Starship.',1),		--48
+		(10049,'The inventor of the Duotronic Computer System was Doctor Richard Daystrom, who also invented the less successful M-5 Multitronic System.',1),		--49
+		(10050,'James Kirk''s first starship assignment was a field promoted Ensign aboard the USS Republic, NCC-1371',1)		--50
 go
 
 --Scores Table
@@ -433,13 +433,12 @@ as
 	end
 go
 
+--------------------------------------------------------------
+--Quiz Related Stored Procedures
+--------------------------------------------------------------
 
-
-
-------------------------
---TEST QUERIES
-------------------------
 --drop procedure spGetQuiz
+--retrieves all questions in a specified category, along with answers and explanations
 create procedure spGetQuiz
 (
 	@CategoryID int = null,
@@ -450,9 +449,16 @@ as
 		select * from tbQuestions q
 		join tbCategory c on c.CategoryID = @CategoryID
 		join tbAnswers a on a.AnswerID = q.QuestionID
+		join tbExplanations e on e.ExplnQuestionID = q.QuestionID
 		where QuestionCatID = @CategoryID
 	end
 go
+
+
+------------------------
+--TEST QUERIES
+------------------------
+
 
 spGetQuiz
 @CategoryID = 104
