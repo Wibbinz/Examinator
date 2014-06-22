@@ -117,7 +117,8 @@ values	('Animals','General Knowledge: Amimals',1),				--100
 		('Colours','General Knowledge: Colours',1),				--101
 		('World Geography','Geography: World',1),				--102
 		('Astronomy','Astronomy: The Solar System',1),			--103
-		('Star Trek: TOS','Star Trek: The Original Series',1)	--104
+		('Star Trek: TOS','Star Trek: The Original Series',1),	--104
+		('Software & Database','Robertson College: Software & Database Developer',1)	--105
 go
 
 --Questions Table
@@ -173,7 +174,23 @@ values	(100,1002,'What animal Moos and makes Milk?',NULL,60,'2014-01-01',1),			-
 		(104,1001,'How many years was the original Star Trek series'' mission?',NULL,60,'2014-06-01',1),		--10047
 		(104,1001,'What was the total officer and crew complement of the USS Enterprise?',NULL,60,'2014-06-01',1),		--10048
 		(104,1001,'Who was the inventor of the duotronic computer system used on the Enterprise?',NULL,60,'2014-06-01',1),		--10049
-		(104,1001,'What was tne name of the ship that Ensign James T. Kirk was first assigned to?',NULL,60,'2014-06-01',1)		--10050
+		(104,1001,'What was tne name of the ship that Ensign James T. Kirk was first assigned to?',NULL,60,'2014-06-01',1),		--10050
+		(101,1001,'What two colours are known to make you hungry?',NULL,60,'2014-06-03',1),		--10051
+		(101,1001,'What colour results when combining Red and Blue?',NULL,60,'2014-06-03',1),		--10052
+		(101,1001,'Which colour has the highest (longest) wavelength?',NULL,60,'2014-06-03',1),		--10053
+		(101,1001,'What colour results when mixing Red, Yellow and Blue?',NULL,60,'2014-06-03',1),		--10054
+		(101,1001,'Primary Colours are Red, Yellow and Blue.  What are the Secondary Colours?',NULL,60,'2014-06-03',1),		--10055
+		(102,1003,'What is the name of the southernmost continent?',NULL,60,'2014-06-05',1),		--10056
+		(102,1003,'Which continent is the largest continent?',NULL,60,'2014-06-05',1),		--10057
+		(102,1003,'Which ocean is the largest ocean in the world?',NULL,60,'2014-06-05',1),		--10058
+		(102,1003,'Which country has the highest population in the world?',NULL,60,'2014-06-05',1),		--10059
+		(102,1003,'What is the predominant language in Mexico?',NULL,60,'2014-06-05',1),		--10060
+		(102,1003,'What country has the highest temperatures in the world?',NULL,60,'2014-06-05',1),		--10061
+		(102,1003,'What country do Panda Bears come from?',NULL,60,'2014-06-05',1),		--10062
+		(102,1003,'Which city is the capital of Brazil?',NULL,60,'2014-06-05',1),		--10063
+		(102,1003,'What was Ho Chi Minh City once called?',NULL,60,'2014-06-05',1),		--10064
+		(102,1003,'Which ocean does the Zambezi River in Africa flow into?',NULL,60,'2014-06-05',1),		--10065
+		(102,1004,'What river is the longest river in the world?',NULL,60,'2014-06-05',1)		--10066
 go
 
 --Answers Table
@@ -229,7 +246,23 @@ values	(10000,'A Cow','A Horse','A Chicken','A Hippopotamus','An Elephant','A Gi
 		(10047,'5','10','20','1','2','15',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10047
 		(10048,'430','525','155','1140','370','290',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10048
 		(10049,'Richard Daystrom','Miles Dyson','Zefram Cochrane','Emory Erickson','Leah Brahms','Isaac Asimov',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10049
-		(10050,'USS Republic','USS Farragut','USS Defiant','USS Yorktown','USS Excelsior','USS Arizona',NULL,NULL,NULL,NULL,NULL,NULL,1)		--10050
+		(10050,'USS Republic','USS Farragut','USS Defiant','USS Yorktown','USS Excelsior','USS Arizona',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10050
+		(10051,'Yellow and Orange','Red and Green','Green and Blue','White and Black','Purple and Pink','Pink and Blue',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10051
+		(10052,'Purple','Pink','Azure','Black','No Colour','White',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10052
+		(10053,'Red','Blue','White','Orange','Green','Yellow',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10053
+		(10054,'White','Black','Rainbow','No Colour','Neopolitain','Skittles',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10054
+		(10055,'Orange, Green and Purple','Brown, Tan and Khaki','Green, Brown and Black','Yellow, Orange and Pink','Snap, Crackle and Pop','Red, Orange and Yellow',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10055
+		(10056,'Antarctica','South America','Australia','South Africa','Arctica','Atlantis',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10056
+		(10057,'Asia','Africa','South America','North America','Australia','Antarctica',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10057
+		(10058,'Pacific Ocean','Indian Ocean','Arctic Ocean','Atlantic Ocean','Southern Ocean','Antarctic Ocean',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10058
+		(10059,'China','United States','India','Australia','Canada','Transylvania',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10059
+		(10060,'Spanish','Chinese','English','Hindu','French','Swahili',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10060
+		(10061,'Indonesia','China','Brazil','Canada','India','Ethiopia',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10061
+		(10062,'China','India','Canada','Australia','Spain','Japan',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10062
+		(10063,'Brasilia','Rio de Janeiro','Salvador','Sao Sebastiao','Maranhao City','All of the above',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10063
+		(10064,'Saigon','Manilla','Laos','Bangkok','Hong Kong','Gangnam',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10064
+		(10065,'Indian Ocean','African Ocean','Pacific Ocean','Atlantic Ocean','Gulf of Mexico','Baltic Sea',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10065
+		(10066,'Nile River','Amazon River','Mississippi River','Yang Tze River','St. Lawrence River','Yellow River',NULL,NULL,NULL,NULL,NULL,NULL,1)		--10066
 go
 
 --Explanations Table (for non-Exam Modes)
@@ -284,7 +317,23 @@ values	(10000,'A Cow is raised on dairy farms to produce milk and often makes Mo
 		(10047,'Space, the Final Frontier.  These are the voyages of the Starship Enterprise, it''s FIVE year mission...',1),		--47
 		(10048,'The total officer and crew complement of the USS Enterprise was 430, which was standard for a Constitution Class Starship.',1),		--48
 		(10049,'The inventor of the Duotronic Computer System was Doctor Richard Daystrom, who also invented the less successful M-5 Multitronic System.',1),		--49
-		(10050,'James Kirk''s first starship assignment was a field promoted Ensign aboard the USS Republic, NCC-1371',1)		--50
+		(10050,'James Kirk''s first starship assignment was a field promoted Ensign aboard the USS Republic, NCC-1371',1),		--50
+		(10051,'Yellow and Orange are known to make you hungry.  Many restaurants use these colours in menus and signs.',1),		--51
+		(10052,'Combining Red with Blue makes Purple.  Purple symbolizes magic, mystery, spirituality, creativity, dignity, royalty!',1),		--52
+		(10053,'The colour Red has the highest or longest wavelength, followed by Orange, Yellow, Green, Blue, Indigo, and Violet.',1),		--53
+		(10054,'Combining the three Primary Colours; Red, Blue and Yellow, results in White.',1),		--54
+		(10055,'Red & Blue = Purple, Blue & Yellow = Green, and Yellow & Red = Orange, so the answer is Purple, Green and Orange.',1),		--55
+		(10056,'The Antarctica is the continent that is the furthest south, containing the geographic South Pole, which is the home of the Anti-Santa!',1),		--56
+		(10057,'The largest of the continents is Asia, and comprises 30% of the land area on the earth.',1),		--57
+		(10058,'The largest ocean is the Pacific Ocean, covering 46% of the world''s water surface, making it larger than all the land masses combined.',1),		--58
+		(10059,'China has the largest population in the world, with over 1.3 billion people.',1),		--59
+		(10060,'Spanish is the most predominant language spoken in Mexico.  While there are several other native indigenous languages in Mexico, most also speak Spanish.',1),		--60
+		(10061,'Indonesia, with it''s average temperature of over 30 degrees celsius, is known as the hottest country in the world.',1),		--61
+		(10062,'Panda Bears are native to south central China.  The Giant Panda hails mainly from the Sichuan Province.',1),		--62
+		(10063,'To some extent or at some point in time, all of the above were capitals of Brazil, however the current capital is Brasilia.',1),		--63
+		(10064,'Siagon was renamed Ho Chi Minh City in 1976, a year after it fell from a Communist victory.',1),		--64
+		(10065,'The Zambezi River in Africa flows into the Indian Ocean. It is the fourth largest river in Africa after the Nile, Congo and Niger rivers.',1),		--65
+		(10066,'The Nile River in Africa is the world''s longest river with a length of 6,650 kilometers and passes through 10 countries.',1)		--66
 go
 
 --Scores Table
