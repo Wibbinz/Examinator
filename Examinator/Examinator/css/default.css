@@ -105,18 +105,19 @@ a:active, a:focus {
 
 .loginTextBox{
     background-color:white;
-    border-color: yellow;
+    border: 1px solid #CCCC00;
+    border-radius: 6px 6px;
     font-size: smaller;
-    width:150px;
+    width: 150px;
     height: 12px;
 }
 
 .loginTextBox:focus{
     background-color:white;
-    border: 1px solid #CCCC00;
-    border-radius: 6px 6px;
+    border-radius:0px;
+    border-color: yellow;
     font-size: smaller;
-    width: 150px;
+    width:150px;
     height: 12px;
 }
 
@@ -129,8 +130,8 @@ a:active, a:focus {
 }
 
 #lblPasswordResult{
-    margin-left:875px;
-    width: 200px;
+    margin:0px 0px 0px 575px;
+    width: 500px;
     font-size: smaller;
     text-shadow: 2px 2px 2px #15E626;
     text-align: right;
@@ -138,8 +139,8 @@ a:active, a:focus {
 }
 
 #lblError{
-    margin-left:875px;
-    width: 200px;
+    margin:0px 0px 0px 575px;
+    width: 500px;
     font-size: smaller;
     text-shadow: 2px 2px 2px #F72862;
     text-align: right;
@@ -149,7 +150,8 @@ a:active, a:focus {
 /*New Regs Popup*/
 .modalWindow {
 	position: fixed;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: Tahoma, Arial;
+    text-align: left;    
 	top: 0;
 	right: 0;
 	bottom: 0;
@@ -165,7 +167,7 @@ a:active, a:focus {
 
 .modalWindow:target {
 	opacity:1;
-	pointer-events: auto;
+	pointer-events: auto;    
 }
 
 .modalWindow > div{
@@ -175,20 +177,20 @@ a:active, a:focus {
     padding: 5px 20px 13px 20px;
     border-radius: 10px;
     background: #fff;
-    background: -moz-linear-gradient(#fff, #999);
-    background: -webkit-linear-gradient(#fff, #999);
-    background: -o-linear-gradient(#fff, #999);
+    background: -moz-linear-gradient(#fff, #DEDB7C);
+    background: -webkit-linear-gradient(#fff, #DEDB7C);
+    background: -o-linear-gradient(#fff, #DEDB7C);
 }
 
 .close {
-	background: #606061;
+	background: #BDA809;
 	color: #FFFFFF;
 	line-height: 25px;
 	position: absolute;
 	right: -12px;
 	text-align: center;
 	top: -10px;
-	width: 24px;
+	width: 45px;
 	text-decoration: none;
 	font-weight: bold;
 	-webkit-border-radius: 12px;

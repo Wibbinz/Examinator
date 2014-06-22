@@ -1,6 +1,9 @@
-﻿function showDialog() {
-    var newRegs = document.getElementById("newRegs");
-    var overlay = document.getElementById("black_overlay");
-    newRegs.removeAttribute("hidden");
-    overlay.removeAttribute("hidden");
+﻿function regsFocus() {
+    var regsBox = document.getElementById("tbUser");
+    regsBox.focus();
+}
+
+function forgotpwFocus() {
+    var regsBox = document.getElementById("tbEmailReset");
+    regsBox.focus();
 }

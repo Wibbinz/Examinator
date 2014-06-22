@@ -27,12 +27,34 @@
                             <a href="#newRegs" runat="server">New User Registration</a><br />
                             <div id="newRegs" class="modalWindow">
                                 <div>
-                                    <a href="#close" title="Close" class="close">X</a>
+                                    <table>
+                                        <tr>
+                                            <td>UserName:</td>
+                                            <td><asp:TextBox ID="tbUser" runat="server"></asp:TextBox></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Password:</td>
+                                            <td><asp:TextBox ID="tbPW" runat="server"></asp:TextBox></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Email Address:</td>
+                                            <td><asp:TextBox ID="tbEmail" runat="server"></asp:TextBox></td>
+                                        </tr>
+                                    </table>
+                                    <a href="#close" title="Close" class="close">Cancel</a>
                                 </div>
                             </div>                            
-                            Login: <asp:TextBox ID="tbLogin" CssClass="loginTextBox" runat="server"></asp:TextBox><br />
-                            Password: <asp:TextBox ID="tbPassword" CssClass="loginTextBox" runat="server"></asp:TextBox><br />
-                            <asp:LinkButton ID="linkForgotPassword" runat="server"  OnClientClick="forgotPW();">Forgot Password</asp:LinkButton>
+                            Login: <asp:TextBox ID="tbLogin" CssClass="loginTextBox" runat="server" autofocus="autofocus"></asp:TextBox><br />
+                            Password: <asp:TextBox ID="tbPassword" CssClass="loginTextBox" runat="server"></asp:TextBox><br />                            
+                            <a href="#forgotPW" id="linkForgot" runat="server">Forgot Password?</a>
+                            <div id="forgotPW" class="modalWindow">
+                                <div>                                                                        
+                                    Please enter the email address associated with your account:
+                                    <asp:TextBox ID="tbEmailReset" CssClass="loginTextBox" runat="server"></asp:TextBox>                                   
+                                    <asp:Button ID="btnForgotPw" CssClass="button" runat="server" Text="Email Me!" OnClientClick="forgotPW();"/>
+                                    <a href="#close" title="Close" class="close">Cancel</a>                                    
+                                </div>
+                            </div>   
                             <asp:Button ID="btnLogin" CssClass="button" runat="server" Text="Submit" OnClientClick="return checkLogin();" OnClick="btnLogin_Click" />
                         </div>           
                     </asp:Panel>
@@ -47,5 +69,17 @@
             </asp:ContentPlaceHolder>
         </div>
     </form>
-</body>  
+</body> 
+    <script>
+        $(document).ready(function () {
+
+            $("#newRegs").hover(function () {
+                regsFocus();
+            });
+
+            $("#forgotPW").hover(function () {
+                forgotpwFocus();
+            });
+        });
+    </script> 
 </html>

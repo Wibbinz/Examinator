@@ -15,7 +15,8 @@
 }
 
 function forgotPW() {
-    var email = prompt("Please enter the email address used when registering.");
+    var email = document.getElementById("tbEmailReset").value;
+    alert(email);
     var randomLetters = Math.random().toString(36).slice(2, 6) + Math.random().toString(36).slice(2);
     $.ajax({
         type: "POST",
@@ -36,8 +37,6 @@ function forgotPW() {
 function RegsValidate() {
     var user = document.getElementById("tbUser");
     var password = document.getElementById("tbPW");
-    var firstName = document.getElementById("tbFirstName");
-    var lastName = document.getElementById("tbLastName");
     var email = document.getElementById("tbEmail");
     if (user.value == '') {
         alert('Enter Username.');
@@ -45,14 +44,6 @@ function RegsValidate() {
     }
     else if (password.value == '') {
         alert('Enter Password.');
-        return false;
-    }
-    else if (firstName.value == '') {
-        alert('Enter First Name.');
-        return false;
-    }
-    else if (lastName.value == '') {
-        alert('Enter Last Name.');
         return false;
     }
     else if (email.value == '') {
