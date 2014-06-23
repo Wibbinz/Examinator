@@ -117,7 +117,8 @@ values	('Animals','General Knowledge: Amimals',1),				--100
 		('Colours','General Knowledge: Colours',1),				--101
 		('World Geography','Geography: World',1),				--102
 		('Astronomy','Astronomy: The Solar System',1),			--103
-		('Star Trek: TOS','Star Trek: The Original Series',1)	--104
+		('Star Trek: TOS','Star Trek: The Original Series',1),	--104
+		('Software & Database','Robertson College: Software & Database Developer',1)	--105
 go
 
 --Questions Table
@@ -153,9 +154,9 @@ values	(100,1002,'What animal Moos and makes Milk?',NULL,60,'2014-01-01',1),			-
 		(100,1002,'What do Tadpoles grow up to become?',NULL,60,'2014-06-01',1),		--10027
 		(104,1001,'What is Doctor McCoy''s first name?',NULL,60,'2014-06-01',1),		--10028
 		(104,1001,'What crystals power the Enterprise''s warp drive?',NULL,60,'2014-06-01',1),		--10029
-		(104,1001,'What does "Kaplah" mean in Klingon?',NULL,60,'2014-06-01',1),		--10030
+		(104,1001,'What does the word "Ka''Plah!" mean in Klingon?',NULL,60,'2014-06-01',1),		--10030
 		(104,1001,'What small, furry creatures like Humans but not Klingons?',NULL,60,'2014-06-01',1),		--10031
-		(104,1001,'What colour is Mister Sulu''s shirt?',NULL,60,'2014-06-01',1),		--10032
+		(104,1001,'What colour is Lieutenant Sulu''s shirt?',NULL,60,'2014-06-01',1),		--10032
 		(104,1001,'In what city is Starfleet Headquarters located?',NULL,60,'2014-06-01',1),		--10033
 		(104,1001,'What is Spock''s father''s name?',NULL,60,'2014-06-01',1),		--10034
 		(104,1001,'What colour is a Vulcan''s blood?',NULL,60,'2014-06-01',1),		--10035
@@ -164,7 +165,32 @@ values	(100,1002,'What animal Moos and makes Milk?',NULL,60,'2014-01-01',1),			-
 		(104,1000,'What starship is manned completely by only Vulcans?',NULL,60,'2014-06-01',1),		--10038
 		(104,1000,'What is Doctor McCoy''s nickname?',NULL,60,'2014-06-01',1),		--10039
 		(104,1000,'What ship did Captain Kirk serve on prior to the Enterprise?',NULL,60,'2014-06-01',1),		--10040
-		(104,1000,'What Star Trek technology was invented by Zefram Cochrane?',NULL,60,'2014-06-01',1)		--10041
+		(104,1000,'What Star Trek technology was invented by Zefram Cochrane?',NULL,60,'2014-06-01',1),		--10041
+		(100,1002,'What land animal can run the fastest, at speeds over 115 kilometers per hour?',NULL,60,'2014-06-01',1),		--10042
+		(100,1002,'What animals occasionally commit suicide by jumping into the sea?',NULL,60,'2014-06-01',1),		--10043
+		(100,1002,'What bird is the largest in the world?',NULL,60,'2014-06-01',1),		--10044
+		(100,1002,'Which bird is the only one that can fly backwards?',NULL,60,'2014-06-01',1),		--10045
+		(104,1002,'Who was the actor that played Lieutenant Sulu?',NULL,60,'2014-06-01',1),		--10046
+		(104,1001,'How many years was the original Star Trek series'' mission?',NULL,60,'2014-06-01',1),		--10047
+		(104,1001,'What was the total officer and crew complement of the USS Enterprise?',NULL,60,'2014-06-01',1),		--10048
+		(104,1001,'Who was the inventor of the duotronic computer system used on the Enterprise?',NULL,60,'2014-06-01',1),		--10049
+		(104,1001,'What was tne name of the ship that Ensign James T. Kirk was first assigned to?',NULL,60,'2014-06-01',1),		--10050
+		(101,1001,'What two colours are known to make you hungry?',NULL,60,'2014-06-03',1),		--10051
+		(101,1001,'What colour results when combining Red and Blue?',NULL,60,'2014-06-03',1),		--10052
+		(101,1001,'Which colour has the highest (longest) wavelength?',NULL,60,'2014-06-03',1),		--10053
+		(101,1001,'What colour results when mixing Red, Yellow and Blue?',NULL,60,'2014-06-03',1),		--10054
+		(101,1001,'Primary Colours are Red, Yellow and Blue.  What are the Secondary Colours?',NULL,60,'2014-06-03',1),		--10055
+		(102,1003,'What is the name of the southernmost continent?',NULL,60,'2014-06-05',1),		--10056
+		(102,1003,'Which continent is the largest continent?',NULL,60,'2014-06-05',1),		--10057
+		(102,1003,'Which ocean is the largest ocean in the world?',NULL,60,'2014-06-05',1),		--10058
+		(102,1003,'Which country has the highest population in the world?',NULL,60,'2014-06-05',1),		--10059
+		(102,1003,'What is the predominant language in Mexico?',NULL,60,'2014-06-05',1),		--10060
+		(102,1003,'What country has the highest temperatures in the world?',NULL,60,'2014-06-05',1),		--10061
+		(102,1003,'What country do Panda Bears come from?',NULL,60,'2014-06-05',1),		--10062
+		(102,1003,'Which city is the capital of Brazil?',NULL,60,'2014-06-05',1),		--10063
+		(102,1003,'What was Ho Chi Minh City once called?',NULL,60,'2014-06-05',1),		--10064
+		(102,1003,'Which ocean does the Zambezi River in Africa flow into?',NULL,60,'2014-06-05',1),		--10065
+		(102,1004,'What river is the longest river in the world?',NULL,60,'2014-06-05',1)		--10066
 go
 
 --Answers Table
@@ -183,35 +209,60 @@ values	(10000,'A Cow','A Horse','A Chicken','A Hippopotamus','An Elephant','A Gi
 		(10010,'A Shuttlecraft','A Phase Array','A Dilithium Matrix','A Tricorder','A Homing Beacon','A Matter-AntiMatter Pod',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10010
 		(10011,'Vulcan','Klingon','Romulan','Ferrengi','Human','Shapeshifter',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10011
 		(10012,'Lion','Rhinocerous','Grizzly Bear','Elephant','Bengal Tiger','Killer Whale',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10012
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10013
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10014
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10015
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10016
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10017
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10018
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10019
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10020
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10021
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10022
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10023
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10024
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10025
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10026
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10027
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10028
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10029
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10030
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10031
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10032
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10033
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10034
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10035
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10036
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10037
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10038
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10039
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10040
-		(100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1)		--10041
+		(10013,'Bamboo Shoots','Eucalyptus Leaves','Bananas','Pineapples','Passion Fruit','Kiwi Fruit',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10013
+		(10014,'Clydesdale','Shetland','Appaloosa','Arabian','Mustang','Quarterhorse',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10014
+		(10015,'Sheep','Horses','Cows','Pigs','Chinchillas','Wookies',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10015
+		(10016,'Oink Oink','Moooo','Brriiing','Hee Haw','Meow','Arf Arf',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10016
+		(10017,'A Rabbit','A Donkey','A Kangaroo','A Giraffe','A Wolverine','A Skunk',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10017
+		(10018,'A Cat','A Parrot','A Dog','A Hippopotamus','A Lion','A Hamster',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10018
+		(10019,'An Elephant','A Giraffe','An Ostrich','An Emu','A Chimpanzee','A Tiger',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10019
+		(10020,'A Giraffe','An Elephant','A Camel','A Kangaroo','A Penguin','A Mule',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10020
+		(10021,'Herbivores','Carnivores','Omnivores','Vegetarians','Carnivals','Predators',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10021
+		(10022,'Turtles','Snakes','Chameleons','Geckos','Crocodiles','Alligators',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10022
+		(10023,'Australia','Africa','South America','Asia','Europe','North America',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10023
+		(10024,'Saltwater Crocodile','King Cobra','Giant Anaconda','Komodo Dragon','Galapagos Turtle','Great White Shark',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10024
+		(10025,'Mammals','Fish','Sharks','Alligators','Whales','Reptiles',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10025
+		(10026,'Blue Whale','African Elephant','Wooly Rhinocerous','Tyrannosaurus Rex','Humpback Whale','Giant Squid',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10026
+		(10027,'Frogs','Salamanders','Snakes','Lizards','Geckos','Goldfish',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10027
+		(10028,'Leonard','Montgomery','Hatfield','Randolph','Bones','Pavel',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10028
+		(10029,'Dilithium','Anti-Matter','Trilithium','Diamond','Electro-Plasma','Polylithium',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10029
+		(10030,'Success!','Die Hooman!','Ouch!','Salutations!','Don''t Shoot!','I Surrender!',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10030
+		(10031,'Tribbles','Chinchillas','Andorian Hamsters','Womprats','Ewoks','Jar Jar Binks',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10031
+		(10032,'Command Gold','Sciences Blue','Operations Red','Security Maroon','Bioservices Green','Ninja Black',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10032
+		(10033,'San Francisco, CA','New York City, NY','Washington, DC','Quantico, VA','Winnipeg, MB','London, GB',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10033
+		(10034,'Sarek','Sonak','Vader','Spock Sr.','Tuvok','Saavik',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10034
+		(10035,'Green','Blue','Red','Black','Transparent','Brown',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10035
+		(10036,'Christopher Pike','Jean-Luc Picard','Mister Spock','Ben Cartwright','Kathryn Janeway','Gene Roddenberry',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10036
+		(10037,'Lieutenant Uhura','Ensign Chekhov','Ensign Sulu','Nurse Chapel','Ensign Kim','Yeoman Rand',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10037
+		(10038,'USS Intrepid','USS Farragut','USS Defiant','USS Excelsior','USS Enterprise','HMS Bounty',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10038
+		(10039,'Bones','Scotty','Number One','Ole Stinky','Buttons','Shiny Man',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10039
+		(10040,'USS Farragut','USS Intrepid','USS Constellation','USS Defiant','USS Excalibur','USS Yorktown',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10040
+		(10041,'Warp Drive','Transporter','Replicator','Photon Torpedo','Holodeck','Emergency Medical Hologram',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10041
+		(10042,'Cheetah','Gazelle','Zebra','Roadrunner','Kangaroo','Buffalo',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10042
+		(10043,'Lemmings','Chinchillas','Muskrats','Minks','Raccoons','Squirrels',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10043
+		(10044,'Ostrich','Pelican','Kiwi','Eagle','Emu','Penguin',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10044
+		(10045,'Hummingbird','Sparrow','Starling','Seagull','Falcon','Toucan',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10045
+		(10046,'George Takei','Garrett Wang','John Cho','Bruce Lee','Jackie Chan','Pat Morita',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10046
+		(10047,'5','10','20','1','2','15',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10047
+		(10048,'430','525','155','1140','370','290',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10048
+		(10049,'Richard Daystrom','Miles Dyson','Zefram Cochrane','Emory Erickson','Leah Brahms','Isaac Asimov',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10049
+		(10050,'USS Republic','USS Farragut','USS Defiant','USS Yorktown','USS Excelsior','USS Arizona',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10050
+		(10051,'Yellow and Orange','Red and Green','Green and Blue','White and Black','Purple and Pink','Pink and Blue',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10051
+		(10052,'Purple','Pink','Azure','Black','No Colour','White',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10052
+		(10053,'Red','Blue','White','Orange','Green','Yellow',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10053
+		(10054,'White','Black','Rainbow','No Colour','Neopolitain','Skittles',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10054
+		(10055,'Orange, Green and Purple','Brown, Tan and Khaki','Green, Brown and Black','Yellow, Orange and Pink','Snap, Crackle and Pop','Red, Orange and Yellow',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10055
+		(10056,'Antarctica','South America','Australia','South Africa','Arctica','Atlantis',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10056
+		(10057,'Asia','Africa','South America','North America','Australia','Antarctica',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10057
+		(10058,'Pacific Ocean','Indian Ocean','Arctic Ocean','Atlantic Ocean','Southern Ocean','Antarctic Ocean',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10058
+		(10059,'China','United States','India','Australia','Canada','Transylvania',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10059
+		(10060,'Spanish','Chinese','English','Hindu','French','Swahili',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10060
+		(10061,'Indonesia','China','Brazil','Canada','India','Ethiopia',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10061
+		(10062,'China','India','Canada','Australia','Spain','Japan',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10062
+		(10063,'Brasilia','Rio de Janeiro','Salvador','Sao Sebastiao','Maranhao City','All of the above',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10063
+		(10064,'Saigon','Manilla','Laos','Bangkok','Hong Kong','Gangnam',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10064
+		(10065,'Indian Ocean','African Ocean','Pacific Ocean','Atlantic Ocean','Gulf of Mexico','Baltic Sea',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10065
+		(10066,'Nile River','Amazon River','Mississippi River','Yang Tze River','St. Lawrence River','Yellow River',NULL,NULL,NULL,NULL,NULL,NULL,1)		--10066
 go
 
 --Explanations Table (for non-Exam Modes)
@@ -228,7 +279,61 @@ values	(10000,'A Cow is raised on dairy farms to produce milk and often makes Mo
 		(10009,'The designation of the USS Enterprise is NCC-1701, a Constitution class heavy cruiser starship that was launched in 2245.',1),		--9
 		(10010,'A Shuttlecraft is typically used when the Transporter is unable to be used for "beaming down".  It typically carries 2 to 6 persons.',1),		--10
 		(10011,'Mister Spock is a Vulcan, from the planet Vulcan.  The Vulcans are known for their logic, intelligence and ability to suppress emotion.',1),		--11
-		(10012,'The Lion is known as The King of Beasts, in the Panthera genus; may weigh up to 550 pounds and the males are recognizable by their highly distinctive manes.',1)		--12
+		(10012,'The Lion is known as The King of Beasts, in the Panthera genus; may weigh up to 550 pounds and the males are recognizable by their highly distinctive manes.',1),		--12
+		(10013,'Panda Bears'' diet is almost exclusively bamboo (leaves, stems and shoots), they can eat up to 40 kg per day of bamboo.',1),		--13
+		(10014,'The horses from the Budweiser commercials are Clydesdales, known for white markings and feathering on the legs.',1),		--14
+		(10015,'Shepherds, or sheep herders, look after and tend to Sheep.  They are often depicted carrying crooks to help guide sheep that go astray.',1),		--15
+		(10016,'Pigs grunt and squeal but generally make a noise which sounds like "Oink Oink".',1),		--16
+		(10017,'A Rabbit has long ears and hops.  Rabbits are found in many varieties and colours all around the world.',1),		--17
+		(10018,'Garfield is a cat.  A big cat.  A big lasagna eating cat.',1),		--18
+		(10019,'An Elephant has a long trunk.  The two main species are the African Elephant and the Asian Elephant.',1),		--19
+		(10020,'The Giraffe has a long neck so that it can reach the leaves up high in a tree.',1),		--20
+		(10021,'Animals that feed on only plants are called Herbivores.  They generally have flat teeth, suitable for chewing on grass and leaves.',1),		--21
+		(10022,'The Galapagos Tortoise can live to be over 150 years old in the wild, the oldest recorded in captivity is 175 years.',1),		--22
+		(10023,'Kangaroos are native to Australia.  Known for powerful hind legs and famous for carrying joeys in their pouch.',1),		--23
+		(10024,'The largest reptile in the world is not the Komodo Dragon, but is the Saltwater Crocodile, reaching over 6 meters and 1360 kilograms.',1),		--24
+		(10025,'Dolphins are classified as Mammals and not fish, because they need to breathe air and bear their young live.',1),		--25
+		(10026,'The largest mammal in the world today is the Blue Whale, reaching lengths of over 30 metres and 136 tonnes.',1),		--26
+		(10027,'Young Tadpoles (also called pollywogs) grow up to become Frogs.  In this larval stage, they breathe through gills and live in the water.',1),		--27
+		(10028,'Doctor McCoy''s first name is Leonard, and is played by DeForest Kelley.',1),		--28
+		(10029,'Dilithium crystals,which when combined with matter and anti-matter, power the warp drives.',1),		--29
+		(10030,'Ka''Plah means Success! but is often used as a salutation.  The correct spelling is Qapla.',1),		--30
+		(10031,'Those small, furry creatures were called Tribbles, they come from Iota Geminorum IV.',1),		--31
+		(10032,'Lieutenant Sulu''s shirt is Command Gold in the original Star Trek series.',1),		--32
+		(10033,'Starfleet Headquarters is located in San Francisco, California, USA, Earth.',1),		--33
+		(10034,'Spock''s father''s name is Sarek, his mother''s name is Amanda, both are from the planet Vulcan.',1),		--34
+		(10035,'A Vulcan''s blood is tinted Green as it is copper based instead of iron based, like it is for humans.',1),		--35
+		(10036,'The Captain of the USS Enterprise prior to James Kirk, was Christopher Pike, who was played by Jeffrey Hunter.',1),		--36
+		(10037,'The Communications Officer on the Enterprise was Lieutenant Uhura, who was played by Nichelle Nichols.',1),		--37
+		(10038,'The USS Intrepid was manned totally by Vulcans, it''s designation number was NCC-1631.',1),		--38
+		(10039,'Doctor McCoy is affectionately called "Bones" by Captain Kirk.  McCoy replaced Mark Piper as CMO on the Enterprise.',1),		--39
+		(10040,'A young Lieutenant James Kirk served aboard the USS Farragut under Captain Stephen Garrovick.',1),		--40
+		(10041,'Zefram Cochrane is known for inventing the Warp Drive, which allowed for faster-than-light speed travel.',1),		--41
+		(10042,'The fastest land animal on earth is the Cheetah, who has been clocked as fast as 120 kph.',1),		--42
+		(10043,'These suicidal animals are known as Lemmings.  Driven by strong biological urges when the population becomes too great, every four years or so.',1),		--43
+		(10044,'The largest bird in the world is the Ostrich, weighing up to 160 kilograms and can run up to 70 kph.',1),		--44
+		(10045,'The only bird that is capable of flying backwards is the Hummingbird. Their wings can flap up to 200 times per second, making a humming noise.',1),		--45
+		(10046,'The actor that portrayed Lieutenant Sulu was George Takei. He also appeared in six Star Trek movies playing Sulu.',1),		--46
+		(10047,'Space, the Final Frontier.  These are the voyages of the Starship Enterprise, it''s FIVE year mission...',1),		--47
+		(10048,'The total officer and crew complement of the USS Enterprise was 430, which was standard for a Constitution Class Starship.',1),		--48
+		(10049,'The inventor of the Duotronic Computer System was Doctor Richard Daystrom, who also invented the less successful M-5 Multitronic System.',1),		--49
+		(10050,'James Kirk''s first starship assignment was a field promoted Ensign aboard the USS Republic, NCC-1371',1),		--50
+		(10051,'Yellow and Orange are known to make you hungry.  Many restaurants use these colours in menus and signs.',1),		--51
+		(10052,'Combining Red with Blue makes Purple.  Purple symbolizes magic, mystery, spirituality, creativity, dignity, royalty!',1),		--52
+		(10053,'The colour Red has the highest or longest wavelength, followed by Orange, Yellow, Green, Blue, Indigo, and Violet.',1),		--53
+		(10054,'Combining the three Primary Colours; Red, Blue and Yellow, results in White.',1),		--54
+		(10055,'Red & Blue = Purple, Blue & Yellow = Green, and Yellow & Red = Orange, so the answer is Purple, Green and Orange.',1),		--55
+		(10056,'The Antarctica is the continent that is the furthest south, containing the geographic South Pole, which is the home of the Anti-Santa!',1),		--56
+		(10057,'The largest of the continents is Asia, and comprises 30% of the land area on the earth.',1),		--57
+		(10058,'The largest ocean is the Pacific Ocean, covering 46% of the world''s water surface, making it larger than all the land masses combined.',1),		--58
+		(10059,'China has the largest population in the world, with over 1.3 billion people.',1),		--59
+		(10060,'Spanish is the most predominant language spoken in Mexico.  While there are several other native indigenous languages in Mexico, most also speak Spanish.',1),		--60
+		(10061,'Indonesia, with it''s average temperature of over 30 degrees celsius, is known as the hottest country in the world.',1),		--61
+		(10062,'Panda Bears are native to south central China.  The Giant Panda hails mainly from the Sichuan Province.',1),		--62
+		(10063,'To some extent or at some point in time, all of the above were capitals of Brazil, however the current capital is Brasilia.',1),		--63
+		(10064,'Siagon was renamed Ho Chi Minh City in 1976, a year after it fell from a Communist victory.',1),		--64
+		(10065,'The Zambezi River in Africa flows into the Indian Ocean. It is the fourth largest river in Africa after the Nile, Congo and Niger rivers.',1),		--65
+		(10066,'The Nile River in Africa is the world''s longest river with a length of 6,650 kilometers and passes through 10 countries.',1)		--66
 go
 
 --Scores Table
@@ -377,13 +482,12 @@ as
 	end
 go
 
+--------------------------------------------------------------
+--Quiz Related Stored Procedures
+--------------------------------------------------------------
 
-
-
-------------------------
---TEST QUERIES
-------------------------
 --drop procedure spGetQuiz
+--retrieves all questions in a specified category, along with answers and explanations
 create procedure spGetQuiz
 (
 	@CategoryID int = null,
@@ -394,9 +498,16 @@ as
 		select * from tbQuestions q
 		join tbCategory c on c.CategoryID = @CategoryID
 		join tbAnswers a on a.AnswerID = q.QuestionID
+		join tbExplanations e on e.ExplnQuestionID = q.QuestionID
 		where QuestionCatID = @CategoryID
 	end
 go
+
+
+------------------------
+--TEST QUERIES
+------------------------
+
 
 spGetQuiz
 @CategoryID = 104
