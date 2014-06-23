@@ -16,7 +16,6 @@
 
 function forgotPW() {
     var email = document.getElementById("tbEmailReset").value;
-    alert(email);
     var randomLetters = Math.random().toString(36).slice(2, 6) + Math.random().toString(36).slice(2);
     $.ajax({
         type: "POST",

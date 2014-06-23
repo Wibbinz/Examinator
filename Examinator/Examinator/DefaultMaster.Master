@@ -22,40 +22,66 @@
                         <a href="Home.aspx"><h1>Examinator</h1></a>
                         <h3>Brought to you by Sad Panda, Inc.</h3>
                     </div>
-                    <asp:Panel ID="pnlLogin" runat="server">  
+
+                    <%-- Greeting and Logout Panel --%>
+                    <asp:Panel ID="pnlLogout" runat="server" Visible="false">
+                        <asp:Label ID="lblUser" runat="server" Text=""></asp:Label>
+                        <asp:LinkButton ID="linkLogout" runat="server" OnClick="linkLogout_Click">Log Out</asp:LinkButton>
+                    </asp:Panel>
+
+                    <asp:Panel ID="pnlLogin" runat="server" DefaultButton="btnLogin">  
                         <div class="loginbox">
                             <a href="#newRegs" runat="server">New User Registration</a><br />
-                            <div id="newRegs" class="modalWindow">
-                                <div>
-                                    <table>
-                                        <tr>
-                                            <td>UserName:</td>
-                                            <td><asp:TextBox ID="tbUser" runat="server"></asp:TextBox></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Password:</td>
-                                            <td><asp:TextBox ID="tbPW" runat="server"></asp:TextBox></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Email Address:</td>
-                                            <td><asp:TextBox ID="tbEmail" runat="server"></asp:TextBox></td>
-                                        </tr>
-                                    </table>
-                                    <a href="#close" title="Close" class="close">Cancel</a>
-                                </div>
-                            </div>                            
+                            
+                            <%-- Login --%>                        
                             Login: <asp:TextBox ID="tbLogin" CssClass="loginTextBox" runat="server" autofocus="autofocus"></asp:TextBox><br />
                             Password: <asp:TextBox ID="tbPassword" CssClass="loginTextBox" runat="server"></asp:TextBox><br />                            
-                            <a href="#forgotPW" id="linkForgot" runat="server">Forgot Password?</a>
-                            <div id="forgotPW" class="modalWindow">
-                                <div>                                                                        
-                                    Please enter the email address associated with your account:
-                                    <asp:TextBox ID="tbEmailReset" CssClass="loginTextBox" runat="server"></asp:TextBox>                                   
-                                    <asp:Button ID="btnForgotPw" CssClass="button" runat="server" Text="Email Me!" OnClientClick="forgotPW();"/>
-                                    <a href="#close" title="Close" class="close">Cancel</a>                                    
-                                </div>
-                            </div>   
-                            <asp:Button ID="btnLogin" CssClass="button" runat="server" Text="Submit" OnClientClick="return checkLogin();" OnClick="btnLogin_Click" />
+                            <asp:Button ID="btnLogin" CssClass="button" runat="server" Text="Login" OnClientClick="return checkLogin();" OnClick="btnLogin_Click" />
+                           
+                             <a href="#forgotPW" id="linkForgot" runat="server">Forgot Password?</a>
+
+                    <%-- New Registration Modal Window --%>
+                            <asp:Panel ID="pnlRegs" runat="server" DefaultButton="btnNewUser">
+                            <div id="newRegs" class="modalWindow">
+                                    <div>
+                                        <asp:Label ID="lblThankYou" runat="server" Text="Thank You for Registering." Visible="false"></asp:Label>
+                                        <table>
+                                            <tr>
+                                                <td>UserName:</td>
+                                                <td><asp:TextBox ID="tbUser" runat="server"></asp:TextBox></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Password:</td>
+                                                <td><asp:TextBox ID="tbPW" runat="server"></asp:TextBox></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Email Address:</td>
+                                                <td><asp:TextBox ID="tbEmail" runat="server"></asp:TextBox></td>
+                                            </tr>                                        
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    <asp:Button ID="btnNewUser" CssClass="button" runat="server" Text="Register" OnClientClick="RegsValidate();" OnClick="btnNewUser_Click" />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <a href="#close" title="Close" class="close">Cancel</a>
+                                    </div>
+                                </div>    
+                            </asp:Panel>                      
+
+                      <%-- Forgot Password Modal Window --%>
+                            <asp:Panel ID="pnlForgot" runat="server" DefaultButton="btnForgotPw">
+                                <div id="forgotPW" class="modalWindow">
+                                    <div>                                                                        
+                                        Please enter the email address associated with your account:
+                                        <asp:TextBox ID="tbEmailReset" CssClass="loginTextBox" runat="server"></asp:TextBox>                                   
+                                        <asp:Button ID="btnForgotPw" CssClass="button" runat="server" Text="Email Me!" OnClientClick="forgotPW();"/>
+                                        <a href="#close" title="Close" class="close">Cancel</a>                                    
+                                    </div>
+                                </div>  
+                            </asp:Panel>
+
                         </div>           
                     </asp:Panel>
                     <asp:Label ID="lblError" runat="server" Visible="false" Text="Label"></asp:Label>

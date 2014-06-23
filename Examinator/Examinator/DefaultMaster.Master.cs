@@ -30,8 +30,38 @@ namespace Examinator
             }
             else
             {
-                //pnlLogin.Visible = false;
+                lblUser.Text = "Greetings, " + tbUser.Text;
+                pnlLogin.Visible = false;
+                pnlLogout.Visible = true;
             }
         }
+
+        protected void linkLogout_Click(object sender, EventArgs e)
+        {
+            pnlLogout.Visible = false;
+            pnlLogin.Visible = true;
+        }
+
+        protected void btnNewUser_Click(object sender, EventArgs e)
+        {
+            DAL.DAL dal = new DAL.DAL("Data Source = localhost; Initial Catalog = dbExaminator; Integrated Security = True");
+            DataSet ds = new DataSet();
+            dal.AddParam("@UserName", tbUser.Text);
+            dal.AddParam("@UserPW", tbPW.Text);
+            dal.AddParam("@UserEmail", tbEmail.Text);
+            ds = dal.ExecuteProcedure("spAddUsers");
+            if (ds.Tables[0].Rows[0][0].ToString() == "UserName Exists")
+            {
+                lblError.Text = "Username Exists. Please choose another username.";
+                lblError.Visible = true;
+            }
+            else
+            {
+                lblThankYou.Visible = true;
+                pnlLogin.Visible = false;                
+                pnlLogout.Visible = true;
+            }
+        }
+
     }
 }
