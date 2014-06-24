@@ -25,8 +25,8 @@ namespace Examinator
             int accessCheck = Convert.ToInt16(ds.Tables[0].Rows[0]["UserLvl"]);
             if (accessCheck == -1)
             {
-                lblError.Text = "Invalid Login. Please try again.";
-                lblError.Visible = true;
+                lblMessage.Text = "Invalid Login. Please try again.";
+                lblMessage.Visible = true;
             }
             else
             {
@@ -40,6 +40,9 @@ namespace Examinator
 
         protected void linkLogout_Click(object sender, EventArgs e)
         {
+            lblMessage.Text = "";
+            lblUser.Text = "";
+            lblPasswordResult.Text = "";
             pnlLogout.Visible = false;
             pnlLogin.Visible = true;
         }
@@ -52,17 +55,25 @@ namespace Examinator
             dal.AddParam("@UserPass", tbPW.Text);
             dal.AddParam("@UserEmail", tbEmail.Text);
             ds = dal.ExecuteProcedure("spAddUsers");
-            if (ds.Tables[0].Rows[0][0].ToString() == "UserName Exists")
+            if (ds.Tables[0].Rows[0][0].ToString() == "UserID Exists")
             {
-                lblError.Text = "Username Exists. Please choose another username.";
-                lblError.Visible = true;
+                lblMessage.Text = "Username Exists. Please choose another username.";
+                lblMessage.Visible = true;
             }
             else
             {
-                lblThankYou.Visible = true;
+                PasswordResetService newRegsSvc = new PasswordResetService();
+                string result = newRegsSvc.newUserRegs(tbEmail.Text, tbUser.Text, tbPW.Text);
+                lblMessage.Text = result;
+                lblMessage.Style.Add("text-shadow", "2px 2px 2px #15E626");
+                lblMessage.Visible = true;
+                lblUser.Text = "Greetings, " + tbUser.Text;
                 pnlLogin.Visible = false;                
-                pnlLogout.Visible = true;
+                pnlLogout.Visible = true;    
             }
+            tbUser.Text = "";
+            tbPW.Text = "";
+            tbEmail.Text = "";
         }
 
     }

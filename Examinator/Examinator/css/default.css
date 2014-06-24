@@ -91,7 +91,7 @@ a:active, a:focus {
 }
 
 .loginbox{
-    margin: 5px;
+    margin: 9px;
     height: 95px;
     width: 400px;
     line-height:18px;
@@ -130,17 +130,17 @@ a:active, a:focus {
 }
 
 #lblPasswordResult{
-    margin:0px 0px 0px 790px;
-    width: 500px;
+    width: 700px;
+    float:right;
     font-size: smaller;
     text-shadow: 2px 2px 2px #15E626;
     text-align: right;
     line-height: 10px;
 }
 
-#lblError{
-    margin:0px 0px 0px 790px;
-    width: 575px;
+#lblMessage{
+    width: 700px;
+    float:right;
     font-size: smaller;
     text-shadow: 2px 2px 2px #F72862;
     text-align: right;

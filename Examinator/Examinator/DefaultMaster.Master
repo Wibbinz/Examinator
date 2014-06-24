@@ -46,7 +46,6 @@
                             <asp:Panel ID="pnlRegs" runat="server" DefaultButton="btnNewUser">
                             <div id="newRegs" class="modalWindow">
                                     <div>
-                                        <asp:Label ID="lblThankYou" runat="server" Text="Thank You for Registering." Visible="false"></asp:Label>
                                         <table>
                                             <tr>
                                                 <td>UserName:</td>
@@ -86,7 +85,7 @@
 
                         </div>           
                     </asp:Panel>
-                    <asp:Label ID="lblError" runat="server" Visible="false" Text="Label"></asp:Label>
+                    <asp:Label ID="lblMessage" runat="server" Visible="false" Text="Label"></asp:Label>
                     <asp:Label ID="lblPasswordResult" runat="server" Text=""></asp:Label> 
                 </div>
             </ContentTemplate>
@@ -102,7 +101,9 @@
         $(document).ready(function () {
 
             $("#newRegs").hover(function () {
-                regsFocus();
+                if (!$("#newRegs").is(':focus')) {
+                    regsFocus();
+                }
             });
 
             $("#forgotPW").hover(function () {

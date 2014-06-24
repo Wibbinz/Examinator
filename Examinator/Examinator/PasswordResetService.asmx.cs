@@ -23,7 +23,7 @@ namespace Examinator
         public string forgotPassword(string emailAddress, string newPassword)
         {
             string result;
-            DAL.DAL dal = new DAL.DAL("Data Source = localhost; Initial Catalog=dbExercise1231; Integrated Security = True");
+            DAL.DAL dal = new DAL.DAL("Data Source = localhost; Initial Catalog=dbExaminator; Integrated Security = True");
             DataSet ds = new DataSet();
             dal.AddParam("@UserEmail", emailAddress);
             dal.AddParam("@UserPW", newPassword);
@@ -34,16 +34,26 @@ namespace Examinator
             }
             else
             {
-                result = sendEmail(emailAddress, newPassword);
+                string message = "Your password has been reset to: " + newPassword + ". Please remember to change and record your password.";
+                string subject = "Password reset";
+                result = sendEmail(emailAddress, message, subject);
                 return result;
             }
         }
 
-        private string sendEmail(string emailAddress, string newPassword)
+        [WebMethod]
+        public string newUserRegs(string emailAddress, string username, string password)
+        {
+            string message = "Greetings, and Thank you for registering your account at The Examinator. Your Username is: " + 
+            username + " and your password is: " + password + ". Please keep your information safe. Live long and prosper, denizen of Planet Earth!";
+            string subject = "You Registered at The Examinator.";
+            string result = sendEmail(emailAddress, message, subject);
+            return result;
+        }
+
+        private string sendEmail(string emailAddress, string message, string subject)
         {
             string result;
-            string message = "Your password has been reset to: " + newPassword + ". Please remember to change and record your password.";
-            string subject = "Password reset";
             MailMessage emailPWReset = new MailMessage();
             emailPWReset.From = new MailAddress("gwcw2014@gmail.com");
             emailPWReset.To.Add(new MailAddress(emailAddress));
