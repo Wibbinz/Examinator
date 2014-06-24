@@ -19,10 +19,10 @@ namespace Examinator
         {
             DAL.DAL dal = new DAL.DAL("Data Source = localhost; Initial Catalog = dbExaminator; Integrated Security = True");
             DataSet ds = new DataSet();
-            dal.AddParam("@UserName", tbUser.Text);
-            dal.AddParam("@UserPass", tbPW.Text);
+            dal.AddParam("@UserName", tbLogin.Text);
+            dal.AddParam("@UserPass", tbPassword.Text);
             ds = dal.ExecuteProcedure("spVerifyUsers");
-            int accessCheck = Convert.ToInt16(ds.Tables[0].Rows[0]["ClientLvl"]);
+            int accessCheck = Convert.ToInt16(ds.Tables[0].Rows[0]["UserLvl"]);
             if (accessCheck == -1)
             {
                 lblError.Text = "Invalid Login. Please try again.";
@@ -30,9 +30,11 @@ namespace Examinator
             }
             else
             {
-                lblUser.Text = "Greetings, " + tbUser.Text;
+                lblUser.Text = "Greetings, " + tbLogin.Text;
                 pnlLogin.Visible = false;
                 pnlLogout.Visible = true;
+                tbLogin.Text = "";
+                tbPassword.Text = "";
             }
         }
 
@@ -47,7 +49,7 @@ namespace Examinator
             DAL.DAL dal = new DAL.DAL("Data Source = localhost; Initial Catalog = dbExaminator; Integrated Security = True");
             DataSet ds = new DataSet();
             dal.AddParam("@UserName", tbUser.Text);
-            dal.AddParam("@UserPW", tbPW.Text);
+            dal.AddParam("@UserPass", tbPW.Text);
             dal.AddParam("@UserEmail", tbEmail.Text);
             ds = dal.ExecuteProcedure("spAddUsers");
             if (ds.Tables[0].Rows[0][0].ToString() == "UserName Exists")

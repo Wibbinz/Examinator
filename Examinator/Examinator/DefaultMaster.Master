@@ -25,8 +25,10 @@
 
                     <%-- Greeting and Logout Panel --%>
                     <asp:Panel ID="pnlLogout" runat="server" Visible="false">
-                        <asp:Label ID="lblUser" runat="server" Text=""></asp:Label>
-                        <asp:LinkButton ID="linkLogout" runat="server" OnClick="linkLogout_Click">Log Out</asp:LinkButton>
+                        <div class="loginbox">
+                            <asp:Label ID="lblUser" runat="server" Text=""></asp:Label><br />
+                            <asp:LinkButton ID="linkLogout" runat="server" OnClick="linkLogout_Click">Log Out</asp:LinkButton>
+                        </div>
                     </asp:Panel>
 
                     <asp:Panel ID="pnlLogin" runat="server" DefaultButton="btnLogin">  
@@ -35,7 +37,7 @@
                             
                             <%-- Login --%>                        
                             Login: <asp:TextBox ID="tbLogin" CssClass="loginTextBox" runat="server" autofocus="autofocus"></asp:TextBox><br />
-                            Password: <asp:TextBox ID="tbPassword" CssClass="loginTextBox" runat="server"></asp:TextBox><br />                            
+                            Password: <asp:TextBox ID="tbPassword" CssClass="loginTextBox" runat="server" TextMode="Password"></asp:TextBox><br />                            
                             <asp:Button ID="btnLogin" CssClass="button" runat="server" Text="Login" OnClientClick="return checkLogin();" OnClick="btnLogin_Click" />
                            
                              <a href="#forgotPW" id="linkForgot" runat="server">Forgot Password?</a>
@@ -52,7 +54,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Password:</td>
-                                                <td><asp:TextBox ID="tbPW" runat="server"></asp:TextBox></td>
+                                                <td><asp:TextBox ID="tbPW" runat="server" TextMode="Password"></asp:TextBox></td>
                                             </tr>
                                             <tr>
                                                 <td>Email Address:</td>
