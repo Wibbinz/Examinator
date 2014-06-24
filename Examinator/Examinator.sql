@@ -190,7 +190,43 @@ values	(100,1002,'What animal Moos and makes Milk?',NULL,60,'2014-01-01',1),			-
 		(102,1003,'Which city is the capital of Brazil?',NULL,60,'2014-06-05',1),		--10063
 		(102,1003,'What was Ho Chi Minh City once called?',NULL,60,'2014-06-05',1),		--10064
 		(102,1003,'Which ocean does the Zambezi River in Africa flow into?',NULL,60,'2014-06-05',1),		--10065
-		(102,1004,'What river is the longest river in the world?',NULL,60,'2014-06-05',1)		--10066
+		(102,1004,'What river is the longest river in the world?',NULL,60,'2014-06-05',1),		--10066
+		(103,1000,'Which planet in our Solar System is the closest to the Sun?',NULL,60,'2014-06-05',1),		--10067
+		(103,1000,'Between what two planets does the Asteroid Belt lie?',NULL,60,'2014-06-05',1),		--10068
+		(103,1000,'What dwarf planet lies within the Asteroid Belt?',NULL,60,'2014-06-05',1),		--10069
+		(103,1000,'What is the largest object in our Solar System?',NULL,60,'2014-06-05',1),		--10070
+		(103,1000,'Which planet is known for having a "ring" around it?',NULL,60,'2014-06-05',1),		--10071
+		(103,1000,'Which planet is know for having "The Great Red Spot"?',NULL,60,'2014-06-05',1),		--10072
+		(103,1000,'What is it called when the Moon is between the Sun and the Earth?',NULL,60,'2014-06-05',1),		--10073
+		(103,1000,'Which planet in the Solar System is closest in size to that of the Earth?',NULL,60,'2014-06-05',1),		--10074
+		(103,1000,'What is the distance from the Earth to the Sun, in kilometers?',NULL,60,'2014-06-05',1),		--10075
+		(103,1000,'What planet in our Solar System is the farthest away from the Sun?',NULL,60,'2014-06-05',1),		--10076
+		(103,1000,'If Pluto ceased to be classified as a planet in 2006, what is it classified as now?',NULL,60,'2014-06-05',1),		--10077
+		(105,1001,'What type of error is it called when you write an incorrect programming statement that the compiler does not like?',NULL,60,'2014-06-10',1),		--10078
+		(105,1001,'What best describes what a database contains?',NULL,60,'2014-06-10',1),		--10079
+		(105,1001,'What is the term for English-like representation of program code?',NULL,60,'2014-06-10',1),		--10080
+		(105,1001,'What do you call memory locations, whose contents can vary or differ over time?',NULL,60,'2014-06-10',1),		--10081
+		(105,1001,'',NULL,60,'2014-06-10',1),		--10082
+		(105,1001,'',NULL,60,'2014-06-10',1),		--10083
+		(105,1001,'',NULL,60,'2014-06-10',1),		--10084
+		(105,1001,'',NULL,60,'2014-06-10',1),		--10085
+		(105,1001,'',NULL,60,'2014-06-10',1),		--10086
+		(105,1001,'',NULL,60,'2014-06-10',1),		--10087
+		(105,1001,'',NULL,60,'2014-06-10',1),		--10088
+		(105,1001,'',NULL,60,'2014-06-10',1),		--10089
+		(105,1001,'',NULL,60,'2014-06-10',1),		--10090
+		(105,1001,'',NULL,60,'2014-06-10',1),		--10091
+		(105,1001,'',NULL,60,'2014-06-10',1),		--10092
+		(105,1001,'',NULL,60,'2014-06-10',1),		--10093
+		(105,1001,'',NULL,60,'2014-06-10',1),		--10094
+		(105,1001,'',NULL,60,'2014-06-10',1),		--10095
+		(105,1001,'',NULL,60,'2014-06-10',1),		--10096
+		(105,1001,'',NULL,60,'2014-06-10',1),		--10097
+		(105,1001,'',NULL,60,'2014-06-10',1),		--10098
+		(105,1001,'',NULL,60,'2014-06-10',1),		--10099
+		(105,1001,'',NULL,60,'2014-06-10',1),		--10100
+		(105,1001,'',NULL,60,'2014-06-10',1),		--10101
+		(105,1001,'',NULL,60,'2014-06-10',1)		--10102
 go
 
 --Answers Table
@@ -262,7 +298,43 @@ values	(10000,'A Cow','A Horse','A Chicken','A Hippopotamus','An Elephant','A Gi
 		(10063,'Brasilia','Rio de Janeiro','Salvador','Sao Sebastiao','Maranhao City','All of the above',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10063
 		(10064,'Saigon','Manilla','Laos','Bangkok','Hong Kong','Gangnam',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10064
 		(10065,'Indian Ocean','African Ocean','Pacific Ocean','Atlantic Ocean','Gulf of Mexico','Baltic Sea',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10065
-		(10066,'Nile River','Amazon River','Mississippi River','Yang Tze River','St. Lawrence River','Yellow River',NULL,NULL,NULL,NULL,NULL,NULL,1)		--10066
+		(10066,'Nile River','Amazon River','Mississippi River','Yang Tze River','St. Lawrence River','Yellow River',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10066
+		(10067,'Mercury','Pluto','Saturn','Jupiter','Mars','Earth',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10067
+		(10068,'Mars and Jupiter','Mercury and Venus','Jupiter and Saturn','Uranus and Neptune','Earth and Mars','Saturn and Uranus',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10068
+		(10069,'Ceres','Andromeda','Pluto','Eris','Jupiter','Goofy',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10069
+		(10070,'The Sun','The Moon','Jupiter','Saturn','Titan','Halley''s Comet',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10070
+		(10071,'Saturn','Jupiter','Mercury','Earth','Mars','Venus',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10071
+		(10072,'Jupiter','Saturn','Mercury','The Sun','Venus','The Earth',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10072
+		(10073,'Solar Eclipse','Lunar Eclipse','Umbral Eclipse','Sunspot Activity','Solar Flare','Lunar Flare',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10073
+		(10074,'Venus','Jupiter','Mars','Saturn','Mercury','Uranus',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10074
+		(10075,'149,600,000 km','1,000,000 km','307,400,000 km','10,000,000 km','100,000,000 km','127,208,500 km',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10075
+		(10076,'Neptune','Pluto','Uranus','Jupiter','Saturn','Mars',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10076
+		(10077,'A Dwarf Planet','An Asteroid','A Tyrion Planet','A Class M Planetoid','LV-426','An Azure Nebula',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10077
+		(10078,'Syntax Error','GUI Error','File Error','Invalid Input','Does Not Compute Error','Invalid Output',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10078
+		(10079,'A group of tables','Names and addresses','Prices of merchandise','Terrorist information','Passenger seating information','Names of TV shows',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10079
+		(10080,'Pseudocode','Binary Code','Machine Language','Secret Code','Da Vinci Code','Code Wheel',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10080
+		(10081,'Variables','Constants','Javascript','Browser Cache','Credentials','Encryption',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10081
+		(10082,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10082
+		(10083,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10083
+		(10084,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10084
+		(10085,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10085
+		(10086,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10086
+		(10087,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10087
+		(10088,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10088
+		(10089,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10089
+		(10090,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10090
+		(10091,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10091
+		(10092,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10092
+		(10093,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10093
+		(10094,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10094
+		(10095,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10095
+		(10096,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10096
+		(10097,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10097
+		(10098,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10098
+		(10099,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10099
+		(10100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10100
+		(10101,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10101
+		(10102,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1)		--10102
 go
 
 --Explanations Table (for non-Exam Modes)
@@ -333,7 +405,43 @@ values	(10000,'A Cow is raised on dairy farms to produce milk and often makes Mo
 		(10063,'To some extent or at some point in time, all of the above were capitals of Brazil, however the current capital is Brasilia.',1),		--63
 		(10064,'Siagon was renamed Ho Chi Minh City in 1976, a year after it fell from a Communist victory.',1),		--64
 		(10065,'The Zambezi River in Africa flows into the Indian Ocean. It is the fourth largest river in Africa after the Nile, Congo and Niger rivers.',1),		--65
-		(10066,'The Nile River in Africa is the world''s longest river with a length of 6,650 kilometers and passes through 10 countries.',1)		--66
+		(10066,'The Nile River in Africa is the world''s longest river with a length of 6,650 kilometers and passes through 10 countries.',1),		--66
+		(10067,'Mercury is the closest planet to our Sun, named after the swift-footed messenger god Mercury, due to it''s fast orbit.',1),		--67
+		(10068,'The asteroid belt lies between Mars (the fourth of the terrestrial worlds), and Jupiter (the first of the gas giants).',1),		--68
+		(10069,'Ceres is the largest object in the Asteroid Belt, 950 km in diameter but too dim to be seen without a telescope.',1),		--69
+		(10070,'The Sun is by far the largest object in our Solar System, comprising of 99.8% of the total mass of all objects combined.',1),		--70
+		(10071,'Saturn''s rings are made up of mostly ice and rock, ranging in size from a grain of salt to house-sized. ',1),		--71
+		(10072,'The Great Red Spot, one of the most extraordinary features of Jupiter is three times the diameter of Earth.  It is a hurricane-like storm moving at speeds of 225 mph.',1),		--72
+		(10073,'When the Moon is between the Earth and the Sun, this is called a Solar Eclipse.  The Earth between the Sun and the Moon is known as a Lunar Eclipse',1),		--73
+		(10074,'Venus, although smaller than Earth by 600 km''s in diameter, is the closest in size to the Earth.',1),		--74
+		(10075,'The distance from the Earth to The Sun is 149,600,000 kilometers, and has a surface temperature of 5,778 degrees Kelvin.',1),		--75
+		(10076,'Neptune is the farthest planet from the Sun. If you answered Pluto, it ceased to meet the definitions of a planet on Aug 24, 2006, sorry!',1),		--76
+		(10077,'Pluto was demoted from a Planet to Dwarf Planet, the official reason being that it was not the dominant gravitational body in it''s orbit.',1),			--77
+		(10078,'A Syntax Error is the error given by the compiler when commands or words are not recognized.',1),			--78
+		(10079,'A database contains groups of tables.  The tables may contain customer information, prices or almost any kind of data.',1),			--79
+		(10080,'Pseudocode is an informal, high-level description of the operating principle of a computer program.',1),			--80
+		(10081,'These are called Variables, or Identifiers.  Variables should contain no spaces, have meaningful names, should not start with numbers, and contain special characters.',1),			--81
+		(10082,'',1),			--82
+		(10083,'',1),			--83
+		(10084,'',1),			--84
+		(10085,'',1),			--85
+		(10086,'',1),			--86
+		(10087,'',1),			--87
+		(10088,'',1),			--88
+		(10089,'',1),			--89
+		(10090,'',1),			--90
+		(10091,'',1),			--91
+		(10092,'',1),			--92
+		(10093,'',1),			--93
+		(10094,'',1),			--94
+		(10095,'',1),			--95
+		(10096,'',1),			--96
+		(10097,'',1),			--97
+		(10098,'',1),			--98
+		(10099,'',1),			--99
+		(10100,'',1),			--100
+		(10101,'',1),			--101
+		(10102,'',1)			--102
 go
 
 --Scores Table
@@ -386,7 +494,7 @@ as
 			end
 		else
 			begin	
-				select ClientLvl = -1 from tbUsers
+				select UserLvl = -1 from tbUsers
 			end
 	end
 go
