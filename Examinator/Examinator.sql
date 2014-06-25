@@ -206,27 +206,27 @@ values	(100,1002,'What animal Moos and makes Milk?',NULL,60,'2014-01-01',1),			-
 		(105,1001,'What best describes what a database contains?',NULL,60,'2014-06-10',1),		--10079
 		(105,1001,'What is the term for English-like representation of program code?',NULL,60,'2014-06-10',1),		--10080
 		(105,1001,'What do you call memory locations, whose contents can vary or differ over time?',NULL,60,'2014-06-10',1),		--10081
-		(105,1001,'',NULL,60,'2014-06-10',1),		--10082
-		(105,1001,'',NULL,60,'2014-06-10',1),		--10083
-		(105,1001,'',NULL,60,'2014-06-10',1),		--10084
-		(105,1001,'',NULL,60,'2014-06-10',1),		--10085
-		(105,1001,'',NULL,60,'2014-06-10',1),		--10086
-		(105,1001,'',NULL,60,'2014-06-10',1),		--10087
-		(105,1001,'',NULL,60,'2014-06-10',1),		--10088
-		(105,1001,'',NULL,60,'2014-06-10',1),		--10089
-		(105,1001,'',NULL,60,'2014-06-10',1),		--10090
-		(105,1001,'',NULL,60,'2014-06-10',1),		--10091
-		(105,1001,'',NULL,60,'2014-06-10',1),		--10092
-		(105,1001,'',NULL,60,'2014-06-10',1),		--10093
-		(105,1001,'',NULL,60,'2014-06-10',1),		--10094
-		(105,1001,'',NULL,60,'2014-06-10',1),		--10095
-		(105,1001,'',NULL,60,'2014-06-10',1),		--10096
-		(105,1001,'',NULL,60,'2014-06-10',1),		--10097
-		(105,1001,'',NULL,60,'2014-06-10',1),		--10098
-		(105,1001,'',NULL,60,'2014-06-10',1),		--10099
-		(105,1001,'',NULL,60,'2014-06-10',1),		--10100
-		(105,1001,'',NULL,60,'2014-06-10',1),		--10101
-		(105,1001,'',NULL,60,'2014-06-10',1)		--10102
+		(105,1001,'What does SQL stand for?',NULL,60,'2014-06-10',1),		--10082
+		(105,1001,'How best describes a Boolean?',NULL,60,'2014-06-10',1),		--10083
+		(105,1001,'for (int i = 0; i < 10; i++)',NULL,60,'2014-06-10',1),		--10084
+		(105,1001,'What does ERD mean in a database design context?',NULL,60,'2014-06-10',1),		--10085
+		(105,1001,'What is the most common symbol used in an sql select statment that represents a wildcard?',NULL,60,'2014-06-10',1),		--10086
+		(105,1001,'What name is given to a field in a database table that uniquely identifies a row of another table?',NULL,60,'2014-06-10',1),		--10087
+		(105,1001,'What does CSS stand for?',NULL,60,'2014-06-10',1),		--10088
+		(105,1001,'Javascript is best described as...?',NULL,60,'2014-06-10',1),		--10089
+		(105,1001,'Which of the following SQL clauses is used to DELETE rows from a database table?',NULL,60,'2014-06-10',1),		--10090
+		(105,1001,'What SQL keyword is used to only return different values?',NULL,60,'2014-06-10',1),		--10091
+		(105,1001,'What SQL keyword is used to change values in an existing database table?',NULL,60,'2014-06-10',1),		--10092
+		(105,1001,'What HTML tag will define text to be displayed as Bold?',NULL,60,'2014-06-10',1),		--10093
+		(105,1001,'What ASP.NET component allows for consistent layout, look and feel, and standard behaviour for a group of pages in an application?',NULL,60,'2014-06-10',1),		--10094
+		(105,1001,'What HTML tag is used to navigate to other content when clicked on?',NULL,60,'2014-06-10',1),		--10095
+		(105,1001,'What HTML attribute does <UL> represent?',NULL,60,'2014-06-10',1),		--10096
+		(105,1001,'Which HTML tag is used to create Dropdown Menus?',NULL,60,'2014-06-10',1),		--10097
+		(105,1001,'Everything between an opening and closing tag in HTML is known as...?',NULL,60,'2014-06-10',1),		--10098
+		(105,1001,'Who is credited with inventing HTML?',NULL,60,'2014-06-10',1),		--10099
+		(105,1001,'Which HTML Heading Tag will produce the largest text?',NULL,60,'2014-06-10',1),		--10100
+		(105,1001,'Which HTML attribute would you use to open a new window or link to an outside page?',NULL,60,'2014-06-10',1),		--10101
+		(105,1001,'HTML tages use brackets to contain the information.  What notation do Cascading Style Sheets use?',NULL,60,'2014-06-10',1)		--10102
 go
 
 --Answers Table
@@ -314,27 +314,27 @@ values	(10000,'A Cow','A Horse','A Chicken','A Hippopotamus','An Elephant','A Gi
 		(10079,'A group of tables','Names and addresses','Prices of merchandise','Terrorist information','Passenger seating information','Names of TV shows',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10079
 		(10080,'Pseudocode','Binary Code','Machine Language','Secret Code','Da Vinci Code','Code Wheel',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10080
 		(10081,'Variables','Constants','Javascript','Browser Cache','Credentials','Encryption',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10081
-		(10082,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10082
-		(10083,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10083
-		(10084,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10084
-		(10085,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10085
-		(10086,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10086
-		(10087,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10087
-		(10088,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10088
-		(10089,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10089
-		(10090,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10090
-		(10091,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10091
-		(10092,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10092
-		(10093,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10093
-		(10094,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10094
-		(10095,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10095
-		(10096,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10096
-		(10097,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10097
-		(10098,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10098
-		(10099,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10099
-		(10100,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10100
-		(10101,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10101
-		(10102,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,1)		--10102
+		(10082,'Structured Query Language','Sort, Query, List','Simple Question Language','Schema Quantitative Lexicon','Sortable Quantum Language','Semi Quarterly Listing',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10082
+		(10083,'True or False','Truth or Consquences','Alien from another Galaxy','Vulcan Kolinahr','If, Else If and Else','For While Loop',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10083
+		(10084,'10','11','9','0','20','42',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10084
+		(10085,'Entity Relationship Diagram','Emergency Room Doors','Edemic Protein Dialysis','Entropic Relational Database','Emergency Rescue Disk','External Requirements Document',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10085
+		(10086,'* (asterisk)','% (percent sign)','# (pound key)','&& (double ampersand)','$ (dollar sign)','@ (at sign)',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10086
+		(10087,'Foreign Key','Primary Key','Tertiary Key','Left Inner Join','Referencing Key','Relational Key',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10087
+		(10088,'Cascading Style Sheet','Corporate System Style','Central Style Sheet','Combination Style Sheet','Classic Software System','Coordinated Style Sheet',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10088
+		(10089,'All of the answers listed','A Scripting Language','Client Side Scripts that may interact with the user','A script that can alter document content','Multi-paradigm language supporting object oriented, imperative and functional styles','Not a software platform or Java programming language',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10089
+		(10090,'DELETE','DROP DATA','CLEAR','REMOVE','WIPE','ERASE',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10090
+		(10091,'DISTINCT','UNIQUE','ALIAS','JOIN','INJECTION','UNION',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10091
+		(10092,'UPDATE','CHANGE','ALTER','SUBSTITUTE','REPLACE','CLONE',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10092
+		(10093,'<b></b>','<u></u>','<b><b>','<br></br>','<bo><ld>','<a bold></a>',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10093
+		(10094,'A Master Page','A King Page','Am Emperor Form','A HTML Superpage','A Content Template','A Universal Site Page',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10094
+		(10095,'Hyperlink','JumpToLink','SiteRedirect','Jumplink','Sooparlink','Batlink',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10095
+		(10096,'Unordered List','Under Line','Ultra Link','Undefined Language','Universal Link','Under Score',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10096
+		(10097,'<SELECT>','<DROPDOWN>','<MENU>','<OPTION>','<DD>','<PULLDOWN>',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10097
+		(10098,'An Element','An Attribute','A Paragraph','A Heading','A Division','A Structure',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10098
+		(10099,'Tim Berners-Lee','Albert Einstein','Steve Wozniak','Michael Mozilla','Charles Babbage','Bill Gates',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10099
+		(10100,'<h1>','<h6>','<h5>','<h2>','<biggest>','<36pt>',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10100
+		(10101,'target','src','start','redirect','metalink','hypertext',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10101
+		(10102,'Curly Brackets','Square Brackets','Angle Brackets','Double Quotes','Round Brackets','Back Slashes',NULL,NULL,NULL,NULL,NULL,NULL,1)		--10102
 go
 
 --Explanations Table (for non-Exam Modes)
@@ -421,27 +421,27 @@ values	(10000,'A Cow is raised on dairy farms to produce milk and often makes Mo
 		(10079,'A database contains groups of tables.  The tables may contain customer information, prices or almost any kind of data.',1),			--79
 		(10080,'Pseudocode is an informal, high-level description of the operating principle of a computer program.',1),			--80
 		(10081,'These are called Variables, or Identifiers.  Variables should contain no spaces, have meaningful names, should not start with numbers, and contain special characters.',1),			--81
-		(10082,'',1),			--82
-		(10083,'',1),			--83
-		(10084,'',1),			--84
-		(10085,'',1),			--85
-		(10086,'',1),			--86
-		(10087,'',1),			--87
-		(10088,'',1),			--88
-		(10089,'',1),			--89
-		(10090,'',1),			--90
-		(10091,'',1),			--91
-		(10092,'',1),			--92
-		(10093,'',1),			--93
-		(10094,'',1),			--94
-		(10095,'',1),			--95
-		(10096,'',1),			--96
-		(10097,'',1),			--97
-		(10098,'',1),			--98
-		(10099,'',1),			--99
-		(10100,'',1),			--100
-		(10101,'',1),			--101
-		(10102,'',1)			--102
+		(10082,'Structured Query Language was originally developed at IBM in the early 1970''s for their IBM System R (relational db).',1),			--82
+		(10083,'A Boolean has only two values, True or False.  Boolean expressions may use operators of AND, OR, XOR and NOT to determine either value.',1),			--83
+		(10084,'"for (int i = 0; i < 10; i++)" will loop ten times, the first being zero and the last being nine.',1),			--84
+		(10085,'Entity Relationship Diagram (ERD) is a data modeling technique that graphically illustrates a system''s entities and relationships between those entities.',1),			--85
+		(10086,'The asterisk (*) represents a wildcard for any number of characters or values in an sql statement.  While there are other wildcard symbols, the asterisk is the most common.',1),			--86
+		(10087,'A Foreign Key is a column or combination of columns that is used to establish and enforce a link between two tables.',1),			--87
+		(10088,'Cascading Style Sheets (CSS) is a style sheet language used for describing the look and formatting of a document written in a markup language.',1),			--88
+		(10089,'Javascript is a dynamic computer programming language, most commonly used as part of web browsers, to control the browser, communicate asynchronously and alter the document content that is displayed.',1),			--89
+		(10090,'The DELETE clause is used to delete rows in a table.',1),			--90
+		(10091,'In a table, a column may contain many duplicate values, using the DISTINCT keyword will cause only different values to display.',1),			--91
+		(10092,'The UPDATE statement is used to update (change) existing records in a database table.',1),			--92
+		(10093,'The <b> and </b> tags define the area between them as bold text.',1),			--93
+		(10094,'A Master Page allows you to create a consistent layout that defines the look, feel, and behaviour that you want for a group of pages of individual content.',1),			--94
+		(10095,'HTML Hyperlinks are found in nearly all web pages, and allow users to click their way from page to page.  It can be a word, group of words or an image.',1),			--95
+		(10096,'An Unordered List starts with the <UL> tag, and each list item starts with the <LI> tag; and list items are marked with bullets and are un-numbered.',1),			--96
+		(10097,'The <SELECT> element is used to create a drop-down list.  The <OPTION> tags inside the <SELECT> element define the available options.',1),			--97
+		(10098,'Tags mark the beginning and end of Elements on an HTML document.  Most Elements can have attributes, and some elements can have empty content.',1),			--98
+		(10099,'Ouch, a toughie!  Tim Berners-Lee is credited as being the inventor of HTML, the WWW, and the Web Browser.',1),			--99
+		(10100,'By default, the <h1> tag will produce the largest text, and <h6> will produce the smallest.',1),			--100
+		(10101,'The target attribute of the <a> tage specifies where to open a linked document.',1),			--101
+		(10102,'Cascading Style Sheets (CSS) use Curly Brackets { and } to hold properties, colours, styles, font, etc. information.',1)			--102
 go
 
 --Scores Table
@@ -550,6 +550,31 @@ as
 			end
 	end
 go
+
+--drop procedure spForgotPW
+--procedure for users to reset password if forgotten
+create procedure spForgotPW
+(
+    @UserEmail varchar (30),
+    @UserPass varchar (30)
+)
+as
+	begin
+		if exists (select * from tbUsers where UserEmail = @UserEmail)
+			begin
+				update tbUsers set UserPass = @UserPass where UserEmail = @UserEmail
+					if (@@error = 0)
+					begin
+						select 'Message' = 'Success' from tbUsers
+					end        
+			end
+		else
+			begin
+				select 'Message' = 'Invalid Email' from tbUsers
+			end
+	end
+go
+
 
 --drop procedure spDeleteUsers
 --procedure to delete users (set UserBit to 0)
