@@ -26,7 +26,7 @@ namespace Examinator
             DAL.DAL dal = new DAL.DAL("Data Source = localhost; Initial Catalog=dbExaminator; Integrated Security = True");
             DataSet ds = new DataSet();
             dal.AddParam("@UserEmail", emailAddress);
-            dal.AddParam("@UserPW", newPassword);
+            dal.AddParam("@UserPass", newPassword);
             ds = dal.ExecuteProcedure("spForgotPW");
             if (ds.Tables[0].Rows[0]["Message"].ToString() == "Invalid Email")
             {
