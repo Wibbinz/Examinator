@@ -67,6 +67,15 @@ namespace Examinator {
         protected global::System.Web.UI.WebControls.Label lblUser;
         
         /// <summary>
+        /// lbPref control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbPref;
+        
+        /// <summary>
         /// linkLogout control.
         /// </summary>
         /// <remarks>

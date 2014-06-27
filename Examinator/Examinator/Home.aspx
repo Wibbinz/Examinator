@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/DefaultMaster.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="Examinator.Home" %>
+﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/DefaultMaster.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="Examinator.Home" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -9,7 +9,7 @@
         </div>
         <div class="column">
              <img class="vertImg" src="images/fire music.jpg" /><br />
-             <a href="Exam.aspx"><div class="menudiv"><h3>Exam Mode</h3></div></a>
+             <a href="TakeTheTest.aspx"><div class="menudiv"><h3>Exam Mode</h3></div></a>
         </div>
         <div class="column">
              <a href="Practice.aspx"><div class="menudiv"><h3>Practice Mode</h3></div></a><br />             

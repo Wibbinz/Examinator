@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\default.css" />
+    <Content Include="css\ExamStyle.css" />
     <Content Include="Home.aspx" />
     <Content Include="images\blueice.jpg" />
     <Content Include="images\catseye.jpg" />
@@ -72,8 +73,8 @@
     <Content Include="images\onelight.jpg" />
     <Content Include="images\question.jpg" />
     <Content Include="images\tattoo.jpg" />
-    <Content Include="js\BellsandWhistles.js" />
-    <Content Include="js\LoginValidation.js" />
+    <Content Include="js\Exam.js" />
+    <Content Include="js\LoginandHome.js" />
     <Content Include="PasswordResetService.asmx" />
     <Content Include="Service References\PasswordSvc\Examinator.PasswordSvc.forgotPasswordResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -85,6 +86,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
+    <Content Include="TakeTheTest.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -97,6 +99,13 @@
     </Compile>
     <Compile Include="DefaultMaster.Master.designer.cs">
       <DependentUpon>DefaultMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ExamMaster.Master.cs">
+      <DependentUpon>ExamMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExamMaster.Master.designer.cs">
+      <DependentUpon>ExamMaster.Master</DependentUpon>
     </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
@@ -115,10 +124,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="TakeTheTest.aspx.cs">
+      <DependentUpon>TakeTheTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TakeTheTest.aspx.designer.cs">
+      <DependentUpon>TakeTheTest.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="DefaultMaster.Master" />
     <Content Include="Service References\PasswordSvc\PasswordResetService.wsdl" />
+    <Content Include="ExamMaster.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

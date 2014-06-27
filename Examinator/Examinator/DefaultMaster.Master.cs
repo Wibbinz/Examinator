@@ -11,8 +11,7 @@ namespace Examinator
     public partial class DefaultMaster : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
-
+        {            
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -30,6 +29,7 @@ namespace Examinator
             }
             else
             {
+                GetPreferences();
                 lblUser.Text = "Greetings, " + tbLogin.Text;
                 pnlLogin.Visible = false;
                 pnlLogout.Visible = true;
@@ -74,6 +74,10 @@ namespace Examinator
             tbUser.Text = "";
             tbPW.Text = "";
             tbEmail.Text = "";
+        }
+
+        protected void GetPreferences()
+        {
         }
 
     }

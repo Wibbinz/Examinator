@@ -7,8 +7,7 @@
     <title>Examinator</title>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js" charset="utf-8"></script>
     <link href="css/default.css" rel="stylesheet" />
-    <script src="js/LoginValidation.js"></script>
-    <script src="js/BellsandWhistles.js"></script>
+    <script src="js/LoginandHome.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>   
 </head>
@@ -27,6 +26,7 @@
                     <asp:Panel ID="pnlLogout" runat="server" Visible="false">
                         <div class="loginbox">
                             <asp:Label ID="lblUser" runat="server" Text=""></asp:Label><br />
+                            <asp:LinkButton ID="lbPref" runat="server">Preferences</asp:LinkButton>
                             <asp:LinkButton ID="linkLogout" runat="server" OnClick="linkLogout_Click">Log Out</asp:LinkButton>
                         </div>
                     </asp:Panel>
@@ -99,6 +99,12 @@
 </body> 
     <script>
         $(document).ready(function () {
+            $(".close").click(function () {
+                $(parent).each(function () {
+                    $("input:text").val('');
+                    $('input[type="password"]').val('');
+                });
+            });
 
             $("#newRegs").hover(function () {
                 if (!$("#newRegs").is(':focus')) {
