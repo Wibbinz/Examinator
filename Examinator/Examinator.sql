@@ -642,5 +642,35 @@ go
 ------------------------
 
 
-spGetQuiz
-@CategoryID = 104
+--New Stuff
+
+--drop table tbUploads
+create table tbUploads
+(UploadID int identity (5000,1) primary key,
+UploadUserID int foreign key references tbUsers (UserID),
+UploadDateTime datetime,
+UploadCatName varchar (25),
+UploadCatDesc varchar (65),
+UploadQuestionTxt varchar (256),
+UploadAnswerCorrect varchar (256),
+UploadAnswer1 varchar (256),
+UploadAnswer2 varchar (256),
+UploadAnswer3 varchar (256),
+UploadAnswer4 varchar (256),
+UploadAnswer5 varchar (256),
+UploadExplnText varchar (500),
+UploadBit bit)
+go
+
+--Populate Uploads Table
+insert into tbUploads
+(UploadUserID,UploadDateTime,UploadCatName,UploadCatDesc,UploadQuestionTxt,UploadAnswerCorrect,UploadAnswer1,UploadAnswer2,UploadAnswer3,UploadAnswer4,UploadAnswer5,UploadExplnText,UploadBit)
+values	(1003,'2014-06-25','Star Wars','Star Wars: General','What is Luke''s last name?','Skywalker','Kirk','Solo','Organa','Palpatine','Kenobi','Luke''s last name is Sky...Walk...er.',1),	--5000
+		(1003,'2014-06-25','Star Wars','Star Wars: General','What colour is C3PO?','Gold','Blue','Silver','Red','White','Yellow','C3PO is gold.',1),	--5001
+		(1003,'2014-06-25','Colours','General Knowledge: Colours','What colour is the sky?','Blue','Red','Green','Yellow','Orange','Brown','The sky is blue.',1),	--5002
+		(1003,'2014-06-25','Colours','General Knowledge: Colours','What colour is the grass?','Green','Red','Yellow','Blue','Purple','Orange','The grass is green',1),	--5003
+		(1003,'2014-06-25','Colours','General Knowledge: Colours','What colour is a typical barn?','Red','Blue','Green','Black','Yellow','Orange','A barn is typically red.',1)		--5004
+		
+go
+
+select * from tbUploads
