@@ -601,6 +601,78 @@ as
 go
 
 --------------------------------------------------------------
+--Upload Related Stored Procedures
+--------------------------------------------------------------
+
+--drop procedure spUploadCat
+create procedure spUploadCat
+(
+	@CatName varchar (25),
+	@CatDesc varchar (65)
+)
+as
+	begin
+		if exists (select * from tbCategory where CatName = @CatName)
+			begin
+				select CategoryID from tbCategory where CatName = @CatName 
+			end
+		else
+			begin
+				insert into tbCategory
+				values	(@CatName,@CatDesc,1)
+				select @@identity
+			end
+	end
+go
+
+
+--drop procedure spUploadQuestion
+create procedure spUploadQuestion
+(
+	@QuestionCatID int,
+	@QuestionUploader int = null,
+	@QuestionText varchar (256)
+)
+as
+	begin
+		insert into tbQuestions
+		values	(@QuestionCatID,1002,@QuestionText,NULL,60,getdate(),1)
+		select @@identity
+	end
+go
+
+--drop procedure spUploadAnswers
+create procedure spUploadAnswers
+(
+	@QuestionID int,
+	@AnswerCorrect varchar (256),
+	@Answer1 varchar (256),
+	@Answer2 varchar (256),
+	@Answer3 varchar (256),
+	@Answer4 varchar (256),
+	@Answer5 varchar (256)
+)
+as
+	begin
+		insert into tbAnswers
+		values	(@QuestionID,@AnswerCorrect,@Answer1,@Answer2,@Answer3,@Answer4,@Answer5,NULL,NULL,NULL,NULL,NULL,NULL,1)	
+	end
+go
+
+--drop procedure spUploadExplanations
+create procedure spUploadExplanations
+(
+	@QuestionID int,
+	@ExplanationText varchar (500)
+)
+as
+	begin
+		insert into tbExplanations
+		values	(@QuestionID,@ExplanationText,1)
+	end
+go
+
+--------------------------------------------------------------
 --Score Related Stored Procedures
 --------------------------------------------------------------
 
@@ -636,41 +708,7 @@ as
 	end
 go
 
-
 ------------------------
 --TEST QUERIES
 ------------------------
 
-
---New Stuff
-
---drop table tbUploads
-create table tbUploads
-(UploadID int identity (5000,1) primary key,
-UploadUserID int foreign key references tbUsers (UserID),
-UploadDateTime datetime,
-UploadCatName varchar (25),
-UploadCatDesc varchar (65),
-UploadQuestionTxt varchar (256),
-UploadAnswerCorrect varchar (256),
-UploadAnswer1 varchar (256),
-UploadAnswer2 varchar (256),
-UploadAnswer3 varchar (256),
-UploadAnswer4 varchar (256),
-UploadAnswer5 varchar (256),
-UploadExplnText varchar (500),
-UploadBit bit)
-go
-
---Populate Uploads Table
-insert into tbUploads
-(UploadUserID,UploadDateTime,UploadCatName,UploadCatDesc,UploadQuestionTxt,UploadAnswerCorrect,UploadAnswer1,UploadAnswer2,UploadAnswer3,UploadAnswer4,UploadAnswer5,UploadExplnText,UploadBit)
-values	(1003,'2014-06-25','Star Wars','Star Wars: General','What is Luke''s last name?','Skywalker','Kirk','Solo','Organa','Palpatine','Kenobi','Luke''s last name is Sky...Walk...er.',1),	--5000
-		(1003,'2014-06-25','Star Wars','Star Wars: General','What colour is C3PO?','Gold','Blue','Silver','Red','White','Yellow','C3PO is gold.',1),	--5001
-		(1003,'2014-06-25','Colours','General Knowledge: Colours','What colour is the sky?','Blue','Red','Green','Yellow','Orange','Brown','The sky is blue.',1),	--5002
-		(1003,'2014-06-25','Colours','General Knowledge: Colours','What colour is the grass?','Green','Red','Yellow','Blue','Purple','Orange','The grass is green',1),	--5003
-		(1003,'2014-06-25','Colours','General Knowledge: Colours','What colour is a typical barn?','Red','Blue','Green','Black','Yellow','Orange','A barn is typically red.',1)		--5004
-		
-go
-
-select * from tbUploads
