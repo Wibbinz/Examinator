@@ -440,7 +440,7 @@ values	(10000,'A Cow is raised on dairy farms to produce milk and often makes Mo
 		(10098,'Tags mark the beginning and end of Elements on an HTML document.  Most Elements can have attributes, and some elements can have empty content.',1),			--98
 		(10099,'Ouch, a toughie!  Tim Berners-Lee is credited as being the inventor of HTML, the WWW, and the Web Browser.',1),			--99
 		(10100,'By default, the <h1> tag will produce the largest text, and <h6> will produce the smallest.',1),			--100
-		(10101,'The target attribute of the <a> tage specifies where to open a linked document.',1),			--101
+		(10101,'The target attribute of the <a> tag specifies where to open a linked document.',1),			--101
 		(10102,'Cascading Style Sheets (CSS) use Curly Brackets { and } to hold properties, colours, styles, font, etc. information.',1)			--102
 go
 
@@ -626,8 +626,8 @@ as
 go
 
 
---drop procedure spUploadQuestion
-create procedure spUploadQuestion
+--drop procedure spUploadQuestions
+create procedure spUploadQuestions
 (
 	@QuestionCatID int,
 	@QuestionUploader int = null,
@@ -644,7 +644,7 @@ go
 --drop procedure spUploadAnswers
 create procedure spUploadAnswers
 (
-	@QuestionID int,
+	@AnswerQuestionID int,
 	@AnswerCorrect varchar (256),
 	@Answer1 varchar (256),
 	@Answer2 varchar (256),
@@ -655,20 +655,20 @@ create procedure spUploadAnswers
 as
 	begin
 		insert into tbAnswers
-		values	(@QuestionID,@AnswerCorrect,@Answer1,@Answer2,@Answer3,@Answer4,@Answer5,NULL,NULL,NULL,NULL,NULL,NULL,1)	
+		values	(@AnswerQuestionID,@AnswerCorrect,@Answer1,@Answer2,@Answer3,@Answer4,@Answer5,NULL,NULL,NULL,NULL,NULL,NULL,1)	
 	end
 go
 
 --drop procedure spUploadExplanations
 create procedure spUploadExplanations
 (
-	@QuestionID int,
+	@ExplanationQuestionID int,
 	@ExplanationText varchar (500)
 )
 as
 	begin
 		insert into tbExplanations
-		values	(@QuestionID,@ExplanationText,1)
+		values	(@ExplanationQuestionID,@ExplanationText,1)
 	end
 go
 
@@ -712,3 +712,27 @@ go
 --TEST QUERIES
 ------------------------
 
+--spUploadQuestions
+--@QuestionCatID = 105,
+--@QuestionUploader = 1002,
+--@QuestionText = 'what is the meaning of life?'
+--go
+
+--spUploadAnswers
+--@AnswerQuestionID = 10103,
+--@AnswerCorrect = 'yes',
+--@Answer1 = 'no',
+--@Answer2 = 'maybe',
+--@Answer3 = 'not sure',
+--@Answer4 = 'dunnos',
+--@Answer5 = 'perhaps'
+--go
+
+--spUploadExplanations
+--@QuestionID = 10103,
+--@ExplanationText = 'None of the above, the answer is 42'
+
+--select * from tbCategory
+--select * from tbQuestions
+--select * from tbAnswers
+--select * from tbExplanations
