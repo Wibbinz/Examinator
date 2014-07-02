@@ -226,7 +226,7 @@ values	(100,1002,'What animal Moos and makes Milk?',NULL,60,'2014-01-01',1),			-
 		(105,1001,'Who is credited with inventing HTML?',NULL,60,'2014-06-10',1),		--10099
 		(105,1001,'Which HTML Heading Tag will produce the largest text?',NULL,60,'2014-06-10',1),		--10100
 		(105,1001,'Which HTML attribute would you use to open a new window or link to an outside page?',NULL,60,'2014-06-10',1),		--10101
-		(105,1001,'HTML tages use brackets to contain the information.  What notation do Cascading Style Sheets use?',NULL,60,'2014-06-10',1)		--10102
+		(105,1001,'HTML tags use brackets to contain the information.  What notation do Cascading Style Sheets use?',NULL,60,'2014-06-10',1)		--10102
 go
 
 --Answers Table
@@ -340,10 +340,11 @@ go
 --Explanations Table (for non-Exam Modes)
 insert into tbExplanations
 (ExplnQuestionID,ExplnText,ExplnBit)
-values	(10000,'A Cow is raised on dairy farms to produce milk and often makes Mooing sounds.',1),		--1
-		(10001,'Polar Bears live in the Artic Circle and have white fur to blend in with the snow.',1),	--2
-		(10002,'Lions belong to the Feline family of animals, typically any animal that is cat-like.',1),	--3
-		(10003,'Snoopy is a Beagle, and was born on the Daisy Hill Puppy Farm.',1),		--4
+values	(10000,'A Cow is raised on dairy farms to produce milk and often makes Mooing sounds.',1),		--0
+		(10001,'Polar Bears live in the Artic Circle and have white fur to blend in with the snow.',1),	--1
+		(10002,'Lions belong to the Feline family of animals, typically any animal that is cat-like.',1),	--2
+		(10003,'Snoopy is a Beagle, and was born on the Daisy Hill Puppy Farm.',1),		--3
+		(10004,'A leopard is the feline animal that has spots.',1),		--4
 		(10005,'The Chief Engineer on the USS Enterprise is Lt. Cmdr Montgomery Scott, also known as "Scotty".',1),	--5
 		(10006,'Captain Kirk''s middle name is Tiberius, he was born in Riverside Iowa on March 22, 2233.',1),		--6
 		(10007,'He/she usually gets killed.  Affectionately nicknamed ''Ensign Nobody'' or ''Ensign Redshirt'', they are typically the first ones killed on an away mission.',1),		--7
