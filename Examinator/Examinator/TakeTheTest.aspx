@@ -7,14 +7,18 @@
             <div class="questionBox">
                 <p>
                     The Pythagorean Theorm states that the square of the hypotenuse of a right triangle is equal to the:
-                </p>
+                </p>            
             </div>
             <div class="answerBox">
-                <div class="answer1">The sum of the square of the other two sides.</div>
-                <div class="answer2">The square of the sum of the other two sides.</div>
-                <div class="answer3">The square root of the product of the other two sides.</div>
-                <div class="answer4">The product of the square root of the other two sides.</div>
-            </div>        
+                <div class="answer1"><p>The sum of the square of the other two sides.</p></div>
+                <div class="answer2"><p>The square of the sum of the other two sides.</p></div>
+                <div class="answer3"><p>The square root of the product of the other two sides.</p></div>
+                <div class="answer4"><p>The product of the square root of the other two sides.</p></div>
+            </div> 
+             <div class="buttonBox">
+               <asp:Button ID="btnPrev" CssClass="prevButton" runat="server" Text="Previous" />
+               <asp:Button ID="btnNext" CssClass="nextButton" runat="server" Text="   Next   " />
+            </div>             
         </div>
         <div class="panelWrapper">
             <div class="skipBox"><h1>Skip</h1></div>
