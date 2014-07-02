@@ -226,7 +226,7 @@ values	(100,1002,'What animal Moos and makes Milk?',NULL,60,'2014-01-01',1),			-
 		(105,1001,'Who is credited with inventing HTML?',NULL,60,'2014-06-10',1),		--10099
 		(105,1001,'Which HTML Heading Tag will produce the largest text?',NULL,60,'2014-06-10',1),		--10100
 		(105,1001,'Which HTML attribute would you use to open a new window or link to an outside page?',NULL,60,'2014-06-10',1),		--10101
-		(105,1001,'HTML tages use brackets to contain the information.  What notation do Cascading Style Sheets use?',NULL,60,'2014-06-10',1)		--10102
+		(105,1001,'HTML tags use brackets to contain the information.  What notation do Cascading Style Sheets use?',NULL,60,'2014-06-10',1)		--10102
 go
 
 --Answers Table
@@ -340,10 +340,11 @@ go
 --Explanations Table (for non-Exam Modes)
 insert into tbExplanations
 (ExplnQuestionID,ExplnText,ExplnBit)
-values	(10000,'A Cow is raised on dairy farms to produce milk and often makes Mooing sounds.',1),		--1
-		(10001,'Polar Bears live in the Artic Circle and have white fur to blend in with the snow.',1),	--2
-		(10002,'Lions belong to the Feline family of animals, typically any animal that is cat-like.',1),	--3
-		(10003,'Snoopy is a Beagle, and was born on the Daisy Hill Puppy Farm.',1),		--4
+values	(10000,'A Cow is raised on dairy farms to produce milk and often makes Mooing sounds.',1),		--0
+		(10001,'Polar Bears live in the Artic Circle and have white fur to blend in with the snow.',1),	--1
+		(10002,'Lions belong to the Feline family of animals, typically any animal that is cat-like.',1),	--2
+		(10003,'Snoopy is a Beagle, and was born on the Daisy Hill Puppy Farm.',1),		--3
+		(10004,'A leopard is the feline animal that has spots.',1),		--4
 		(10005,'The Chief Engineer on the USS Enterprise is Lt. Cmdr Montgomery Scott, also known as "Scotty".',1),	--5
 		(10006,'Captain Kirk''s middle name is Tiberius, he was born in Riverside Iowa on March 22, 2233.',1),		--6
 		(10007,'He/she usually gets killed.  Affectionately nicknamed ''Ensign Nobody'' or ''Ensign Redshirt'', they are typically the first ones killed on an away mission.',1),		--7
@@ -440,7 +441,7 @@ values	(10000,'A Cow is raised on dairy farms to produce milk and often makes Mo
 		(10098,'Tags mark the beginning and end of Elements on an HTML document.  Most Elements can have attributes, and some elements can have empty content.',1),			--98
 		(10099,'Ouch, a toughie!  Tim Berners-Lee is credited as being the inventor of HTML, the WWW, and the Web Browser.',1),			--99
 		(10100,'By default, the <h1> tag will produce the largest text, and <h6> will produce the smallest.',1),			--100
-		(10101,'The target attribute of the <a> tage specifies where to open a linked document.',1),			--101
+		(10101,'The target attribute of the <a> tag specifies where to open a linked document.',1),			--101
 		(10102,'Cascading Style Sheets (CSS) use Curly Brackets { and } to hold properties, colours, styles, font, etc. information.',1)			--102
 go
 
@@ -601,6 +602,78 @@ as
 go
 
 --------------------------------------------------------------
+--Upload Related Stored Procedures
+--------------------------------------------------------------
+
+--drop procedure spUploadCat
+create procedure spUploadCat
+(
+	@CatName varchar (25),
+	@CatDesc varchar (65)
+)
+as
+	begin
+		if exists (select * from tbCategory where CatName = @CatName)
+			begin
+				select CategoryID from tbCategory where CatName = @CatName 
+			end
+		else
+			begin
+				insert into tbCategory
+				values	(@CatName,@CatDesc,1)
+				select @@identity
+			end
+	end
+go
+
+
+--drop procedure spUploadQuestions
+create procedure spUploadQuestions
+(
+	@QuestionCatID int,
+	@QuestionUploader int = null,
+	@QuestionText varchar (256)
+)
+as
+	begin
+		insert into tbQuestions
+		values	(@QuestionCatID,1002,@QuestionText,NULL,60,getdate(),1)
+		select @@identity
+	end
+go
+
+--drop procedure spUploadAnswers
+create procedure spUploadAnswers
+(
+	@AnswerQuestionID int,
+	@AnswerCorrect varchar (256),
+	@Answer1 varchar (256),
+	@Answer2 varchar (256),
+	@Answer3 varchar (256),
+	@Answer4 varchar (256),
+	@Answer5 varchar (256)
+)
+as
+	begin
+		insert into tbAnswers
+		values	(@AnswerQuestionID,@AnswerCorrect,@Answer1,@Answer2,@Answer3,@Answer4,@Answer5,NULL,NULL,NULL,NULL,NULL,NULL,1)	
+	end
+go
+
+--drop procedure spUploadExplanations
+create procedure spUploadExplanations
+(
+	@ExplanationQuestionID int,
+	@ExplanationText varchar (500)
+)
+as
+	begin
+		insert into tbExplanations
+		values	(@ExplanationQuestionID,@ExplanationText,1)
+	end
+go
+
+--------------------------------------------------------------
 --Score Related Stored Procedures
 --------------------------------------------------------------
 
@@ -636,41 +709,31 @@ as
 	end
 go
 
-
 ------------------------
 --TEST QUERIES
 ------------------------
 
+--spUploadQuestions
+--@QuestionCatID = 105,
+--@QuestionUploader = 1002,
+--@QuestionText = 'what is the meaning of life?'
+--go
 
---New Stuff
+--spUploadAnswers
+--@AnswerQuestionID = 10103,
+--@AnswerCorrect = 'yes',
+--@Answer1 = 'no',
+--@Answer2 = 'maybe',
+--@Answer3 = 'not sure',
+--@Answer4 = 'dunnos',
+--@Answer5 = 'perhaps'
+--go
 
---drop table tbUploads
-create table tbUploads
-(UploadID int identity (5000,1) primary key,
-UploadUserID int foreign key references tbUsers (UserID),
-UploadDateTime datetime,
-UploadCatName varchar (25),
-UploadCatDesc varchar (65),
-UploadQuestionTxt varchar (256),
-UploadAnswerCorrect varchar (256),
-UploadAnswer1 varchar (256),
-UploadAnswer2 varchar (256),
-UploadAnswer3 varchar (256),
-UploadAnswer4 varchar (256),
-UploadAnswer5 varchar (256),
-UploadExplnText varchar (500),
-UploadBit bit)
-go
+--spUploadExplanations
+--@QuestionID = 10103,
+--@ExplanationText = 'None of the above, the answer is 42'
 
---Populate Uploads Table
-insert into tbUploads
-(UploadUserID,UploadDateTime,UploadCatName,UploadCatDesc,UploadQuestionTxt,UploadAnswerCorrect,UploadAnswer1,UploadAnswer2,UploadAnswer3,UploadAnswer4,UploadAnswer5,UploadExplnText,UploadBit)
-values	(1003,'2014-06-25','Star Wars','Star Wars: General','What is Luke''s last name?','Skywalker','Kirk','Solo','Organa','Palpatine','Kenobi','Luke''s last name is Sky...Walk...er.',1),	--5000
-		(1003,'2014-06-25','Star Wars','Star Wars: General','What colour is C3PO?','Gold','Blue','Silver','Red','White','Yellow','C3PO is gold.',1),	--5001
-		(1003,'2014-06-25','Colours','General Knowledge: Colours','What colour is the sky?','Blue','Red','Green','Yellow','Orange','Brown','The sky is blue.',1),	--5002
-		(1003,'2014-06-25','Colours','General Knowledge: Colours','What colour is the grass?','Green','Red','Yellow','Blue','Purple','Orange','The grass is green',1),	--5003
-		(1003,'2014-06-25','Colours','General Knowledge: Colours','What colour is a typical barn?','Red','Blue','Green','Black','Yellow','Orange','A barn is typically red.',1)		--5004
-		
-go
-
-select * from tbUploads
+--select * from tbCategory
+--select * from tbQuestions
+--select * from tbAnswers
+--select * from tbExplanations
