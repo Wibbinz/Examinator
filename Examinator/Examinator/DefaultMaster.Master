@@ -85,7 +85,7 @@
 
                         </div>           
                     </asp:Panel>
-                    <asp:Label ID="lblMessage" runat="server" Visible="false" Text="Label"></asp:Label>
+                    <asp:Label ID="lblMessage" class="lblMessage" runat="server" Visible="false" Text="Label"></asp:Label>
                     <asp:Label ID="lblPasswordResult" runat="server" Text=""></asp:Label> 
                 </div>
             </ContentTemplate>

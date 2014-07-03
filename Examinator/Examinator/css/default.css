@@ -138,7 +138,7 @@ a:active, a:focus {
     line-height: 10px;
 }
 
-#lblMessage{
+.lblMessage{
     width: 700px;
     float:right;
     font-size: smaller;

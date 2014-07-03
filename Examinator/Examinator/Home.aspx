@@ -17,7 +17,7 @@
         </div>
         <div class="column">
              <img class="horizImg" src="images/eggy3.jpg" />
-             <a href="Freestyle.aspx"><div class="menudiv"><h3>Freestyle Mode</h3></div></a>
+             <a href="UploadQuestions.aspx"><div class="menudiv"><h3>Upload Questions</h3></div></a>
              <a href="About.aspx"><div class="menudiv"><h3>About Us</h3></div></a>
         </div>
     </div>

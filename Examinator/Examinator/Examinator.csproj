@@ -87,6 +87,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
     <Content Include="TakeTheTest.aspx" />
+    <Content Include="UploadQuestions.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -130,6 +131,13 @@
     </Compile>
     <Compile Include="TakeTheTest.aspx.designer.cs">
       <DependentUpon>TakeTheTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UploadQuestions.aspx.cs">
+      <DependentUpon>UploadQuestions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UploadQuestions.aspx.designer.cs">
+      <DependentUpon>UploadQuestions.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
