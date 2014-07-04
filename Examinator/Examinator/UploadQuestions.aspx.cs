@@ -78,29 +78,24 @@ namespace Examinator
                                 }
                                 else
                                 {
-                                    lblStatus.Visible = true;
-                                    lblStatus.Text = "An Error has Occurred.";
+                                    setLabel("An Error has Occurred.", "#F72862");
                                 }
                             }
                             else
                             {
-                                lblStatus.Visible = true;
-                                lblStatus.Text = "An Error has Occurred.";
+                                setLabel("An Error has Occurred.", "#F72862");
                             }
                         }
-                        lblStatus.Visible = true;
-                        lblStatus.Text = string.Format("({0}) record(s) have been loaded to the database.", dtCSV.Rows.Count);
+                        setLabel(string.Format("({0}) record(s) have been loaded to the database.", dtCSV.Rows.Count), "#15E626");
                     }
                     else
                     {
-                        lblStatus.Visible = true;
-                        lblStatus.Text = "File is empty.";
+                        setLabel("File is empty.", "#F72862");
                     }
                 }
                 else
-                {
-                    lblStatus.Visible = true;
-                    lblStatus.Text = "Unable to recognize file.";
+                {                  
+                    setLabel("Unable to recognize file.", "#F72862");
                 }
             }
         }
@@ -137,8 +132,7 @@ namespace Examinator
             }
             catch (Exception e)
             {
-                lblStatus.Visible = true;
-                lblStatus.Text = e.ToString();
+                setLabel(e.ToString(), "red");
             }
         }
         protected int insertCategory(string catName, string catDesc)
@@ -157,8 +151,7 @@ namespace Examinator
             }
             catch (Exception e)
             {
-                lblStatus.Visible = true;
-                lblStatus.Text = e.ToString();
+                setLabel(e.ToString(), "#F72862");
             }
             return -1;
         }
@@ -179,8 +172,7 @@ namespace Examinator
             }
             catch (Exception e)
             {
-                lblStatus.Visible = true;
-                lblStatus.Text = e.ToString();
+                setLabel(e.ToString(), "#F72862");
             }
             return -1;
         }
@@ -203,8 +195,7 @@ namespace Examinator
             }
             catch (Exception e)
             {
-                lblStatus.Visible = true;
-                lblStatus.Text = e.ToString();
+                setLabel(e.ToString(), "#F72862");
             }        
         }
         protected void insertExplanation(int questionID, string explanationText)
@@ -221,9 +212,17 @@ namespace Examinator
             }
             catch (Exception e)
             {
-                lblStatus.Visible = true;
-                lblStatus.Text = e.ToString();
+                setLabel(e.ToString(), "#F72862");
             }            
         }
+
+        protected void setLabel(string message, string color)
+        {
+            Label l = (Label)Master.FindControl("lblMessage");
+            l.Text = message;
+            l.Style.Add("text-shadow", "2px 2px 2px " + color + ";");
+            l.Visible = true;
+        }
+
     }
 }

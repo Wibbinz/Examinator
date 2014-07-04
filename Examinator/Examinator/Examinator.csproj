@@ -144,6 +144,7 @@
     <Content Include="DefaultMaster.Master" />
     <Content Include="Service References\PasswordSvc\PasswordResetService.wsdl" />
     <Content Include="ExamMaster.Master" />
+    <Content Include="UploadTemplates\ExaminatorUploadTemplate.xlsx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
