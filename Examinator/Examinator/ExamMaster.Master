@@ -5,19 +5,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js" charset="utf-8"></script>
     <link href="css/ExamStyle.css" rel="stylesheet" />
+    <script src="js/Exam.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
-    <h1>Take the test!</h1>
-    <p class="guideline">
-        Guidelines:<br />
-        If you would like to add a question to the skip or review lists to the right, just click and drag them to the panel.<br />
-        To revisit a question, click on the question number in the panel. 
-        Questions that you do not specifically put in a panel will automatically go into the 'Completed' box, but can be revisited as well.
-    </p>
+    <div class="header">
+        <div class="titlebox">
+            <h1>Examinator</h1>
+            <h3>Brought to you by Sad Panda, Inc.</h3>
+        </div>
+    </div>
     <div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         

@@ -49,9 +49,47 @@ a:active, a:focus {
     height:600px;
 }
 
+
+/*Header*/
+.header {
+	height: 105px;
+    width: 975px;
+    padding:0px;
+    border-radius:5px 7px;
+    box-shadow: rgba(5,40,50,.75) 0px 0px 15px;
+}
+
+.titlebox{
+    margin: 0px;
+    width:500px;
+    height:95px;
+    float: left;
+    box-sizing:border-box;
+    overflow:hidden auto;
+}
+
+.header h1{
+    color: #0099CC; 
+    margin:0px 0px 0px 55px;
+    line-height:60px;  
+}
+
+.header h3{
+    color: #0099CC; 
+    margin: 5px 0px 0px 95px;
+    line-height: 0px;
+    text-shadow: 5px 5px 5px #0099CC;    
+}
+
+
 /*Main Content - Questions and Answers*/
 
+#test{
+    display: none;
+}
+
 .questionAnswerWrapper{
+    margin-top:10px;
     float:left;
     width: 770px;
     height: 460px;
@@ -223,6 +261,7 @@ a:active, a:focus {
 /*Panels for Skipped, Review and Completed Questions*/
 
 .panelWrapper{
+    margin-top:10px;
     float:right;
     width: 350px;
     height: 500px;
