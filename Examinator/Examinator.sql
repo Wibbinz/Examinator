@@ -52,6 +52,7 @@ QuestionTxt varchar (256),
 QuestionImgPath varchar (50),
 QuestionRecTime int,
 QuestionUploadDateTime datetime,
+QuestionApprovalBit bit,
 QuestionBit bit)
 go
 
@@ -123,110 +124,110 @@ go
 
 --Questions Table
 insert into tbQuestions
-(QuestionCatID,QuestionUploader,QuestionTxt,QuestionImgPath,QuestionRecTime,QuestionUploadDateTime,QuestionBit)
-values	(100,1002,'What animal Moos and makes Milk?',NULL,30,'2014-01-01',1),			--10000
-		(100,1002,'What type of Bear lives at the North Pole?',NULL,30,'2014-01-01',1),		--10001
-		(100,1000,'What family of animals do Lions belong to?',NULL,45,'2014-01-01',1),		--10002
-		(100,1000,'Snoopy from the cartoon Peanuts is what kind of dog?',NULL,40,'2014-01-01',1),	--10003
-		(100,1001,'What feline animal has spots?',NULL,30,'2014-02-02',1),				--10004
-		(104,1003,'Who is the Chief Engineer on the USS Enterprise?',NULL,40,'2014-03-01',1),	--10005
-		(104,1003,'What is the middle name of Captain Kirk?',NULL,60,'2014-03-01',1),		--10006
-		(104,1003,'What does it mean when we see a new ensign with a red shirt on an away mission?',NULL,60,'2014-03-01',1),	--10007
-		(104,1003,'What instrument do Starfleet personnel use to analyze things?',NULL,50,'2014-03-01',1),		--10008
-		(104,1003,'What is the designation number for the USS Enterprise?',NULL,60,'2014-05-05',1),			--10009
-		(104,1004,'What vehicle do Starfleet personnel use when they cannot use the transporter?',NULL,55,'2014-03-06',1),		--10010
-		(104,1004,'What race is Mister Spock?',NULL,40,'2014-05-05',1),		--10011
-		(100,1001,'What animal is known as The King of Beasts?',NULL,30,'2014-05-05',1),		--10012
-		(100,1002,'What food do Panda Bears eat?',NULL,50,'2014-06-01',1),	--10013
-		(100,1002,'What type of horse appears on Budweiser commercials?',NULL,60,'2014-06-01',1),	--10014
-		(100,1002,'What kind of animal do Shepherds tend to?',NULL,50,'2014-06-01',1),		--10015
-		(100,1002,'What noise to Pigs make?',NULL,30,'2014-06-01',1),		--10016
-		(100,1002,'What animal has long ears and hops?',NULL,30,'2014-06-01',1),		--10017
-		(100,1002,'What type of animal is the cartoon character, Garfield?',NULL,30,'2014-06-01',1),		--10018
-		(100,1002,'What animal has a long trunk?',NULL,30,'2014-06-01',1),		--10019
-		(100,1002,'What animal has a long neck?',NULL,30,'2014-06-01',1),		--10020
-		(100,1002,'What are animals that eat only plants called?',NULL,60,'2014-06-01',1),		--10021
-		(100,1002,'What reptile can live to be more than 150 years old?',NULL,60,'2014-06-01',1),		--10022
-		(100,1002,'What continent are Kangaroos native to?',NULL,30,'2014-06-01',1),		--10023
-		(100,1002,'What reptile is the largest in the world?',NULL,60,'2014-06-01',1),		--10024
-		(100,1002,'What are Dolphins classified as?',NULL,50,'2014-06-01',1),		--10025
-		(100,1002,'What is the largest mammal in the world?',NULL,55,'2014-06-01',1),		--10026
-		(100,1002,'What do Tadpoles grow up to become?',NULL,40,'2014-06-01',1),		--10027
-		(104,1001,'What is Doctor McCoy''s first name?',NULL,45,'2014-06-01',1),		--10028
-		(104,1001,'What crystals power the Enterprise''s warp drive?',NULL,50,'2014-06-01',1),		--10029
-		(104,1001,'What does the word "Ka''Plah!" mean in Klingon?',NULL,50,'2014-06-01',1),		--10030
-		(104,1001,'What small, furry creatures like Humans but not Klingons?',NULL,55,'2014-06-01',1),		--10031
-		(104,1001,'What colour is Lieutenant Sulu''s shirt?',NULL,40,'2014-06-01',1),		--10032
-		(104,1001,'In what city is Starfleet Headquarters located?',NULL,50,'2014-06-01',1),		--10033
-		(104,1001,'What is Spock''s father''s name?',NULL,50,'2014-06-01',1),		--10034
-		(104,1001,'What colour is a Vulcan''s blood?',NULL,50,'2014-06-01',1),		--10035
-		(104,1001,'Who was the captain of the Enterprise before James Kirk?',NULL,60,'2014-06-01',1),		--10036
-		(104,1000,'Who is the Communications Officer on the Enterprise?',NULL,40,'2014-06-01',1),		--10037
-		(104,1000,'What starship is manned completely by only Vulcans?',NULL,70,'2014-06-01',1),		--10038
-		(104,1000,'What is Doctor McCoy''s nickname?',NULL,50,'2014-06-01',1),		--10039
-		(104,1000,'What ship did Captain Kirk serve on prior to the Enterprise?',NULL,90,'2014-06-01',1),		--10040
-		(104,1000,'What Star Trek technology was invented by Zefram Cochrane?',NULL,60,'2014-06-01',1),		--10041
-		(100,1002,'What land animal can run the fastest, at speeds over 115 kilometers per hour?',NULL,50,'2014-06-01',1),		--10042
-		(100,1002,'What animals occasionally commit suicide by jumping into the sea?',NULL,45,'2014-06-01',1),		--10043
-		(100,1002,'What bird is the largest in the world?',NULL,50,'2014-06-01',1),		--10044
-		(100,1002,'Which bird is the only one that can fly backwards?',NULL,40,'2014-06-01',1),		--10045
-		(104,1002,'Who was the actor that played Lieutenant Sulu?',NULL,40,'2014-06-01',1),		--10046
-		(104,1001,'How many years was the original Star Trek series'' mission?',NULL,25,'2014-06-01',1),		--10047
-		(104,1001,'What was the total officer and crew complement of the USS Enterprise?',NULL,60,'2014-06-01',1),		--10048
-		(104,1001,'Who was the inventor of the duotronic computer system used on the Enterprise?',NULL,60,'2014-06-01',1),		--10049
-		(104,1001,'What was tne name of the ship that Ensign James T. Kirk was first assigned to?',NULL,60,'2014-06-01',1),		--10050
-		(101,1001,'What two colours are known to make you hungry?',NULL,50,'2014-06-03',1),		--10051
-		(101,1001,'What colour results when combining Red and Blue?',NULL,40,'2014-06-03',1),		--10052
-		(101,1001,'Which colour has the highest (longest) wavelength?',NULL,40,'2014-06-03',1),		--10053
-		(101,1001,'What colour results when mixing Red, Yellow and Blue?',NULL,50,'2014-06-03',1),		--10054
-		(101,1001,'Primary Colours are Red, Yellow and Blue.  What are the Secondary Colours?',NULL,40,'2014-06-03',1),		--10055
-		(102,1003,'What is the name of the southernmost continent?',NULL,40,'2014-06-05',1),		--10056
-		(102,1003,'Which continent is the largest continent?',NULL,40,'2014-06-05',1),		--10057
-		(102,1003,'Which ocean is the largest ocean in the world?',NULL,45,'2014-06-05',1),		--10058
-		(102,1003,'Which country has the highest population in the world?',NULL,45,'2014-06-05',1),		--10059
-		(102,1003,'What is the predominant language in Mexico?',NULL,50,'2014-06-05',1),		--10060
-		(102,1003,'What country has the highest temperatures in the world?',NULL,55,'2014-06-05',1),		--10061
-		(102,1003,'What country do Panda Bears come from?',NULL,45,'2014-06-05',1),		--10062
-		(102,1003,'Which city is the capital of Brazil?',NULL,55,'2014-06-05',1),		--10063
-		(102,1003,'What was Ho Chi Minh City once called?',NULL,50,'2014-06-05',1),		--10064
-		(102,1003,'Which ocean does the Zambezi River in Africa flow into?',NULL,90,'2014-06-05',1),		--10065
-		(102,1004,'What river is the longest river in the world?',NULL,70,'2014-06-05',1),		--10066
-		(103,1000,'Which planet in our Solar System is the closest to the Sun?',NULL,45,'2014-06-05',1),		--10067
-		(103,1000,'Between what two planets does the Asteroid Belt lie?',NULL,60,'2014-06-05',1),		--10068
-		(103,1000,'What dwarf planet lies within the Asteroid Belt?',NULL,65,'2014-06-05',1),		--10069
-		(103,1000,'What is the largest object in our Solar System?',NULL,50,'2014-06-05',1),		--10070
-		(103,1000,'Which planet is known for having a "ring" around it?',NULL,30,'2014-06-05',1),		--10071
-		(103,1000,'Which planet is know for having "The Great Red Spot"?',NULL,30,'2014-06-05',1),		--10072
-		(103,1000,'What is it called when the Moon is between the Sun and the Earth?',NULL,45,'2014-06-05',1),		--10073
-		(103,1000,'Which planet in the Solar System is closest in size to that of the Earth?',NULL,60,'2014-06-05',1),		--10074
-		(103,1000,'What is the distance from the Earth to the Sun, in kilometers?',NULL,80,'2014-06-05',1),		--10075
-		(103,1000,'What planet in our Solar System is the farthest away from the Sun?',NULL,60,'2014-06-05',1),		--10076
-		(103,1000,'If Pluto ceased to be classified as a planet in 2006, what is it classified as now?',NULL,60,'2014-06-05',1),		--10077
-		(105,1001,'What type of error is it called when you write an incorrect programming statement that the compiler does not like?',NULL,45,'2014-06-10',1),		--10078
-		(105,1001,'What best describes what a database contains?',NULL,40,'2014-06-10',1),		--10079
-		(105,1001,'What is the term for English-like representation of program code?',NULL,40,'2014-06-10',1),		--10080
-		(105,1001,'What do you call memory locations, whose contents can vary or differ over time?',NULL,30,'2014-06-10',1),		--10081
-		(105,1001,'What does SQL stand for?',NULL,40,'2014-06-10',1),		--10082
-		(105,1001,'How best describes a Boolean?',NULL,30,'2014-06-10',1),		--10083
-		(105,1001,'for (int i = 0; i < 10; i++)',NULL,50,'2014-06-10',1),		--10084
-		(105,1001,'What does ERD mean in a database design context?',NULL,55,'2014-06-10',1),		--10085
-		(105,1001,'What is the most common symbol used in an sql select statment that represents a wildcard?',NULL,25,'2014-06-10',1),		--10086
-		(105,1001,'What name is given to a field in a database table that uniquely identifies a row of another table?',NULL,45,'2014-06-10',1),		--10087
-		(105,1001,'What does CSS stand for?',NULL,40,'2014-06-10',1),		--10088
-		(105,1001,'Javascript is best described as...?',NULL,40,'2014-06-10',1),		--10089
-		(105,1001,'Which of the following SQL clauses is used to DELETE rows from a database table?',NULL,45,'2014-06-10',1),		--10090
-		(105,1001,'What SQL keyword is used to only return different values?',NULL,40,'2014-06-10',1),		--10091
-		(105,1001,'What SQL keyword is used to change values in an existing database table?',NULL,40,'2014-06-10',1),		--10092
-		(105,1001,'What HTML tag will define text to be displayed as Bold?',NULL,30,'2014-06-10',1),		--10093
-		(105,1001,'What ASP.NET component allows for consistent layout, look and feel, and standard behaviour for a group of pages in an application?',NULL,50,'2014-06-10',1),		--10094
-		(105,1001,'What HTML tag is used to navigate to other content when clicked on?',NULL,35,'2014-06-10',1),		--10095
-		(105,1001,'What HTML attribute does <UL> represent?',NULL,50,'2014-06-10',1),		--10096
-		(105,1001,'Which HTML tag is used to create Dropdown Menus?',NULL,45,'2014-06-10',1),		--10097
-		(105,1001,'Everything between an opening and closing tag in HTML is known as...?',NULL,45,'2014-06-10',1),		--10098
-		(105,1001,'Who is credited with inventing HTML?',NULL,75,'2014-06-10',1),		--10099
-		(105,1001,'Which HTML Heading Tag will produce the largest text?',NULL,45,'2014-06-10',1),		--10100
-		(105,1001,'Which HTML attribute would you use to open a new window or link to an outside page?',NULL,40,'2014-06-10',1),		--10101
-		(105,1001,'HTML tags use brackets to contain the information.  What notation do Cascading Style Sheets use?',NULL,45,'2014-06-10',1)		--10102
+(QuestionCatID,QuestionUploader,QuestionTxt,QuestionImgPath,QuestionRecTime,QuestionUploadDateTime,QuestionApprovalBit,QuestionBit)
+values	(100,1002,'What animal Moos and makes Milk?',NULL,30,'2014-01-01',1,1),			--10000
+		(100,1002,'What type of Bear lives at the North Pole?',NULL,30,'2014-01-01',1,1),		--10001
+		(100,1000,'What family of animals do Lions belong to?',NULL,45,'2014-01-01',1,1),		--10002
+		(100,1000,'Snoopy from the cartoon Peanuts is what kind of dog?',NULL,40,'2014-01-01',1,1),	--10003
+		(100,1001,'What feline animal has spots?',NULL,30,'2014-02-02',1,1),				--10004
+		(104,1003,'Who is the Chief Engineer on the USS Enterprise?',NULL,40,'2014-03-01',1,1),	--10005
+		(104,1003,'What is the middle name of Captain Kirk?',NULL,60,'2014-03-01',1,1),		--10006
+		(104,1003,'What does it mean when we see a new ensign with a red shirt on an away mission?',NULL,60,'2014-03-01',1,1),	--10007
+		(104,1003,'What instrument do Starfleet personnel use to analyze things?',NULL,50,'2014-03-01',1,1),		--10008
+		(104,1003,'What is the designation number for the USS Enterprise?',NULL,60,'2014-05-05',1,1),			--10009
+		(104,1004,'What vehicle do Starfleet personnel use when they cannot use the transporter?',NULL,55,'2014-03-06',1,1),		--10010
+		(104,1004,'What race is Mister Spock?',NULL,40,'2014-05-05',1,1),		--10011
+		(100,1001,'What animal is known as The King of Beasts?',NULL,30,'2014-05-05',1,1),		--10012
+		(100,1002,'What food do Panda Bears eat?',NULL,50,'2014-06-01',1,1),	--10013
+		(100,1002,'What type of horse appears on Budweiser commercials?',NULL,60,'2014-06-01',1,1),	--10014
+		(100,1002,'What kind of animal do Shepherds tend to?',NULL,50,'2014-06-01',1,1),		--10015
+		(100,1002,'What noise to Pigs make?',NULL,30,'2014-06-01',1,1),		--10016
+		(100,1002,'What animal has long ears and hops?',NULL,30,'2014-06-01',1,1),		--10017
+		(100,1002,'What type of animal is the cartoon character, Garfield?',NULL,30,'2014-06-01',1,1),		--10018
+		(100,1002,'What animal has a long trunk?',NULL,30,'2014-06-01',1,1),		--10019
+		(100,1002,'What animal has a long neck?',NULL,30,'2014-06-01',1,1),		--10020
+		(100,1002,'What are animals that eat only plants called?',NULL,60,'2014-06-01',1,1),		--10021
+		(100,1002,'What reptile can live to be more than 150 years old?',NULL,60,'2014-06-01',1,1),		--10022
+		(100,1002,'What continent are Kangaroos native to?',NULL,30,'2014-06-01',1,1),		--10023
+		(100,1002,'What reptile is the largest in the world?',NULL,60,'2014-06-01',1,1),		--10024
+		(100,1002,'What are Dolphins classified as?',NULL,50,'2014-06-01',1,1),		--10025
+		(100,1002,'What is the largest mammal in the world?',NULL,55,'2014-06-01',1,1),		--10026
+		(100,1002,'What do Tadpoles grow up to become?',NULL,40,'2014-06-01',1,1),		--10027
+		(104,1001,'What is Doctor McCoy''s first name?',NULL,45,'2014-06-01',1,1),		--10028
+		(104,1001,'What crystals power the Enterprise''s warp drive?',NULL,50,'2014-06-01',1,1),		--10029
+		(104,1001,'What does the word "Ka''Plah!" mean in Klingon?',NULL,50,'2014-06-01',1,1),		--10030
+		(104,1001,'What small, furry creatures like Humans but not Klingons?',NULL,55,'2014-06-01',1,1),		--10031
+		(104,1001,'What colour is Lieutenant Sulu''s shirt?',NULL,40,'2014-06-01',1,1),		--10032
+		(104,1001,'In what city is Starfleet Headquarters located?',NULL,50,'2014-06-01',1,1),		--10033
+		(104,1001,'What is Spock''s father''s name?',NULL,50,'2014-06-01',1,1),		--10034
+		(104,1001,'What colour is a Vulcan''s blood?',NULL,50,'2014-06-01',1,1),		--10035
+		(104,1001,'Who was the captain of the Enterprise before James Kirk?',NULL,60,'2014-06-01',1,1),		--10036
+		(104,1000,'Who is the Communications Officer on the Enterprise?',NULL,40,'2014-06-01',1,1),		--10037
+		(104,1000,'What starship is manned completely by only Vulcans?',NULL,70,'2014-06-01',1,1),		--10038
+		(104,1000,'What is Doctor McCoy''s nickname?',NULL,50,'2014-06-01',1,1),		--10039
+		(104,1000,'What ship did Captain Kirk serve on prior to the Enterprise?',NULL,90,'2014-06-01',1,1),		--10040
+		(104,1000,'What Star Trek technology was invented by Zefram Cochrane?',NULL,60,'2014-06-01',1,1),		--10041
+		(100,1002,'What land animal can run the fastest, at speeds over 115 kilometers per hour?',NULL,50,'2014-06-01',1,1),		--10042
+		(100,1002,'What animals occasionally commit suicide by jumping into the sea?',NULL,45,'2014-06-01',1,1),		--10043
+		(100,1002,'What bird is the largest in the world?',NULL,50,'2014-06-01',1,1),		--10044
+		(100,1002,'Which bird is the only one that can fly backwards?',NULL,40,'2014-06-01',1,1),		--10045
+		(104,1002,'Who was the actor that played Lieutenant Sulu?',NULL,40,'2014-06-01',1,1),		--10046
+		(104,1001,'How many years was the original Star Trek series'' mission?',NULL,25,'2014-06-01',1,1),		--10047
+		(104,1001,'What was the total officer and crew complement of the USS Enterprise?',NULL,60,'2014-06-01',1,1),		--10048
+		(104,1001,'Who was the inventor of the duotronic computer system used on the Enterprise?',NULL,60,'2014-06-01',1,1),		--10049
+		(104,1001,'What was tne name of the ship that Ensign James T. Kirk was first assigned to?',NULL,60,'2014-06-01',1,1),		--10050
+		(101,1001,'What two colours are known to make you hungry?',NULL,50,'2014-06-03',1,1),		--10051
+		(101,1001,'What colour results when combining Red and Blue?',NULL,40,'2014-06-03',1,1),		--10052
+		(101,1001,'Which colour has the highest (longest) wavelength?',NULL,40,'2014-06-03',1,1),		--10053
+		(101,1001,'What colour results when mixing Red, Yellow and Blue?',NULL,50,'2014-06-03',1,1),		--10054
+		(101,1001,'Primary Colours are Red, Yellow and Blue.  What are the Secondary Colours?',NULL,40,'2014-06-03',1,1),		--10055
+		(102,1003,'What is the name of the southernmost continent?',NULL,40,'2014-06-05',1,1),		--10056
+		(102,1003,'Which continent is the largest continent?',NULL,40,'2014-06-05',1,1),		--10057
+		(102,1003,'Which ocean is the largest ocean in the world?',NULL,45,'2014-06-05',1,1),		--10058
+		(102,1003,'Which country has the highest population in the world?',NULL,45,'2014-06-05',1,1),		--10059
+		(102,1003,'What is the predominant language in Mexico?',NULL,50,'2014-06-05',1,1),		--10060
+		(102,1003,'What country has the highest temperatures in the world?',NULL,55,'2014-06-05',1,1),		--10061
+		(102,1003,'What country do Panda Bears come from?',NULL,45,'2014-06-05',1,1),		--10062
+		(102,1003,'Which city is the capital of Brazil?',NULL,55,'2014-06-05',1,1),		--10063
+		(102,1003,'What was Ho Chi Minh City once called?',NULL,50,'2014-06-05',1,1),		--10064
+		(102,1003,'Which ocean does the Zambezi River in Africa flow into?',NULL,90,'2014-06-05',1,1),		--10065
+		(102,1004,'What river is the longest river in the world?',NULL,70,'2014-06-05',1,1),		--10066
+		(103,1000,'Which planet in our Solar System is the closest to the Sun?',NULL,45,'2014-06-05',1,1),		--10067
+		(103,1000,'Between what two planets does the Asteroid Belt lie?',NULL,60,'2014-06-05',1,1),		--10068
+		(103,1000,'What dwarf planet lies within the Asteroid Belt?',NULL,65,'2014-06-05',1,1),		--10069
+		(103,1000,'What is the largest object in our Solar System?',NULL,50,'2014-06-05',1,1),		--10070
+		(103,1000,'Which planet is known for having a "ring" around it?',NULL,30,'2014-06-05',1,1),		--10071
+		(103,1000,'Which planet is know for having "The Great Red Spot"?',NULL,30,'2014-06-05',1,1),		--10072
+		(103,1000,'What is it called when the Moon is between the Sun and the Earth?',NULL,45,'2014-06-05',1,1),		--10073
+		(103,1000,'Which planet in the Solar System is closest in size to that of the Earth?',NULL,60,'2014-06-05',1,1),		--10074
+		(103,1000,'What is the distance from the Earth to the Sun, in kilometers?',NULL,80,'2014-06-05',1,1),		--10075
+		(103,1000,'What planet in our Solar System is the farthest away from the Sun?',NULL,60,'2014-06-05',1,1),		--10076
+		(103,1000,'If Pluto ceased to be classified as a planet in 2006, what is it classified as now?',NULL,60,'2014-06-05',1,1),		--10077
+		(105,1001,'What type of error is it called when you write an incorrect programming statement that the compiler does not like?',NULL,45,'2014-06-10',1,1),		--10078
+		(105,1001,'What best describes what a database contains?',NULL,40,'2014-06-10',1,1),		--10079
+		(105,1001,'What is the term for English-like representation of program code?',NULL,40,'2014-06-10',1,1),		--10080
+		(105,1001,'What do you call memory locations, whose contents can vary or differ over time?',NULL,30,'2014-06-10',1,1),		--10081
+		(105,1001,'What does SQL stand for?',NULL,40,'2014-06-10',1,1),		--10082
+		(105,1001,'How best describes a Boolean?',NULL,30,'2014-06-10',1,1),		--10083
+		(105,1001,'for (int i = 0; i < 10; i++)',NULL,50,'2014-06-10',1,1),		--10084
+		(105,1001,'What does ERD mean in a database design context?',NULL,55,'2014-06-10',1,1),		--10085
+		(105,1001,'What is the most common symbol used in an sql select statment that represents a wildcard?',NULL,25,'2014-06-10',1,1),		--10086
+		(105,1001,'What name is given to a field in a database table that uniquely identifies a row of another table?',NULL,45,'2014-06-10',1,1),		--10087
+		(105,1001,'What does CSS stand for?',NULL,40,'2014-06-10',1,1),		--10088
+		(105,1001,'Javascript is best described as...?',NULL,40,'2014-06-10',1,1),		--10089
+		(105,1001,'Which of the following SQL clauses is used to DELETE rows from a database table?',NULL,45,'2014-06-10',1,1),		--10090
+		(105,1001,'What SQL keyword is used to only return different values?',NULL,40,'2014-06-10',1,1),		--10091
+		(105,1001,'What SQL keyword is used to change values in an existing database table?',NULL,40,'2014-06-10',1,1),		--10092
+		(105,1001,'What HTML tag will define text to be displayed as Bold?',NULL,30,'2014-06-10',1,1),		--10093
+		(105,1001,'What ASP.NET component allows for consistent layout, look and feel, and standard behaviour for a group of pages in an application?',NULL,50,'2014-06-10',1,1),		--10094
+		(105,1001,'What HTML tag is used to navigate to other content when clicked on?',NULL,35,'2014-06-10',1,1),		--10095
+		(105,1001,'What HTML attribute does <UL> represent?',NULL,50,'2014-06-10',1,1),		--10096
+		(105,1001,'Which HTML tag is used to create Dropdown Menus?',NULL,45,'2014-06-10',1,1),		--10097
+		(105,1001,'Everything between an opening and closing tag in HTML is known as...?',NULL,45,'2014-06-10',1,1),		--10098
+		(105,1001,'Who is credited with inventing HTML?',NULL,75,'2014-06-10',1,1),		--10099
+		(105,1001,'Which HTML Heading Tag will produce the largest text?',NULL,45,'2014-06-10',1,1),		--10100
+		(105,1001,'Which HTML attribute would you use to open a new window or link to an outside page?',NULL,40,'2014-06-10',1,1),		--10101
+		(105,1001,'HTML tags use brackets to contain the information.  What notation do Cascading Style Sheets use?',NULL,45,'2014-06-10',1,1)		--10102
 go
 
 --Answers Table
@@ -448,10 +449,10 @@ go
 --Scores Table
 insert into tbScores
 (ScoreUserID,ScoreCategoryID,ScoreTotalScore,ScoreAverageTime,ScoreTotalTime,ScoreDateTaken)
-values	(1001,104,75,1.0,1,'2014-05-01'),
-		(1002,100,80,.8,1,'2014-05-02'),
-		(1003,104,95,.5,1,'2014-05-02'),
-		(1001,104,42,.65,1,'2014-05-04')
+values	(1001,104,75,1.0,10,'2014-05-01'),
+		(1002,100,80,.8,10,'2014-05-02'),
+		(1003,104,95,.5,10,'2014-05-02'),
+		(1001,104,42,.65,10,'2014-05-04')
 go
 
 	
@@ -637,7 +638,7 @@ create procedure spUploadQuestions
 as
 	begin
 		insert into tbQuestions
-		values	(@QuestionCatID,1002,@QuestionText,NULL,60,getdate(),1)
+		values	(@QuestionCatID,1002,@QuestionText,NULL,60,getdate(),0,1)
 		select @@identity
 	end
 go
@@ -692,16 +693,50 @@ go
 --Quiz Related Stored Procedures
 --------------------------------------------------------------
 
+--drop procedure spGetCategory
+--retrieves a list of categories where the questions have been approved by the administrator
+create procedure spGetCategory
+(
+	@ApprovedOnly varchar (5)
+)
+as
+	begin
+	if @ApprovedOnly = 'yes'
+		begin
+			select c.CategoryID,c.CatName,c.CatDesc
+			,COUNT(q.QuestionCatID) as QuestionsAvailable
+			from tbCategory c
+			left join tbQuestions q on q.QuestionCatID = c.CategoryID
+			where q.QuestionApprovalBit = 1
+			and q.QuestionBit = 1
+			group by c.CategoryID,c.CatName,c.CatDesc
+		end
+	else if @ApprovedOnly = 'no'
+		begin
+			select c.CategoryID,c.CatName,c.CatDesc
+			,COUNT(q.QuestionCatID) as QuestionsAvailable
+			from tbCategory c
+			left join tbQuestions q on q.QuestionCatID = c.CategoryID
+			where q.QuestionBit = 1
+			group by c.CategoryID,c.CatName,c.CatDesc
+		end
+	end
+go
+
+
 --drop procedure spGetQuiz
 --retrieves all questions in a specified category, along with answers and explanations
 create procedure spGetQuiz
 (
 	@CategoryID int,
-	@Difficulty varchar (10)
+	@Difficulty varchar (10),
+	@ApprovedOnly varchar (5)
 )
 as
 	begin
-		if @Difficulty = 'hard'
+		if @ApprovedOnly = 'no'
+		begin
+			if @Difficulty = 'hard'
 			begin
 				select top 10 *,ROW_NUMBER() OVER (Order BY QuestionRecTime Asc) as DifficultyHard
 				from tbQuestions q 
@@ -710,7 +745,7 @@ as
 				join tbExplanations e on e.ExplnQuestionID = q.QuestionID
 				where QuestionCatID = @CategoryID
 			end
-		else if @Difficulty = 'easy'
+			else if @Difficulty = 'easy'
 			begin
 				select top 10 *,ROW_NUMBER() OVER (Order BY QuestionRecTime Desc) as DifficultyEasy
 				from tbQuestions q 
@@ -719,7 +754,7 @@ as
 				join tbExplanations e on e.ExplnQuestionID = q.QuestionID
 				where QuestionCatID = @CategoryID
 			end
-		else if @Difficulty = 'medium'
+			else if @Difficulty = 'medium'
 			begin
 				declare @middle int
 				set @middle = (select (COUNT (*) / 2) from tbQuestions where QuestionCatID = @CategoryID)
@@ -732,6 +767,43 @@ as
 				where QuestionCatID = @CategoryID) as newTable
 				where newTable.DifficultyMedium between @middle -5 and @middle + 5
 			end
+		end
+		else if @ApprovedOnly = 'yes'
+		begin
+			if @Difficulty = 'hard'
+			begin
+				select top 10 *,ROW_NUMBER() OVER (Order BY QuestionRecTime Asc) as DifficultyHard
+				from tbQuestions q 
+				join tbCategory c on c.CategoryID = @CategoryID
+				join tbAnswers a on a.AnswerID = q.QuestionID
+				join tbExplanations e on e.ExplnQuestionID = q.QuestionID
+				where QuestionCatID = @CategoryID
+				and QuestionApprovalBit = 1
+			end
+			else if @Difficulty = 'easy'
+			begin
+				select top 10 *,ROW_NUMBER() OVER (Order BY QuestionRecTime Desc) as DifficultyEasy
+				from tbQuestions q 
+				join tbCategory c on c.CategoryID = @CategoryID
+				join tbAnswers a on a.AnswerID = q.QuestionID
+				join tbExplanations e on e.ExplnQuestionID = q.QuestionID
+				where QuestionCatID = @CategoryID
+				and QuestionApprovalBit = 1
+			end
+			else if @Difficulty = 'medium'
+			begin
+				--declare @middle int
+				set @middle = (select (COUNT (*) / 2) from tbQuestions where QuestionCatID = @CategoryID)
+				select top 10 * from (
+				select *,ROW_NUMBER() OVER (Order BY QuestionRecTime Asc) as DifficultyMedium 
+				from tbQuestions q 
+				join tbCategory c on c.CategoryID = @CategoryID
+				join tbAnswers a on a.AnswerID = q.QuestionID
+				join tbExplanations e on e.ExplnQuestionID = q.QuestionID
+				where QuestionCatID = @CategoryID and QuestionApprovalBit = 1) as newTable
+				where newTable.DifficultyMedium between @middle -5 and @middle + 5
+			end
+		end
 	end
 go
 
@@ -786,9 +858,14 @@ go
 --@QuestionNewTime = 35
 
 --spGetQuiz
---@CategoryID = 104,
---@Difficulty = 'medium'
+--@CategoryID = 106,
+--@Difficulty = 'easy',
+--@ApprovedOnly = 'no'
 
+--spGetCategory
+--@ApprovedOnly = 'no'
 
-
-
+--spGetQuiz
+--@CategoryID = 100,
+--@Difficulty = 'easy',
+--@ApprovedOnly = 'no'
