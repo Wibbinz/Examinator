@@ -3,7 +3,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="initialScreen">        
-        <h1>Take the test!</h1>  
+        <h1>Categories</h1>   
+            <div id="catStrip"></div>
+    </div>
+    <div id="testPrep">
+         <h1>Take the test!</h1>  
         <p class="guideline">
             Guidelines:<br />
             If you would like to add a question to the skip or review lists to the right, just click and drag them to the panel.<br />
@@ -41,15 +45,18 @@
     <script>
         $(document).ready(function () {
 
-            //fading in actual test
+            var returnStr = '<%=GetArrayStream() %>';
+            var category = returnStr.split('|');
+            for (var index = 0; index < category.length; index++)
+                    populateDivs(category[index]);
+
+            //fading in divs
             $("#testID").click(function () {
-                $('#initialScreen').fadeOut(1000, function () {
+                $('#testPrep').fadeOut(1000, function () {
                     $('#test').fadeIn(1000);
                 });
                 return false;
             });
-
-
 
         });
     </script>

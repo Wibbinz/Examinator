@@ -9,10 +9,10 @@
         </div>
         <div class="column">
              <img class="vertImg" src="images/fire music.jpg" /><br />
-             <a href="TakeTheTest.aspx"><div class="menudiv"><h3>Exam Mode</h3></div></a>
+             <a href="TakeTheTest.aspx"><div class="menudiv"><h3>Take a Test</h3></div></a>
         </div>
         <div class="column">
-             <a href="Practice.aspx"><div class="menudiv"><h3>Practice Mode</h3></div></a><br />             
+             <a href="Practice.aspx"><div class="menudiv"><h3>Leaderboards</h3></div></a><br />             
              <img class="vertImg" src="images/onelight.jpg" />
         </div>
         <div class="column">

@@ -81,10 +81,53 @@ a:active, a:focus {
     text-shadow: 5px 5px 5px #0099CC;    
 }
 
+/*Category Divs*/
+
+
+.initialScreen{
+    margin: 27px 7px 7px 7px;   
+}
+
+/*.catStrip{
+    margin-top: 4px;
+    float:left;
+    width:20%;
+    box-sizing:border-box;
+}*/
+
+.catDiv{    
+    margin: -16px 0px -16px 0px;
+    color:#0A7DA3;    
+    text-shadow: 5px 7px 15px #044C63;
+    background-color:#CCCC00 ;
+    border-radius:4px 6px;
+    width:20%;
+    float:left;
+    box-sizing:border-box;
+    height:132px;
+    text-align:center;    
+    line-height:132px;
+}
+
+.catDiv:hover, .catDiv:focus {
+	background-color: #050505;
+    outline: 1px solid #CCCC00; 
+    box-shadow: rgba(15,40,50,1) 1px 1px 25px;
+}
+
+
+
+
+
 
 /*Main Content - Questions and Answers*/
 
+
 #test{
+    display: none;
+}
+
+#testPrep{
     display: none;
 }
 
