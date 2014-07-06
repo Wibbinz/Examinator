@@ -227,7 +227,18 @@ values	(100,1002,'What animal Moos and makes Milk?',NULL,30,'2014-01-01',1,1),		
 		(105,1001,'Who is credited with inventing HTML?',NULL,75,'2014-06-10',1,1),		--10099
 		(105,1001,'Which HTML Heading Tag will produce the largest text?',NULL,45,'2014-06-10',1,1),		--10100
 		(105,1001,'Which HTML attribute would you use to open a new window or link to an outside page?',NULL,40,'2014-06-10',1,1),		--10101
-		(105,1001,'HTML tags use brackets to contain the information.  What notation do Cascading Style Sheets use?',NULL,45,'2014-06-10',1,1)		--10102
+		(105,1001,'HTML tags use brackets to contain the information.  What notation do Cascading Style Sheets use?',NULL,45,'2014-06-10',1,1),		--10102
+		(101,1002,'Colours that sit opposite each other on the Colour Wheel are called...?',NULL,90,'2014-07-01',1,1),		--10103
+		(101,1002,'What is the Hex Value for the colour Black?',NULL,80,'2014-07-01',1,1),		--10104
+		(101,1002,'What colour is missing in the visible light bands of "R O Y G B I V": Red, Orange, ??????, Green, Blue, Indigo and Violet?',NULL,35,'2014-07-01',1,1),		--10105
+		(101,1002,'What colour automobile has been proven to be most visible and therefore less likely to be hit by another car?',NULL,55,'2014-07-01',1,1),		--10106
+		(101,1002,'Which colour is favoured by the most people in the world?',NULL,40,'2014-07-01',1,1),		--10107
+		(101,1002,'What colour, when used in fashion clothing, makes people appear thinner?',NULL,50,'2014-07-01',1,1),		--10108
+		(101,1002,'What colour flag is waved and used as the universal symbol for a "Truce" or "Surrender"?',NULL,30,'2014-07-01',1,1),		--10109
+		(102,1002,'What country''s national flag is known as the Union Jack or Union Flag?',NULL,55,'2014-07-01',1,1),		--10110
+		(102,1002,'What is the capital of the United States of America?',NULL,55,'2014-07-01',1,1),		--10111
+		(100,1004,'What mammal is the only mammal that can fly?',NULL,40,'2014-07-01',1,1),		--10112
+		(100,1004,'How many stomachs does a cow have?',NULL,50,'2014-07-01',1,1)		--10113
 go
 
 --Answers Table
@@ -335,7 +346,18 @@ values	(10000,'A Cow','A Horse','A Chicken','A Hippopotamus','An Elephant','A Gi
 		(10099,'Tim Berners-Lee','Albert Einstein','Steve Wozniak','Michael Mozilla','Charles Babbage','Bill Gates',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10099
 		(10100,'<h1>','<h6>','<h5>','<h2>','<biggest>','<36pt>',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10100
 		(10101,'target','src','start','redirect','metalink','hypertext',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10101
-		(10102,'Curly Brackets','Square Brackets','Angle Brackets','Double Quotes','Round Brackets','Back Slashes',NULL,NULL,NULL,NULL,NULL,NULL,1)		--10102
+		(10102,'Curly Brackets','Square Brackets','Angle Brackets','Double Quotes','Round Brackets','Back Slashes',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10102
+		(10103,'Complementary Colours','Opposite Colours','Bizarro Colours','Anti-Associate Colours','Refractory Colours','Social Colours',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10103
+		(10104,'#000000','#FFFFFF','#000001','#999999','#666666','#H0H0H0',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10104
+		(10105,'Yellow','Navy','Azure','Gold','White','Black',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10105
+		(10106,'Silver','Red','Yellow','Orange','Green','Purple',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10106
+		(10107,'Blue','Violet','Red','Yellow','Green','Brown',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10107
+		(10108,'Black','Red','Blue','Green','White','Silver',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10108
+		(10109,'A White Flag','A Checkered Flag','A Canadian Flag','A Green Flag','A Union Jack','A Jolly Roger',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10109
+		(10110,'The United Kingdom','The United States','Canada','Australia','United Arab Emirates','Brazil',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10110
+		(10111,'Washington, DC','New York, NY','Los Angeles, CA','Seattle, WA','Boston, MA','Philadelphia, PA',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10111
+		(10112,'Bat','Ostrich','Squirrel','Kiwi','Penguin','Kangaroo',NULL,NULL,NULL,NULL,NULL,NULL,1),		--10112
+		(10113,'One','Four','None','Three','Two','Five',NULL,NULL,NULL,NULL,NULL,NULL,1)		--10113
 go
 
 --Explanations Table (for non-Exam Modes)
@@ -443,7 +465,18 @@ values	(10000,'A Cow is raised on dairy farms to produce milk and often makes Mo
 		(10099,'Ouch, a toughie!  Tim Berners-Lee is credited as being the inventor of HTML, the WWW, and the Web Browser.',1),			--99
 		(10100,'By default, the <h1> tag will produce the largest text, and <h6> will produce the smallest.',1),			--100
 		(10101,'The target attribute of the <a> tag specifies where to open a linked document.',1),			--101
-		(10102,'Cascading Style Sheets (CSS) use Curly Brackets { and } to hold properties, colours, styles, font, etc. information.',1)			--102
+		(10102,'Cascading Style Sheets (CSS) use Curly Brackets { and } to hold properties, colours, styles, font, etc. information.',1),			--102
+		(10103,'Colours that are opposite each other on the Colour Wheel, such as Blue and Orange, are called Complementary Colours.',1),			--103
+		(10104,'#000000 is the Hex Value for the colour Black.  Black is also often represented in RGB as 0,0,0 or CYMK as 0.00, 0.00, 0.00, 1.00.',1),			--104
+		(10105,'Yellow is the colour that is missing in the sequence Red, Orange, YELLOW, Green, Blue, Indigo and Violet.',1),			--105
+		(10106,'Silver is colour that is most visible on the road and in low-light conditions and is therefore least likely to be involved in an auto accident.',1),			--106
+		(10107,'Blue is by far the most favorite colour of people world-wide, with 40% of the vote; with Purple a distant second at 14%.',1),			--107
+		(10108,'Black clothing is popular in fashion because it appears to make people look thinner.  Black is also timeless and stylish.',1),			--108
+		(10109,'A White Flag is the universal symbol of Truce or Surrender, in order to signal a desire to Parlay or Negotiate.',1),			--109
+		(10110,'The Union Jack is the offical flag of The United Kingdom, but is also semi-official in some Commonwealth countries such as Canada, Jamaica and Singapore.',1),			--110
+		(10111,'Washington, DC is the capital of The United States.  Congress, the Smithsonian, and Kennedy Center are also located in Washington, DC.',1),			--111
+		(10112,'The Bat is the only mammal that can truly fly.  Other animals that are purported to fly can actually only glide for short distances.',1),			--112
+		(10113,'A cow has only ONE stomach but that stomach has four distinct compartments.',1)			--113
 go
 
 --Scores Table
@@ -862,10 +895,6 @@ go
 --@Difficulty = 'easy',
 --@ApprovedOnly = 'no'
 
---spGetCategory
---@ApprovedOnly = 'no'
+spGetCategory
+@ApprovedOnly = 'no'
 
---spGetQuiz
---@CategoryID = 100,
---@Difficulty = 'easy',
---@ApprovedOnly = 'no'
