@@ -68,10 +68,12 @@
     <Content Include="images\fire music.jpg" />
     <Content Include="images\gold shawl 1.jpg" />
     <Content Include="images\hackeysacks.jpg" />
+    <Content Include="images\LeftArrow.png" />
     <Content Include="images\miscbg.jpg" />
     <Content Include="images\niraikkudam.jpg" />
     <Content Include="images\onelight.jpg" />
     <Content Include="images\question.jpg" />
+    <Content Include="images\RightArrow.png" />
     <Content Include="images\tattoo.jpg" />
     <Content Include="js\Exam.js" />
     <Content Include="js\LoginandHome.js" />
