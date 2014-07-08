@@ -3,8 +3,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="initialScreen">        
-        <h1>Categories</h1>   
-            <div id="catStrip"></div>
+        <h1>Categories</h1>       
+        <div class="catOuterBox">    
+            <input type="button" class="catPrev" />       
+            <ul id="catStrip"></ul>
+            <input type="button" class="catNext" />
+        </div>    
     </div>
     <div id="testPrep">
          <h1>Take the test!</h1>  
@@ -45,12 +49,65 @@
     <script>
         $(document).ready(function () {
 
+            //populating category strip
             var returnStr = '<%=GetArrayStream() %>';
             var category = returnStr.split('|');
-            for (var index = 0; index < category.length; index++)
-                    populateDivs(category[index]);
+            var currentindex;
+            for (var index = 0; index < 4; index++)
+            {
+                populateDivs(category[index], index);
+                currentindex=index;
+            };
 
-            //fading in divs
+
+
+            //moving category divs left
+            $(".catPrev").click(function(){
+                if (currentindex < category.length) {
+                    $("#catStrip li:first").find
+                    for (var index = 0; index < 4; index++) {
+                        
+                    };
+
+
+                //    $("#number" + currentindex).animate({ opacity: 0.25, left: "+=50", height: "toggle" }, 5000, function () {
+
+                //});
+                //(function () {
+                //if (currentindex < category.length) {
+                //    alert(currentindex);
+                //    $("#number" + currentindex).
+
+                    //$("#number" + currentindex).animate({left: '-50%'}, 400, function(){
+                    //    var $this = $("#number" + currentindex);
+                    //    $this.css('left', '150%').appendTo($('.catOuterBox'));
+                    //});
+                    //$("#number" + currentindex).next().animate({left: '50%'}, 400);
+                    //currentindex++;
+                }
+            });
+                
+            
+            //$('.left').click(function () {
+
+            //        if (i > 1) {
+            //            $("#box" + i).animate({
+            //                left: '150%'
+            //            }, 400, function () {
+            //                var $this = $("#box" + i);
+            //                $this.css('right', '-150%')
+            //                    .appendTo($('.container'));
+            //            });
+            //            $("#box" + i).prev().animate({
+            //                left: '50%'
+            //            }, 400);
+            //            i--;
+            //        }
+            //    });
+            //});
+
+
+            //fading out and in phases of the overall page
             $("#testID").click(function () {
                 $('#testPrep').fadeOut(1000, function () {
                     $('#test').fadeIn(1000);

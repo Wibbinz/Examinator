@@ -869,3 +869,6 @@ go
 --@CategoryID = 100,
 --@Difficulty = 'easy',
 --@ApprovedOnly = 'no'
+
+
+select * from tbQuestions
