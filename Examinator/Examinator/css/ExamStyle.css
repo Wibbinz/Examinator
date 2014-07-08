@@ -109,9 +109,9 @@ li{
 
 .catDiv{    
     margin: 10px 10px 10px 20px;
-    color:#0A7DA3;    
-    font-size:24px;
-    text-shadow: 5px 10px 15px #044C63;
+    color:#5CC9ED;    
+    font-size:20px;
+    text-shadow: 0px 0px 2px black, 3px 10px 10px #044C63; 
     background-color:#CCCC00 ;
     border-radius:4px 6px;
     width:18%;
@@ -120,6 +120,7 @@ li{
     height:132px;
     text-align:center;    
     line-height:132px;
+    padding:0px;
 }
 
 .catDiv:hover, .catDiv:focus {

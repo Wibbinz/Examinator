@@ -1,14 +1,29 @@
 ﻿
 function populateDivs(category, index) {
-    var newCategory = document.createElement('li');
-    newCategory.setAttribute('class', 'catDiv');
-    newCategory.setAttribute('id', 'number' + index);    
-    var color = getRandomColor();
-    newCategory.setAttribute('style', 'background-color:'+color);
-    var catName = document.createTextNode(category);
-    newCategory.appendChild(catName);
     var catStrip = document.getElementById("catStrip");
-    catStrip.appendChild(newCategory);
+
+    while (catStrip.firstChild) {
+        catStrip.removeChild(catStrip.firstChild);
+    }
+    
+    for (var i = index; i < index + 4; i++) {
+        var newCategory = document.createElement('li');
+        newCategory.setAttribute('class', 'catDiv');
+        newCategory.setAttribute('id', 'number' + i);
+        var color = getRandomColor();
+        newCategory.setAttribute('style', 'background-color:' + color);
+
+        if (i < category.length) {
+            var catName = document.createTextNode(category[i]);
+        }
+        else {
+            var catName = document.createTextNode(category[i - category.length]);
+        }
+
+        newCategory.appendChild(catName);       
+        catStrip.appendChild(newCategory);
+    };
+   
 }
 
 
