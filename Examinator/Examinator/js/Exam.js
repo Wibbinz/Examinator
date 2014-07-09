@@ -6,22 +6,41 @@ function populateDivs(category, index) {
         catStrip.removeChild(catStrip.firstChild);
     }
     
-    for (var i = index; i < index + 4; i++) {
+    for (var i = index; i < index + 12; i +=3) {
         var newCategory = document.createElement('li');
         newCategory.setAttribute('class', 'catDiv');
         newCategory.setAttribute('id', 'number' + i);
         var color = getRandomColor();
         newCategory.setAttribute('style', 'background-color:' + color);
 
-        if (i < category.length) {
+        var newDescription = document.createElement('figcaption');
+        newDescription.setAttribute('id', 'desc' + i);
+        var desc = document.createElement('p');
+        var mode = document.createElement('p');
+
+        if (i < category.length-1) {
             var catName = document.createTextNode(category[i]);
+            var catDesc = document.createTextNode(category[i + 1]);
+            var catMode = document.createTextNode("Mode: " + category[i + 2]);
         }
         else {
             var catName = document.createTextNode(category[i - category.length]);
+            var catDesc = document.createTextNode(category[i - category.length+1]);
+            var catMode = document.createTextNode("Mode: " + category[i - category.length+2]);
         }
 
-        newCategory.appendChild(catName);       
+
+        newCategory.appendChild(catName);
+
+        desc.appendChild(catDesc);
+        newDescription.appendChild(desc);
+
+        mode.appendChild(catMode);
+        newDescription.appendChild(mode);
+
+        newCategory.appendChild(newDescription);
         catStrip.appendChild(newCategory);
+        
     };
    
 }

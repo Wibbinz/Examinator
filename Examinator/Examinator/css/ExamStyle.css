@@ -123,10 +123,34 @@ li{
     padding:0px;
 }
 
-.catDiv:hover, .catDiv:focus {
+.catDiv figcaption{
+    width:17.25%;
+    height:132px;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    display:run-in;
+    opacity: 0;
+    position: absolute;
+    top: 10px;
+    z-index: 100;
+}
+
+.catDiv figcaption p {
+    margin:5px; padding:0px;
+    text-align:left;
+    line-height:16px;
+    font-size:small;
+    position: relative;
+}
+
+.catDiv:hover{    
 	background-color: #050505;
     outline: 1px solid #CCCC00; 
     box-shadow: rgba(15,40,50,1) 1px 1px 25px;
+}
+
+.catDiv:hover figcaption{
+    opacity: 1;
 }
 
 .catPrev{

@@ -16,35 +16,46 @@ namespace Examinator
         {
         }
 
-        public string GetArrayStream()
+        public string GetCategories()
         {
-
-            string approvedOnly = "no";
-
             DAL.DAL dal = new DAL.DAL("Data Source=localhost;Initial Catalog=dbExaminator;Integrated Security=True");
-
-            dal.AddParam("@ApprovedOnly", approvedOnly);
-            
             DataSet ds = new DataSet();
-            ds = dal.ExecuteProcedure("spGetCategory");
+            ds = dal.ExecuteProcedure("spGetCategory2");
 
             int length = ds.Tables[0].Rows.Count;
 
             string[] category = new string[length];
+            string[] description = new string[length];
+            string[] modes = new string[length];
+            int temp = 0; bool result;
 
             for (int i = 0; i < length; i++)
             {
                 category[i] = ds.Tables[0].Rows[i]["CatName"].ToString();
+                description[i] = ds.Tables[0].Rows[i]["CatDesc"].ToString();
+                result = Int32.TryParse(ds.Tables[0].Rows[i]["QuestionsAvailable"].ToString(), out temp);
+                if (result)
+                {
+                    modes[i] = "1";
+                    result = Int32.TryParse(ds.Tables[0].Rows[i]["QuestionsApproved"].ToString(), out temp);
+                    if (result)
+                    {
+                        modes[i] = "2";
+                    }
+                }
             }
             
-            
-            //string[] category = {"potato","watermelon","panda","buckit","doctor", "data","spock","seven"};
 
-            string returnStr = "";
+            string columnInfo = "";
             for (int index = 0; index < category.Length; index++)
-                returnStr += category[index] + (index == category.Length - 1 ? "" : "|");
-            return returnStr;
+            {
+                columnInfo += category[index] + (index == category.Length ? "" : "|");
+                columnInfo += description[index] + (index == category.Length ? "" : "|");
+                columnInfo += modes[index] + (index == category.Length - 1 ? "" : "|");
+            }
+            return columnInfo;
         }
-            
+       
+
     }
 }

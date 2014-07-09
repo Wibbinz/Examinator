@@ -49,24 +49,24 @@
     <script>
         $(document).ready(function () {
             //populating category strip
-            var returnStr = '<%=GetArrayStream() %>';
-            var category = returnStr.split('|');
+            var catInfo = '<%=GetCategories() %>';
+            var category = catInfo.split('|');
             var currentindex = 0;
             populateDivs(category, currentindex);
 
             $(".catPrev").click(function () {
                 if (currentindex > 0) {
-                    currentindex -= 1;
+                    currentindex -= 3;
                 }
                 else {
-                    currentindex = category.length-1;
+                    currentindex = category.length-3;
                 }
                 populateDivs(category, currentindex);
             });
 
             $(".catNext").click(function () {
-                if (currentindex < category.length-1) {
-                    currentindex += 1;
+                if (currentindex < category.length-4) {
+                    currentindex += 3;
                 }
                 else {
                     currentindex = 0
