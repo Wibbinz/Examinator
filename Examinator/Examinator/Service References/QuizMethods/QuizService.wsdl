@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="getTest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="category" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="difficulty" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getTestSoapIn">
+    <wsdl:part name="parameters" element="tns:getTest" />
+  </wsdl:message>
+  <wsdl:message name="getTestSoapOut">
+    <wsdl:part name="parameters" element="tns:getTestResponse" />
+  </wsdl:message>
+  <wsdl:portType name="QuizServiceSoap">
+    <wsdl:operation name="getTest">
+      <wsdl:input message="tns:getTestSoapIn" />
+      <wsdl:output message="tns:getTestSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="QuizServiceSoap" type="tns:QuizServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getTest">
+      <soap:operation soapAction="http://tempuri.org/getTest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="QuizServiceSoap12" type="tns:QuizServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getTest">
+      <soap12:operation soapAction="http://tempuri.org/getTest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="QuizService">
+    <wsdl:port name="QuizServiceSoap" binding="tns:QuizServiceSoap">
+      <soap:address location="http://localhost:47227/QuizService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="QuizServiceSoap12" binding="tns:QuizServiceSoap12">
+      <soap12:address location="http://localhost:47227/QuizService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

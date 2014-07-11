@@ -21,9 +21,7 @@ namespace Examinator
             DAL.DAL dal = new DAL.DAL("Data Source=localhost;Initial Catalog=dbExaminator;Integrated Security=True");
             DataSet ds = new DataSet();
             ds = dal.ExecuteProcedure("spGetCategory2");
-
             int length = ds.Tables[0].Rows.Count;
-
             string[] category = new string[length];
             string[] description = new string[length];
             string[] modes = new string[length];
@@ -36,11 +34,19 @@ namespace Examinator
                 result = Int32.TryParse(ds.Tables[0].Rows[i]["QuestionsAvailable"].ToString(), out temp);
                 if (result)
                 {
-                    modes[i] = "1";
+                    modes[i] = "Modes Available: Freestyle";
                     result = Int32.TryParse(ds.Tables[0].Rows[i]["QuestionsApproved"].ToString(), out temp);
                     if (result)
                     {
-                        modes[i] = "2";
+                        int numberOfQuestions = Convert.ToInt16(ds.Tables[0].Rows[i]["QuestionsApproved"]);
+                        if (numberOfQuestions >= 10)
+                        {
+                            modes[i] = "Modes Available: Exam, Practice, Freestyle";
+                        }
+                        else
+                        {
+                            modes[i] = "Modes Available: Practice, Freestyle";
+                        }
                     }
                 }
             }
@@ -56,6 +62,6 @@ namespace Examinator
             return columnInfo;
         }
        
-
+        
     }
 }

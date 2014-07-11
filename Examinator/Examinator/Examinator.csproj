@@ -78,6 +78,7 @@
     <Content Include="js\Exam.js" />
     <Content Include="js\LoginandHome.js" />
     <Content Include="PasswordResetService.asmx" />
+    <Content Include="QuizService.asmx" />
     <Content Include="Service References\PasswordSvc\Examinator.PasswordSvc.forgotPasswordResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -88,6 +89,16 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
+    <Content Include="Service References\QuizMethods\Examinator.QuizMethods.getTestResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\QuizMethods\QuizService.disco" />
+    <None Include="Service References\QuizMethods\configuration91.svcinfo" />
+    <None Include="Service References\QuizMethods\configuration.svcinfo" />
+    <None Include="Service References\QuizMethods\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="TakeTheTest.aspx" />
     <Content Include="UploadQuestions.aspx" />
     <Content Include="Web.config">
@@ -122,7 +133,16 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuizService.asmx.cs">
+      <DependentUpon>QuizService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Service References\PasswordSvc\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\QuizMethods\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -147,6 +167,7 @@
     <Content Include="Service References\PasswordSvc\PasswordResetService.wsdl" />
     <Content Include="ExamMaster.Master" />
     <Content Include="UploadTemplates\ExaminatorUploadTemplate.xlsx" />
+    <None Include="Service References\QuizMethods\QuizService.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -159,6 +180,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\PasswordSvc\" />
+    <WCFMetadataStorage Include="Service References\QuizMethods\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

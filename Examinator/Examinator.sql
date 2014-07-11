@@ -804,12 +804,14 @@ go
 --retrieves all questions in a specified category, along with answers and explanations
 create procedure spGetQuiz
 (
-	@CategoryID int,
+	@CatName varchar(25),
 	@Difficulty varchar (10),
 	@ApprovedOnly varchar (5)
 )
 as
 	begin
+		declare @CategoryID int
+		set @CategoryID = (select CategoryID FROM tbCategory WHERE CatName = @CatName)
 		if @ApprovedOnly = 'no'
 		begin
 			if @Difficulty = 'hard'
@@ -934,7 +936,7 @@ go
 --@QuestionNewTime = 35
 
 --spGetQuiz
---@CategoryID = 106,
+--@CatName = 'colours',
 --@Difficulty = 'easy',
 --@ApprovedOnly = 'no'
 
