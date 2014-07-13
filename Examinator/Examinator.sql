@@ -816,12 +816,13 @@ as
 		begin
 			if @Difficulty = 'hard'
 			begin
-				select top 10 *,ROW_NUMBER() OVER (Order BY QuestionRecTime Asc) as DifficultyHard
+				select top 10 *, ROW_NUMBER() OVER (Order BY QuestionRecTime Asc) as DifficultyHard				
 				from tbQuestions q 
 				join tbCategory c on c.CategoryID = @CategoryID
 				join tbAnswers a on a.AnswerID = q.QuestionID
-				join tbExplanations e on e.ExplnQuestionID = q.QuestionID
+				join tbExplanations e on e.ExplnQuestionID = q.QuestionID				
 				where QuestionCatID = @CategoryID
+				
 			end
 			else if @Difficulty = 'easy'
 			begin
@@ -884,6 +885,8 @@ as
 		end
 	end
 go
+
+
 
 --drop procedure spUpdateDefaultTimes
 create procedure spUpdateDefaultTimes

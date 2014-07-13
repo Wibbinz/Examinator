@@ -1,4 +1,6 @@
-﻿
+﻿var quiz;
+
+
 function populateDivs(category, index) {
     var catStrip = document.getElementById("catStrip");
     while (catStrip.firstChild) {
@@ -60,7 +62,6 @@ function getQuiz(chosenCategory, chosenMode, chosenDifficulty) {
         contentType: "application/json",
         data: JSON.stringify({ "category": chosenCategory, "mode": chosenMode, "difficulty": chosenDifficulty }),
         success: function (data) {
-            alert(data.d);
             var result = JSON.parse(data.d);
             popQuiz(result);
             return false;
@@ -74,5 +75,27 @@ function getQuiz(chosenCategory, chosenMode, chosenDifficulty) {
 
 
 function popQuiz(quizQuestions) {
-    alert(quizQuestions[1].QuestionTxt);
+    var question = document.getElementById("testQuestion");    
+    question.textContent = quizQuestions[1].QuestionTxt;
+    var wrongAnswer = getRandomAnswer();
+    quiz = quizQuestions;
+}
+
+function getPrevious() {
+    alert(quiz[8].QuestionTxt);
+}
+
+
+function getRandomAnswer() {
+    var answerSet = ['Answer1', 'Answer2', 'Answer3', 'Answer4', 'Answer5'];
+    var currentIndex = answerSet.length, temporaryValue, randomIndex;
+    while (0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = answerSet[currentIndex];
+        answerSet[currentIndex] = answerSet[randomIndex];
+        answerSet[randomIndex] = temporaryValue;
+    }
+    var wrongAnswer = answerSet.slice(0, 2);
+    return wrongAnswer;
 }

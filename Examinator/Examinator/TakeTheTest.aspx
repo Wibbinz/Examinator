@@ -51,8 +51,8 @@
                     <div class="answer4"><p>The product of the square root of the other two sides.</p></div>
                 </div> 
                  <div class="buttonBox">
-                   <asp:Button ID="btnPrev" CssClass="prevButton" runat="server" Text="Previous" />
-                   <asp:Button ID="btnNext" CssClass="nextButton" runat="server" Text="   Next   " />
+                   <input type ="button" id="btnPrev" class="prevButton" onclick="getPrevious()" value="Previous" />
+                   <input type ="button" id="btnNext" class="nextButton" value="   Next   " />
                 </div>             
             </div>
             <div class="panelWrapper">
@@ -65,7 +65,6 @@
     <script>
         $(document).ready(function () {
             //populating category strip
-            var quiz = '';
             var chosenCategory = '';
             var chosenMode = '';
             var chosenDifficulty = '';
@@ -99,7 +98,12 @@
             //fading out and in phases of the overall page
             $('#catStrip').on('click', 'li', function () {
                 var getNumber = this.id.split('number');
-                chosenCategory = category[getNumber[1]];
+                if (getNumber[1] == category.length) {
+                    chosenCategory = category[0];
+                }
+                else {
+                    chosenCategory = category[getNumber[1]];
+                }
                 fadeToNext('#initialScreen', '#modeScreen');
                 $("#chosenCategory").text(chosenCategory);
                 var options = $("#ddModes");
@@ -125,10 +129,9 @@
 
             $("#testID").click(function () {
                 getQuiz(chosenCategory, chosenMode, chosenDifficulty);
-                //fadeToNext('#testPrep', '#test');
-                //return false;
+                fadeToNext('#testPrep', '#test');
+                return false;
             });
-
         });
     </script>
 </asp:Content>
