@@ -45,10 +45,10 @@
                     </p>            
                 </div>
                 <div class="answerBox">
-                    <div class="answer1"><p>The sum of the square of the other two sides.</p></div>
-                    <div class="answer2"><p>The square of the sum of the other two sides.</p></div>
-                    <div class="answer3"><p>The square root of the product of the other two sides.</p></div>
-                    <div class="answer4"><p>The product of the square root of the other two sides.</p></div>
+                    <div class="answer1"><p id="Answer1"></p></div>
+                    <div class="answer2"><p id="Answer2"></p></div>
+                    <div class="answer3"><p id="Answer3"></p></div>
+                    <div class="answer4"><p id="Answer4"></p></div>
                 </div> 
                  <div class="buttonBox">
                    <input type ="button" id="btnPrev" class="prevButton" onclick="getPrevious()" value="Previous" />
