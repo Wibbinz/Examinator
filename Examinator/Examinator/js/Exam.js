@@ -1,7 +1,7 @@
 ﻿var quiz;
 var wrongAnswers;
 var correctAnswer;
-var currenti;
+var currentQuestionNumber;
 
 function populateDivs(category, index) {
     var catStrip = document.getElementById("catStrip");
@@ -79,49 +79,53 @@ function getQuiz(chosenCategory, chosenMode, chosenDifficulty) {
 function popQuiz(quizQuestions) {   
     RandomAnswerGenerator();
     quiz = quizQuestions;
-    currenti = 0;
-    popQuestionAnswerParas(quiz, currenti);
-
-   
+    currentQuestionNumber = 0;
+    popQuestionAnswerParas(currentQuestionNumber);
 }
 
-function popQuestionAnswerParas(quiz, index) {    
+function popQuestionAnswerParas(index) {    
     var question = document.getElementById("testQuestion");
-    question.textContent = quiz[0].QuestionTxt;
-    var answerPostion = ['Answer1', 'Answer2', 'Answer3', 'Answer4'];
+    question.textContent = quiz[index].QuestionTxt;
+    var answerPosition = ['Answer1', 'Answer2', 'Answer3', 'Answer4'];
     correctAnsweri = Math.floor(Math.random() * 5);    
-    while (correctAnsweri > 4 || correctAnsweri<1){
+    while (correctAnsweri > 4 || correctAnsweri < 1){
         correctAnsweri = Math.floor(Math.random() * 5);
     }
     correctAnswerIndex = 'Answer' + correctAnsweri;
-    var currentIndex = answerPostion.length;
+    var currentIndex = answerPosition.length;
+    var wrongAnswerIndex = 0;
     while ((0 != currentIndex)) {
-        currentIndex -= 1;
+        currentIndex -= 1;        
         if (currentIndex != (correctAnsweri - 1)) {
-            var answer = document.getElementById(answerPostion[currentIndex]);
-            var waI = wrongAnswers[currentIndex];
+            var answer = document.getElementById(answerPosition[currentIndex]);
+            var waI = wrongAnswers[wrongAnswerIndex];
             //alert('currentindex:' + currentIndex + ', waI: ' + waI);
             if (waI == 'Answer1') {
-                answer.textContent = quiz[0].Answer1;
+                answer.textContent = quiz[index].Answer1;
+                wrongAnswerIndex += 1;
             }
             else if (waI == 'Answer2') {
-                answer.textContent = quiz[0].Answer2;
+                answer.textContent = quiz[index].Answer2;
+                wrongAnswerIndex += 1;
             }
             else if (waI == 'Answer3') {
-                answer.textContent = quiz[0].Answer3;
+                answer.textContent = quiz[index].Answer3;
+                wrongAnswerIndex += 1;
             }
             else if (waI == 'Answer4') {
-                answer.textContent = quiz[0].Answer4;
+                answer.textContent = quiz[index].Answer4;
+                wrongAnswerIndex += 1;
             }
             else if (waI == 'Answer5') {
-                answer.textContent = quiz[0].Answer5;
+                answer.textContent = quiz[index].Answer5;
+                wrongAnswerIndex += 1;
             }
             //alert('currentindex:' + currentIndex + ', waI: ' + waI);
         }
         else {
             //alert("i am a beaw" + currentIndex + correctAnsweri);            
             var answer = document.getElementById(correctAnswerIndex);
-            answer.textContent = quiz[0].AnswerCorrect;
+            answer.textContent = quiz[index].AnswerCorrect;
         }
     }
 }
@@ -129,7 +133,17 @@ function popQuestionAnswerParas(quiz, index) {
 
 
 function getPrevious() {
-    
+    if (currentQuestionNumber != 0) {
+        currentQuestionNumber -= 1;
+        popQuestionAnswerParas(currentQuestionNumber);
+    }
+}
+
+function getNext() {
+    if (currentQuestionNumber != quiz.length) {
+        currentQuestionNumber += 1;
+        popQuestionAnswerParas(currentQuestionNumber);
+    }
 }
 
 
@@ -143,7 +157,7 @@ function RandomAnswerGenerator() {
         answerSet[currentIndex] = answerSet[randomIndex];
         answerSet[randomIndex] = temporaryValue;
     }
-    wrongAnswers = answerSet.slice(0, 4);
+    wrongAnswers = answerSet.slice(0, 3);
 }
 
 

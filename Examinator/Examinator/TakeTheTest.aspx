@@ -52,7 +52,7 @@
                 </div> 
                  <div class="buttonBox">
                    <input type ="button" id="btnPrev" class="prevButton" onclick="getPrevious()" value="Previous" />
-                   <input type ="button" id="btnNext" class="nextButton" value="   Next   " />
+                   <input type ="button" id="btnNext" class="nextButton" onclick="getNext()" value="   Next   " />
                 </div>             
             </div>
             <div class="panelWrapper">
