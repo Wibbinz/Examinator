@@ -2,6 +2,9 @@
 var wrongAnswers;
 var correctAnswer;
 var currentQuestionNumber;
+var start;
+var maxTime;
+var timeoutVal;
 
 function populateDivs(category, index) {
     var catStrip = document.getElementById("catStrip");
@@ -52,8 +55,8 @@ function getRandomColor() {
 
 
 function fadeToNext(eToFade, eNext) {
-    $(eToFade).fadeOut(1000, function () {
-        $(eNext).fadeIn(1000);
+    $(eToFade).fadeOut(250, function () {
+        $(eNext).fadeIn(250);
     });
 }
 
@@ -80,12 +83,19 @@ function popQuiz(quizQuestions) {
     RandomAnswerGenerator();
     quiz = quizQuestions;
     currentQuestionNumber = 0;
+    var prevButton = document.getElementById("btnPrev");
+    prevButton.style.display = "none";
+    popProgBar(quiz.length);
     popQuestionAnswerParas(currentQuestionNumber);
+    start = new Date();
+    maxTime = quiz.length*60000;
+    timeoutVal = Math.floor(maxTime / 100);
+    animateUpdate();
 }
 
 function popQuestionAnswerParas(index) {    
     var question = document.getElementById("testQuestion");
-    question.textContent = quiz[index].QuestionTxt;
+    question.innerHTML = "Question #" + (index + 1) + ":<br><br>" + quiz[index].QuestionTxt;
     var answerPosition = ['Answer1', 'Answer2', 'Answer3', 'Answer4'];
     correctAnsweri = Math.floor(Math.random() * 5);    
     while (correctAnsweri > 4 || correctAnsweri < 1){
@@ -130,19 +140,43 @@ function popQuestionAnswerParas(index) {
     }
 }
 
-
+function popProgBar(index) {
+    var progress = document.getElementById("progBar");
+    for (var i = 0; i < index; i += 1) {
+        var newProgressDiv = document.createElement('div');
+        newProgressDiv.setAttribute('class', 'progQuestion');
+        newProgressDiv.setAttribute('id', 'quest' + (i + 1));
+        var questionNo = document.createElement('p');
+        var qNo = document.createTextNode(i + 1);
+        questionNo.appendChild(qNo);
+        newProgressDiv.appendChild(questionNo);
+        progress.appendChild(newProgressDiv);
+    }
+}
 
 function getPrevious() {
-    if (currentQuestionNumber != 0) {
-        currentQuestionNumber -= 1;
-        popQuestionAnswerParas(currentQuestionNumber);
+    currentQuestionNumber -= 1;
+    popQuestionAnswerParas(currentQuestionNumber);
+    if (currentQuestionNumber == quiz.length-2) {
+        var nextButton = document.getElementById("btnNext");
+        nextButton.style.display = "initial";
+    }
+    if (currentQuestionNumber == 0) {
+        var prevButton = document.getElementById("btnPrev");
+        prevButton.style.display = "none";
     }
 }
 
 function getNext() {
-    if (currentQuestionNumber != quiz.length) {
-        currentQuestionNumber += 1;
-        popQuestionAnswerParas(currentQuestionNumber);
+    currentQuestionNumber += 1;
+    popQuestionAnswerParas(currentQuestionNumber);
+    if (currentQuestionNumber == quiz.length-1) {
+        var nextButton = document.getElementById("btnNext");
+        nextButton.style.display = "none";
+    }
+    if (currentQuestionNumber == 1) {        
+        var prevButton = document.getElementById("btnPrev");
+        prevButton.style.display = "initial";
     }
 }
 
@@ -161,3 +195,27 @@ function RandomAnswerGenerator() {
 }
 
 
+//disabling f5
+function disableF5(e) {
+    if ((e.which || e.keyCode) == 116) e.preventDefault();
+};
+
+
+//timer
+function updateProgress(percentage) {
+    var timer = document.getElementById("timer");
+    timer.style.height = percentage + "%";
+    //$('#timer').css("height", percentage + "%");
+    //            $('#pbar_innertext').text(percentage + "%");
+}
+
+function animateUpdate() {
+    var now = new Date();
+    var timeDiff = now.getTime() - start.getTime();
+    var perc = Math.round((timeDiff / maxTime) * 100);
+    console.log(perc);
+    if (perc <= 100) {
+        updateProgress(perc);
+        setTimeout(animateUpdate, timeoutVal);
+    }
+}

@@ -23,10 +23,14 @@
     <div id="testPrep">
          <h1>Take the test!</h1>  
         <p class="guideline">
-            Guidelines:<br />
-            If you would like to add a question to the skip or review lists to the right, just click and drag them to the panel.<br />
-            To revisit a question, click on the question number in the panel. 
-            Questions that you do not specifically put in a panel will automatically go into the 'Completed' box, but can be revisited as well.
+            Instructions:<br /><br />
+            You will be given one minute per question. <br /><br />
+            The timer bar to the far right of the page will tell you how much time you have left.<br />
+            The progress bar to the right of the answers will give you easy access to questions.<br /><br />
+            Click the answer to select. Questions that have been answered will appear <b style="color:green">green</b> in the progress bar.<br /><br />
+            Click the Question to bookmark. Bookmarked questions will appear <b style="color:blue">blue</b> in the progress bar.<br /> <br />
+            Click the Next button without selecting an answer to skip a question.<br /><br /> 
+            Skipped or unanswered questions will appear <b style="color:grey">grey</b> in the progress bar.<br />            
         </p>
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <asp:UpdatePanel ID="updatePanelTest" runat="server" ChildrenAsTriggers="true">
@@ -39,10 +43,9 @@
     <div id="test">        
         <div class="testWrapper">
             <div class="questionAnswerWrapper">
-                <div class="questionBox">
-                    <p id="testQuestion">
-                        The Pythagorean Theorm states that the square of the hypotenuse of a right triangle is equal to the:
-                    </p>            
+                <div class="questionBox">                    
+                    <h2 id="testQuestion"></h2><br />            
+                    <h3>Click to bookmark this question!</h3>
                 </div>
                 <div class="answerBox">
                     <div class="answer1"><p id="Answer1"></p></div>
@@ -56,9 +59,12 @@
                 </div>             
             </div>
             <div class="panelWrapper">
-                <div class="skipBox"><h1>Skip</h1></div>
-                <div class="reviewBox"><h1>Review</h1></div>
-                <div class="completeBox"><h1>Complete</h1></div>
+               <div id="progBar" class="progressbar"></div>
+                <div id="timerWrapper">
+                   <div class="timerbar">
+                       <span id="timer" style="height: 100%;"></span>
+                   </div>
+                </div>
             </div>
         </div>
     </div>
@@ -127,7 +133,10 @@
                 fadeToNext('#modeScreen', '#testPrep');
             });
 
+
             $("#testID").click(function () {
+                $(document).bind("keydown", disableF5);
+                $(document).on("keydown", disableF5);
                 getQuiz(chosenCategory, chosenMode, chosenDifficulty);
                 fadeToNext('#testPrep', '#test');
                 return false;
