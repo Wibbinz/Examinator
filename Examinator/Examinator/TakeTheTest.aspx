@@ -47,7 +47,7 @@
                     <h2 id="testQuestion"></h2><br />            
                     <h3>Click to bookmark this question!</h3>
                 </div>
-                <div class="answerBox">
+                <div id="answerBox" class="answerBox">
                     <div class="answer1"><p id="Answer1"></p></div>
                     <div class="answer2"><p id="Answer2"></p></div>
                     <div class="answer3"><p id="Answer3"></p></div>
@@ -140,6 +140,15 @@
                 getQuiz(chosenCategory, chosenMode, chosenDifficulty);
                 fadeToNext('#testPrep', '#test');
                 return false;
+            });
+
+            $('#answerBox div').click(function(){
+                var chosenIndex = $('#answerBox div').index(this);
+                answerChosen(chosenIndex);
+            });
+
+            $(".questionBox").click(function () {
+                bookmarkQuestion();
             });
         });
     </script>

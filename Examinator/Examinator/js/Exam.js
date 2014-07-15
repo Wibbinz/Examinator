@@ -1,6 +1,7 @@
 ﻿var quiz;
 var wrongAnswers;
 var correctAnswer;
+var correctAnsweri;
 var currentQuestionNumber;
 var start;
 var maxTime;
@@ -180,6 +181,22 @@ function getNext() {
     }
 }
 
+
+function answerChosen(chosenIndex) {
+    var pd = 'quest' + (currentQuestionNumber+1);
+    var progDiv = document.getElementById(pd);
+    progDiv.style.background = '#4AA85D';
+    getNext();
+    //alert("CorrectAnswerIndex: "+correctAnsweri+" ChosenIndex: "+ ci);
+}
+
+
+function bookmarkQuestion() {
+    var pd = 'quest' + (currentQuestionNumber + 1);
+    var progDiv = document.getElementById(pd);
+    progDiv.style.background = '#39A2B3';
+    getNext();
+}
 
 function RandomAnswerGenerator() {
     var answerSet = ['Answer1', 'Answer2', 'Answer3', 'Answer4', 'Answer5'];
