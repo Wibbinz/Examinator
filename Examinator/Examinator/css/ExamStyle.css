@@ -107,15 +107,22 @@ li{
     overflow:hidden auto;
 }
 
+#logo{
+    position:absolute;
+    margin:5px;
+    width:90px;
+    height:95px;
+}
+
 .header h1{
     color: #0099CC; 
-    margin:0px 0px 0px 55px;
+    margin:0px 0px 0px 110px;
     line-height:60px;  
 }
 
 .header h3{
     color: #0099CC; 
-    margin: 5px 0px 0px 95px;
+    margin: 5px 0px 0px 110px;
     line-height: 0px;
     text-shadow: 5px 5px 5px #0099CC;    
 }
@@ -130,11 +137,11 @@ li{
 
 .catOuterBox{
     height: 200px;
-    width: 1150px;
+    width: 1250px;
 }
 
 .catDiv{    
-    margin: 10px 10px 10px 20px;
+    margin: 10px 10px 10px 10px;
     color:#5CC9ED;    
     font-size:20px;
     text-shadow: 0px 0px 2px black, 3px 10px 10px #044C63; 
@@ -183,19 +190,19 @@ li{
     background-image:url(/images/LeftArrow.png);
     background-position:center;
     background-repeat:no-repeat;
-    height:35px;
-    width: 35px;
+    height:33px;
+    width: 45px;
     float: left;
-    margin-top:75px;
-    margin-left:0px;    
+    margin-top:60px;
+    margin-left:-35px;    
 }
 
 .catNext{
-    height:35px;
-    width: 35px;
+    height:33px;
+    width: 45px;
     float: right;
-    margin-top:75px;
-    margin-right:115px;
+    margin-top:60px;
+    margin-right:155px;
     background-image:url(/images/RightArrow.png);
     background-position:center;
     background-repeat:no-repeat;
@@ -427,6 +434,7 @@ li{
 /*Panels for Skipped, Review and Completed Questions*/
 
 .panelWrapper{
+    position:relative;
     margin-top:15px;
     float:right;
     width: 355px;
@@ -438,10 +446,23 @@ li{
     font-size: medium;
 }
 
+.legend{
+    margin:3px;
+    height:12%;
+    width:45%;
+    background:black;
+    border: 2px solid yellow;
+    font-size:x-small;
+}
+
+.legend p{
+    margin:8px 8px 8px 15px;
+}
+
 .progressbar{
-    margin:15px;
+    margin:17px;
     float:left;
-    height: 425px;
+    height: 330px;
     width: 60px;
     background: black;    
 }
@@ -449,14 +470,14 @@ li{
 #timerWrapper{
     margin:15px;
     float:left;
-    height: 425px;
+    height: 330px;
     width: 40px;
     background:yellow;
 }
 
 .timerbar{
-    margin:3px;
-    height: 419px;
+    margin:4px;
+    height: 324px;
     width: 34px;
     background: -webkit-gradient(linear, left top, left bottom, from(#0AF25B), to(#CC1B00));
     background: -webkit-linear-gradient(top, #0AF25B, #CC1B00);
@@ -474,7 +495,7 @@ li{
 }
 
 .progQuestion{
-    margin:12px;
+    margin:13px;
     background:grey;
     width:36px;
     border:1px yellow;
@@ -486,3 +507,35 @@ li{
     border:2px green;
     border-radius: 15px 0px;
 }
+
+.completeTest{
+    position:absolute;
+    bottom:10%;
+    left:10%;
+    margin: 2px 0px 0px 0px;
+    border: 1px solid #CCCC00;
+    background: #D6C965;
+    background: -webkit-gradient(linear, left top, left bottom, from(#CCCC00), to(#CC8100));
+    background: -webkit-linear-gradient(top, #CCCC00, #CC8100);
+    background: -moz-linear-gradient(top, #CCCC00, #CC8100);
+    background: -ms-linear-gradient(top, #CCCC00, #CC8100);
+    background: -o-linear-gradient(top, #CCCC00, #CC8100);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    color: #3B0E04;
+    font-size:16px;
+    font-family:Tahoma, Arial;
+    font-weight:bold;
+    text-decoration: none;     
+    text-shadow: 1px -1px 1px #CCA34B;
+    vertical-align: middle;
+}
+
+.completeTest:hover {   
+   background: #3B0E04;
+   color: #CCCC00;
+   }
+.completeTest:active {
+   background: #5C541B;
+   }

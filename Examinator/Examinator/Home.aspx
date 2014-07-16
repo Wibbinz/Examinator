@@ -5,7 +5,7 @@
     <div class="menucontainer">
         <div class="column">
              <a href="Junior.aspx"><div class="menudiv"><h3>Examinator Junior</h3></div></a><br />
-             <img class="vertImg" src="images/miscbg.jpg" />
+             <img class="vertImg" src="images/Simpson.png" />
         </div>
         <div class="column">
              <img class="vertImg" src="images/fire music.jpg" /><br />
@@ -13,10 +13,10 @@
         </div>
         <div class="column">
              <a href="Practice.aspx"><div class="menudiv"><h3>Leaderboards</h3></div></a><br />             
-             <img class="vertImg" src="images/onelight.jpg" />
+             <img class="vertImg" src="images/DaVinci.png" />
         </div>
         <div class="column">
-             <img class="horizImg" src="images/eggy3.jpg" />
+             <img class="horizImg" src="images/Terminator Panda.jpg" />
              <a href="UploadQuestions.aspx"><div class="menudiv"><h3>Upload Questions</h3></div></a>
              <a href="About.aspx"><div class="menudiv"><h3>About Us</h3></div></a>
         </div>

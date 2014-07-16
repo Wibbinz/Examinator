@@ -84,13 +84,20 @@ a:active, a:focus {
     overflow:hidden auto;
 }
 
+#logo{
+    position:absolute;
+    margin:5px;
+    width:90px;
+    height:95px;
+}
+
 .header h1{
-    margin:0px 0px 0px 55px;
+    margin:0px 0px 0px 110px;
     line-height:60px;    
 }
 
 .header h3{
-    margin: 5px 0px 0px 95px;
+    margin: 5px 0px 0px 110px;
     line-height: 0px;
     text-shadow: 5px 5px 5px #0099CC;
 }

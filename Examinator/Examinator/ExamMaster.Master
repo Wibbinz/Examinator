@@ -15,7 +15,8 @@
     <form id="form1" runat="server">
     <div class="header">
         <div class="titlebox">
-            <h1>Examinator</h1>
+            <img id="logo" src="images/Panda Terminator Thumbnail.jpg" />
+            <a href="Home.aspx"><h1>Examinator</h1></a>
             <h3>Brought to you by Sad Panda, Inc.</h3>
         </div>
     </div>

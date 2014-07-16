@@ -59,12 +59,20 @@
                 </div>             
             </div>
             <div class="panelWrapper">
-               <div id="progBar" class="progressbar"></div>
-                <div id="timerWrapper">
-                   <div class="timerbar">
-                       <span id="timer" style="height: 100%;"></span>
+                   <div id="legend" class="legend">
+                       <p>
+                           <b style="color:#4AA85D">Green</b> - Question Completed<br />
+                           <b style="color:#39A2B3">Blue</b> - Question Bookmarked<br />
+                           <b style="color:grey">Grey</b> - Question Skipped
+                        </p>
                    </div>
-                </div>
+                   <div id="progBar" class="progressbar"></div>
+                   <div id="timerWrapper">
+                       <div class="timerbar">
+                           <span id="timer" style="height: 100%;"></span>
+                       </div>
+                   </div>
+                   <input type="button" id="btnFinished" class="completeTest" value="Finish Test" />
             </div>
         </div>
     </div>
@@ -149,6 +157,12 @@
 
             $(".questionBox").click(function () {
                 bookmarkQuestion();
+            });
+
+            $('#progBar').on('click', 'div', function () {
+                var getNumber = this.id.split('quest');
+                var questionNo = parseInt(getNumber[1]) - 1;
+                quickJump(questionNo);
             });
         });
     </script>

@@ -64,6 +64,7 @@
     <Content Include="Home.aspx" />
     <Content Include="images\blueice.jpg" />
     <Content Include="images\catseye.jpg" />
+    <Content Include="images\DaVinci.png" />
     <Content Include="images\eggy3.jpg" />
     <Content Include="images\fire music.jpg" />
     <Content Include="images\gold shawl 1.jpg" />
@@ -72,9 +73,12 @@
     <Content Include="images\miscbg.jpg" />
     <Content Include="images\niraikkudam.jpg" />
     <Content Include="images\onelight.jpg" />
+    <Content Include="images\Panda Terminator Thumbnail.jpg" />
     <Content Include="images\question.jpg" />
     <Content Include="images\RightArrow.png" />
+    <Content Include="images\Simpson.png" />
     <Content Include="images\tattoo.jpg" />
+    <Content Include="images\Terminator Panda.jpg" />
     <Content Include="js\Exam.js" />
     <Content Include="js\LoginandHome.js" />
     <Content Include="PasswordResetService.asmx" />

@@ -143,7 +143,7 @@ function popQuestionAnswerParas(index) {
 
 function popProgBar(index) {
     var progress = document.getElementById("progBar");
-    for (var i = 0; i < index; i += 1) {
+    for (var i = 0; i < index; i += 1) {        
         var newProgressDiv = document.createElement('div');
         newProgressDiv.setAttribute('class', 'progQuestion');
         newProgressDiv.setAttribute('id', 'quest' + (i + 1));
@@ -181,6 +181,27 @@ function getNext() {
     }
 }
 
+
+function quickJump(qNumber) {
+    currentQuestionNumber = qNumber;
+    if (currentQuestionNumber <= quiz.length - 2) {
+        var nextButton = document.getElementById("btnNext");
+        nextButton.style.display = "initial";
+    }
+    if (currentQuestionNumber == 0) {
+        var prevButton = document.getElementById("btnPrev");
+        prevButton.style.display = "none";
+    }
+    if (currentQuestionNumber == quiz.length - 1) {
+        var nextButton = document.getElementById("btnNext");
+        nextButton.style.display = "none";
+    }
+    if (currentQuestionNumber >= 1) {
+        var prevButton = document.getElementById("btnPrev");
+        prevButton.style.display = "initial";
+    }
+    popQuestionAnswerParas(qNumber);
+}
 
 function answerChosen(chosenIndex) {
     var pd = 'quest' + (currentQuestionNumber+1);
