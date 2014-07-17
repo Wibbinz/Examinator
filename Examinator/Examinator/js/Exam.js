@@ -273,6 +273,57 @@ function RandomAnswerGenerator() {
     wrongAnswers = answerSet.slice(0, 3);
 }
 
+function testResults() {
+    var myDiv = document.getElementById('testResults');
+    var tbl = document.createElement('table');
+    tbl.setAttribute('id', 'tableResults');
+    tbl.setAttribute('class', 'tableskin');
+    var tbdy = document.createElement('tbody');
+    for (var i = 0; i < results.length+1; i++) {
+        var tr = document.createElement('tr');        
+        for (var j = 0; j < 4; j++) {
+            var td = document.createElement('td');
+            if (i == 0 && j == 0) {
+                td.style.fontWeight = "bold"; td.style.fontSize = "14px";
+                td.appendChild(document.createTextNode('Question Number'))
+            }
+            else if (i == 0 && j == 1) {
+                td.style.fontWeight = "bold"; td.style.fontSize = "14px";
+                td.appendChild(document.createTextNode('Answer'))
+            }
+            else if (i == 0 && j == 2) {
+                td.style.fontWeight = "bold"; td.style.fontSize = "14px";
+                td.appendChild(document.createTextNode('Status'))
+            }
+            else if (i == 0 && j == 3) {
+                td.style.fontWeight = "bold"; td.style.fontSize = "14px";
+                td.appendChild(document.createTextNode('Time Taken'))
+            }
+            else if (j == 0){
+                td.appendChild(document.createTextNode(results[i-1].question));
+            }
+            else if (j == 1) {
+                td.appendChild(document.createTextNode(results[i-1].answertext));
+            }
+            else if (j == 2) {
+                if (results[i - 1].rightOrWrong == 0) {
+                    td.appendChild(document.createTextNode('Incorrect'));
+                }
+                else {
+                    td.appendChild(document.createTextNode('Correct'));
+                }
+            }
+            else if (j == 3) {
+                td.appendChild(document.createTextNode(results[i-1].time));
+            }
+            tr.appendChild(td)
+            }
+        tbdy.appendChild(tr);
+    }
+    tbl.appendChild(tbdy);
+    myDiv.appendChild(tbl);
+}
+
 
 //disabling f5
 function disableF5(e) {

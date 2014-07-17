@@ -63,7 +63,7 @@
                        <p>
                            <b style="color:#4AA85D">Green</b> - Question Completed<br />
                            <b style="color:#39A2B3">Blue</b> - Question Bookmarked<br />
-                           <b style="color:grey">Grey</b> - Question Skipped
+                           <b style="color:grey">Grey</b> - Question Unanswered
                         </p>
                    </div>
                    <div id="progBar" class="progressbar"></div>
@@ -76,6 +76,7 @@
             </div>
         </div>
     </div>
+    <div id="testResults"></div>
     <script>
         $(document).ready(function () {
             //populating category strip
@@ -164,6 +165,12 @@
                 var questionNo = parseInt(getNumber[1]) - 1;
                 quickJump(questionNo);
             });
+
+            $("#btnFinished").click(function () {
+                testResults();
+                fadeToNext('#test', '#testResults');
+            });
+
         });
     </script>
 </asp:Content>
