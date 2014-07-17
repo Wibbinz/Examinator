@@ -6,6 +6,7 @@ var currentQuestionNumber;
 var start;
 var maxTime;
 var timeoutVal;
+var results = [];
 
 function populateDivs(category, index) {
     var catStrip = document.getElementById("catStrip");
@@ -84,6 +85,15 @@ function popQuiz(quizQuestions) {
     RandomAnswerGenerator();
     quiz = quizQuestions;
     currentQuestionNumber = 0;
+    for (var i = 0; i < quiz.length; i++) {
+        var tempEntry = {
+            question: (i + 1),
+            answertext: '',
+            rightOrWrong: 0,
+            time: 0
+        };
+        results[i] = tempEntry;
+    }    
     var prevButton = document.getElementById("btnPrev");
     prevButton.style.display = "none";
     popProgBar(quiz.length);
@@ -94,7 +104,10 @@ function popQuiz(quizQuestions) {
     animateUpdate();
 }
 
-function popQuestionAnswerParas(index) {    
+function popQuestionAnswerParas(index) {
+
+    var chosentext = results[currentQuestionNumber].answertext;
+
     var question = document.getElementById("testQuestion");
     question.innerHTML = "Question #" + (index + 1) + ":<br><br>" + quiz[index].QuestionTxt;
     var answerPosition = ['Answer1', 'Answer2', 'Answer3', 'Answer4'];
@@ -113,22 +126,27 @@ function popQuestionAnswerParas(index) {
             //alert('currentindex:' + currentIndex + ', waI: ' + waI);
             if (waI == 'Answer1') {
                 answer.textContent = quiz[index].Answer1;
+                textDeco(answer, chosentext, answer.textContent);
                 wrongAnswerIndex += 1;
             }
             else if (waI == 'Answer2') {
                 answer.textContent = quiz[index].Answer2;
+                textDeco(answer, chosentext, answer.textContent);
                 wrongAnswerIndex += 1;
             }
             else if (waI == 'Answer3') {
                 answer.textContent = quiz[index].Answer3;
+                textDeco(answer, chosentext, answer.textContent);
                 wrongAnswerIndex += 1;
             }
             else if (waI == 'Answer4') {
                 answer.textContent = quiz[index].Answer4;
+                textDeco(answer, chosentext, answer.textContent);
                 wrongAnswerIndex += 1;
             }
             else if (waI == 'Answer5') {
                 answer.textContent = quiz[index].Answer5;
+                textDeco(answer, chosentext, answer.textContent);
                 wrongAnswerIndex += 1;
             }
             //alert('currentindex:' + currentIndex + ', waI: ' + waI);
@@ -137,7 +155,22 @@ function popQuestionAnswerParas(index) {
             //alert("i am a beaw" + currentIndex + correctAnsweri);            
             var answer = document.getElementById(correctAnswerIndex);
             answer.textContent = quiz[index].AnswerCorrect;
+            textDeco(answer, chosentext, answer.textContent);
         }
+    }
+}
+
+
+function textDeco(answer, text1, text2) {
+    if (text1 == text2) {
+        answer.style.fontWeight = "bold";
+        answer.style.fontStyle = "italic";
+        answer.style.background = "#B0AFC9";
+    }
+    else {
+        answer.style.fontWeight = "normal";
+        answer.style.fontStyle = "normal";
+        answer.style.background = "none";
     }
 }
 
@@ -207,8 +240,16 @@ function answerChosen(chosenIndex) {
     var pd = 'quest' + (currentQuestionNumber+1);
     var progDiv = document.getElementById(pd);
     progDiv.style.background = '#4AA85D';
-    getNext();
-    //alert("CorrectAnswerIndex: "+correctAnsweri+" ChosenIndex: "+ ci);
+    var chosenDiv = document.getElementById('Answer' + (chosenIndex + 1));
+    if (correctAnsweri == (chosenIndex + 1)) {
+        results[currentQuestionNumber].rightOrWrong = 1;
+        results[currentQuestionNumber].answertext = quiz[currentQuestionNumber].AnswerCorrect;
+    }
+    else {
+        results[currentQuestionNumber].answertext = chosenDiv.textContent;
+    }
+    chosenDiv.style.border = '#39A2B3';
+    getNext();  
 }
 
 

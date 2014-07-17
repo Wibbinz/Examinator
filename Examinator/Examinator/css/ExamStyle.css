@@ -447,16 +447,16 @@ li{
 }
 
 .legend{
-    margin:3px;
-    height:12%;
-    width:45%;
+    padding: 6px;
+    height:10%;
+    width:50%;
     background:black;
     border: 2px solid yellow;
     font-size:x-small;
 }
 
 .legend p{
-    margin:8px 8px 8px 15px;
+    margin:3px 8px 3px 15px;
 }
 
 .progressbar{
