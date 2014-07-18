@@ -6,6 +6,7 @@ var currentQuestionNumber;
 var start;
 var maxTime;
 var timeoutVal;
+var indivTimer;
 var results = [];
 
 function populateDivs(category, index) {
@@ -90,7 +91,8 @@ function popQuiz(quizQuestions) {
             question: (i + 1),
             answertext: '',
             rightOrWrong: 0,
-            time: 0
+            time: 0,
+            score: 0
         };
         results[i] = tempEntry;
     }    
@@ -105,9 +107,8 @@ function popQuiz(quizQuestions) {
 }
 
 function popQuestionAnswerParas(index) {
-
+    indivTimer = new Date();    
     var chosentext = results[currentQuestionNumber].answertext;
-
     var question = document.getElementById("testQuestion");
     question.innerHTML = "Question #" + (index + 1) + ":<br><br>" + quiz[index].QuestionTxt;
     var answerPosition = ['Answer1', 'Answer2', 'Answer3', 'Answer4'];
@@ -189,6 +190,7 @@ function popProgBar(index) {
 }
 
 function getPrevious() {
+    getIndivTimer();
     currentQuestionNumber -= 1;
     popQuestionAnswerParas(currentQuestionNumber);
     if (currentQuestionNumber == quiz.length-2) {
@@ -198,10 +200,11 @@ function getPrevious() {
     if (currentQuestionNumber == 0) {
         var prevButton = document.getElementById("btnPrev");
         prevButton.style.display = "none";
-    }
+    }   
 }
 
 function getNext() {
+    getIndivTimer();
     currentQuestionNumber += 1;
     popQuestionAnswerParas(currentQuestionNumber);
     if (currentQuestionNumber == quiz.length-1) {
@@ -216,6 +219,7 @@ function getNext() {
 
 
 function quickJump(qNumber) {
+    getIndivTimer();
     currentQuestionNumber = qNumber;
     if (currentQuestionNumber <= quiz.length - 2) {
         var nextButton = document.getElementById("btnNext");
@@ -232,7 +236,7 @@ function quickJump(qNumber) {
     if (currentQuestionNumber >= 1) {
         var prevButton = document.getElementById("btnPrev");
         prevButton.style.display = "initial";
-    }
+    }    
     popQuestionAnswerParas(qNumber);
 }
 
@@ -257,7 +261,12 @@ function bookmarkQuestion() {
     var pd = 'quest' + (currentQuestionNumber + 1);
     var progDiv = document.getElementById(pd);
     progDiv.style.background = '#39A2B3';
-    getNext();
+    if (currentQuestionNumber < quiz.length - 1) {
+        getNext();
+    }
+    else {
+        alert("You have reached the end of the world!");
+    }
 }
 
 function RandomAnswerGenerator() {
@@ -274,6 +283,7 @@ function RandomAnswerGenerator() {
 }
 
 function testResults() {
+    getIndivTimer();
     var myDiv = document.getElementById('testResults');
     var tbl = document.createElement('table');
     tbl.setAttribute('id', 'tableResults');
@@ -281,31 +291,49 @@ function testResults() {
     var tbdy = document.createElement('tbody');
     for (var i = 0; i < results.length+1; i++) {
         var tr = document.createElement('tr');        
-        for (var j = 0; j < 4; j++) {
+        for (var j = 0; j < 7; j++) {
             var td = document.createElement('td');
             if (i == 0 && j == 0) {
                 td.style.fontWeight = "bold"; td.style.fontSize = "14px";
-                td.appendChild(document.createTextNode('Question Number'))
+                td.appendChild(document.createTextNode('#'))
             }
             else if (i == 0 && j == 1) {
                 td.style.fontWeight = "bold"; td.style.fontSize = "14px";
-                td.appendChild(document.createTextNode('Answer'))
+                td.appendChild(document.createTextNode('Question'))
             }
             else if (i == 0 && j == 2) {
                 td.style.fontWeight = "bold"; td.style.fontSize = "14px";
-                td.appendChild(document.createTextNode('Status'))
+                td.appendChild(document.createTextNode('Your Answer'))
             }
             else if (i == 0 && j == 3) {
                 td.style.fontWeight = "bold"; td.style.fontSize = "14px";
-                td.appendChild(document.createTextNode('Time Taken'))
+                td.appendChild(document.createTextNode('Correct Answer'))
+            }
+            else if (i == 0 && j == 4) {
+                td.style.fontWeight = "bold"; td.style.fontSize = "14px";
+                td.appendChild(document.createTextNode('Status'))
+            }
+            else if (i == 0 && j == 5) {
+                td.style.fontWeight = "bold"; td.style.fontSize = "14px";
+                td.appendChild(document.createTextNode('Time (seconds)'))
+            }
+            else if (i == 0 && j == 6) {
+                td.style.fontWeight = "bold"; td.style.fontSize = "14px";
+                td.appendChild(document.createTextNode('Your Score'))
             }
             else if (j == 0){
                 td.appendChild(document.createTextNode(results[i-1].question));
             }
             else if (j == 1) {
-                td.appendChild(document.createTextNode(results[i-1].answertext));
+                td.appendChild(document.createTextNode(quiz[i-1].QuestionTxt));
             }
             else if (j == 2) {
+                td.appendChild(document.createTextNode(results[i-1].answertext));
+            }
+            else if (j == 3) {
+                td.appendChild(document.createTextNode(quiz[i-1].AnswerCorrect));
+            }
+            else if (j == 4) {
                 if (results[i - 1].rightOrWrong == 0) {
                     td.appendChild(document.createTextNode('Incorrect'));
                 }
@@ -313,8 +341,13 @@ function testResults() {
                     td.appendChild(document.createTextNode('Correct'));
                 }
             }
-            else if (j == 3) {
+            else if (j == 5) {
                 td.appendChild(document.createTextNode(results[i-1].time));
+            }
+            else if (j == 6) {
+                td.style.fontWeight = "bold"; td.style.color = "green";
+                td.style.fontSize = "12px";
+                td.appendChild(document.createTextNode(results[i - 1].score));
             }
             tr.appendChild(td)
             }
@@ -322,6 +355,13 @@ function testResults() {
     }
     tbl.appendChild(tbdy);
     myDiv.appendChild(tbl);
+    var finalScoreTab = document.createElement('div');
+    finalScoreTab.setAttribute('id', 'finalScoreTab');
+    finalScoreTab.setAttribute('class', 'finalScore');
+    finalScoreTab.appendChild(document.createTextNode('Your Final Score is:'));
+    finalScoreTab.appendChild(document.createElement("br"));
+    finalScoreTab.appendChild(document.createTextNode('500'));
+    myDiv.appendChild(finalScoreTab);
 }
 
 
@@ -335,9 +375,14 @@ function disableF5(e) {
 function updateProgress(percentage) {
     var timer = document.getElementById("timer");
     timer.style.height = percentage + "%";
-    //$('#timer').css("height", percentage + "%");
-    //            $('#pbar_innertext').text(percentage + "%");
 }
+
+function getIndivTimer() {
+    var now = new Date();
+    var timeTaken = Math.round((now.getTime() - indivTimer.getTime())/1000);
+    results[currentQuestionNumber].time += timeTaken;
+}
+
 
 function animateUpdate() {
     var now = new Date();
