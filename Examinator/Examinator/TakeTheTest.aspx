@@ -76,7 +76,8 @@
             </div>
         </div>
     </div>
-    <div id="testResults"></div>
+    <div id="testResults">
+    </div>
     <script>
         $(document).ready(function () {
             //populating category strip
@@ -170,7 +171,6 @@
                 testResults();
                 fadeToNext('#test', '#testResults');
             });
-
         });
     </script>
 </asp:Content>

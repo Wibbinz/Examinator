@@ -81,7 +81,6 @@ function getQuiz(chosenCategory, chosenMode, chosenDifficulty) {
     });
 }
 
-
 function popQuiz(quizQuestions) {   
     RandomAnswerGenerator();
     quiz = quizQuestions;
@@ -124,7 +123,6 @@ function popQuestionAnswerParas(index) {
         if (currentIndex != (correctAnsweri - 1)) {
             var answer = document.getElementById(answerPosition[currentIndex]);
             var waI = wrongAnswers[wrongAnswerIndex];
-            //alert('currentindex:' + currentIndex + ', waI: ' + waI);
             if (waI == 'Answer1') {
                 answer.textContent = quiz[index].Answer1;
                 textDeco(answer, chosentext, answer.textContent);
@@ -150,10 +148,8 @@ function popQuestionAnswerParas(index) {
                 textDeco(answer, chosentext, answer.textContent);
                 wrongAnswerIndex += 1;
             }
-            //alert('currentindex:' + currentIndex + ', waI: ' + waI);
         }
-        else {
-            //alert("i am a beaw" + currentIndex + correctAnsweri);            
+        else {       
             var answer = document.getElementById(correctAnswerIndex);
             answer.textContent = quiz[index].AnswerCorrect;
             textDeco(answer, chosentext, answer.textContent);
@@ -248,12 +244,18 @@ function answerChosen(chosenIndex) {
     if (correctAnsweri == (chosenIndex + 1)) {
         results[currentQuestionNumber].rightOrWrong = 1;
         results[currentQuestionNumber].answertext = quiz[currentQuestionNumber].AnswerCorrect;
+        results[currentQuestionNumber].score = 10;
     }
     else {
         results[currentQuestionNumber].answertext = chosenDiv.textContent;
     }
     chosenDiv.style.border = '#39A2B3';
-    getNext();  
+    if (currentQuestionNumber < quiz.length - 1) {
+        getNext();
+    }
+    else {
+        alert("You have reached the end of the world! (Please hit finish test)");
+    }
 }
 
 
@@ -290,7 +292,10 @@ function testResults() {
     tbl.setAttribute('class', 'tableskin');
     var tbdy = document.createElement('tbody');
     for (var i = 0; i < results.length+1; i++) {
-        var tr = document.createElement('tr');        
+        var tr = document.createElement('tr');
+        if (i > 0) {
+            tr.title = quiz[i-1].ExplnText;
+        }
         for (var j = 0; j < 7; j++) {
             var td = document.createElement('td');
             if (i == 0 && j == 0) {
@@ -319,19 +324,19 @@ function testResults() {
             }
             else if (i == 0 && j == 6) {
                 td.style.fontWeight = "bold"; td.style.fontSize = "14px";
-                td.appendChild(document.createTextNode('Your Score'))
+                td.appendChild(document.createTextNode('Your Score'));
             }
             else if (j == 0){
-                td.appendChild(document.createTextNode(results[i-1].question));
+                td.appendChild(document.createTextNode(results[i - 1].question));
             }
             else if (j == 1) {
-                td.appendChild(document.createTextNode(quiz[i-1].QuestionTxt));
+                td.appendChild(document.createTextNode(quiz[i - 1].QuestionTxt));
             }
             else if (j == 2) {
-                td.appendChild(document.createTextNode(results[i-1].answertext));
+                td.appendChild(document.createTextNode(results[i - 1].answertext));
             }
             else if (j == 3) {
-                td.appendChild(document.createTextNode(quiz[i-1].AnswerCorrect));
+                td.appendChild(document.createTextNode(quiz[i - 1].AnswerCorrect));
             }
             else if (j == 4) {
                 if (results[i - 1].rightOrWrong == 0) {
@@ -350,7 +355,7 @@ function testResults() {
                 td.appendChild(document.createTextNode(results[i - 1].score));
             }
             tr.appendChild(td)
-            }
+        }
         tbdy.appendChild(tr);
     }
     tbl.appendChild(tbdy);
@@ -358,10 +363,34 @@ function testResults() {
     var finalScoreTab = document.createElement('div');
     finalScoreTab.setAttribute('id', 'finalScoreTab');
     finalScoreTab.setAttribute('class', 'finalScore');
+    var totScore = 0;
+    var numberCorrect = 0;
+    var underTwo = 0;
+    for (var i = 0; i < results.length; i++) {
+        totScore = totScore + parseInt(results[i].score);        
+        if (results[i].score == 10){
+            numberCorrect++;
+        }
+        if (results[i].time <= 2) {
+            underTwo++;
+        }
+    }
+    finalScoreTab.appendChild(document.createTextNode('You got: '));
+    finalScoreTab.appendChild(document.createElement("br"));
+    finalScoreTab.appendChild(document.createTextNode(numberCorrect + '/' + (results.length) + ' Answers Correct.'));
+    finalScoreTab.appendChild(document.createElement('br'));
+    finalScoreTab.appendChild(document.createTextNode(underTwo + '/' + (results.length) + ' Answer Under 2 Seconds.'));
+    finalScoreTab.appendChild(document.createElement("br"));
     finalScoreTab.appendChild(document.createTextNode('Your Final Score is:'));
     finalScoreTab.appendChild(document.createElement("br"));
-    finalScoreTab.appendChild(document.createTextNode('500'));
+    var totalScore = document.createElement("h2");
+    totalScore.style.color = "green"; totalScore.style.fontWeight = "bold";
+    totalScore.innerHTML = totScore;
+    finalScoreTab.appendChild(totalScore);
+    finalScoreTab.appendChild(document.createElement("br"));
+    
     myDiv.appendChild(finalScoreTab);
+
 }
 
 
