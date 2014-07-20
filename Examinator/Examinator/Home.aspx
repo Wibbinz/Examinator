@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="menucontainer">
         <div class="column">
-             <a href="Junior.aspx"><div class="menudiv"><h3>Examinator Junior</h3></div></a><br />
+             <a href="AboutUs.aspx"><div class="menudiv"><h3>About Us</h3></div></a><br />
              <img class="vertImg" src="images/Simpson.png" />
         </div>
         <div class="column">
@@ -17,8 +17,8 @@
         </div>
         <div class="column">
              <img class="horizImg" src="images/Terminator Panda.jpg" />
-             <a href="UploadQuestions.aspx"><div class="menudiv"><h3>Upload Questions</h3></div></a>
-             <a href="About.aspx"><div class="menudiv"><h3>About Us</h3></div></a>
+             <a href="UploadQuestions.aspx"><div class="menudiv"><h3>Upload Questions</h3></div></a><br />
+             <img class="horizImg" src="images/Spocks.png" />
         </div>
     </div>
 </asp:Content>

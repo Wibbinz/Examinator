@@ -18,7 +18,7 @@
             <ContentTemplate>
                 <div class="header">
                     <div class="titlebox">
-                        <img id="logo" src="images/Panda Terminator Thumbnail.jpg" />
+                        <a href="Home.aspx"><img id="logo" src="images/Panda Terminator Thumbnail.jpg" /></a>
                         <a href="Home.aspx"><h1>Examinator</h1></a>
                         <h3>Brought to you by Sad Panda, Inc.</h3>
                     </div>

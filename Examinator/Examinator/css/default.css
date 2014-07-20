@@ -232,13 +232,13 @@ a:active, a:focus {
 }
 
 .horizImg{   
-    width:246px;
+    width:98%;
     height:137px;
     border-radius:5px 7px;
 }
 
 .vertImg{    
-    width:246px;
+    width:98%;
     height:275px;
     border-radius:5px 7px;
 }
@@ -249,7 +249,7 @@ a:active, a:focus {
     text-shadow: 5px 7px 15px #044C63;
     background-color:#CCCC00 ;
     border-radius:4px 6px;
-    width:245px;
+    width:98%;
     height:137px;
     text-align:center;    
     line-height:132px;

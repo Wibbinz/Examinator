@@ -59,6 +59,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AboutUs.aspx" />
     <Content Include="css\default.css" />
     <Content Include="css\ExamStyle.css" />
     <Content Include="Home.aspx" />
@@ -77,6 +78,7 @@
     <Content Include="images\question.jpg" />
     <Content Include="images\RightArrow.png" />
     <Content Include="images\Simpson.png" />
+    <Content Include="images\Spocks.png" />
     <Content Include="images\tattoo.jpg" />
     <Content Include="images\Terminator Panda.jpg" />
     <Content Include="js\Exam.js" />
@@ -110,6 +112,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutUs.aspx.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AboutUs.aspx.designer.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DAL.cs" />
     <Compile Include="DefaultMaster.Master.cs">
       <DependentUpon>DefaultMaster.Master</DependentUpon>
