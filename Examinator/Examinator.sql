@@ -859,7 +859,7 @@ as
 			if @Difficulty = 'Potpourri'
 			begin
 				select top 10 * from tbQuestions q
-				join tbCategory c on c.CategoryID = 106 --@CategoryID
+				join tbCategory c on c.CategoryID = @CategoryID
 				join tbAnswers a on a.AnswerID = q.QuestionID
 				join tbExplanations e on e.ExplnQuestionID = q.QuestionID
 				where QuestionApprovalBit = 1
