@@ -26,11 +26,8 @@ go
 create table tbPreferences
 (PrefID int identity (10,1) primary key,
 PrefUserID int foreign key references tbUsers (UserID),
-PrefBkgCol varchar (20), 	-- page background
-PrefBannerCol varchar (20), -- menu bar colour
-PrefBoldCol varchar (20), 	-- headings, questions and anything boldface
-PrefTxtCol varchar (20),	-- descriptions, answers, explanations
-PrefFont varchar (20),		-- page font
+PrefShowInLeader bit,
+PrefShowApproved bit,
 PrefBit bit)
 go
 
@@ -119,7 +116,8 @@ values	('Animals','General Knowledge: Amimals',1),				--100
 		('World Geography','Geography: World',1),				--102
 		('Astronomy','Astronomy: The Solar System',1),			--103
 		('Star Trek: TOS','Star Trek: The Original Series',1),	--104
-		('Software & Database','Robertson College: Software & Database Developer',1)	--105
+		('Software & Database','Robertson College: Software & Database Developer',1),	--105
+		('Potpourri','Easter Egg Category: A little bit of everything!',1)				--106
 go
 
 --Questions Table
@@ -728,33 +726,33 @@ go
 
 --drop procedure spGetCategory
 --retrieves a list of categories where the questions have been approved by the administrator
-create procedure spGetCategory
-(
-	@ApprovedOnly varchar (5)
-)
-as
-	begin
-	if @ApprovedOnly = 'yes'
-		begin
-			select c.CategoryID,c.CatName,c.CatDesc
-			,COUNT(q.QuestionCatID) as QuestionsAvailable
-			from tbCategory c
-			left join tbQuestions q on q.QuestionCatID = c.CategoryID
-			where q.QuestionApprovalBit = 1
-			and q.QuestionBit = 1
-			group by c.CategoryID,c.CatName,c.CatDesc
-		end
-	else if @ApprovedOnly = 'no'
-		begin
-			select c.CategoryID,c.CatName,c.CatDesc
-			,COUNT(q.QuestionCatID) as QuestionsAvailable
-			from tbCategory c
-			left join tbQuestions q on q.QuestionCatID = c.CategoryID
-			where q.QuestionBit = 1
-			group by c.CategoryID,c.CatName,c.CatDesc
-		end
-	end
-go
+--create procedure spGetCategory
+--(
+--	@ApprovedOnly varchar (5)
+--)
+--as
+--	begin
+--	if @ApprovedOnly = 'yes'
+--		begin
+--			select c.CategoryID,c.CatName,c.CatDesc
+--			,COUNT(q.QuestionCatID) as QuestionsAvailable
+--			from tbCategory c
+--			left join tbQuestions q on q.QuestionCatID = c.CategoryID
+--			where q.QuestionApprovalBit = 1
+--			and q.QuestionBit = 1
+--			group by c.CategoryID,c.CatName,c.CatDesc
+--		end
+--	else if @ApprovedOnly = 'no'
+--		begin
+--			select c.CategoryID,c.CatName,c.CatDesc
+--			,COUNT(q.QuestionCatID) as QuestionsAvailable
+--			from tbCategory c
+--			left join tbQuestions q on q.QuestionCatID = c.CategoryID
+--			where q.QuestionBit = 1
+--			group by c.CategoryID,c.CatName,c.CatDesc
+--		end
+--	end
+--go
 
 --drop view categoriesAll
 create view categoriesAll
@@ -797,6 +795,7 @@ as
 		select * from categoriesAll ca
 		full outer join categoriesApproved ap on ca.categoryID = ap.ApprovedCatID
 		full outer join categoriesUnapproved un on ca.CategoryID = un.UnapprovedCatID
+		where ca.CatName <> 'Potpourri'
 	end
 go
 
@@ -813,8 +812,16 @@ as
 		declare @CategoryID int
 		set @CategoryID = (select CategoryID FROM tbCategory WHERE CatName = @CatName)
 		if @ApprovedOnly = 'no'
-		begin
-			if @Difficulty = 'hard'
+			begin
+			if @Difficulty = 'Potpourri'
+			begin
+				select top 10 * from tbQuestions q
+				join tbCategory c on c.CategoryID = @CategoryID
+				join tbAnswers a on a.AnswerID = q.QuestionID
+				join tbExplanations e on e.ExplnQuestionID = q.QuestionID
+				order by NEWID()
+			end
+			else if @Difficulty = 'hard'
 			begin
 				select top 10 *, ROW_NUMBER() OVER (Order BY QuestionRecTime Asc) as DifficultyHard				
 				from tbQuestions q 
@@ -849,7 +856,16 @@ as
 		end
 		else if @ApprovedOnly = 'yes'
 		begin
-			if @Difficulty = 'hard'
+			if @Difficulty = 'Potpourri'
+			begin
+				select top 10 * from tbQuestions q
+				join tbCategory c on c.CategoryID = 106 --@CategoryID
+				join tbAnswers a on a.AnswerID = q.QuestionID
+				join tbExplanations e on e.ExplnQuestionID = q.QuestionID
+				where QuestionApprovalBit = 1
+				order by NEWID()	
+			end		
+			else if @Difficulty = 'hard'
 			begin
 				select top 10 *,ROW_NUMBER() OVER (Order BY QuestionRecTime Asc) as DifficultyHard
 				from tbQuestions q 
