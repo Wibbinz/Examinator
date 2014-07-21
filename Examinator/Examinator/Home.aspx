@@ -16,7 +16,7 @@
              <img class="vertImg" src="images/DaVinci.png" />
         </div>
         <div class="column">
-             <img class="horizImg" src="images/Terminator Panda.jpg" />
+             <a href="TakeTheTest.aspx#testPrep"><img class="horizImg" src="images/Terminator Panda.jpg" /></a>
              <a href="UploadQuestions.aspx"><div class="menudiv"><h3>Upload Questions</h3></div></a><br />
              <img class="horizImg" src="images/Spocks.png" />
         </div>

@@ -80,6 +80,7 @@
     </div>
     <script>
         $(document).ready(function () {
+            
             //populating category strip
             var chosenCategory = '';
             var chosenMode = '';
@@ -87,10 +88,20 @@
             var catInfo = '<%=GetCategories() %>';
             var category = catInfo.split('|');
             var currentindex = 0;
+
+            if (location.hash == '#testPrep') {
+                $("#initialScreen").fadeOut(100, function () {
+                    $("#testPrep").fadeIn(250);
+                    chosenCategory = "Potpourri";
+                    chosenMode = "Exam";
+                    chosenDifficulty = "Potpourri";
+                });
+            }
+
             $("select#ddModes").val(1);
             $("select#ddDifficulty").val(1);
             populateDivs(category, currentindex);
-
+            
             $(".catPrev").click(function () {
                 if (currentindex > 0) {
                     currentindex -= 3;
