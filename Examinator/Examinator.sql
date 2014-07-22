@@ -86,8 +86,7 @@ create table tbScores
 ScoreUserID int foreign key references tbUsers (UserID),
 ScoreCategoryID int foreign key references tbCategory (CategoryID),
 ScoreTotalScore int,
-ScoreAverageTime decimal (5,2),
-ScoreTotalTime decimal (5,2),
+ScoreTotalTime int,
 ScoreDateTaken date)
 go
 
@@ -206,8 +205,8 @@ values	(100,1002,'What animal Moos and makes Milk?',NULL,30,'2014-01-01',1,1),		
 		(105,1001,'What is the term for English-like representation of program code?',NULL,40,'2014-06-10',1,1),		--10080
 		(105,1001,'What do you call memory locations, whose contents can vary or differ over time?',NULL,30,'2014-06-10',1,1),		--10081
 		(105,1001,'What does SQL stand for?',NULL,40,'2014-06-10',1,1),		--10082
-		(105,1001,'How best describes a Boolean?',NULL,30,'2014-06-10',1,1),		--10083
-		(105,1001,'for (int i = 0; i < 10; i++)',NULL,50,'2014-06-10',1,1),		--10084
+		(105,1001,'How best might one describe a Boolean?',NULL,30,'2014-06-10',1,1),		--10083
+		(105,1001,'for (int i = 0; i < 10; i++) will run how many times?',NULL,50,'2014-06-10',1,1),		--10084
 		(105,1001,'What does ERD mean in a database design context?',NULL,55,'2014-06-10',1,1),		--10085
 		(105,1001,'What is the most common symbol used in an sql select statment that represents a wildcard?',NULL,25,'2014-06-10',1,1),		--10086
 		(105,1001,'What name is given to a field in a database table that uniquely identifies a row of another table?',NULL,45,'2014-06-10',1,1),		--10087
@@ -479,11 +478,11 @@ go
 
 --Scores Table
 insert into tbScores
-(ScoreUserID,ScoreCategoryID,ScoreTotalScore,ScoreAverageTime,ScoreTotalTime,ScoreDateTaken)
-values	(1001,104,75,1.0,10,'2014-05-01'),
-		(1002,100,80,.8,10,'2014-05-02'),
-		(1003,104,95,.5,10,'2014-05-02'),
-		(1001,104,42,.65,10,'2014-05-04')
+(ScoreUserID,ScoreCategoryID,ScoreTotalScore,ScoreTotalTime,ScoreDateTaken)
+values	(1001,104,75,10,'2014-05-01'),
+		(1002,100,80,10,'2014-05-02'),
+		(1003,104,95,10,'2014-05-02'),
+		(1001,104,42,10,'2014-05-04')
 go
 
 	
@@ -720,39 +719,29 @@ as
 	end
 go
 
+--drop procedure spWriteScores
+create procedure spWriteScores
+(
+	@UserName varchar (30),
+	@CatName varchar (25),
+	@Score int,
+	@TotalTime int
+)
+as
+	begin
+		declare @UserID int
+		declare @CatID int
+		set @UserID = (select UserID FROM tbUsers WHERE UserName = @UserName)
+		set @CatID = (select CategoryID from tbCategory where CatName = @CatName) 
+		insert into tbScores (ScoreUserID,ScoreCategoryID,ScoreTotalScore,ScoreTotalTime,ScoreDateTaken)
+		values	(@UserID,@CatID,@Score,@TotalTime,GetDate())
+	end
+go
+
 --------------------------------------------------------------
 --Quiz Related Stored Procedures
 --------------------------------------------------------------
 
---drop procedure spGetCategory
---retrieves a list of categories where the questions have been approved by the administrator
---create procedure spGetCategory
---(
---	@ApprovedOnly varchar (5)
---)
---as
---	begin
---	if @ApprovedOnly = 'yes'
---		begin
---			select c.CategoryID,c.CatName,c.CatDesc
---			,COUNT(q.QuestionCatID) as QuestionsAvailable
---			from tbCategory c
---			left join tbQuestions q on q.QuestionCatID = c.CategoryID
---			where q.QuestionApprovalBit = 1
---			and q.QuestionBit = 1
---			group by c.CategoryID,c.CatName,c.CatDesc
---		end
---	else if @ApprovedOnly = 'no'
---		begin
---			select c.CategoryID,c.CatName,c.CatDesc
---			,COUNT(q.QuestionCatID) as QuestionsAvailable
---			from tbCategory c
---			left join tbQuestions q on q.QuestionCatID = c.CategoryID
---			where q.QuestionBit = 1
---			group by c.CategoryID,c.CatName,c.CatDesc
---		end
---	end
---go
 
 --drop view categoriesAll
 create view categoriesAll
@@ -901,8 +890,6 @@ as
 		end
 	end
 go
-
-
 
 --drop procedure spUpdateDefaultTimes
 create procedure spUpdateDefaultTimes
