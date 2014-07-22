@@ -315,7 +315,7 @@ a:active, a:focus {
 
 .gvskin{
     margin:0px;padding:0px;
-	width:100%;
+	/*width:100%;*/
 	box-shadow: 7px 7px 5px #4A3404;
 	border:1px solid #000000;
 	
@@ -336,11 +336,11 @@ a:active, a:focus {
 	border-top-left-radius:0px;
 }
 
-.gvskin table{
+/*.gvskin table{
 	width:100%;
 	height:100%;
 	margin:0px;padding:0px;
-}
+}*/
 
 .gvskin td{
 	vertical-align:middle;

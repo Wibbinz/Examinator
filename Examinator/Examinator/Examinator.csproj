@@ -83,6 +83,7 @@
     <Content Include="images\Terminator Panda.jpg" />
     <Content Include="js\Exam.js" />
     <Content Include="js\LoginandHome.js" />
+    <Content Include="Leaderboards.aspx" />
     <Content Include="PasswordResetService.asmx" />
     <Content Include="QuizService.asmx" />
     <Content Include="Service References\PasswordSvc\Examinator.PasswordSvc.forgotPasswordResponse.datasource">
@@ -140,6 +141,13 @@
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Leaderboards.aspx.cs">
+      <DependentUpon>Leaderboards.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Leaderboards.aspx.designer.cs">
+      <DependentUpon>Leaderboards.aspx</DependentUpon>
     </Compile>
     <Compile Include="PasswordResetService.asmx.cs">
       <DependentUpon>PasswordResetService.asmx</DependentUpon>

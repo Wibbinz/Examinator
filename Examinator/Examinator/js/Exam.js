@@ -109,7 +109,9 @@ function popQuestionAnswerParas(index) {
     indivTimer = new Date();    
     var chosentext = results[currentQuestionNumber].answertext;
     var question = document.getElementById("testQuestion");
-    question.innerHTML = "Question #" + (index + 1) + ":<br><br>" + quiz[index].QuestionTxt;
+    var qt = quiz[index].QuestionTxt;
+    question.innerHTML = "Question #" + (index + 1) + ":<br><br>";
+    question.appendChild(document.createTextNode(qt));
     var answerPosition = ['Answer1', 'Answer2', 'Answer3', 'Answer4'];
     correctAnsweri = Math.floor(Math.random() * 5);    
     while (correctAnsweri > 4 || correctAnsweri < 1){
@@ -156,6 +158,10 @@ function popQuestionAnswerParas(index) {
         }
     }
 }
+
+
+
+
 
 
 function textDeco(answer, text1, text2) {

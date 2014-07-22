@@ -92,6 +92,7 @@
             if (location.hash == '#testPrep') {
                 $("#initialScreen").fadeOut(100, function () {
                     $("#testPrep").fadeIn(250);
+                    alert("CONGRATULATIONS! You have unearthed the secret easter egg! Category: Potpourri");
                     chosenCategory = "Potpourri";
                     chosenMode = "Exam";
                     chosenDifficulty = "Potpourri";

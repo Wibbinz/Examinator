@@ -61,7 +61,6 @@ namespace Examinator
             }
             return columnInfo;
         }
-       
         
     }
 }

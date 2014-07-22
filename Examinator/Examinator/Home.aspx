@@ -12,7 +12,7 @@
              <a href="TakeTheTest.aspx"><div class="menudiv"><h3>Take a Test</h3></div></a>
         </div>
         <div class="column">
-             <a href="Practice.aspx"><div class="menudiv"><h3>Leaderboards</h3></div></a><br />             
+             <a href="Leaderboards.aspx"><div class="menudiv"><h3>Leaderboards</h3></div></a><br />             
              <img class="vertImg" src="images/DaVinci.png" />
         </div>
         <div class="column">
