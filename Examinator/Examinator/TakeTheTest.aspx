@@ -21,7 +21,7 @@
         <input type="button" class="button" id="modeButton" value="Continue"/>
     </div>
     <div id="testPrep">
-         <h1>Take the test!</h1>  
+            <h1>Take the test!</h1>  
         <p class="guideline">
             Instructions:<br /><br />
             You will be given one minute per question. <br /><br />
@@ -32,6 +32,11 @@
             Click the Next button without selecting an answer to skip a question.<br /><br /> 
             Skipped or unanswered questions will appear <b style="color:grey">grey</b> in the progress bar.<br />            
         </p>
+        <div id="alertWindow" class="alertWindow">
+            <div id="message">
+                <a href="#close" title="Close" class="close">X</a>  
+            </div>                                                          
+        </div>  
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <asp:UpdatePanel ID="updatePanelTest" runat="server" ChildrenAsTriggers="true">
         <ContentTemplate>
@@ -43,6 +48,11 @@
     <div id="test">        
         <div class="testWrapper">
             <div class="questionAnswerWrapper">
+                <div id="endOfTest" class="alertWindow">
+                    <div id="endMessage">
+                        <a href="#close" title="Close" class="close">X</a>  
+                    </div>                                                          
+                </div> 
                 <div class="questionBox">                    
                     <h2 id="testQuestion"></h2><br />            
                     <h3>Click to bookmark this question!</h3>
@@ -53,31 +63,30 @@
                     <div class="answer3"><p id="Answer3"></p></div>
                     <div class="answer4"><p id="Answer4"></p></div>
                 </div> 
-                 <div class="buttonBox">
-                   <input type ="button" id="btnPrev" class="prevButton" onclick="getPrevious()" value="Previous" />
-                   <input type ="button" id="btnNext" class="nextButton" onclick="getNext()" value="   Next   " />
+                    <div class="buttonBox">
+                    <input type ="button" id="btnPrev" class="prevButton" onclick="getPrevious()" value="Previous" />
+                    <input type ="button" id="btnNext" class="nextButton" onclick="getNext()" value="   Next   " />
                 </div>             
             </div>
             <div class="panelWrapper">
-                   <div id="legend" class="legend">
-                       <p>
-                           <b style="color:#4AA85D">Green</b> - Question Completed<br />
-                           <b style="color:#39A2B3">Blue</b> - Question Bookmarked<br />
-                           <b style="color:grey">Grey</b> - Question Unanswered
+                    <div id="legend" class="legend">
+                        <p>
+                            <b style="color:#4AA85D">Green</b> - Question Completed<br />
+                            <b style="color:#39A2B3">Blue</b> - Question Bookmarked<br />
+                            <b style="color:grey">Grey</b> - Question Unanswered
                         </p>
-                   </div>
-                   <div id="progBar" class="progressbar"></div>
-                   <div id="timerWrapper">
-                       <div class="timerbar">
-                           <span id="timer" style="height: 100%;"></span>
-                       </div>
-                   </div>
-                   <input type="button" id="btnFinished" class="completeTest" value="Finish Test" />
+                    </div>
+                    <div id="progBar" class="progressbar"></div>
+                    <div id="timerWrapper">
+                        <div class="timerbar">
+                            <span id="timer" style="height: 100%;"></span>
+                        </div>
+                    </div>
+                    <input type="button" id="btnFinished" class="completeTest" value="Finish Test" />
             </div>
         </div>
     </div>
-    <div id="testResults">
-    </div>
+    <div id="testResults"></div>
     <script>
         $(document).ready(function () {
             
@@ -91,11 +100,11 @@
 
             if (location.hash == '#testPrep') {
                 $("#initialScreen").fadeOut(100, function () {
-                    $("#testPrep").fadeIn(250);
-                    alert("CONGRATULATIONS! You have unearthed the secret easter egg! Category: Potpourri");
+                    alertBox("CONGRATULATIONS! You have unearthed the secret easter egg! Category: Potpourri", "alertWindow", "message");
                     chosenCategory = "Potpourri";
                     chosenMode = "Exam";
                     chosenDifficulty = "Potpourri";
+                    $("#testPrep").fadeIn(250);
                 });
             }
 

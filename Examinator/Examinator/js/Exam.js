@@ -260,7 +260,7 @@ function answerChosen(chosenIndex) {
         getNext();
     }
     else {
-        alert("You have reached the end of the world! (Please hit finish test)");
+        alertBox("You have reached the end of the world! (Please hit finish test)", "endOfTest", "endMessage");
     }
 }
 
@@ -428,4 +428,12 @@ function animateUpdate() {
         updateProgress(perc);
         setTimeout(animateUpdate, timeoutVal);
     }
+}
+
+function alertBox(message, alertd, messaged) {
+    var alertDiv = document.getElementById(alertd);
+    var messageDiv = document.getElementById(messaged);
+    messageDiv.appendChild(document.createTextNode(message));
+    alertDiv.appendChild(messageDiv);
+    document.location.hash = "#"+alertd;
 }
