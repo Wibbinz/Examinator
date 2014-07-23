@@ -709,15 +709,47 @@ go
 --------------------------------------------------------------
 
 --drop procedure spGetTop10
+--create procedure spGetTop10
+--as
+--	begin
+--		select top 10 u.UserName,c.CatName,ScoreTotalScore,ScoreDateTaken from tbScores
+--		join tbUsers u on ScoreUserID = UserID
+--		join tbCategory c on ScoreCategoryID = CategoryID
+--		order by ScoreTotalScore desc,CatName asc
+--	end
+--go
+
+
+--drop view getScores
+create view getScores
+as
+	select top 10 u.UserName,ScoreCategoryID, c.CatName,ScoreTotalScore,ScoreDateTaken from tbScores
+	join tbUsers u on ScoreUserID = UserID
+	join tbCategory c on ScoreCategoryID = CategoryID
+	order by ScoreTotalScore desc,CatName asc
+go
+
+--drop view getMaxScores
+create view getMaxScores
+as
+	select ScoreCategoryID, MAX(ScoreTotalScore) as MaxScore from tbScores
+	group by ScoreCategoryID
+go
+
+--drop procedure spGetTop10
 create procedure spGetTop10
 as
-	begin
-		select top 10 u.UserName,c.CatName,ScoreTotalScore,ScoreDateTaken from tbScores
-		join tbUsers u on ScoreUserID = UserID
-		join tbCategory c on ScoreCategoryID = CategoryID
-		order by ScoreTotalScore desc,CatName asc
-	end
+begin
+	select * from getScores where ScoreCategoryID in (select distinct ScoreCategoryID from tbScores)
+	
+	
+	
+end
 go
+
+
+	
+
 
 --drop procedure spWriteScores
 create procedure spWriteScores
@@ -936,6 +968,8 @@ go
 --select * from tbQuestions
 --select * from tbAnswers
 --select * from tbExplanations
+--select * from tbScores
+
 
 --spUpdateDefaultTimes
 --@QuestionID = 10000,

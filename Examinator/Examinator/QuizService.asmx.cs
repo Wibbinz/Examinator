@@ -53,5 +53,27 @@ namespace Examinator
             }
             return serializer.Serialize(rows);
         }
+
+        [WebMethod]
+        public void recordScores(string user, string category, int score, int totalTime)
+        {
+            DAL.DAL dal = new DAL.DAL("Data Source=localhost;Initial Catalog=dbExaminator;Integrated Security=True");
+            dal.AddParam("@UserName", user);
+            dal.AddParam("@CatName", category);
+            dal.AddParam("@Score", score);
+            dal.AddParam("@TotalTime", totalTime);
+            DataSet ds = new DataSet();
+            ds = dal.ExecuteProcedure("spWriteScores");
+        }
+
+        [WebMethod]
+        public void updateTimes(int questionID, int newTime)
+        {
+            DAL.DAL dal = new DAL.DAL("Data Source=localhost;Initial Catalog=dbExaminator;Integrated Security=True");
+            dal.AddParam("@QuestionID", questionID);
+            dal.AddParam("@QuestionNewTime", newTime);
+            DataSet ds = new DataSet();
+            ds = dal.ExecuteProcedure("spUpdateDefaultTimes");
+        }
     }
 }

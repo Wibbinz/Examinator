@@ -292,6 +292,22 @@ function RandomAnswerGenerator() {
 
 function testResults() {
     getIndivTimer();
+    var totScore = 0;
+    var totTime = 0;
+    var numberCorrect = 0;
+    var underTwo = 0;
+    for (var i = 0; i < results.length; i++) {
+        totScore = totScore + parseInt(results[i].score);
+        totTime = totTime + parseInt(results[i].time);
+        if (results[i].score == 10) {
+            numberCorrect++;
+        }
+        if (results[i].time <= 2) {
+            underTwo++;
+        }
+    }
+    sendResults("homer", totScore, totTime);
+    setNewTimes();
     var myDiv = document.getElementById('testResults');
     var tbl = document.createElement('table');
     tbl.setAttribute('id', 'tableResults');
@@ -368,19 +384,7 @@ function testResults() {
     myDiv.appendChild(tbl);
     var finalScoreTab = document.createElement('div');
     finalScoreTab.setAttribute('id', 'finalScoreTab');
-    finalScoreTab.setAttribute('class', 'finalScore');
-    var totScore = 0;
-    var numberCorrect = 0;
-    var underTwo = 0;
-    for (var i = 0; i < results.length; i++) {
-        totScore = totScore + parseInt(results[i].score);        
-        if (results[i].score == 10){
-            numberCorrect++;
-        }
-        if (results[i].time <= 2) {
-            underTwo++;
-        }
-    }
+    finalScoreTab.setAttribute('class', 'finalScore');    
     finalScoreTab.appendChild(document.createTextNode('You got: '));
     finalScoreTab.appendChild(document.createElement("br"));
     finalScoreTab.appendChild(document.createTextNode(numberCorrect + '/' + (results.length) + ' Answers Correct.'));
@@ -393,10 +397,8 @@ function testResults() {
     totalScore.style.color = "green"; totalScore.style.fontWeight = "bold";
     totalScore.innerHTML = totScore;
     finalScoreTab.appendChild(totalScore);
-    finalScoreTab.appendChild(document.createElement("br"));
-    
+    finalScoreTab.appendChild(document.createElement("br"));    
     myDiv.appendChild(finalScoreTab);
-
 }
 
 
@@ -436,4 +438,47 @@ function alertBox(message, alertd, messaged) {
     messageDiv.appendChild(document.createTextNode(message));
     alertDiv.appendChild(messageDiv);
     document.location.hash = "#"+alertd;
+}
+
+
+
+function sendResults(user, score, totTime) {
+    var category = quiz[1].CatName;
+    $.ajax({
+        type: "POST",
+        url: "/QuizService.asmx/recordScores",
+        contentType: "application/json",
+        data: JSON.stringify({ "user": user, "category": category, "score": score, "totalTime": totTime}),
+        success: function (data) {
+            return true;
+        },
+        error: function (error) {
+            alert(error.responseText);
+            return false;
+        }
+    });
+}
+
+
+function setNewTimes() {
+    for (var i = 0; i < quiz.length; i++) {
+        if (results[i].rightOrWrong == 1) {
+            var id = quiz[i].QuestionID;
+            var oldTime = quiz[i].QuestionRecTime;
+            var newTime = Math.round((parseInt(quiz[i].QuestionRecTime) + parseInt(results[i].time)) / 2);
+            $.ajax({
+                type: "POST",
+                url: "/QuizService.asmx/updateTimes",
+                contentType: "application/json",
+                data: JSON.stringify({ "questionID": id, "newTime": newTime }),
+                success: function (data) {
+                    return true;
+                },
+                error: function (error) {
+                    alert(error.responseText);
+                    return false;
+                }
+            });
+        }
+    }    
 }
