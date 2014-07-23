@@ -27,9 +27,41 @@
                     <asp:Panel ID="pnlLogout" runat="server" Visible="false">
                         <div class="loginbox">
                             <asp:Label ID="lblUser" runat="server" Text=""></asp:Label><br />
-                            <asp:LinkButton ID="lbPref" runat="server">Preferences</asp:LinkButton>
+                            <a href="#preferences" runat="server">Preferences</a>
                             <asp:LinkButton ID="linkLogout" runat="server" OnClick="linkLogout_Click">Log Out</asp:LinkButton>
                         </div>
+                        <%-- Preferences Modal Window --%>
+                            <asp:Panel ID="pnlPrefs" runat="server" DefaultButton="btnPrefs">
+                            <div id="preferences" class="modalWindow">
+                                    <div>
+                                        <table>
+                                            <tr>
+                                                <td>UserName:</td>
+                                                <td><asp:TextBox ID="tbChangeuserName" runat="server"></asp:TextBox></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Password:</td>
+                                                <td><asp:TextBox ID="tbChangePassword" runat="server" TextMode="Password"></asp:TextBox></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Display Scores</td>
+                                                <td><asp:RadioButton ID="rbtnScores" runat="server" /></td>
+                                            </tr>   
+                                            <tr>
+                                                <td>Display Unapproved Questions</td>
+                                                <td><asp:RadioButton ID="rbtnQuestions" runat="server" /></td>
+                                            </tr>                                       
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    <asp:Button ID="btnPrefs" CssClass="button" runat="server" Text="Change Settings" OnClientClick="PrefsValidate();" />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <a href="#close" title="Close" class="close">Cancel</a>
+                                    </div>
+                                </div>    
+                            </asp:Panel>  
                     </asp:Panel>
 
                     <asp:Panel ID="pnlLogin" runat="server" DefaultButton="btnLogin">  
@@ -41,7 +73,7 @@
                             Password: <asp:TextBox ID="tbPassword" CssClass="loginTextBox" runat="server" TextMode="Password"></asp:TextBox><br />                            
                             <asp:Button ID="btnLogin" CssClass="button" runat="server" Text="Login" OnClientClick="return checkLogin();" OnClick="btnLogin_Click" />
                            
-                             <a href="#forgotPW" id="linkForgot" runat="server">Forgot Password?</a>
+                             <a href="#forgotPW" id="linkForgot" runat="server">Forgot Password?</a>                           
 
                     <%-- New Registration Modal Window --%>
                             <asp:Panel ID="pnlRegs" runat="server" DefaultButton="btnNewUser">
@@ -116,6 +148,11 @@
             $("#forgotPW").hover(function () {
                 forgotpwFocus();
             });
+
+            $("#preferences").hover(function () {
+                prefsFocus();
+            });
+
         });
     </script> 
 </html>

@@ -19,7 +19,7 @@ namespace Examinator
         {
             DAL.DAL dal = new DAL.DAL("Data Source = localhost; Initial Catalog = dbExaminator; Integrated Security = True");
             DataSet ds = new DataSet();
-            ds = dal.ExecuteProcedure("spGetTop10");
+            ds = dal.ExecuteProcedure("spGetTopScores");
             gvLeaderBoards.DataSource = ds;
             gvLeaderBoards.DataBind();
         }

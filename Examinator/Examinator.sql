@@ -721,34 +721,39 @@ go
 
 
 --drop view getScores
-create view getScores
-as
-	select top 10 u.UserName,ScoreCategoryID, c.CatName,ScoreTotalScore,ScoreDateTaken from tbScores
-	join tbUsers u on ScoreUserID = UserID
-	join tbCategory c on ScoreCategoryID = CategoryID
-	order by ScoreTotalScore desc,CatName asc
-go
+--create view getScores
+--as
+--	select top 10 u.UserName,ScoreCategoryID, c.CatName,ScoreTotalScore,ScoreDateTaken from tbScores
+--	join tbUsers u on ScoreUserID = UserID
+--	join tbCategory c on ScoreCategoryID = CategoryID
+--	order by ScoreTotalScore desc,CatName asc
+--go
 
 --drop view getMaxScores
-create view getMaxScores
-as
-	select ScoreCategoryID, MAX(ScoreTotalScore) as MaxScore from tbScores
-	group by ScoreCategoryID
-go
+--create view getMaxScores
+--as
+--	select ScoreCategoryID, MAX(ScoreTotalScore) as MaxScore from tbScores
+--	group by ScoreCategoryID
+--go
 
 --drop procedure spGetTop10
-create procedure spGetTop10
+create procedure spGetTopScores
 as
 begin
-	select * from getScores where ScoreCategoryID in (select distinct ScoreCategoryID from tbScores)
-	
-	
-	
+	WITH ranked1 as(
+		SELECT *, RankByCategory = DENSE_RANK() OVER (
+		PARTITION BY ScoreCategoryID
+		ORDER BY ScoreTotalScore DESC) from tbScores
+	), ranked2 as(
+		SELECT * FROM ranked1
+		Where RankByCategory = 1
+    )
+    SELECT c.CatName, u.UserName, ScoreTotalScore, ScoreTotalTime, ScoreDateTaken FROM ranked2 r
+    join tbUsers u on r.ScoreUserID = u.UserID 
+	join tbCategory c on r.ScoreCategoryID = c.CategoryID
 end
 go
 
-
-	
 
 
 --drop procedure spWriteScores

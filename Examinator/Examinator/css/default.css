@@ -199,6 +199,7 @@ a:active, a:focus {
 }
 
 .close {
+    font-size:small;
 	background: #BDA809;
 	color: #FFFFFF;
 	line-height: 25px;

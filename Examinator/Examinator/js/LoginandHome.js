@@ -70,3 +70,25 @@ function forgotpwFocus() {
     var regsBox = document.getElementById("tbEmailReset");
     regsBox.focus();
 }
+
+function prefsFocus() {
+    var regsBox = document.getElementById("tbChangeuserName");
+    regsBox.focus();
+}
+
+
+function PrefsValidate() {
+    var user = document.getElementById("tbChangeuserName");
+    var password = document.getElementById("tbChangePassword");
+    if (user.value == '') {
+        alert('Enter Username.');
+        return false;
+    }
+    else if (password.value == '') {
+        alert('Enter Password.');
+        return false;
+    }
+    else {
+        return true;
+    }
+}
