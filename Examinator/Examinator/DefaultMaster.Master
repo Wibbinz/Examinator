@@ -49,12 +49,12 @@
                                             </tr>   
                                             <tr>
                                                 <td>Display Unapproved Questions</td>
-                                                <td><asp:RadioButton ID="rbtnQuestions" runat="server" /></td>
+                                                <td><asp:RadioButton ID="rbtnQuestions" runat="server"/></td>
                                             </tr>                                       
                                             <tr>
                                                 <td></td>
                                                 <td>
-                                                    <asp:Button ID="btnPrefs" CssClass="button" runat="server" Text="Change Settings" OnClientClick="PrefsValidate();" />
+                                                    <asp:Button ID="btnPrefs" CssClass="button" runat="server" Text="Change Settings" OnClientClick="PrefsValidate();" OnClick="btnPrefs_Click" />
                                                 </td>
                                             </tr>
                                         </table>

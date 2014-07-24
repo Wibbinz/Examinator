@@ -27,7 +27,7 @@ create table tbPreferences
 (PrefID int identity (10,1) primary key,
 PrefUserID int foreign key references tbUsers (UserID),
 PrefShowInLeader bit,
-PrefShowApproved bit,
+PrefShowUnapproved bit,
 PrefBit bit)
 go
 
@@ -87,7 +87,8 @@ ScoreUserID int foreign key references tbUsers (UserID),
 ScoreCategoryID int foreign key references tbCategory (CategoryID),
 ScoreTotalScore int,
 ScoreTotalTime int,
-ScoreDateTaken date)
+ScoreDateTaken date,
+ScoreBit bit)
 go
 
 ------------------------------
@@ -479,12 +480,13 @@ go
 
 --Scores Table
 insert into tbScores
-(ScoreUserID,ScoreCategoryID,ScoreTotalScore,ScoreTotalTime,ScoreDateTaken)
-values	(1001,104,75,10,'2014-05-01'),
-		(1002,100,80,10,'2014-05-02'),
-		(1003,104,95,10,'2014-05-02'),
-		(1001,104,42,10,'2014-05-04')
+(ScoreUserID,ScoreCategoryID,ScoreTotalScore,ScoreTotalTime,ScoreDateTaken, ScoreBit)
+values	(1001,104,75,10,'2014-05-01',1),
+		(1002,100,80,10,'2014-05-02',1),
+		(1003,104,95,10,'2014-05-02',1),
+		(1001,104,42,10,'2014-05-04',1)
 go
+
 
 	
 ----------------------------
@@ -726,6 +728,7 @@ begin
     SELECT c.CatName, u.UserName, ScoreTotalScore, ScoreTotalTime, ScoreDateTaken FROM ranked2 r
     join tbUsers u on r.ScoreUserID = u.UserID 
 	join tbCategory c on r.ScoreCategoryID = c.CategoryID
+	WHERE ScoreBit = 1
 end
 go
 
@@ -752,7 +755,8 @@ create procedure spWriteScores
 	@UserName varchar (30),
 	@CatName varchar (25),
 	@Score int,
-	@TotalTime int
+	@TotalTime int,
+	@ScoreBit bit
 )
 as
 	begin
@@ -760,8 +764,8 @@ as
 		declare @CatID int
 		set @UserID = (select UserID FROM tbUsers WHERE UserName = @UserName)
 		set @CatID = (select CategoryID from tbCategory where CatName = @CatName) 
-		insert into tbScores (ScoreUserID,ScoreCategoryID,ScoreTotalScore,ScoreTotalTime,ScoreDateTaken)
-		values	(@UserID,@CatID,@Score,@TotalTime,GetDate())
+		insert into tbScores (ScoreUserID,ScoreCategoryID,ScoreTotalScore,ScoreTotalTime,ScoreDateTaken, ScoreBit)
+		values	(@UserID,@CatID,@Score,@TotalTime,GetDate(), @ScoreBit)
 	end
 go
 
@@ -937,6 +941,24 @@ go
 --------------------------------------------------------------
 --Preferences Related Stored Procedures
 --------------------------------------------------------------
+--drop procedure spGetPreferences
+--procedure for retrieving prefereces by username
+create procedure spGetPreferences
+(
+	@UserName varchar (30)
+)
+as
+begin
+		declare @UserID int
+		set @UserID = (select UserID FROM tbUsers WHERE UserName = @UserName)
+		select u.UserEmail, p.PrefShowInLeader, p.PrefShowUnapproved from tbUsers u
+		full join tbPreferences p on p.PrefUserID = u.UserID
+		where u.UserID = @UserID
+end
+go
+
+--spGetPreferences
+--@UserName = 'robin'
 --drop procedure spUpdatePreferences
 --procedure for users to update preferences
 create procedure spUpdatePreferences
@@ -945,7 +967,7 @@ create procedure spUpdatePreferences
 	@UserName varchar (30),
 	@UserPass varchar (30),
 	@PrefShowInLeader bit,
-	@PrefShowApproved bit	
+	@PrefShowUnapproved bit	
 )
 as
 	begin
@@ -954,16 +976,26 @@ as
 		update tbUsers
 				set UserPass = @UserPass, UserName = @UserName
 				where UserID = @UserID
+		if @PrefShowInLeader = 0
+		begin
+			update tbScores
+				set ScoreBit = 0 where ScoreUserID = @UserID
+		end
+		else
+		begin	
+			update tbScores
+				set ScoreBit = 1 where ScoreUserID = @UserID
+		end
 		if exists (select * from tbPreferences where PrefUserID = @UserID)
 			begin				
 				update tbPreferences
-				set PrefShowInLeader = @PrefShowInLeader, PrefShowApproved = @PrefShowApproved
+				set PrefShowInLeader = @PrefShowInLeader, PrefShowUnapproved = @PrefShowUnapproved
 				where PrefUserID = @UserID
 			end
 		else
 			begin
-				insert into tbPreferences (PrefUserID,PrefShowInLeader,PrefShowApproved, PrefBit)
-		values	(@UserID,@PrefShowInLeader,@PrefShowApproved,1)
+				insert into tbPreferences (PrefUserID,PrefShowInLeader,PrefShowUnapproved, PrefBit)
+		values	(@UserID,@PrefShowInLeader,@PrefShowUnapproved,1)
 			end
 	end
 go
@@ -1000,6 +1032,7 @@ go
 --select * from tbAnswers
 --select * from tbExplanations
 --select * from tbScores
+--select * from tbPreferences
 
 
 --spUpdateDefaultTimes

@@ -20,13 +20,13 @@ namespace Examinator
     {
 
         [WebMethod]
-        public string getTest(string category, string mode, string difficulty)
+        public string getTest(string category, string mode, string difficulty, string showUnapproved)
         {
             DAL.DAL dal = new DAL.DAL("Data Source=localhost;Initial Catalog=dbExaminator;Integrated Security=True");
            
             dal.AddParam("@CatName", category);
             dal.AddParam("@Difficulty", difficulty);
-            if (mode == "exam")
+            if (mode == "exam"|| showUnapproved=="no")
             {
                 dal.AddParam("@ApprovedOnly", "yes");
             }
@@ -55,13 +55,14 @@ namespace Examinator
         }
 
         [WebMethod]
-        public void recordScores(string user, string category, int score, int totalTime)
+        public void recordScores(string user, string category, int score, int totalTime, bool scoreBit)
         {
             DAL.DAL dal = new DAL.DAL("Data Source=localhost;Initial Catalog=dbExaminator;Integrated Security=True");
             dal.AddParam("@UserName", user);
             dal.AddParam("@CatName", category);
             dal.AddParam("@Score", score);
             dal.AddParam("@TotalTime", totalTime);
+            dal.AddParam("@ScoreBit", scoreBit);
             DataSet ds = new DataSet();
             ds = dal.ExecuteProcedure("spWriteScores");
         }

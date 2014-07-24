@@ -20,8 +20,8 @@ namespace Examinator
 
         protected void loggedIn()
         {
-            string userName = (string)Session["User"];
-            GetPreferences();
+            string userName = (string)Session["User"];            
+            GetPreferences(userName);
             lblUser.Text = "Greetings, " + userName;
             pnlLogin.Visible = false;
             pnlLogout.Visible = true;
@@ -53,6 +53,9 @@ namespace Examinator
         protected void linkLogout_Click(object sender, EventArgs e)
         {
             Session["User"] = null;
+            Session["Email"] = null;
+            Session["ShowLeader"] = null;
+            Session["ShowUnapproved"] = null;
             lblMessage.Text = "";
             lblUser.Text = "";
             lblPasswordResult.Text = "";
@@ -90,9 +93,48 @@ namespace Examinator
             tbEmail.Text = "";
         }
 
-        protected void GetPreferences()
+        protected void GetPreferences(string user)
         {
+            DAL.DAL dal = new DAL.DAL("Data Source = localhost; Initial Catalog = dbExaminator; Integrated Security = True");
+            DataSet ds = new DataSet();
+            dal.AddParam("@UserName", user);
+            ds = dal.ExecuteProcedure("spGetPreferences");
+            Session["Email"] = ds.Tables[0].Rows[0]["UserEmail"];
+            if ((ds.Tables[0].Rows[0]["PrefShowInLeader"] != null) && !DBNull.Value.Equals(ds.Tables[0].Rows[0]["PrefShowInLeader"]))
+            {
+                Session["ShowLeader"] = Convert.ToBoolean(ds.Tables[0].Rows[0]["PrefShowInLeader"]);
+            }
+            else
+            {
+                Session["ShowLeader"] = false;
+            }
+            if ((ds.Tables[0].Rows[0]["PrefShowUnapproved"] != null) && !DBNull.Value.Equals(ds.Tables[0].Rows[0]["PrefShowUnapproved"]))
+            {
+                Session["ShowUnapproved"] = Convert.ToBoolean(ds.Tables[0].Rows[0]["PrefShowUnapproved"]);
+            }
+            else
+            {
+                Session["ShowUnapproved"] = false;
+            }
         }
 
+        protected void btnPrefs_Click(object sender, EventArgs e)
+        {
+            string email = Session["Email"].ToString();
+            string user = tbChangeuserName.Text;
+            string pass = tbChangePassword.Text;
+            bool showLeader = rbtnScores.Checked;
+            bool showUnapproved = rbtnQuestions.Checked;
+            
+            DAL.DAL dal = new DAL.DAL("Data Source = localhost; Initial Catalog = dbExaminator; Integrated Security = True");
+            DataSet ds = new DataSet();
+            dal.AddParam("@UserEmail", email);
+            dal.AddParam("@UserName", user);
+            dal.AddParam("@UserPass", pass);
+            dal.AddParam("@PrefShowInLeader", showLeader);
+            dal.AddParam("@PrefShowUnapproved", showUnapproved);
+            ds = dal.ExecuteProcedure("spUpdatePreferences");
+            Response.Redirect("Home.aspx");
+        }
     }
 }

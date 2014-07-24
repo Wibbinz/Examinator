@@ -63,12 +63,12 @@ function fadeToNext(eToFade, eNext) {
     });
 }
 
-function getQuiz(chosenCategory, chosenMode, chosenDifficulty) {    
+function getQuiz(chosenCategory, chosenMode, chosenDifficulty, showUnapproved) {
     $.ajax({
         type: "POST",
         url: "/QuizService.asmx/getTest",
         contentType: "application/json",
-        data: JSON.stringify({ "category": chosenCategory, "mode": chosenMode, "difficulty": chosenDifficulty }),
+        data: JSON.stringify({ "category": chosenCategory, "mode": chosenMode, "difficulty": chosenDifficulty, "showUnapproved": showUnapproved }),
         success: function (data) {
             var result = JSON.parse(data.d);
             popQuiz(result);
@@ -158,10 +158,6 @@ function popQuestionAnswerParas(index) {
         }
     }
 }
-
-
-
-
 
 
 function textDeco(answer, text1, text2) {
@@ -290,7 +286,7 @@ function RandomAnswerGenerator() {
     wrongAnswers = answerSet.slice(0, 3);
 }
 
-function testResults(user) {
+function testResults(user, scoreBit) {
     getIndivTimer();
     var totScore = 0;
     var totTime = 0;
@@ -306,7 +302,7 @@ function testResults(user) {
             underTwo++;
         }
     }
-    sendResults(user, totScore, totTime);
+    sendResults(user, totScore, totTime, scoreBit);
     setNewTimes();
     var myDiv = document.getElementById('testResults');
     var tbl = document.createElement('table');
@@ -442,13 +438,13 @@ function alertBox(message, alertd, messaged) {
 
 
 
-function sendResults(user, score, totTime) {
+function sendResults(user, score, totTime, scoreBit) {
     var category = quiz[1].CatName;
     $.ajax({
         type: "POST",
         url: "/QuizService.asmx/recordScores",
         contentType: "application/json",
-        data: JSON.stringify({ "user": user, "category": category, "score": score, "totalTime": totTime}),
+        data: JSON.stringify({ "user": user, "category": category, "score": score, "totalTime": totTime, "scoreBit": scoreBit}),
         success: function (data) {
             return true;
         },

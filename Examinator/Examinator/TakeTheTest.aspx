@@ -168,7 +168,13 @@
             $("#testID").click(function () {
                 $(document).bind("keydown", disableF5);
                 $(document).on("keydown", disableF5);
-                getQuiz(chosenCategory, chosenMode, chosenDifficulty);
+                var showUnapproved = '<%= Session["ShowUnapproved"] %>';
+                if (showUnapproved) {
+                    getQuiz(chosenCategory, chosenMode, chosenDifficulty, "yes");
+                }
+                else {
+                    getQuiz(chosenCategory, chosenMode, chosenDifficulty, "no");
+                }
                 fadeToNext('#testPrep', '#test');
                 return false;
             });
@@ -190,7 +196,9 @@
 
             $("#btnFinished").click(function () {
                 var user = '<%= Session["User"] %>';
-                testResults(user.toString());
+                var scoreBit = '<%=Session["ShowLeader"]%>';
+                alert(scoreBit);
+                testResults(user.toString(), scoreBit);
                 fadeToNext('#test', '#testResults');
             });
         });
