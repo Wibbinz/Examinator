@@ -68,7 +68,7 @@ namespace Examinator
                             if (catID != -1)
                             {
 
-                                int questionID = insertQuestion(catID, dtCSV.Rows[i][2].ToString());
+                                int questionID = insertQuestion(catID, Session["User"].ToString(), dtCSV.Rows[i][2].ToString());
 
                                 if (questionID != -1)
                                 {
@@ -155,14 +155,14 @@ namespace Examinator
             }
             return -1;
         }
-        protected int insertQuestion(int catID, string questionText)
+        protected int insertQuestion(int catID, string user, string questionText)
         {
             try
             {
                 DAL.DAL dal = new DAL.DAL("Data Source=localhost;Initial Catalog=dbExaminator;Integrated Security=True");
 
                 dal.AddParam("@QuestionCatID", catID);
-                //dal.AddParam("@QuestionUploader", 1002);
+                dal.AddParam("@QuestionUploader", user);
                 dal.AddParam("@QuestionText", questionText);
 
                 DataSet ds = new DataSet();

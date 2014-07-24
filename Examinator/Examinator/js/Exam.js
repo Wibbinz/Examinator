@@ -290,7 +290,7 @@ function RandomAnswerGenerator() {
     wrongAnswers = answerSet.slice(0, 3);
 }
 
-function testResults() {
+function testResults(user) {
     getIndivTimer();
     var totScore = 0;
     var totTime = 0;
@@ -306,7 +306,7 @@ function testResults() {
             underTwo++;
         }
     }
-    sendResults("homer", totScore, totTime);
+    sendResults(user, totScore, totTime);
     setNewTimes();
     var myDiv = document.getElementById('testResults');
     var tbl = document.createElement('table');

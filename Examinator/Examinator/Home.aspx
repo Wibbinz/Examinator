@@ -24,8 +24,8 @@
     <script>
         $(document).ready(function () {
             $(".conditionalLink").click(function (event) {
-                var variable = '<%= Session["User"] %>';
-                if (variable.toString() == '') {
+                var user = '<%= Session["User"] %>';
+                if (user.toString() == '') {
                     alert("Please Log in first.");
                     event.preventDefault();
                 }

@@ -189,7 +189,8 @@
             });
 
             $("#btnFinished").click(function () {
-                testResults();
+                var user = '<%= Session["User"] %>';
+                testResults(user.toString());
                 fadeToNext('#test', '#testResults');
             });
         });

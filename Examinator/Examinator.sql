@@ -101,7 +101,8 @@ values	('admin','admin','admin@examinator.com',2,1),	--1000
 		('homer','homer','homer@simpson.com',1,1),		--1001
 		('robin','robin','r.iwamoto@shaw.ca',1,1),		--1002
 		('buttons','beaw','sqvishee@gmail.com',1,1),	--1003
-		('betty','tear','betty@tear.com',1,1)			--1004
+		('betty','tear','betty@tear.com',1,1),			--1004
+		('scott','scott','scott@zombie.com',1,1)		--1005
 go
 
 --Preference Table (Populate after values are known)
@@ -662,13 +663,15 @@ go
 create procedure spUploadQuestions
 (
 	@QuestionCatID int,
-	@QuestionUploader int = null,
+	@QuestionUploader varchar (30),
 	@QuestionText varchar (256)
 )
 as
 	begin
+		declare @UploaderID int
+		set @UploaderID = (select UserID from tbUsers where UserName = @QuestionUploader)
 		insert into tbQuestions
-		values	(@QuestionCatID,1002,@QuestionText,NULL,60,getdate(),0,1)
+		values	(@QuestionCatID,@UploaderID,@QuestionText,NULL,60,getdate(),0,1)
 		select @@identity
 	end
 go
@@ -707,34 +710,6 @@ go
 --------------------------------------------------------------
 --Score Related Stored Procedures
 --------------------------------------------------------------
-
---drop procedure spGetTop10
---create procedure spGetTop10
---as
---	begin
---		select top 10 u.UserName,c.CatName,ScoreTotalScore,ScoreDateTaken from tbScores
---		join tbUsers u on ScoreUserID = UserID
---		join tbCategory c on ScoreCategoryID = CategoryID
---		order by ScoreTotalScore desc,CatName asc
---	end
---go
-
-
---drop view getScores
---create view getScores
---as
---	select top 10 u.UserName,ScoreCategoryID, c.CatName,ScoreTotalScore,ScoreDateTaken from tbScores
---	join tbUsers u on ScoreUserID = UserID
---	join tbCategory c on ScoreCategoryID = CategoryID
---	order by ScoreTotalScore desc,CatName asc
---go
-
---drop view getMaxScores
---create view getMaxScores
---as
---	select ScoreCategoryID, MAX(ScoreTotalScore) as MaxScore from tbScores
---	group by ScoreCategoryID
---go
 
 --drop procedure spGetTop10
 create procedure spGetTopScores
