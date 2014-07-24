@@ -14,6 +14,7 @@
     }
 }
 
+
 function forgotPW() {
     var email = document.getElementById("tbEmailReset").value;
     var randomLetters = Math.random().toString(36).slice(2, 6) + Math.random().toString(36).slice(2);

@@ -9,16 +9,27 @@
         </div>
         <div class="column">
              <img class="vertImg" src="images/fire music.jpg" /><br />
-             <a href="TakeTheTest.aspx"><div class="menudiv"><h3>Take a Test</h3></div></a>
+             <a class="conditionalLink" href="TakeTheTest.aspx" ><div class="menudiv"><h3>Take a Test</h3></div></a>
         </div>
         <div class="column">
              <a href="Leaderboards.aspx"><div class="menudiv"><h3>Leaderboards</h3></div></a><br />             
              <img class="vertImg" src="images/DaVinci.png" />
         </div>
         <div class="column">
-             <a href="TakeTheTest.aspx#testPrep"><img class="horizImg" src="images/Terminator Panda.jpg" /></a>
-             <a href="UploadQuestions.aspx"><div class="menudiv"><h3>Upload Questions</h3></div></a><br />
+             <a class="conditionalLink" href="TakeTheTest.aspx#testPrep" onclick="blockRedirect();"><img class="horizImg" src="images/Terminator Panda.jpg" /></a>
+             <a class="conditionalLink" href="UploadQuestions.aspx" onclick="blockRedirect();"><div class="menudiv"><h3>Upload Questions</h3></div></a><br />
              <img class="horizImg" src="images/Spocks.png" />
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            $(".conditionalLink").click(function (event) {
+                var variable = '<%= Session["User"] %>';
+                if (variable.toString() == '') {
+                    alert("Please Log in first.");
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
 </asp:Content>

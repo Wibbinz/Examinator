@@ -11,7 +11,22 @@ namespace Examinator
     public partial class DefaultMaster : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
-        {            
+        {
+            if (Session["User"] != null)
+            {
+                loggedIn();
+            }
+        }
+
+        protected void loggedIn()
+        {
+            string userName = (string)Session["User"];
+            GetPreferences();
+            lblUser.Text = "Greetings, " + userName;
+            pnlLogin.Visible = false;
+            pnlLogout.Visible = true;
+            tbLogin.Text = "";
+            tbPassword.Text = "";
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -29,22 +44,21 @@ namespace Examinator
             }
             else
             {
-                GetPreferences();
-                lblUser.Text = "Greetings, " + tbLogin.Text;
-                pnlLogin.Visible = false;
-                pnlLogout.Visible = true;
-                tbLogin.Text = "";
-                tbPassword.Text = "";
+                Session["User"] = tbLogin.Text;
+                loggedIn();
+                Response.Redirect("Home.aspx");
             }
         }
 
         protected void linkLogout_Click(object sender, EventArgs e)
         {
+            Session["User"] = null;
             lblMessage.Text = "";
             lblUser.Text = "";
             lblPasswordResult.Text = "";
             pnlLogout.Visible = false;
             pnlLogin.Visible = true;
+            Response.Redirect("Home.aspx");
         }
 
         protected void btnNewUser_Click(object sender, EventArgs e)
