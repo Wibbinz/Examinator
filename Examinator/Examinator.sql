@@ -729,6 +729,21 @@ begin
 end
 go
 
+--drop procedure spGetScoresByID
+create procedure spGetScoresByID
+(
+	@UserName VARCHAR(30)
+)
+as
+begin
+	declare @UserID int
+	set @UserID = (SELECT UserID FROM tbUsers where UserName = @UserName)
+	SELECT c.CatName, ScoreTotalScore, ScoreTotalTime, ScoreDateTaken FROM tbScores
+	join tbCategory c on ScoreCategoryID = c.CategoryID
+	WHERE ScoreUserID = @UserID
+	ORDER BY ScoreTotalScore DESC
+end
+go
 
 
 --drop procedure spWriteScores
@@ -914,6 +929,42 @@ as
 		update tbQuestions
 		set QuestionRecTime = @QuestionNewTime
 		where QuestionID = @QuestionID
+	end
+go
+
+
+
+--------------------------------------------------------------
+--Preferences Related Stored Procedures
+--------------------------------------------------------------
+--drop procedure spUpdatePreferences
+--procedure for users to update preferences
+create procedure spUpdatePreferences
+(
+	@UserEmail varchar(30),
+	@UserName varchar (30),
+	@UserPass varchar (30),
+	@PrefShowInLeader bit,
+	@PrefShowApproved bit	
+)
+as
+	begin
+		declare @UserID int
+		set @UserID = (select UserID FROM tbUsers WHERE UserEmail = @UserEmail)
+		update tbUsers
+				set UserPass = @UserPass, UserName = @UserName
+				where UserID = @UserID
+		if exists (select * from tbPreferences where PrefUserID = @UserID)
+			begin				
+				update tbPreferences
+				set PrefShowInLeader = @PrefShowInLeader, PrefShowApproved = @PrefShowApproved
+				where PrefUserID = @UserID
+			end
+		else
+			begin
+				insert into tbPreferences (PrefUserID,PrefShowInLeader,PrefShowApproved, PrefBit)
+		values	(@UserID,@PrefShowInLeader,@PrefShowApproved,1)
+			end
 	end
 go
 
