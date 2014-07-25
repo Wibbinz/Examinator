@@ -380,4 +380,28 @@ a:active, a:focus {
 	color:#ffffaa;
 }
 
+.dropdown{
+    margin: 10px 10px 10px 25px;
+    color:#024B63;    
+    font-size:14px;
+    text-shadow: 0px 0px 2px black, 3px 10px 10px #044C63; 
+    background:-o-linear-gradient(bottom, #7f5c11 5%, #ffffaa 100%);	
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #7f5c11), color-stop(1, #ffffaa) ); 
+	background:-moz-linear-gradient( center top, #7f5c11 5%, #ffffaa 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#7f5c11", endColorstr="#ffffaa");	
+    background: -o-linear-gradient(top,#7f5c11,ffffaa);
+	background-color:#ffffaa;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius:2px;
+    width:18%;
+    float:left;
+    box-sizing:border-box;
+    text-align:center;  
+    padding:5px;
+}
 
+#gvDiv{
+    position:absolute;
+    margin:45px 0px 0px 0px;
+}

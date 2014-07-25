@@ -641,62 +641,7 @@ go
 
 
 --drop procedure spGetAll
---create procedure spGetAll
---(
---	@CatName varchar(25),
---	@Sort char (5)
---)
---as
---	begin
---		declare @CategoryID int
---		if exists (select CategoryID FROM tbCategory WHERE CatName = @CatName)
---		begin
---			set @CategoryID = (select CategoryID FROM tbCategory WHERE CatName = @CatName)
---			if @Sort = 'ASC'
---				begin
---					select * from tbQuestions q
---					join tbCategory c on c.CategoryID = @CategoryID
---					join tbAnswers a on a.AnswerID = q.QuestionID
---					join tbExplanations e on e.ExplnQuestionID = q.QuestionID
---					where QuestionCatID = @CategoryID
---					order by QuestionApprovalBit 
---				end
---			else
---				begin
---					select * from tbQuestions q
---					join tbCategory c on c.CategoryID = @CategoryID
---					join tbAnswers a on a.AnswerID = q.QuestionID
---					join tbExplanations e on e.ExplnQuestionID = q.QuestionID
---					where QuestionCatID = @CategoryID
---					order by QuestionApprovalBit DESC 
---				end
---		end
---		else
---			begin
---				if @Sort = 'ASC'
---				begin
---					select * from tbQuestions q
---					join tbCategory c on c.CategoryID = q.QuestionCatID
---					join tbAnswers a on a.AnswerID = q.QuestionID
---					join tbExplanations e on e.ExplnQuestionID = q.QuestionID
---					where QuestionApprovalBit = 0
---					order by c.CatName
---				end
---			else
---				begin
---					select * from tbQuestions q
---					join tbCategory c on c.CategoryID = q.QuestionCatID
---					join tbAnswers a on a.AnswerID = q.QuestionID
---					join tbExplanations e on e.ExplnQuestionID = q.QuestionID
---					where QuestionApprovalBit = 0
---					order by c.CatName DESC 
---				end	
---			end
---	end
---go
-
-
-
+--procedure to populate editor table
 create procedure spGetAll
 (
 	@CatName varchar(25)
@@ -751,6 +696,24 @@ as
 go
 
 
+--drop procedure spUpdateCat
+create procedure spUpdateCat
+(
+	@CatID int,
+	@CatName varchar (25),
+	@CatDesc varchar (65)
+)
+as
+	begin
+		begin
+			update tbCategory
+			set CatName = @CatName, CatDesc = @CatDesc
+			where CategoryID = @CatID
+		end
+	end
+go
+	
+		
 --drop procedure spUploadQuestions
 create procedure spUploadQuestions
 (
@@ -765,6 +728,28 @@ as
 		insert into tbQuestions
 		values	(@QuestionCatID,@UploaderID,@QuestionText,NULL,60,getdate(),0,1)
 		select @@identity
+	end
+go
+
+
+
+--drop procedure spUpdateQuestions
+create procedure spUpdateQuestions
+(
+	@QuestionID int,
+	@QuestionCatID int,
+	@QuestionText varchar (256),
+	@QuestionApprovalBit bit,
+	@QuestionBit bit
+)
+as
+	begin
+		update tbQuestions
+		set QuestionTxt = @QuestionText, 
+		QuestionApprovalBit = @QuestionApprovalBit, 
+		QuestionBit = @QuestionBit,
+		QuestionCatID = @QuestionCatID
+		where QuestionID = @QuestionID
 	end
 go
 
@@ -786,6 +771,31 @@ as
 	end
 go
 
+--drop procedure spUpdateAnswers
+create procedure spUpdateAnswers
+(
+	@AnswerQuestionID int,
+	@AnswerCorrect varchar (256),
+	@Answer1 varchar (256),
+	@Answer2 varchar (256),
+	@Answer3 varchar (256),
+	@Answer4 varchar (256),
+	@Answer5 varchar (256)
+)
+as
+	begin
+		update tbAnswers
+		set AnswerCorrect = @AnswerCorrect,
+		Answer1 = @Answer1,
+		Answer2 = @Answer2,
+		Answer3 = @Answer3,
+		Answer4 = @Answer4,
+		Answer5 = @Answer5
+		where AnswerQuestionID = @AnswerQuestionID	
+	end
+go
+
+
 --drop procedure spUploadExplanations
 create procedure spUploadExplanations
 (
@@ -796,6 +806,22 @@ as
 	begin
 		insert into tbExplanations
 		values	(@ExplanationQuestionID,@ExplanationText,1)
+	end
+go
+
+
+
+--drop procedure spUpdateExplanations
+create procedure spUpdateExplanations
+(
+	@ExplanationQuestionID int,
+	@ExplanationText varchar (500)
+)
+as
+	begin
+		update tbExplanations
+		set	ExplanationText = @ExplanationText
+		where ExplanationQuestionID = @ExplanationQuestionID
 	end
 go
 
