@@ -636,8 +636,98 @@ as
 go
 
 --------------------------------------------------------------
---Upload Related Stored Procedures
+--Update / Upload Related Stored Procedures
 --------------------------------------------------------------
+
+
+--drop procedure spGetAll
+--create procedure spGetAll
+--(
+--	@CatName varchar(25),
+--	@Sort char (5)
+--)
+--as
+--	begin
+--		declare @CategoryID int
+--		if exists (select CategoryID FROM tbCategory WHERE CatName = @CatName)
+--		begin
+--			set @CategoryID = (select CategoryID FROM tbCategory WHERE CatName = @CatName)
+--			if @Sort = 'ASC'
+--				begin
+--					select * from tbQuestions q
+--					join tbCategory c on c.CategoryID = @CategoryID
+--					join tbAnswers a on a.AnswerID = q.QuestionID
+--					join tbExplanations e on e.ExplnQuestionID = q.QuestionID
+--					where QuestionCatID = @CategoryID
+--					order by QuestionApprovalBit 
+--				end
+--			else
+--				begin
+--					select * from tbQuestions q
+--					join tbCategory c on c.CategoryID = @CategoryID
+--					join tbAnswers a on a.AnswerID = q.QuestionID
+--					join tbExplanations e on e.ExplnQuestionID = q.QuestionID
+--					where QuestionCatID = @CategoryID
+--					order by QuestionApprovalBit DESC 
+--				end
+--		end
+--		else
+--			begin
+--				if @Sort = 'ASC'
+--				begin
+--					select * from tbQuestions q
+--					join tbCategory c on c.CategoryID = q.QuestionCatID
+--					join tbAnswers a on a.AnswerID = q.QuestionID
+--					join tbExplanations e on e.ExplnQuestionID = q.QuestionID
+--					where QuestionApprovalBit = 0
+--					order by c.CatName
+--				end
+--			else
+--				begin
+--					select * from tbQuestions q
+--					join tbCategory c on c.CategoryID = q.QuestionCatID
+--					join tbAnswers a on a.AnswerID = q.QuestionID
+--					join tbExplanations e on e.ExplnQuestionID = q.QuestionID
+--					where QuestionApprovalBit = 0
+--					order by c.CatName DESC 
+--				end	
+--			end
+--	end
+--go
+
+
+
+create procedure spGetAll
+(
+	@CatName varchar(25)
+)
+as
+	begin
+		declare @CategoryID int
+		if exists (select CategoryID FROM tbCategory WHERE CatName = @CatName)
+		begin
+			set @CategoryID = (select CategoryID FROM tbCategory WHERE CatName = @CatName)
+			select * from tbQuestions q
+			join tbCategory c on c.CategoryID = @CategoryID
+			join tbAnswers a on a.AnswerID = q.QuestionID
+			join tbExplanations e on e.ExplnQuestionID = q.QuestionID
+			where QuestionCatID = @CategoryID
+			order by QuestionApprovalBit 
+		end
+		else
+		begin				
+			select * from tbQuestions q
+			join tbCategory c on c.CategoryID = q.QuestionCatID
+			join tbAnswers a on a.AnswerID = q.QuestionID
+			join tbExplanations e on e.ExplnQuestionID = q.QuestionID
+			where QuestionApprovalBit = 0
+			order by c.CatName 
+		end
+	end
+go
+
+
+
 
 --drop procedure spUploadCat
 create procedure spUploadCat
@@ -741,7 +831,7 @@ as
 begin
 	declare @UserID int
 	set @UserID = (SELECT UserID FROM tbUsers where UserName = @UserName)
-	SELECT c.CatName, ScoreTotalScore, ScoreTotalTime, ScoreDateTaken FROM tbScores
+	SELECT top 10 c.CatName, ScoreTotalScore, ScoreTotalTime, ScoreDateTaken FROM tbScores
 	join tbCategory c on ScoreCategoryID = c.CategoryID
 	WHERE ScoreUserID = @UserID
 	ORDER BY ScoreTotalScore DESC
@@ -957,8 +1047,6 @@ begin
 end
 go
 
---spGetPreferences
---@UserName = 'robin'
 --drop procedure spUpdatePreferences
 --procedure for users to update preferences
 create procedure spUpdatePreferences
@@ -1033,6 +1121,7 @@ go
 --select * from tbExplanations
 --select * from tbScores
 --select * from tbPreferences
+--select * from tbUsers
 
 
 --spUpdateDefaultTimes

@@ -28,7 +28,8 @@
                         <div class="loginbox">
                             <asp:Label ID="lblUser" runat="server" Text=""></asp:Label><br />
                             <a href="#preferences" runat="server">Preferences</a>
-                            <asp:LinkButton ID="linkLogout" runat="server" OnClick="linkLogout_Click">Log Out</asp:LinkButton>
+                            <asp:LinkButton ID="linkLogout" runat="server" OnClick="linkLogout_Click">Log Out</asp:LinkButton><br />
+                            <asp:LinkButton ID="linkEditor" runat="server" ForeColor="Yellow" Visible="false" OnClick="linkEditor_Click">Editor</asp:LinkButton>
                         </div>
                         <%-- Preferences Modal Window --%>
                             <asp:Panel ID="pnlPrefs" runat="server" DefaultButton="btnPrefs">

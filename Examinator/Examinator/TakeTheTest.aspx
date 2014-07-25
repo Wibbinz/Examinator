@@ -197,7 +197,6 @@
             $("#btnFinished").click(function () {
                 var user = '<%= Session["User"] %>';
                 var scoreBit = '<%=Session["ShowLeader"]%>';
-                alert(scoreBit);
                 testResults(user.toString(), scoreBit);
                 fadeToNext('#test', '#testResults');
             });

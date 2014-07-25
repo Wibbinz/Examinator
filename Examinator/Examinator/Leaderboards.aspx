@@ -17,7 +17,7 @@
             </td>
             <td style="width:200px;"></td>
             <td>
-                <asp:GridView ID="gvPersonal" Caption="Your Personal Bests" CssClass="gvskin" runat="server">
+                <asp:GridView ID="gvPersonal" Caption="Your Personal Bests" CssClass="gvskin" runat="server" AutoGenerateColumns="False">
                     <Columns>
                         <asp:BoundField DataField="CatName" HeaderText="Category" />
                         <asp:BoundField DataField="ScoreTotalScore" HeaderText="Score" />

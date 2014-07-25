@@ -27,6 +27,8 @@ namespace Examinator
             pnlLogout.Visible = true;
             tbLogin.Text = "";
             tbPassword.Text = "";
+            if ((bool)Session["Admin"])
+                linkEditor.Visible = true;
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -44,6 +46,14 @@ namespace Examinator
             }
             else
             {
+                if (accessCheck == 2)
+                {
+                    Session["Admin"] = true;
+                }
+                else
+                {
+                    Session["Admin"] = false;
+                }
                 Session["User"] = tbLogin.Text;
                 loggedIn();
                 Response.Redirect("Home.aspx");
@@ -56,6 +66,7 @@ namespace Examinator
             Session["Email"] = null;
             Session["ShowLeader"] = null;
             Session["ShowUnapproved"] = null;
+            Session["Admin"] = null;
             lblMessage.Text = "";
             lblUser.Text = "";
             lblPasswordResult.Text = "";
@@ -134,7 +145,16 @@ namespace Examinator
             dal.AddParam("@PrefShowInLeader", showLeader);
             dal.AddParam("@PrefShowUnapproved", showUnapproved);
             ds = dal.ExecuteProcedure("spUpdatePreferences");
+            Session["User"] = tbChangeuserName.Text;
+            Session["ShowLeader"] = rbtnScores.Checked;
+            Session["ShowUnapproved"] = rbtnQuestions.Checked;
             Response.Redirect("Home.aspx");
+
+        }
+
+        protected void linkEditor_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Editor.aspx");
         }
     }
 }
