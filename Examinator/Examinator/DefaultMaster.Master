@@ -27,9 +27,9 @@
                     <asp:Panel ID="pnlLogout" runat="server" Visible="false">
                         <div class="loginbox">
                             <asp:Label ID="lblUser" runat="server" Text=""></asp:Label><br />
-                            <a href="#preferences" runat="server">Preferences</a>
+                            <a id="prefButton" href="#preferences" runat="server">Preferences</a>
                             <asp:LinkButton ID="linkLogout" runat="server" OnClick="linkLogout_Click">Log Out</asp:LinkButton><br />
-                            <asp:LinkButton ID="linkEditor" runat="server" ForeColor="Yellow" Visible="false" OnClick="linkEditor_Click">Editor</asp:LinkButton>
+                            <asp:LinkButton ID="linkEditor" runat="server" ForeColor="Yellow" Visible="false" OnClick="linkEditor_Click">ExaminEditor</asp:LinkButton>
                         </div>
                         <%-- Preferences Modal Window --%>
                             <asp:Panel ID="pnlPrefs" runat="server" DefaultButton="btnPrefs">
@@ -46,11 +46,15 @@
                                             </tr>
                                             <tr>
                                                 <td>Display Scores</td>
-                                                <td><asp:RadioButton ID="rbtnScores" runat="server" /></td>
+                                                <td>
+                                                    <asp:CheckBox ID="cbScores" runat="server" />
+                                                </td>
                                             </tr>   
                                             <tr>
                                                 <td>Display Unapproved Questions</td>
-                                                <td><asp:RadioButton ID="rbtnQuestions" runat="server"/></td>
+                                                <td>
+                                                    <asp:CheckBox ID="cbUnapproved" runat="server" />
+                                                </td>
                                             </tr>                                       
                                             <tr>
                                                 <td></td>
@@ -96,11 +100,11 @@
                                             <tr>
                                                 <td></td>
                                                 <td>
-                                                    <asp:Button ID="btnNewUser" CssClass="button" runat="server" Text="Register" OnClientClick="RegsValidate();" OnClick="btnNewUser_Click" />
+                                                    <asp:Button ID="btnNewUser" CssClass="button" runat="server" Text="Register" OnClientClick="return RegsValidate();" OnClick="btnNewUser_Click" />
                                                 </td>
                                             </tr>
                                         </table>
-                                        <a href="#close" title="Close" class="close">Cancel</a>
+                                        <a id="newRegsClose" href="#close" title="Close" class="close">Cancel</a>
                                     </div>
                                 </div>    
                             </asp:Panel>                      
@@ -139,11 +143,9 @@
                     $('input[type="password"]').val('');
                 });
             });
-
+            
             $("#newRegs").hover(function () {
-                if (!$("#newRegs").is(':focus')) {
                     regsFocus();
-                }
             });
 
             $("#forgotPW").hover(function () {
@@ -153,7 +155,6 @@
             $("#preferences").hover(function () {
                 prefsFocus();
             });
-
         });
     </script> 
 </html>

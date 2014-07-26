@@ -134,8 +134,8 @@ namespace Examinator
             string email = Session["Email"].ToString();
             string user = tbChangeuserName.Text;
             string pass = tbChangePassword.Text;
-            bool showLeader = rbtnScores.Checked;
-            bool showUnapproved = rbtnQuestions.Checked;
+            bool showLeader = cbScores.Checked;
+            bool showUnapproved = cbUnapproved.Checked;
             
             DAL.DAL dal = new DAL.DAL("Data Source = localhost; Initial Catalog = dbExaminator; Integrated Security = True");
             DataSet ds = new DataSet();
@@ -146,8 +146,8 @@ namespace Examinator
             dal.AddParam("@PrefShowUnapproved", showUnapproved);
             ds = dal.ExecuteProcedure("spUpdatePreferences");
             Session["User"] = tbChangeuserName.Text;
-            Session["ShowLeader"] = rbtnScores.Checked;
-            Session["ShowUnapproved"] = rbtnQuestions.Checked;
+            Session["ShowLeader"] = cbScores.Checked;
+            Session["ShowUnapproved"] = cbUnapproved.Checked;
             Response.Redirect("Home.aspx");
 
         }
@@ -155,6 +155,6 @@ namespace Examinator
         protected void linkEditor_Click(object sender, EventArgs e)
         {
             Response.Redirect("Editor.aspx");
-        }
+        }       
     }
 }

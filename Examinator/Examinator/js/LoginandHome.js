@@ -58,6 +58,7 @@ function RegsValidate() {
             alert('Email address invalid!');
             return false;
         }
+        window.location = document.getElementById('newRegsClose').href;
         return true;
     }
 }
@@ -68,13 +69,13 @@ function regsFocus() {
 }
 
 function forgotpwFocus() {
-    var regsBox = document.getElementById("tbEmailReset");
-    regsBox.focus();
+    var forgotBox = document.getElementById("tbEmailReset");
+    forgotBox.focus();
 }
 
 function prefsFocus() {
-    var regsBox = document.getElementById("tbChangeuserName");
-    regsBox.focus();
+    var prefsBox = document.getElementById("tbChangeuserName");
+    prefsBox.focus();
 }
 
 

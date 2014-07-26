@@ -556,11 +556,16 @@ as
 			insert into tbUsers
 			(UserName,UserPass,UserEmail,UserLvl,UserBit)
 			values	(@UserName,@UserPass,@UserEmail,1,1)
+			insert into tbPreferences
+			values (@@IDENTITY, 1, 1, 1)
 			select * from tbUsers where UserName = @UserName
 			and UserBit = 1
 		end
 	end
 go
+
+
+
 
 --drop procedure spChangeUserPW
 --procedure for users to change password
@@ -820,8 +825,8 @@ create procedure spUpdateExplanations
 as
 	begin
 		update tbExplanations
-		set	ExplanationText = @ExplanationText
-		where ExplanationQuestionID = @ExplanationQuestionID
+		set	ExplnText = @ExplanationText
+		where ExplnQuestionID = @ExplanationQuestionID
 	end
 go
 
@@ -829,7 +834,7 @@ go
 --Score Related Stored Procedures
 --------------------------------------------------------------
 
---drop procedure spGetTop10
+--drop procedure spGetTopScores
 create procedure spGetTopScores
 as
 begin
@@ -844,7 +849,7 @@ begin
     SELECT c.CatName, u.UserName, ScoreTotalScore, ScoreTotalTime, ScoreDateTaken FROM ranked2 r
     join tbUsers u on r.ScoreUserID = u.UserID 
 	join tbCategory c on r.ScoreCategoryID = c.CategoryID
-	WHERE ScoreBit = 1
+	WHERE ScoreBit = 1 and ScoreTotalScore > 0
 end
 go
 

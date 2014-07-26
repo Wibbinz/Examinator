@@ -48,6 +48,7 @@ namespace Examinator
         protected void ddCategories_SelectedIndexChanged(object sender, EventArgs e)
         {
             string category = ddCategories.SelectedItem.Text;
+            gvEditor.PageIndex = 0;
             PopulateGridview(category);
         }
 
@@ -58,11 +59,6 @@ namespace Examinator
             gvEditor.DataBind();
         }
 
-        protected void gvEditor_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-
-        }
-        
         protected void gvEditor_RowEditing(object sender, GridViewEditEventArgs e)
         {
             gvEditor.EditIndex = e.NewEditIndex;
@@ -100,7 +96,8 @@ namespace Examinator
 
             TextBox tbExplnText = (TextBox)row.FindControl("tbExplnText");
             UpdateExplanation(questionID, tbExplnText.Text);
-            
+            gvEditor.EditIndex = -1;
+            PopulateGridview(ddCategories.SelectedItem.Text);
         }
 
         protected void UpdateQuestion(int categoryID, int questionID, bool questionApproval, bool questionActive, string questionText)
@@ -144,7 +141,7 @@ namespace Examinator
             DataSet ds = new DataSet();
             dal.AddParam("@ExplanationQuestionID", questionID);
             dal.AddParam("@ExplanationText", explnText);
-            dal.ExecuteProcedure("spUploadExplanations");
+            dal.ExecuteProcedure("spUpdateExplanations");
         }      
     }
 }

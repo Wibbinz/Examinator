@@ -67,6 +67,15 @@ namespace Examinator {
         protected global::System.Web.UI.WebControls.Label lblUser;
         
         /// <summary>
+        /// prefButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor prefButton;
+        
+        /// <summary>
         /// linkLogout control.
         /// </summary>
         /// <remarks>
@@ -112,22 +121,22 @@ namespace Examinator {
         protected global::System.Web.UI.WebControls.TextBox tbChangePassword;
         
         /// <summary>
-        /// rbtnScores control.
+        /// cbScores control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbtnScores;
+        protected global::System.Web.UI.WebControls.CheckBox cbScores;
         
         /// <summary>
-        /// rbtnQuestions control.
+        /// cbUnapproved control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbtnQuestions;
+        protected global::System.Web.UI.WebControls.CheckBox cbUnapproved;
         
         /// <summary>
         /// btnPrefs control.
