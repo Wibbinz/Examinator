@@ -27,7 +27,9 @@ namespace Examinator
             pnlLogout.Visible = true;
             tbLogin.Text = "";
             tbPassword.Text = "";
-            if ((bool)Session["Admin"])
+            bool temp;
+            if (bool.TryParse(Session["Admin"].ToString(), out temp))
+            //if ((bool)Session["Admin"])
                 linkEditor.Visible = true;
         }
 
@@ -95,9 +97,11 @@ namespace Examinator
                 lblMessage.Text = result;
                 lblMessage.Style.Add("text-shadow", "2px 2px 2px #15E626");
                 lblMessage.Visible = true;
-                lblUser.Text = "Greetings, " + tbUser.Text;
-                pnlLogin.Visible = false;                
-                pnlLogout.Visible = true;    
+                Session["User"] = tbUser.Text;
+                //lblUser.Text = "Greetings, " + tbUser.Text;
+                //pnlLogin.Visible = false;                
+                //pnlLogout.Visible = true; 
+                loggedIn();
             }
             tbUser.Text = "";
             tbPW.Text = "";

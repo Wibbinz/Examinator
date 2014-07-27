@@ -17,7 +17,7 @@ create table tbUsers
 (UserID int identity (1000,1) primary key,
 UserName varchar (30),
 UserPass varchar (30),
-UserEmail varchar (30),
+UserEmail varchar (50),
 UserLvl int,
 UserBit bit)
 go
@@ -541,7 +541,7 @@ create procedure spAddUsers
 	@UserID int = null,
 	@UserName varchar (30) = null,
 	@UserPass varchar (30) = null,
-	@UserEmail varchar (30) = null,
+	@UserEmail varchar (50) = null,
 	@UserLvl int = null,
 	@UserBit bit = 1
 )
@@ -574,7 +574,7 @@ create procedure spChangeUserPW
 	@UserID int = null,
 	@UserName varchar (30) = null,
 	@UserPass varchar (30) = null,
-	@UserEmail varchar (30) = null,
+	@UserEmail varchar (50) = null,
 	@UserLvl int = null,
 	@UserBit bit = 1
 )
@@ -595,7 +595,7 @@ go
 --procedure for users to reset password if forgotten
 create procedure spForgotPW
 (
-    @UserEmail varchar (30),
+    @UserEmail varchar (50),
     @UserPass varchar (30)
 )
 as
@@ -623,7 +623,7 @@ create procedure spDeleteUsers
 	@UserID int = null,
 	@UserName varchar (30) = null,
 	@UserPass varchar (30) = null,
-	@UserEmail varchar (30) = null,
+	@UserEmail varchar (50) = null,
 	@UserLvl int = null,
 	@UserBit bit = 1
 )
@@ -1082,7 +1082,7 @@ go
 --procedure for users to update preferences
 create procedure spUpdatePreferences
 (
-	@UserEmail varchar(30),
+	@UserEmail varchar(50),
 	@UserName varchar (30),
 	@UserPass varchar (30),
 	@PrefShowInLeader bit,

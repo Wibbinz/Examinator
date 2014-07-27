@@ -59,7 +59,7 @@
                                             <tr>
                                                 <td></td>
                                                 <td>
-                                                    <asp:Button ID="btnPrefs" CssClass="button" runat="server" Text="Change Settings" OnClientClick="PrefsValidate();" OnClick="btnPrefs_Click" />
+                                                    <asp:Button ID="btnPrefs" CssClass="button" runat="server" Text="Change Settings" OnClientClick="return PrefsValidate();" OnClick="btnPrefs_Click" />
                                                 </td>
                                             </tr>
                                         </table>
