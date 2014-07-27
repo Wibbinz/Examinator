@@ -27,10 +27,12 @@ namespace Examinator
             pnlLogout.Visible = true;
             tbLogin.Text = "";
             tbPassword.Text = "";
-            bool temp;
-            if (bool.TryParse(Session["Admin"].ToString(), out temp))
-            //if ((bool)Session["Admin"])
+            bool ifAdmin;
+            bool temp = bool.TryParse(Session["Admin"].ToString(), out ifAdmin);
+            if (ifAdmin)            
                 linkEditor.Visible = true;
+            else
+                linkEditor.Visible = false;
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -98,9 +100,6 @@ namespace Examinator
                 lblMessage.Style.Add("text-shadow", "2px 2px 2px #15E626");
                 lblMessage.Visible = true;
                 Session["User"] = tbUser.Text;
-                //lblUser.Text = "Greetings, " + tbUser.Text;
-                //pnlLogin.Visible = false;                
-                //pnlLogout.Visible = true; 
                 loggedIn();
             }
             tbUser.Text = "";
@@ -152,8 +151,10 @@ namespace Examinator
             Session["User"] = tbChangeuserName.Text;
             Session["ShowLeader"] = cbScores.Checked;
             Session["ShowUnapproved"] = cbUnapproved.Checked;
-            Response.Redirect("Home.aspx");
-
+            lblMessage.Text = "Success! Your preferences have been recorded.";
+            lblMessage.Style.Add("text-shadow", "2px 2px 2px #15E626");
+            lblMessage.Visible = true;
+            loggedIn();
         }
 
         protected void linkEditor_Click(object sender, EventArgs e)
