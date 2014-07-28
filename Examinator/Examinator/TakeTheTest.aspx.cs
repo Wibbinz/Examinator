@@ -20,6 +20,7 @@ namespace Examinator
         public string GetCategories()
         {
             User currentUser = (User)Session["User"];
+            Session["UserName"] = currentUser.UserName;
             Session["PrefUnapproved"] = currentUser.PrefUnapproved;
             Session["PrefShowLeader"] = currentUser.PrefLeader;
             Question popQuestion = new Question();

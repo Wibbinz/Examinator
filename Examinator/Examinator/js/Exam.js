@@ -437,6 +437,12 @@ function alertBox(message, alertd, messaged) {
 }
 
 function pandaGo() {
+    var pandaDiv = document.getElementById("pandaDiv");
+    var pandaImg = document.createElement("img");
+    pandaImg.setAttribute("id", "panda");
+    pandaImg.setAttribute("src", "images/PandaEgg.gif");
+    pandaImg.setAttribute("style", "position: relative; left: 265px; border-radius:100px;");
+    pandaDiv.appendChild(pandaImg);
     document.location.hash = "#pandaDiv";
 
     var $roundand = $('#panda'), degree = 0, timer;

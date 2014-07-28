@@ -32,9 +32,7 @@
             Click the Next button without selecting an answer to skip a question.<br /><br /> 
             Skipped or unanswered questions will appear <b style="color:grey">grey</b> in the progress bar.<br />            
         </p>
-        <div id="pandaDiv">
-            <img id="panda" src="images/PandaEgg.gif" style="position: relative; left: 265px; border-radius:100px;" />
-        </div>
+        <div id="pandaDiv"></div>
         <div id="alertWindow" class="alertWindow">            
             <div id="message">
                 <a id="messageClose" href="#close" title="Close" class="close">X</a>  
@@ -210,7 +208,8 @@
             });
 
             $("#btnFinished").click(function () {
-                var scoreBit = '<%=Session["ShowLeader"]%>';
+                var scoreBit = '<%=Session["PrefShowLeader"]%>';
+                var user = '<%=Session["UserName"]%>';
                 testResults(user.toString(), scoreBit);
                 fadeToNext('#test', '#testResults');
             });
