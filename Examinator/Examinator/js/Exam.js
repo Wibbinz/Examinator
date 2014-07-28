@@ -433,9 +433,24 @@ function alertBox(message, alertd, messaged) {
     var messageDiv = document.getElementById(messaged);
     messageDiv.appendChild(document.createTextNode(message));
     alertDiv.appendChild(messageDiv);
-    document.location.hash = "#"+alertd;
+    document.location.hash = "#" + alertd;
 }
 
+function pandaGo() {
+    document.location.hash = "#pandaDiv";
+
+    var $roundand = $('#panda'), degree = 0, timer;
+    function rotate() {
+        $roundand.css({ transform: 'rotate(' + degree + 'deg)' });
+        timer = setTimeout(function () {++degree; rotate();});
+    }
+    rotate();
+
+    $("#panda").animate({ left: "+=500" }, 5000, function () {
+        $("#panda").css("display", "none");
+    });
+    document.location.href = "#close";
+}
 
 
 function sendResults(user, score, totTime, scoreBit) {

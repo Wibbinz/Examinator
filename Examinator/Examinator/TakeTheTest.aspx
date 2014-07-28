@@ -32,9 +32,12 @@
             Click the Next button without selecting an answer to skip a question.<br /><br /> 
             Skipped or unanswered questions will appear <b style="color:grey">grey</b> in the progress bar.<br />            
         </p>
-        <div id="alertWindow" class="alertWindow">
+        <div id="pandaDiv">
+            <img id="panda" src="images/PandaEgg.gif" style="position: relative; left: 265px; border-radius:100px;" />
+        </div>
+        <div id="alertWindow" class="alertWindow">            
             <div id="message">
-                <a href="#close" title="Close" class="close">X</a>  
+                <a id="messageClose" href="#close" title="Close" class="close">X</a>  
             </div>                                                          
         </div>  
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -95,11 +98,19 @@
             var chosenMode = '';
             var chosenDifficulty = '';
             var catInfo = '<%=GetCategories() %>';
-            var category = catInfo.split('|');
-            var currentindex = 0;
+
+            if (catInfo.split(0, 5) == 'Error') {
+                alert('ERROR');
+                window.location.href = "/Home.aspx";
+            }
+            else {
+                var category = catInfo.split('|');
+                var currentindex = 0;
+            }
 
             if (location.hash == '#testPrep') {
                 $("#initialScreen").fadeOut(100, function () {
+                    pandaGo();
                     alertBox("CONGRATULATIONS! You have unearthed the secret easter egg! Category: Potpourri", "alertWindow", "message");
                     chosenCategory = "Potpourri";
                     chosenMode = "Exam";
@@ -107,6 +118,10 @@
                     $("#testPrep").fadeIn(250);
                 });
             }
+
+            $("#messageClose").click(function () {
+                $("#panda").stop(true,true,true);
+            });
 
             $("select#ddModes").val(1);
             $("select#ddDifficulty").val(1);
@@ -168,8 +183,8 @@
             $("#testID").click(function () {
                 $(document).bind("keydown", disableF5);
                 $(document).on("keydown", disableF5);
-                var showUnapproved = '<%= Session["ShowUnapproved"] %>';
-                if (showUnapproved) {
+                var prefunapproved = '<%=Session["PrefUnapproved"]%>';
+                if (prefunapproved) {
                     getQuiz(chosenCategory, chosenMode, chosenDifficulty, "yes");
                 }
                 else {
@@ -195,7 +210,6 @@
             });
 
             $("#btnFinished").click(function () {
-                var user = '<%= Session["User"] %>';
                 var scoreBit = '<%=Session["ShowLeader"]%>';
                 testResults(user.toString(), scoreBit);
                 fadeToNext('#test', '#testResults');

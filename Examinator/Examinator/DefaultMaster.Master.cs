@@ -5,31 +5,29 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using Examinator_Classes;
 
 namespace Examinator
 {
     public partial class DefaultMaster : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
-            if (Session["User"] != null)
+        {           
+            if (Session["User"]!= null)
             {
-                loggedIn();
+                User currentUser = (User)Session["User"];
+                loggedIn(currentUser);
             }
         }
 
-        protected void loggedIn()
+        protected void loggedIn(User currentUser)
         {
-            string userName = (string)Session["User"];            
-            GetPreferences(userName);
-            lblUser.Text = "Greetings, " + userName;
+            lblUser.Text = "Greetings, " + currentUser.UserName;
             pnlLogin.Visible = false;
             pnlLogout.Visible = true;
             tbLogin.Text = "";
-            tbPassword.Text = "";
-            bool ifAdmin;
-            bool temp = bool.TryParse(Session["Admin"].ToString(), out ifAdmin);
-            if (ifAdmin)            
+            tbPassword.Text = "";            
+            if (currentUser.UserifAdmin)            
                 linkEditor.Visible = true;
             else
                 linkEditor.Visible = false;
@@ -37,29 +35,24 @@ namespace Examinator
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            DAL.DAL dal = new DAL.DAL("Data Source = localhost; Initial Catalog = dbExaminator; Integrated Security = True");
-            DataSet ds = new DataSet();
-            dal.AddParam("@UserName", tbLogin.Text);
-            dal.AddParam("@UserPass", tbPassword.Text);
-            ds = dal.ExecuteProcedure("spVerifyUsers");
-            int accessCheck = Convert.ToInt16(ds.Tables[0].Rows[0]["UserLvl"]);
+            User currentUser = new User();
+            int accessCheck = currentUser.VerifyUser(tbLogin.Text, tbPassword.Text);            
             if (accessCheck == -1)
             {
                 lblMessage.Text = "Invalid Login. Please try again.";
                 lblMessage.Visible = true;
             }
             else
-            {
+            {                
                 if (accessCheck == 2)
                 {
-                    Session["Admin"] = true;
+                    currentUser = currentUser.GetPreferences(tbLogin.Text, tbPassword.Text, true);
                 }
                 else
                 {
-                    Session["Admin"] = false;
+                    currentUser = currentUser.GetPreferences(tbLogin.Text, tbPassword.Text, false);
                 }
-                Session["User"] = tbLogin.Text;
-                loggedIn();
+                Session["User"] = currentUser;
                 Response.Redirect("Home.aspx");
             }
         }
@@ -67,10 +60,8 @@ namespace Examinator
         protected void linkLogout_Click(object sender, EventArgs e)
         {
             Session["User"] = null;
-            Session["Email"] = null;
-            Session["ShowLeader"] = null;
-            Session["ShowUnapproved"] = null;
-            Session["Admin"] = null;
+            Session["PrefUnapproved"] = null;
+            Session["PrefShowLeader"] = null;
             lblMessage.Text = "";
             lblUser.Text = "";
             lblPasswordResult.Text = "";
@@ -81,13 +72,10 @@ namespace Examinator
 
         protected void btnNewUser_Click(object sender, EventArgs e)
         {
-            DAL.DAL dal = new DAL.DAL("Data Source = localhost; Initial Catalog = dbExaminator; Integrated Security = True");
-            DataSet ds = new DataSet();
-            dal.AddParam("@UserName", tbUser.Text);
-            dal.AddParam("@UserPass", tbPW.Text);
-            dal.AddParam("@UserEmail", tbEmail.Text);
-            ds = dal.ExecuteProcedure("spAddUsers");
-            if (ds.Tables[0].Rows[0][0].ToString() == "UserID Exists")
+            User newUser = new User();
+            
+           
+            if (newUser.addNewUser(tbUser.Text, tbPW.Text, tbEmail.Text) == "UserID Exists")
             {
                 lblMessage.Text = "Username Exists. Please choose another username.";
                 lblMessage.Visible = true;
@@ -99,62 +87,24 @@ namespace Examinator
                 lblMessage.Text = result;
                 lblMessage.Style.Add("text-shadow", "2px 2px 2px #15E626");
                 lblMessage.Visible = true;
-                Session["User"] = tbUser.Text;
-                loggedIn();
+                newUser = new User(tbUser.Text, tbPW.Text, false, tbEmail.Text, false, false);
+                Session["User"] = newUser;
+                loggedIn(newUser);
             }
-            tbUser.Text = "";
-            tbPW.Text = "";
-            tbEmail.Text = "";
         }
 
-        protected void GetPreferences(string user)
-        {
-            DAL.DAL dal = new DAL.DAL("Data Source = localhost; Initial Catalog = dbExaminator; Integrated Security = True");
-            DataSet ds = new DataSet();
-            dal.AddParam("@UserName", user);
-            ds = dal.ExecuteProcedure("spGetPreferences");
-            Session["Email"] = ds.Tables[0].Rows[0]["UserEmail"];
-            if ((ds.Tables[0].Rows[0]["PrefShowInLeader"] != null) && !DBNull.Value.Equals(ds.Tables[0].Rows[0]["PrefShowInLeader"]))
-            {
-                Session["ShowLeader"] = Convert.ToBoolean(ds.Tables[0].Rows[0]["PrefShowInLeader"]);
-            }
-            else
-            {
-                Session["ShowLeader"] = false;
-            }
-            if ((ds.Tables[0].Rows[0]["PrefShowUnapproved"] != null) && !DBNull.Value.Equals(ds.Tables[0].Rows[0]["PrefShowUnapproved"]))
-            {
-                Session["ShowUnapproved"] = Convert.ToBoolean(ds.Tables[0].Rows[0]["PrefShowUnapproved"]);
-            }
-            else
-            {
-                Session["ShowUnapproved"] = false;
-            }
-        }
+       
 
         protected void btnPrefs_Click(object sender, EventArgs e)
         {
-            string email = Session["Email"].ToString();
-            string user = tbChangeuserName.Text;
-            string pass = tbChangePassword.Text;
-            bool showLeader = cbScores.Checked;
-            bool showUnapproved = cbUnapproved.Checked;
-            
-            DAL.DAL dal = new DAL.DAL("Data Source = localhost; Initial Catalog = dbExaminator; Integrated Security = True");
-            DataSet ds = new DataSet();
-            dal.AddParam("@UserEmail", email);
-            dal.AddParam("@UserName", user);
-            dal.AddParam("@UserPass", pass);
-            dal.AddParam("@PrefShowInLeader", showLeader);
-            dal.AddParam("@PrefShowUnapproved", showUnapproved);
-            ds = dal.ExecuteProcedure("spUpdatePreferences");
-            Session["User"] = tbChangeuserName.Text;
-            Session["ShowLeader"] = cbScores.Checked;
-            Session["ShowUnapproved"] = cbUnapproved.Checked;
+            User currentUser = (User)Session["User"];
+            currentUser = new User(tbChangeuserName.Text, tbChangePassword.Text, currentUser.UserifAdmin, currentUser.UserEmail, cbScores.Checked, cbUnapproved.Checked);
+            currentUser.SetPreferences(currentUser);
+            Session["User"] = currentUser;
             lblMessage.Text = "Success! Your preferences have been recorded.";
             lblMessage.Style.Add("text-shadow", "2px 2px 2px #15E626");
             lblMessage.Visible = true;
-            loggedIn();
+            loggedIn(currentUser);
         }
 
         protected void linkEditor_Click(object sender, EventArgs e)

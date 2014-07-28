@@ -76,6 +76,7 @@
     <Content Include="images\niraikkudam.jpg" />
     <Content Include="images\onelight.jpg" />
     <Content Include="images\Panda Terminator Thumbnail.jpg" />
+    <Content Include="images\PandaEgg.gif" />
     <Content Include="images\question.jpg" />
     <Content Include="images\RightArrow.png" />
     <Content Include="images\Simpson.png" />
@@ -121,7 +122,6 @@
     <Compile Include="AboutUs.aspx.designer.cs">
       <DependentUpon>AboutUs.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DAL.cs" />
     <Compile Include="DefaultMaster.Master.cs">
       <DependentUpon>DefaultMaster.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -210,6 +210,12 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\PasswordSvc\" />
     <WCFMetadataStorage Include="Service References\QuizMethods\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Examinator Classes\Examinator Classes.csproj">
+      <Project>{0da818e7-2311-406c-a535-129948a21fc2}</Project>
+      <Name>Examinator Classes</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
