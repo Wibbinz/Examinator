@@ -551,6 +551,10 @@ as
 			begin
 				select 'UserID Exists' = 'UserID Exists' from tbUsers where UserName = @UserName
 			end
+	else if exists (select * from tbUsers where UserEmail = @UserEmail)
+			begin
+				select 'User Email Exists' = 'User Email Exists' from tbUsers where UserEmail = @UserEmail 
+			end	
 	else
 		begin
 			insert into tbUsers
@@ -1083,13 +1087,17 @@ go
 create procedure spUpdatePreferences
 (
 	@UserEmail varchar(50),
-	@UserName varchar (30),
+	@UserName varchar (30) = null,
 	@UserPass varchar (30),
 	@PrefShowInLeader bit,
 	@PrefShowUnapproved bit	
 )
 as
 	begin
+		if exists (select * from tbUsers where UserName = @UserName)
+			begin
+				select 'UserID Exists' = 'UserID Exists' from tbUsers where UserName = @UserName
+			end
 		declare @UserID int
 		set @UserID = (select UserID FROM tbUsers WHERE UserEmail = @UserEmail)
 		update tbUsers
