@@ -7,7 +7,6 @@ GO
 USE dbExaminator
 GO
 
-
 ------------------------------
 --CREATING TABLES
 ------------------------------
@@ -30,7 +29,6 @@ PrefShowInLeader bit,
 PrefShowUnapproved bit,
 PrefBit bit)
 go
-
 
 --drop table tbCategory
 create table tbCategory
@@ -105,9 +103,6 @@ values	('admin','admin','admin@examinator.com',2,1),	--1000
 		('betty','tear','betty@tear.com',1,1),			--1004
 		('scott','scott','scott@zombie.com',1,1)		--1005
 go
-
---Preference Table (Populate after values are known)
---this is a place holder
 
 --Category Table
 insert into tbCategory
@@ -359,7 +354,7 @@ values	(10000,'A Cow','A Horse','A Chicken','A Hippopotamus','An Elephant','A Gi
 		(10113,'One','Four','None','Three','Two','Five',NULL,NULL,NULL,NULL,NULL,NULL,1)		--10113
 go
 
---Explanations Table (for non-Exam Modes)
+--Explanations Table
 insert into tbExplanations
 (ExplnQuestionID,ExplnText,ExplnBit)
 values	(10000,'A Cow is raised on dairy farms to produce milk and often makes Mooing sounds.',1),		--0
@@ -486,8 +481,6 @@ values	(1001,104,75,10,'2014-05-01',1),
 		(1003,104,95,10,'2014-05-02',1),
 		(1001,104,42,10,'2014-05-04',1)
 go
-
-
 	
 ----------------------------
 --STORED PROCEDURES
@@ -568,9 +561,6 @@ as
 	end
 go
 
-
-
-
 --drop procedure spChangeUserPW
 --procedure for users to change password
 create procedure spChangeUserPW
@@ -619,7 +609,6 @@ as
 	end
 go
 
-
 --drop procedure spDeleteUsers
 --procedure to delete users (set UserBit to 0)
 create procedure spDeleteUsers
@@ -648,9 +637,9 @@ go
 --Update / Upload Related Stored Procedures
 --------------------------------------------------------------
 
-
 --drop procedure spGetAll
---procedure to populate editor table
+--procedure to populate editor table for adminstators to approve
+--and edit categories, questions, answers and explanations
 create procedure spGetAll
 (
 	@CatName varchar(25)
@@ -680,10 +669,8 @@ as
 	end
 go
 
-
-
-
 --drop procedure spUploadCat
+--procedure to add new categories from the file upload page
 create procedure spUploadCat
 (
 	@CatName varchar (25),
@@ -704,8 +691,8 @@ as
 	end
 go
 
-
 --drop procedure spUpdateCat
+--procedure to update categories from editor page (administrators only)
 create procedure spUpdateCat
 (
 	@CatID int,
@@ -724,6 +711,7 @@ go
 	
 		
 --drop procedure spUploadQuestions
+--procedure to add new questions from the file upload page
 create procedure spUploadQuestions
 (
 	@QuestionCatID int,
@@ -740,9 +728,8 @@ as
 	end
 go
 
-
-
 --drop procedure spUpdateQuestions
+--procedure to update and approve questions from editor page (administrators only)
 create procedure spUpdateQuestions
 (
 	@QuestionID int,
@@ -763,6 +750,7 @@ as
 go
 
 --drop procedure spUploadAnswers
+--procedure to add new answers from the file upload page
 create procedure spUploadAnswers
 (
 	@AnswerQuestionID int,
@@ -781,6 +769,7 @@ as
 go
 
 --drop procedure spUpdateAnswers
+--procedure to update answers from editor page (administrators only)
 create procedure spUpdateAnswers
 (
 	@AnswerQuestionID int,
@@ -804,8 +793,8 @@ as
 	end
 go
 
-
 --drop procedure spUploadExplanations
+--procedure to add new answer explanations from the file upload page
 create procedure spUploadExplanations
 (
 	@ExplanationQuestionID int,
@@ -818,9 +807,8 @@ as
 	end
 go
 
-
-
 --drop procedure spUpdateExplanations
+--procedure to update answer explanations from editor page (administrators only)
 create procedure spUpdateExplanations
 (
 	@ExplanationQuestionID int,
@@ -839,6 +827,8 @@ go
 --------------------------------------------------------------
 
 --drop procedure spGetTopScores
+--procedure to derive top ten scores by ranking scores from the scores table
+--in each category and joining the result with user and category tables
 create procedure spGetTopScores
 as
 begin
@@ -858,6 +848,7 @@ end
 go
 
 --drop procedure spGetScoresByID
+--procedure to show personal best scores for the logged in user
 create procedure spGetScoresByID
 (
 	@UserName VARCHAR(30)
@@ -873,8 +864,8 @@ begin
 end
 go
 
-
 --drop procedure spWriteScores
+--procedure that writes scores to the scores table
 create procedure spWriteScores
 (
 	@UserName varchar (30),
@@ -898,8 +889,8 @@ go
 --Quiz Related Stored Procedures
 --------------------------------------------------------------
 
-
 --drop view categoriesAll
+--view that shows all categories
 create view categoriesAll
 as
 	select c.CategoryID,c.CatName,c.CatDesc
@@ -911,6 +902,7 @@ as
 go		
 
 --drop view categoriesApproved
+--view that shows the number of approved questions in a category
 create view categoriesApproved
 as
 	select c.CategoryID as ApprovedCatID,COUNT(q.QuestionCatID) as QuestionsApproved
@@ -922,6 +914,7 @@ as
 go		
 
 --drop view categoriesUnapproved
+--view that shows the number of unapproved questions in a category
 create view categoriesUnapproved
 as
 	select c.CategoryID as UnapprovedCatID,COUNT(q.QuestionCatID) as QuestionsUnapproved
@@ -932,8 +925,8 @@ as
 	group by c.CategoryID
 go	
 
-
 --drop procedure spGetCategory2
+--procedure that returns all categories along with the numbers of approved and unapproved questions
 create procedure spGetCategory2
 as
 	begin
@@ -1048,6 +1041,7 @@ as
 go
 
 --drop procedure spUpdateDefaultTimes
+--procedure that updates the times used as a measure of difficulty level (lower times = easier)
 create procedure spUpdateDefaultTimes
 (
 	@QuestionID int = null,
@@ -1061,13 +1055,11 @@ as
 	end
 go
 
-
-
 --------------------------------------------------------------
 --Preferences Related Stored Procedures
 --------------------------------------------------------------
 --drop procedure spGetPreferences
---procedure for retrieving prefereces by username
+--procedure for retrieving preferences by username
 create procedure spGetPreferences
 (
 	@UserName varchar (30)
@@ -1132,9 +1124,6 @@ as
 	end
 go
 
-
-
-
 ------------------------
 --TEST QUERIES
 ------------------------
@@ -1166,7 +1155,6 @@ go
 --select * from tbScores
 --select * from tbPreferences
 --select * from tbUsers
-
 
 --spUpdateDefaultTimes
 --@QuestionID = 10000,
