@@ -1,14 +1,20 @@
-﻿var quiz;
-var wrongAnswers;
-var correctAnswer;
-var correctAnsweri;
-var currentQuestionNumber;
-var start;
-var maxTime;
-var timeoutVal;
-var indivTimer;
-var results = [];
+﻿
+//Global Variables
+var quiz; //will hold the entire quiz - questions, answers, times, explanations etc.
+var wrongAnswers; //will hold the incorrect answers for a given question, which will be used to populate the answer divs
+var correctAnswer; //will hold the correct answer for a given question.
+var correctAnsweri; //will hold the index of the correct answer for checking against the chosen answer
+var currentQuestionNumber; //will hold the current Question number
+var start; //will hold the start timer for each question
+var maxTime; //will hold the max time, calculated using the number of questions in a quiz
+var timeoutVal;//sets when the timer bar should time out depending on the number of quetsions.
+var indivTimer;//will hold the time taken for the current question.
+var results = [];//will hold the number, answertext, right or wrong, time taken and score for each question.
 
+//This function is called when the 'TakeTheTest' page is visited.
+//The category parameter holds an array of strings with all the category information
+//necessary to populate the clickable divs as well as the captions, which appear when
+//the divs are hovered over.
 function populateDivs(category, index) {
     var catStrip = document.getElementById("catStrip");
     while (catStrip.firstChild) {
@@ -46,7 +52,8 @@ function populateDivs(category, index) {
     };   
 }
 
-
+//This function is called on by the above function to generate random colors for the
+//clickable category divs.
 function getRandomColor() {
     var letters = '0123456789ABCDEF'.split('');
     var color = '#';
@@ -56,13 +63,18 @@ function getRandomColor() {
     return color;
 }
 
-
+//This function is called from the 'TakeTheTest' page when a selection is made
+//and the next 'phase' of the test needs to be faded in after fading the current
+//'phase' out.
 function fadeToNext(eToFade, eNext) {
     $(eToFade).fadeOut(250, function () {
         $(eNext).fadeIn(250);
     });
 }
 
+//This function passes the chosen category, mode, difficulty and preference of whether unapproved questions
+//are to be displayed or not to the 'getTest' web method. The questions and answers retrieved from the webmethod
+//are then passed to the 'popQuiz' function to populate the appropriate divs.
 function getQuiz(chosenCategory, chosenMode, chosenDifficulty, showUnapproved) {
     $.ajax({
         type: "POST",
@@ -81,6 +93,12 @@ function getQuiz(chosenCategory, chosenMode, chosenDifficulty, showUnapproved) {
     });
 }
 
+
+//This function receives the quiz questions from the above function, then populates the respective divs with 
+//questions and answers by calling the function 'popQuestionAnswerParas.'
+//The 'RandomAnswerGenerator' function is invoked to determine which 4 of the 6 available
+//answers will be chosen. The 'popProgBar' function is invoked to populate the progress bar with the correct
+//number of clickable divs. The 'animateUpdate' function is called to animate the timerbar.
 function popQuiz(quizQuestions) {   
     RandomAnswerGenerator();
     quiz = quizQuestions;
@@ -105,6 +123,10 @@ function popQuiz(quizQuestions) {
     animateUpdate();
 }
 
+//This function uses the index passed to it on the global array 'quiz'
+//to populate the question and answer divs in the right positions.
+//It calls function 'textDeco' below to decorate the answer text based on
+//whether the answer was chosen previously.
 function popQuestionAnswerParas(index) {
     indivTimer = new Date();    
     var chosentext = results[currentQuestionNumber].answertext;
@@ -159,7 +181,8 @@ function popQuestionAnswerParas(index) {
     }
 }
 
-
+//This function decorates the answer or removes decoration
+//based on whether the answer was chosen by the user previously.
 function textDeco(answer, text1, text2) {
     if (text1 == text2) {
         answer.style.fontWeight = "bold";
@@ -173,6 +196,8 @@ function textDeco(answer, text1, text2) {
     }
 }
 
+//This function populates the protress bar with the correct
+//number of clickable divs depending on the index
 function popProgBar(index) {
     var progress = document.getElementById("progBar");
     for (var i = 0; i < index; i += 1) {        
@@ -187,6 +212,9 @@ function popProgBar(index) {
     }
 }
 
+//This function changes the index of the current question and calls the popQuestionAnswerParas function
+//to populate the divs with the appropriate questions and answers. It checks the current question against
+//the length of the quiz to display or hide the previous and next buttons when the limits are reached.
 function getPrevious() {
     getIndivTimer();
     currentQuestionNumber -= 1;
@@ -201,6 +229,9 @@ function getPrevious() {
     }   
 }
 
+//This function changes the index of the current question and calls the popQuestionAnswerParas function
+//to populate the divs with the appropriate questions and answers. It checks the current question against
+//the length of the quiz to display or hide the previous and next buttons when the limits are reached.
 function getNext() {
     getIndivTimer();
     currentQuestionNumber += 1;
@@ -215,7 +246,10 @@ function getNext() {
     }
 }
 
-
+//This function is called when a div from the progress bar is clicked. It uses
+//the index of the div to determine what the current question number is, hides or
+//unhides the next or previous buttons as needed, and calls on popQuestionAnswerParas
+//to populate the question and answer divs.
 function quickJump(qNumber) {
     getIndivTimer();
     currentQuestionNumber = qNumber;
@@ -238,6 +272,11 @@ function quickJump(qNumber) {
     popQuestionAnswerParas(qNumber);
 }
 
+//This function is called when an answer div is clicked by the user to choose an answer.
+//It records the index of the div clicked, compares it against the global variable 'correctAnsweri'
+//to determine whether it is write or wrong, then writes it to the global array 'result' at the 
+//correct index. Once an answer is recorded, the 'getNext' function is clicked if there are questions
+//remaining, otherwise the alertBox is displayed to tell the user to finish the test.
 function answerChosen(chosenIndex) {
     var pd = 'quest' + (currentQuestionNumber+1);
     var progDiv = document.getElementById(pd);
@@ -260,7 +299,7 @@ function answerChosen(chosenIndex) {
     }
 }
 
-
+//This function is called when a question div is clicked in order to bookmark a function. 
 function bookmarkQuestion() {
     var pd = 'quest' + (currentQuestionNumber + 1);
     var progDiv = document.getElementById(pd);
@@ -273,6 +312,8 @@ function bookmarkQuestion() {
     }
 }
 
+//This function is called by the popQuiz function to populate the global variable 'wrongAnswers'
+//with a random selection of 4 answers from the 5 given incorrect answers.
 function RandomAnswerGenerator() {
     var answerSet = ['Answer1', 'Answer2', 'Answer3', 'Answer4', 'Answer5'];
     var currentIndex = answerSet.length, temporaryValue, randomIndex;
@@ -286,6 +327,11 @@ function RandomAnswerGenerator() {
     wrongAnswers = answerSet.slice(0, 3);
 }
 
+//This function is called when the finish test button is clicked. It calculates the total score,
+//total time, and whether the user would like their scores to be displayed publicly (scoreBit)
+//and sends the information through the function 'sendResults' (below) to be recorded.
+//It also calls the function 'setNewTimes' to record the individual times taken for each question (also below).
+//Then it creates a table and a summary div with the results of the test for display.
 function testResults(user, scoreBit) {    
     getIndivTimer();
     var totScore = 0;
@@ -302,8 +348,13 @@ function testResults(user, scoreBit) {
             underTwo++;
         }
     }
+
+    //Sending the results of the test to the database
     sendResults(user, totScore, totTime, scoreBit);
+    //Sending the new times of each question to the database
     setNewTimes();
+
+    //Creating and populating the table
     var myDiv = document.getElementById('testResults');
     var tbl = document.createElement('table');
     tbl.setAttribute('id', 'tableResults');
@@ -378,6 +429,8 @@ function testResults(user, scoreBit) {
     }
     tbl.appendChild(tbdy);
     myDiv.appendChild(tbl);
+
+    //Creating and Populating the Summary div.
     var finalScoreTab = document.createElement('div');
     finalScoreTab.setAttribute('id', 'finalScoreTab');
     finalScoreTab.setAttribute('class', 'finalScore');    
@@ -398,25 +451,29 @@ function testResults(user, scoreBit) {
 }
 
 
-//disabling f5
+//Disabling f5
 function disableF5(e) {
     if ((e.which || e.keyCode) == 116) e.preventDefault();
 };
 
 
-//timer
+//Timer bar
 function updateProgress(percentage) {
     var timer = document.getElementById("timer");
     timer.style.height = percentage + "%";
 }
 
+//Calculates the time taken for a question by subtracting the time when it is called
+//(when the previous, next, bookmark or quickjump buttons are clicked) from the current time
+//and rounding to an integer value. The time taken is appended in the global array 'results.'
 function getIndivTimer() {
     var now = new Date();
     var timeTaken = Math.round((now.getTime() - indivTimer.getTime())/1000);
     results[currentQuestionNumber].time += timeTaken;
 }
 
-
+//This function animates the timer bar by percentage. If the end is reached, the finish button click
+//is simulated to force an end to the test.
 function animateUpdate() {
     var now = new Date();
     var timeDiff = now.getTime() - start.getTime();
@@ -426,8 +483,13 @@ function animateUpdate() {
         updateProgress(perc);
         setTimeout(animateUpdate, timeoutVal);
     }
+    else {
+        var finishButton = document.getElementById("btnFinished");
+        finishButton.click();
+    }
 }
 
+//This function appends and populates a modal alert box.
 function alertBox(message, alertd, messaged) {
     var alertDiv = document.getElementById(alertd);
     var messageDiv = document.getElementById(messaged);
@@ -436,6 +498,7 @@ function alertBox(message, alertd, messaged) {
     document.location.hash = "#" + alertd;
 }
 
+//This function displays the rotating panda egg when the easter egg is discovered.
 function pandaGo() {
     var pandaDiv = document.getElementById("pandaDiv");
     var pandaImg = document.createElement("img");
@@ -458,7 +521,8 @@ function pandaGo() {
     document.location.href = "#close";
 }
 
-
+//This function sends the results of a test to the database via an asynchronous call of the
+//'spWriteScores' procedure from the QuizService web service. 
 function sendResults(user, score, totTime, scoreBit) {
     var category = quiz[0].CatName;
     $.ajax({
@@ -476,7 +540,9 @@ function sendResults(user, score, totTime, scoreBit) {
     });
 }
 
-
+//This function sends the individual times of each question to the database for recalculating the
+//'difficulty' of each question via an asychronous call of the procedure 'spUpdateDefaultTimes'
+//from the web method 'updateTimes' in the QuizService service.
 function setNewTimes() {
     for (var i = 0; i < quiz.length; i++) {
         if (results[i].rightOrWrong == 1) {

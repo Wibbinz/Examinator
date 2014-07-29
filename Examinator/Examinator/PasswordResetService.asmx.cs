@@ -9,16 +9,24 @@ using System.Data;
 namespace Examinator
 {
     /// <summary>
-    /// Summary description for PasswordResetService
+    /// Password related services - forgot password and new user registration, which use send email to
+    /// notify the user.
     /// </summary>
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
-    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
     [System.Web.Script.Services.ScriptService]
     public class PasswordResetService : System.Web.Services.WebService
     {
-
+        /// <summary>
+        /// When the 'Forgot Password?' link is clicked on the masterpage, this method is called from the 
+        /// javascript function 'forgotPW' (LoginandHome.js).
+        /// The 'spForgotPW' procedure in the database is executed and a message is returned depending on whether
+        /// the procedure was successful or not.
+        /// </summary>
+        /// <param name="emailAddress"></param>
+        /// <param name="newPassword">Randomly generated in a javascript function</param>
+        /// <returns></returns>
         [WebMethod]
         public string forgotPassword(string emailAddress, string newPassword)
         {
@@ -41,6 +49,14 @@ namespace Examinator
             }
         }
 
+        /// <summary>
+        /// Generates a message for new users and passes the message along with the username and password
+        /// to be sent to the user by the sendEmail method.
+        /// </summary>
+        /// <param name="emailAddress"></param>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         [WebMethod]
         public string newUserRegs(string emailAddress, string username, string password)
         {
@@ -51,6 +67,13 @@ namespace Examinator
             return result;
         }
 
+        /// <summary>
+        /// Sends an email to the specified email address with the specified subject and message.
+        /// </summary>
+        /// <param name="emailAddress"></param>
+        /// <param name="message"></param>
+        /// <param name="subject"></param>
+        /// <returns></returns>
         private string sendEmail(string emailAddress, string message, string subject)
         {
             string result;

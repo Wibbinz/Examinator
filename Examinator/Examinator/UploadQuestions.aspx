@@ -13,11 +13,17 @@
                 The header row of the .CSV file may optionally be removed.
             </p>
         </div>
+        
+        <%--Downloadable Excel template with required format of questions and answers to be uploaded.--%>
         <a class="templateDownloadLink" href="UploadTemplates/ExaminatorUploadTemplate.xlsx">Download Template</a><br /><br />
+
+        <%--File Upload button for the user to upload a file with questions and answers.--%>
         <div class="fileUpload">
             <asp:FileUpload ID="fuQuestions" runat="server" /><br /><br />
             <asp:Button ID="btnUpload" runat="server" CssClass="button" Text="Upload Selected File" OnClick="btnUpload_Click" />       
-        </div>             
+        </div>      
+        
+        <%--Gridview to be populated once the user has uploaded their questions and answers.--%>       
         <asp:GridView ID="GridView1" CssClass="gvskin" runat="server"></asp:GridView>
     </div>    
 </asp:Content>

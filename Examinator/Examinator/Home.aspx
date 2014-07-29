@@ -23,6 +23,8 @@
     </div>
     <script>
         $(document).ready(function () {
+
+            //Users who have not logged in are restricted to only the About Us and Leaderboards pages.
             $(".conditionalLink").click(function (event) {
                 var user = '<%= Session["User"] %>';
                 if (user.toString() == '') {

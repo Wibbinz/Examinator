@@ -15,34 +15,42 @@ namespace Examinator
 {
     public partial class UploadQuestions : System.Web.UI.Page
     {
+        //To ensure a new user is not subject to the registration message
+        //every time the visit the home page, the New session is reset to null.
         protected void Page_Load(object sender, EventArgs e)
         {
             Session["New"] = null;
         }
 
+
+        /// <summary>
+        /// Runs when the Upload Button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnUpload_Click(object sender, EventArgs e)
         {
+            //Checking file name if file is uploaded.
             if (fuQuestions.HasFile)
             {
                 FileInfo fileInfo = new FileInfo(fuQuestions.PostedFile.FileName);
 
+                //If file does not have the extension .csv an error message is displayed.
                 if (fileInfo.Name.Contains(".csv"))
                 {
                     string fileName = fileInfo.Name.Replace(".csv", "").ToString();
                     string csvFilePath = Server.MapPath("UploadedCSVFiles") + "\\" + fileInfo.Name;
 
                     //Save the CSV file in the Server inside 'UploadedCSVFiles' 
-
                     fuQuestions.SaveAs(csvFilePath);
 
                     //Fetch the location of CSV file 
-
                     string filePath = Server.MapPath("UploadedCSVFiles") + "\\";
                     string strSql = "SELECT * FROM [" + fileInfo.Name + "]";
                     string strCSVConnString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filePath + ";" + "Extended Properties='text;HDR=YES;'";
 
+                    //The file is written based on the schema in the writeSchema method of the Question Class.
                     Question writeQuestion = new Question();
-
                     string temp = writeQuestion.writeSchema(filePath, fileInfo.Name);
                     if (temp != "OK")
                     {
@@ -50,16 +58,16 @@ namespace Examinator
                     }
 
                     // load the data from CSV to DataTable 
-
                     OleDbDataAdapter adapter = new OleDbDataAdapter(strSql, strCSVConnString);
                     DataTable dtCSV = new DataTable();
                     DataTable dtSchema = new DataTable();
-
                     adapter.FillSchema(dtCSV, SchemaType.Mapped);
                     adapter.Fill(dtCSV);
 
+                    //Checks of the DataTable has at least one row.
                     if (dtCSV.Rows.Count > 0)
                     {
+                        //Checks for Row Headers.
                         if (dtCSV.Rows[0][0].ToString() == "UploadCatName")
                         {
                             dtCSV.Rows[0].Delete();
@@ -68,6 +76,11 @@ namespace Examinator
                         GridView1.DataSource = dtCSV;
                         GridView1.DataBind();
 
+
+                        //The insertCategory, insertQuestion, insertAnswer and insertExplanation methods are all housed
+                        //in the Question class file. Category and Question IDs must be returned for the Answer and Explanation
+                        //insert methods to run since they require foreign keys to insert. If a -1 is returned for either
+                        //of the two, an error message is displayed.
                         for (int i = 0; i < dtCSV.Rows.Count; i++)
                         {
                             int catID = writeQuestion.insertCategory(dtCSV.Rows[i][0].ToString(), dtCSV.Rows[i][1].ToString());
@@ -104,7 +117,11 @@ namespace Examinator
             }
         }
  
-
+        /// <summary>
+        /// Setting the appropriate error message to display in case an error is encountered.
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="color"></param>
         protected void setLabel(string message, string color)
         {
             Label l = (Label)Master.FindControl("lblMessage");

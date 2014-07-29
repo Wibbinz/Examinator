@@ -1,4 +1,6 @@
-﻿function checkLogin() {
+﻿
+//Alerts user if username or password textboxes are empty.
+function checkLogin() {
     var user = document.getElementById("tbLogin");
     var password = document.getElementById("tbPassword");
     if (user.value == '') {
@@ -14,7 +16,10 @@
     }
 }
 
-
+//Generates a random strink and sends the string along with the userinput email address
+//to the database through an asynchronous ajax call on the web method 'forgotPassword' located
+//in the PasswordResetService service. The label is populated with the appropriate message
+//if the email does not exist in the database or the password is successfully reset.
 function forgotPW() {
     var email = document.getElementById("tbEmailReset").value;
     var randomLetters = Math.random().toString(36).slice(2, 6) + Math.random().toString(36).slice(2);
@@ -34,6 +39,8 @@ function forgotPW() {
     });
 }
 
+//Alerts user if username, password or email address textboxes are empty, or
+//if the user email is not in the correct format.
 function RegsValidate() {
     var user = document.getElementById("tbUser");
     var password = document.getElementById("tbPW");
@@ -63,22 +70,7 @@ function RegsValidate() {
     }
 }
 
-function regsFocus() {
-    var regsBox = document.getElementById("tbUser");
-    regsBox.focus();
-}
-
-function forgotpwFocus() {
-    var forgotBox = document.getElementById("tbEmailReset");
-    forgotBox.focus();
-}
-
-function prefsFocus() {
-    var prefsBox = document.getElementById("tbChangeuserName");
-    prefsBox.focus();
-}
-
-
+//Alerts the user if the username or password textboxes are empty for the preferences window.
 function PrefsValidate() {
     var user = document.getElementById("tbChangeuserName");
     var password = document.getElementById("tbChangePassword");
@@ -93,4 +85,20 @@ function PrefsValidate() {
     else {
         return true;
     }
+}
+
+//Sets the focus to the appropriate textbox for the modal windows.
+function regsFocus() {
+    var regsBox = document.getElementById("tbUser");
+    regsBox.focus();
+}
+
+function forgotpwFocus() {
+    var forgotBox = document.getElementById("tbEmailReset");
+    forgotBox.focus();
+}
+
+function prefsFocus() {
+    var prefsBox = document.getElementById("tbChangeuserName");
+    prefsBox.focus();
 }

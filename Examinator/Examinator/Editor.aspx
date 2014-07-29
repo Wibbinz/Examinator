@@ -107,9 +107,4 @@
         </Columns>
     </asp:GridView>      
     </div>
-    <script>
-        $(document).ready(function () {
-
-        });
-    </script>
 </asp:Content>

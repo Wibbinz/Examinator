@@ -10,6 +10,10 @@ using System.Text;
 
 namespace Examinator_Classes
 {
+    /// <summary>
+    /// Question Class with constructors for catgory ID and Name, Question ID and Text, Answers, Explanations and
+    /// booleans for administrator approved and active/inactive questions.
+    /// </summary>
     public class Question
     {
         public int _categoryID;
@@ -51,7 +55,12 @@ namespace Examinator_Classes
             _answer3 = ans3; _answer4 = ans4; _answer5 = ans5; _explanationText = expln;
         }
 
-
+        /// <summary>
+        /// Method that returns an array of strings with information about the Category including
+        /// Nasme, Description, Available Modes etc.
+        /// </summary>
+        /// <param name="showUnapproved">Allows the returned array to be populated based on whether approved
+        /// questions should be displayed or not.</param>
         public string CatInfo(bool showUnapproved)
         {
             try
@@ -110,7 +119,10 @@ namespace Examinator_Classes
             }
         }
 
-
+        /// <summary>
+        /// Method that returns the list of categories to the Editor page in order to populate
+        /// the dropdown menu.
+        /// </summary>
         public string[] GetDropDownSource()
         {
             try
@@ -136,6 +148,11 @@ namespace Examinator_Classes
             }
         }
 
+        /// <summary>
+        /// This method calls on methods below to update the database with all necessary information
+        /// tied to the question passed as a parameter.
+        /// </summary>
+        /// <param name="updateQuestion"></param>
         public void UpdateAll(Question updateQuestion)
         {
             UpdateQuestion(updateQuestion.CategoryID, updateQuestion.QuestionID, updateQuestion.Approved, updateQuestion.Active, updateQuestion.QuestionText);
@@ -144,7 +161,15 @@ namespace Examinator_Classes
             UpdateExplanation(updateQuestion.QuestionID, updateQuestion.ExplanationText);
         }
 
-
+        /// <summary>
+        /// This method receives the information necessary to update the question table using the procedure
+        /// 'spUpdateQuestions' in the database and then executes the same.
+        /// </summary>
+        /// <param name="categoryID"></param>
+        /// <param name="questionID"></param>
+        /// <param name="questionApproval"></param>
+        /// <param name="questionActive"></param>
+        /// <param name="questionText"></param>
         protected void UpdateQuestion(int categoryID, int questionID, bool questionApproval, bool questionActive, string questionText)
         {
             try
@@ -162,6 +187,13 @@ namespace Examinator_Classes
             }
         }
 
+        /// <summary>
+        /// This method receives the information necessary to update the category table using the procedure
+        /// 'spUpdateCat' in the database and then executes the same.
+        /// </summary>
+        /// <param name="categoryID"></param>
+        /// <param name="catName"></param>
+        /// <param name="catDesc"></param>
         protected void UpdateCategory(int categoryID, string catName, string catDesc)
         {
             try
@@ -177,6 +209,18 @@ namespace Examinator_Classes
             }
         }
 
+        /// <summary>
+        /// This method receives the information necessary to update the answer table using the procedure
+        /// 'spUpdateAnswers' in the database and then executes the same.
+        /// </summary>
+        /// </summary>
+        /// <param name="questionID"></param>
+        /// <param name="answerCorrect"></param>
+        /// <param name="answer1"></param>
+        /// <param name="answer2"></param>
+        /// <param name="answer3"></param>
+        /// <param name="answer4"></param>
+        /// <param name="answer5"></param>
         protected void UpdateAnswer(int questionID, string answerCorrect, string answer1, string answer2, string answer3, string answer4, string answer5)
         {
             try
@@ -197,6 +241,12 @@ namespace Examinator_Classes
             }
         }
 
+        /// <summary>
+        /// This method receives the information necessary to update the explanation table using the procedure
+        /// 'spUpdateExplanations' in the database and then executes the same.
+        /// </summary>
+        /// <param name="questionID"></param>
+        /// <param name="explnText"></param>
         protected void UpdateExplanation(int questionID, string explnText)
         {
             try
@@ -212,6 +262,15 @@ namespace Examinator_Classes
             }
         }
 
+        /// <summary>
+        /// This method puts together a schema to rewrite an uploaded file in a format readable
+        /// by the OleDbDataAdapter when the upload button is clicked in the UploadQuestions page.
+        /// The adapter then creates necessary sql queries to insert the questions/answers/explanations etc.
+        /// into the database.
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         public string writeSchema(string filePath, string fileName)
         {
             try
@@ -250,6 +309,12 @@ namespace Examinator_Classes
             }
         }
 
+        /// <summary>
+        /// This method is called on by the UploadQuestion page in order to insert a category and description.
+        /// </summary>
+        /// <param name="catName"></param>
+        /// <param name="catDesc"></param>
+        /// <returns>Returns the category ID number or -1 if the category cannot be inserted</returns>
         public int insertCategory(string catName, string catDesc)
         {
             try
@@ -270,6 +335,14 @@ namespace Examinator_Classes
             }
         }
 
+        /// <summary>
+        /// This method is called on by the UploadQuestion page in order to insert a question id and text along with the
+        /// username of the user that uploaded the question.
+        /// </summary>
+        /// <param name="catID"></param>
+        /// <param name="user"></param>
+        /// <param name="questionText"></param>
+        /// <returns>Returns the question ID number or a -1 if the question cannot be inserted</returns>
         public int insertQuestion(int catID, string user, string questionText)
         {
             try
@@ -291,6 +364,18 @@ namespace Examinator_Classes
             }            
         }
 
+        /// <summary>
+        /// This method is called on by the UploadQuestion page in order to insert a set of answers along
+        /// with the associated question id number.
+        /// </summary>
+        /// <param name="questionID"></param>
+        /// <param name="answerCorrect"></param>
+        /// <param name="answer1"></param>
+        /// <param name="answer2"></param>
+        /// <param name="answer3"></param>
+        /// <param name="answer4"></param>
+        /// <param name="answer5"></param>
+        /// <returns>Returns an 'OK' or the error message depending on whether the answer was inserted correctly or not.</returns>
         public string insertAnswer(int questionID, string answerCorrect, string answer1, string answer2, string answer3, string answer4, string answer5)
         {
             try
@@ -315,6 +400,14 @@ namespace Examinator_Classes
             }
         }
 
+        /// <summary>
+        /// This method is called on by the UploadQuestion page in order to insert an explanation along
+        /// with the associated question id number.
+        /// </summary>
+        /// <param name="questionID"></param>
+        /// <param name="explanationText"></param>
+        /// <returns>Returns an 'OK' or the error message depending on whether the explanation
+        /// was inserted correctly or not.</returns>
         public string insertExplanation(int questionID, string explanationText)
         {
             try

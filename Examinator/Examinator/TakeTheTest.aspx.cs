@@ -12,12 +12,24 @@ using Examinator_Classes;
 namespace Examinator
 {
     public partial class TakeTheTest : System.Web.UI.Page
-    {        
+    {
+        //To ensure a new user is not subject to the registration message
+        //every time the visit the home page, the New session is reset to null.
         protected void Page_Load(object sender, EventArgs e)
         {
             Session["New"] = null;
         }
 
+        /// <summary>
+        /// Populating sessions with the current user's preferences to be accessed by the
+        /// javascript methods that determine which categories and questions should be displayed as well
+        /// as recording the appropriate bit in the database that determines whether a user's scores should
+        /// be displayed publicly or not.
+        /// 
+        /// The CatInfo method from the Class Question is invoked to retrieve the Category, Description and Methods available
+        /// depending on whether the user wishes unapproved questions to be displayed or not.
+        /// </summary>
+        /// <returns></returns>
         public string GetCategories()
         {
             User currentUser = (User)Session["User"];
