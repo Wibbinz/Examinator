@@ -55,7 +55,7 @@ namespace Examinator
         {
             string result;
             MailMessage emailPWReset = new MailMessage();
-            emailPWReset.From = new MailAddress("gwcw2014@gmail.com");
+            emailPWReset.From = new MailAddress("examinator.sadpanda@gmail.com");
             emailPWReset.To.Add(new MailAddress(emailAddress));
             emailPWReset.Subject = subject;
             emailPWReset.Body = message;
@@ -66,7 +66,7 @@ namespace Examinator
                     Host = "smtp.gmail.com",
                     Port = 587,
                     EnableSsl = true,
-                    Credentials = new System.Net.NetworkCredential("gwcw2014@gmail.com", "pandap4nd4"),
+                    Credentials = new System.Net.NetworkCredential("examinator.sadpanda@gmail.com", "sadpanda"),
                     DeliveryMethod = SmtpDeliveryMethod.Network
                 };
                 client.Send(emailPWReset);

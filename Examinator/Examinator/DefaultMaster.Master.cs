@@ -74,10 +74,16 @@ namespace Examinator
         {
             User newUser = new User();
             
+            string message = newUser.addNewUser(tbUser.Text, tbPW.Text, tbEmail.Text);
            
-            if (newUser.addNewUser(tbUser.Text, tbPW.Text, tbEmail.Text) == "UserID Exists")
+            if (message == "UserID Exists")
             {
                 lblMessage.Text = "Username Exists. Please choose another username.";
+                lblMessage.Visible = true;
+            }
+            else if (message == "User Email Exists")
+            {
+                lblMessage.Text = "User Email Exists Exists. Please choose another email.";
                 lblMessage.Visible = true;
             }
             else
@@ -98,13 +104,26 @@ namespace Examinator
         protected void btnPrefs_Click(object sender, EventArgs e)
         {
             User currentUser = (User)Session["User"];
-            currentUser = new User(tbChangeuserName.Text, tbChangePassword.Text, currentUser.UserifAdmin, currentUser.UserEmail, cbScores.Checked, cbUnapproved.Checked);
-            currentUser.SetPreferences(currentUser);
-            Session["User"] = currentUser;
-            lblMessage.Text = "Success! Your preferences have been recorded.";
-            lblMessage.Style.Add("text-shadow", "2px 2px 2px #15E626");
-            lblMessage.Visible = true;
-            loggedIn(currentUser);
+            bool same = false;
+            if (currentUser.UserName == tbChangeuserName.Text)
+            {
+                same = true;
+            }
+            currentUser = new User(tbChangeuserName.Text, tbChangePassword.Text, currentUser.UserifAdmin, currentUser.UserEmail, cbScores.Checked, cbUnapproved.Checked);            
+            string message = currentUser.SetPreferences(currentUser, same);
+            if (message == "UserID Exists")
+            {
+                lblMessage.Text = "Username Exists. Please choose another username.";
+                lblMessage.Visible = true;
+            }
+            else
+            {
+                Session["User"] = currentUser;
+                lblMessage.Text = "Success! Your preferences have been recorded.";
+                lblMessage.Style.Add("text-shadow", "2px 2px 2px #15E626");
+                lblMessage.Visible = true;
+                loggedIn(currentUser);
+            }
         }
 
         protected void linkEditor_Click(object sender, EventArgs e)

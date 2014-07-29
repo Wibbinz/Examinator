@@ -3,7 +3,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="initialScreen">        
-        <h1>Categories</h1>       
+        <h1>Categories</h1>  
+        <p>
+            Please NOTE: If you have not set your preferences to display unapproved questions and categories, these will not be available to you.
+        </p>     
         <div class="catOuterBox">    
             <input type="button" class="catPrev" />       
             <ul id="catStrip"></ul>
@@ -183,10 +186,10 @@
                 $(document).on("keydown", disableF5);
                 var prefunapproved = '<%=Session["PrefUnapproved"]%>';
                 if (prefunapproved) {
-                    getQuiz(chosenCategory, chosenMode, chosenDifficulty, "yes");
+                    getQuiz(chosenCategory, chosenMode, chosenDifficulty, "no");
                 }
                 else {
-                    getQuiz(chosenCategory, chosenMode, chosenDifficulty, "no");
+                    getQuiz(chosenCategory, chosenMode, chosenDifficulty, "yes");
                 }
                 fadeToNext('#testPrep', '#test');
                 return false;

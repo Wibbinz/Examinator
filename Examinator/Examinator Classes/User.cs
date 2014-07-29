@@ -87,16 +87,22 @@ namespace Examinator_Classes
             return currentUser;
         }
 
-        public void SetPreferences(User currentUser)
+        public string SetPreferences(User currentUser, bool same)
         {
             DAL.DAL dal = new DAL.DAL("Data Source = localhost; Initial Catalog = dbExaminator; Integrated Security = True");
             DataSet ds = new DataSet();
             dal.AddParam("@UserEmail", currentUser.UserEmail);
-            dal.AddParam("@UserName", currentUser.UserName);
+            
+            if (!same)
+            {
+                dal.AddParam("@UserName", currentUser.UserName);
+            }
+
             dal.AddParam("@UserPass", currentUser.UserPW);
             dal.AddParam("@PrefShowInLeader", currentUser.PrefLeader);
             dal.AddParam("@PrefShowUnapproved", currentUser.PrefUnapproved);
             ds = dal.ExecuteProcedure("spUpdatePreferences");
+            return ds.Tables[0].Rows[0][0].ToString();
         }
 
 

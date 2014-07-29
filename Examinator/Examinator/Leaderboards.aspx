@@ -3,6 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>Leaderboards</h1>
+    <asp:Label ID="lblDisplay" runat="server" Text="Please change your preferences if you wish to display personal scores on the public leaderboard." Visible="false"></asp:Label>
     <table>
         <tr>
             <td> 

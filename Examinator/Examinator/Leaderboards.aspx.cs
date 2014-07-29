@@ -38,6 +38,10 @@ namespace Examinator
             ds = dal.ExecuteProcedure("spGetScoresByID");
             gvPersonal.DataSource = ds;
             gvPersonal.DataBind();
+            if (!currentUser.PrefLeader)
+            {
+                lblDisplay.Visible = true;
+            }
         }
     }
 }
