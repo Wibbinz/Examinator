@@ -12,7 +12,14 @@ namespace Examinator
     public partial class DefaultMaster : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
-        {           
+        {
+            if (Session["New"] != null)
+            {
+                string result = (string)Session["New"];
+                lblMessage.Text = result;
+                lblMessage.Style.Add("text-shadow", "2px 2px 2px #15E626");
+                lblMessage.Visible = true;
+            }
             if (Session["User"]!= null)
             {
                 User currentUser = (User)Session["User"];
@@ -62,6 +69,7 @@ namespace Examinator
             Session["User"] = null;
             Session["PrefUnapproved"] = null;
             Session["PrefShowLeader"] = null;
+            Session["New"] = null;
             lblMessage.Text = "";
             lblUser.Text = "";
             lblPasswordResult.Text = "";
@@ -90,12 +98,14 @@ namespace Examinator
             {
                 PasswordResetService newRegsSvc = new PasswordResetService();
                 string result = newRegsSvc.newUserRegs(tbEmail.Text, tbUser.Text, tbPW.Text);
-                lblMessage.Text = result;
-                lblMessage.Style.Add("text-shadow", "2px 2px 2px #15E626");
-                lblMessage.Visible = true;
+                //lblMessage.Text = result;
+                //lblMessage.Style.Add("text-shadow", "2px 2px 2px #15E626");
+                //lblMessage.Visible = true;
                 newUser = new User(tbUser.Text, tbPW.Text, false, tbEmail.Text, false, false);
                 Session["User"] = newUser;
-                loggedIn(newUser);
+                Session["New"] = result;
+                //loggedIn(newUser);
+                Response.Redirect("Home.aspx");
             }
         }
 

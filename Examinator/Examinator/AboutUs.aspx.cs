@@ -11,7 +11,7 @@ namespace Examinator
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Session["New"] = null;
         }
     }
 }

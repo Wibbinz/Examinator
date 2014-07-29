@@ -17,7 +17,7 @@ namespace Examinator
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            Session["New"] = null;
         }
 
         protected void btnUpload_Click(object sender, EventArgs e)
