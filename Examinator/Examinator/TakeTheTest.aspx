@@ -186,10 +186,10 @@
                 $(document).on("keydown", disableF5);
                 var prefunapproved = '<%=Session["PrefUnapproved"]%>';
                 if (prefunapproved) {
-                    getQuiz(chosenCategory, chosenMode, chosenDifficulty, "no");
+                    getQuiz(chosenCategory, chosenMode, chosenDifficulty, "yes");
                 }
                 else {
-                    getQuiz(chosenCategory, chosenMode, chosenDifficulty, "yes");
+                    getQuiz(chosenCategory, chosenMode, chosenDifficulty, "no");
                 }
                 fadeToNext('#testPrep', '#test');
                 return false;

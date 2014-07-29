@@ -286,7 +286,7 @@ function RandomAnswerGenerator() {
     wrongAnswers = answerSet.slice(0, 3);
 }
 
-function testResults(user, scoreBit) {
+function testResults(user, scoreBit) {    
     getIndivTimer();
     var totScore = 0;
     var totTime = 0;
@@ -460,7 +460,7 @@ function pandaGo() {
 
 
 function sendResults(user, score, totTime, scoreBit) {
-    var category = quiz[1].CatName;
+    var category = quiz[0].CatName;
     $.ajax({
         type: "POST",
         url: "/QuizService.asmx/recordScores",

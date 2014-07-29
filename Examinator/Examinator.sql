@@ -1098,32 +1098,37 @@ as
 			begin
 				select 'UserID Exists' = 'UserID Exists' from tbUsers where UserName = @UserName
 			end
-		declare @UserID int
-		set @UserID = (select UserID FROM tbUsers WHERE UserEmail = @UserEmail)
-		update tbUsers
-				set UserPass = @UserPass, UserName = @UserName
-				where UserID = @UserID
-		if @PrefShowInLeader = 0
+		else
 		begin
-			update tbScores
-				set ScoreBit = 0 where ScoreUserID = @UserID
-		end
-		else
-		begin	
-			update tbScores
-				set ScoreBit = 1 where ScoreUserID = @UserID
-		end
-		if exists (select * from tbPreferences where PrefUserID = @UserID)
-			begin				
-				update tbPreferences
-				set PrefShowInLeader = @PrefShowInLeader, PrefShowUnapproved = @PrefShowUnapproved
-				where PrefUserID = @UserID
-			end
-		else
+			declare @UserID int
+			set @UserID = (select UserID FROM tbUsers WHERE UserEmail = @UserEmail)
+			update tbUsers
+				set UserPass = @UserPass,
+					UserName = ISNULL (@UserName,UserName)
+					where UserID = @UserID
+			if @PrefShowInLeader = 0
 			begin
-				insert into tbPreferences (PrefUserID,PrefShowInLeader,PrefShowUnapproved, PrefBit)
-		values	(@UserID,@PrefShowInLeader,@PrefShowUnapproved,1)
+				update tbScores
+					set ScoreBit = 0 where ScoreUserID = @UserID
 			end
+			else
+			begin	
+				update tbScores
+					set ScoreBit = 1 where ScoreUserID = @UserID
+			end
+			if exists (select * from tbPreferences where PrefUserID = @UserID)
+				begin				
+					update tbPreferences
+					set PrefShowInLeader = @PrefShowInLeader, PrefShowUnapproved = @PrefShowUnapproved
+					where PrefUserID = @UserID
+				end
+			else
+				begin
+					insert into tbPreferences (PrefUserID,PrefShowInLeader,PrefShowUnapproved, PrefBit)
+					values	(@UserID,@PrefShowInLeader,@PrefShowUnapproved,1)
+				end
+			select 'Good to go!' = 'Good to go!' from tbUsers	
+		end		
 	end
 go
 

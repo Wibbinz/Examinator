@@ -129,7 +129,7 @@ namespace Examinator
             else
             {
                 Session["User"] = currentUser;
-                lblMessage.Text = "Success! Your preferences have been recorded.";
+                lblMessage.Text = "Success! Your preferences have been saved.";
                 lblMessage.Style.Add("text-shadow", "2px 2px 2px #15E626");
                 lblMessage.Visible = true;
                 loggedIn(currentUser);
